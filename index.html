@@ -114,7 +114,7 @@
     background: linear-gradient(180deg, #ffe08d 0%, #a87425 100%);
   }
 
-  /* TOP BAR MIT LAUTSPRECHER, PAUSE, SIEG-TRACKER & REGELN */
+  /* TOP BAR */
   .top-bar {
     position: absolute;
     top: 0; left: 0; width: 100%;
@@ -166,22 +166,23 @@
     font-family: 'Cinzel', serif;
     font-weight: 900;
     font-size: 0.78rem;
-    padding: 4px 10px;
+    padding: 5px 12px;
     border: 1.5px solid #ffe39b;
     border-radius: 6px;
     cursor: pointer;
     box-shadow: 0 2px 6px rgba(0,0,0,0.5);
     transition: transform 0.15s, background 0.15s;
-    display: inline-flex;
+    display: inline-flex !important;
     align-items: center;
-    gap: 4px;
+    justify-content: center;
+    gap: 5px;
   }
 
   .top-bar-btn:hover { transform: scale(1.05); background: linear-gradient(180deg, #ffe08d 0%, #a87425 100%); }
   .top-bar-btn.muted { background: linear-gradient(180deg, #666 0%, #333 100%); color: #bbb; border-color: #888; }
 
   /* =========================================================
-     BOTS BÜHNE: RIESIG & MIT FREIRAUM ZUM TEXT!
+     BOTS BÜHNE: AVATARE + GROSSE KARTENFÄCHER OBEN
      ========================================================= */
   .bots-stage {
     position: absolute;
@@ -218,26 +219,32 @@
     min-width: 70px;
   }
 
-  .bot-profile-avatar {
+  .avatar-frame {
     width: 52px;
     height: 52px;
     border-radius: 50%;
     border: 2.5px solid var(--gold-bright);
-    background-size: cover;
-    background-position: center top;
+    overflow: hidden;
     box-shadow: 0 0 14px rgba(0,0,0,0.85);
+    background: #110507;
+  }
+
+  .avatar-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 
   .bot-cards-fan { display: flex; align-items: center; }
 
-  /* GROSSE, ECHTE BOT KARTEN */
   .bot-card-large {
-    width: 110px;
-    height: 160px;
+    width: 105px;
+    height: 155px;
     border-radius: 10px;
     border: 2px solid var(--gold);
     background: url('card_back.jpg') center/cover;
-    margin-left: -55px;
+    margin-left: -52px;
     box-shadow: -5px 5px 14px var(--shadow);
     transition: transform 0.2s;
   }
@@ -262,18 +269,18 @@
     white-space: nowrap;
   }
 
-  /* STATUS ANNOUNCER TICKER (JETZT TIEFER & VOLLKOMMEN FREI VOM BOT-FÄCHER!) */
+  /* STATUS ANNOUNCER TICKER (TIEFER GELEGT BEI 225px: FREIE SICHT AUF DIE KARTEN!) */
   .status-announcer {
     position: absolute;
-    top: 220px;
+    top: 225px;
     left: 50%;
     transform: translateX(-50%);
     background: rgba(18, 6, 8, 0.96);
-    border: 2px solid var(--gold);
-    padding: 7px 30px;
-    border-radius: 20px;
-    font-size: 0.98rem;
-    font-weight: 800;
+    border: 2.5px solid var(--gold);
+    padding: 7px 32px;
+    border-radius: 22px;
+    font-size: 1rem;
+    font-weight: 900;
     color: var(--gold-bright);
     white-space: nowrap;
     box-shadow: 0 0 25px rgba(0,0,0,0.95);
@@ -282,11 +289,11 @@
   }
 
   /* =========================================================
-     ARENA SPIELTISCH (HÖHER GESETZT BEI 42% -> KEINE KOLLISION!)
+     ARENA SPIELTISCH (HÖHER GESETZT BEI 38% -> KEINE KOLLISION!)
      ========================================================= */
   .arena-center {
     position: absolute;
-    top: 42%; left: 50%;
+    top: 38%; left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
     justify-content: center;
@@ -301,20 +308,20 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     background: radial-gradient(circle, rgba(42, 14, 19, 0.96) 0%, rgba(15, 5, 7, 0.98) 100%);
     border: 2.5px solid var(--gold);
     border-radius: 14px;
-    padding: 12px 18px;
+    padding: 10px 16px;
     box-shadow: 0 0 35px rgba(0,0,0,0.95);
-    width: 210px;
+    width: 200px;
   }
 
   .dice-row { display: flex; gap: 8px; }
 
   .dice-3d {
-    width: 52px;
-    height: 52px;
+    width: 48px;
+    height: 48px;
     background: radial-gradient(circle, #fffef9 25%, #d5be9b 100%);
     border: 2.5px solid #5a3d16;
     border-radius: 10px;
@@ -330,8 +337,8 @@
   .dice-3d.locked {
     border-color: #ff3333;
     background: radial-gradient(circle, #ffdede 25%, #c17575 100%);
-    transform: translateY(-6px);
-    box-shadow: 0 0 18px #ff2222;
+    transform: translateY(-5px);
+    box-shadow: 0 0 16px #ff2222;
   }
 
   @keyframes rollDiceAnim {
@@ -341,8 +348,8 @@
   }
 
   .pip {
-    width: 9px;
-    height: 9px;
+    width: 8px;
+    height: 8px;
     background: radial-gradient(circle, #2b1104 60%, #000 100%);
     border-radius: 50%;
     align-self: center;
@@ -354,14 +361,14 @@
     flex-direction: column;
     gap: 4px;
     width: 100%;
-    margin-top: 4px;
+    margin-top: 3px;
   }
 
   .action-btn {
     background: linear-gradient(180deg, #dfb15b 0%, #875c1a 100%);
     color: #1a0700;
     font-family: 'Cinzel', serif;
-    font-size: 0.82rem;
+    font-size: 0.8rem;
     font-weight: 900;
     padding: 6px 12px;
     border: 1.5px solid #ffe39b;
@@ -441,8 +448,8 @@
   }
 
   .bot-active-card {
-    width: 140px;
-    height: 200px;
+    width: 135px;
+    height: 195px;
     border-radius: 10px;
     border: 3.5px solid #ff3333;
     box-shadow: 0 0 35px #ff2222, 0 0 60px #000;
@@ -463,8 +470,8 @@
   }
 
   .deck-pile {
-    width: 140px;
-    height: 200px;
+    width: 135px;
+    height: 195px;
     border-radius: 10px;
     position: relative;
     box-shadow: 0 6px 20px var(--shadow);
@@ -517,37 +524,27 @@
     z-index: 40;
   }
 
-  /* SPIELER AVATAR STATION LINKS NEBEN DER HAND */
   .player-station {
     display: flex;
     align-items: flex-end;
-    gap: 15px;
+    gap: 16px;
   }
 
+  /* SPIELER AVATAR STATION (DAUERHAFT SICHTBAR!) */
   .player-profile-badge {
     display: flex;
     flex-direction: column;
     align-items: center;
     background: radial-gradient(circle, rgba(45, 14, 20, 0.96) 0%, rgba(15, 5, 7, 0.98) 100%);
     border: 2px solid var(--gold);
-    border-radius: 12px;
-    padding: 6px 10px;
+    border-radius: 14px;
+    padding: 6px 12px;
     box-shadow: 0 6px 18px var(--shadow);
     margin-bottom: 25px;
   }
 
-  .player-avatar-circle {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 2.5px solid var(--gold-bright);
-    background-size: cover;
-    background-position: center top;
-    box-shadow: 0 0 12px rgba(0,0,0,0.85);
-  }
-
   .player-name-tag {
-    font-size: 0.75rem;
+    font-size: 0.78rem;
     font-weight: 900;
     color: var(--gold-bright);
     margin-top: 3px;
@@ -588,12 +585,12 @@
 
   .player-hand-fan { display: flex; justify-content: center; align-items: flex-end; }
 
-  /* HANDKARTEN: 200px x 285px */
+  /* HANDKARTEN: 185px x 265px */
   .hand-card {
-    width: 200px;
-    height: 285px;
+    width: 185px;
+    height: 265px;
     border-radius: 12px;
-    margin-left: -55px;
+    margin-left: -50px;
     cursor: pointer;
     transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.22s;
     transform-origin: bottom center;
@@ -612,7 +609,7 @@
   }
 
   .hand-card.playable-glow {
-    transform: translateY(-38px) !important;
+    transform: translateY(-32px) !important;
     z-index: 150;
   }
 
@@ -629,7 +626,7 @@
 
   /* MODERATER HUB: KEINE BERÜHRUNG MIT DEM WÜRFELKASTEN MEHR! */
   .hand-card.preview-elevated, .hand-card.locked-selected {
-    transform: translateY(-50px) scale(1.08) !important;
+    transform: translateY(-42px) scale(1.06) !important;
     z-index: 300 !important;
   }
 
@@ -650,13 +647,13 @@
     .bots-stage { top: 38px; gap: 15px; }
     .bot-card-group { padding: 4px 10px; }
     .bot-profile-info { margin-right: 10px; min-width: 50px; }
-    .bot-profile-avatar { width: 34px; height: 34px; }
+    .avatar-frame { width: 36px; height: 36px; }
     .bot-card-large { width: 70px; height: 102px; margin-left: -35px; }
 
-    .status-announcer { top: 145px; font-size: 0.76rem; padding: 3px 16px; }
-    .speech-bubble { top: 145px; font-size: 0.78rem; }
+    .status-announcer { top: 150px; font-size: 0.78rem; padding: 4px 18px; }
+    .speech-bubble { top: 150px; font-size: 0.78rem; }
 
-    .arena-center { top: 46%; gap: 14px; }
+    .arena-center { top: 44%; gap: 14px; }
     .dice-arena { width: 135px; padding: 6px 10px; gap: 4px; }
     .dice-3d { width: 38px; height: 38px; padding: 3px; }
     .pip { width: 7px; height: 7px; }
@@ -666,10 +663,11 @@
     .deck-pile { width: 85px; height: 120px; }
 
     .player-hand-wrapper { bottom: -8px; }
-    .player-profile-badge { display: none; } /* Auf Handy aus Platzgründen ausgeblendet */
-    .hand-card { width: 115px; height: 165px; margin-left: -35px; }
-    .hand-card.playable-glow { transform: translateY(-22px) !important; }
-    .hand-card.preview-elevated, .hand-card.locked-selected { transform: translateY(-38px) scale(1.08) !important; }
+    .player-profile-badge { padding: 3px 6px; margin-bottom: 12px; }
+    .player-profile-badge .avatar-frame { width: 34px; height: 34px; }
+    .hand-card { width: 110px; height: 155px; margin-left: -35px; }
+    .hand-card.playable-glow { transform: translateY(-20px) !important; }
+    .hand-card.preview-elevated, .hand-card.locked-selected { transform: translateY(-34px) scale(1.06) !important; }
 
     #confirm-dialogue-box { padding: 4px 14px; margin-bottom: 4px; }
     .confirm-title { font-size: 0.75rem; }
@@ -731,7 +729,7 @@
     box-shadow: 0 0 25px #000; z-index: 1200; display: none; text-align: center;
   }
 
-  /* SIEGER MODAL */
+  /* SIEGER MODAL MIT STRAFPUNKTE-ABRECHNUNG */
   #victory-modal {
     display: none;
     position: fixed;
@@ -840,10 +838,10 @@
 <!-- BOTS BÜHNE OBEN IM SAND -->
 <div class="bots-stage" id="bots-stage-area"></div>
 
-<!-- STATUS ANNOUNCER (JETZT FREI STEHEND BEI 220px!) -->
+<!-- STATUS ANNOUNCER (TIEFER GESETZT BEI 225px: FREIE SICHT AUF DIE KARTEN!) -->
 <div class="status-announcer" id="status-text">DEIN ZUG: WIRF DIE SCHICKSALSKNOCHEN!</div>
 
-<!-- ARENA SPIELTISCH (HÖHER GESETZT BEI 42% -> GENUG PLATZ NACH UNTEN!) -->
+<!-- ARENA SPIELTISCH (HÖHER GESETZT BEI 38% -> KEINE KOLLISION MEHR MIT DER HAND!) -->
 <div class="arena-center">
   <!-- WÜRFEL BEREICH -->
   <div class="dice-arena">
@@ -886,7 +884,7 @@
   </div>
 </div>
 
-<!-- SPIELER HAND & AVATAR UNTEN -->
+<!-- SPIELER HAND & AVATAR UNTEN LINKS -->
 <div class="player-hand-wrapper">
   <div id="confirm-dialogue-box">
     <div class="confirm-title">„Diese Karte, sicher Gladiator?“</div>
@@ -898,9 +896,11 @@
   </div>
 
   <div class="player-station">
-    <!-- DEIN SPIELER-AVATAR (AVATAR_1.JPG) -->
+    <!-- DEIN SPIELER-AVATAR (AVATAR_1.JPG) MIT AUTOMATISCHEM FALLBACK -->
     <div class="player-profile-badge">
-      <div class="player-avatar-circle" id="player-avatar-img"></div>
+      <div class="avatar-frame">
+        <img src="avatar_1.jpg" onerror="this.onerror=null; this.src='cards/Ave Caesar Grafiken plus Cover_page-0001.jpg';">
+      </div>
       <div class="player-name-tag">DU</div>
     </div>
 
@@ -1176,6 +1176,13 @@ function shuffle(a) {
   return a;
 }
 
+// BOT PROFILES (NANO BANANA ARCHITEKTUR MIT SICHEREM BILD-FALLBACK)
+const botProfiles = [
+  { id: 2, name: 'MAXIMUS', avatar: 'avatar_2.jpg', page: 1, title: 'Der Schlächter', quote: '„Spüre den Sand, Feigling!“' },
+  { id: 3, name: 'AURELIUS', avatar: 'avatar_3.jpg', page: 35, title: 'Der Zenturio', quote: '„Meine Legion kennt keine Gnade!“' },
+  { id: 4, name: 'CASSIUS', avatar: 'avatar_4.jpg', page: 22, title: 'Der Elefantenmeister', quote: '„Die Götter fordern dein Blut!“' }
+];
+
 let numPlayers = 2;
 let players = [];
 let currentPlayerIdx = 0;
@@ -1195,17 +1202,6 @@ let lockedCardIdx = null;
 let canTakeover = false;
 let vetoTimerInterval = null;
 let botTurnTimeout = null;
-
-// NANO-BANANA AVATAR ARCHITEKTUR (MIT FALLBACK!)
-const botProfiles = [
-  { id: 2, name: 'MAXIMUS', avatar: 'avatar_2.jpg', page: 1, title: 'Der Schlächter', quote: '„Spüre den Sand, Feigling!“' },
-  { id: 3, name: 'AURELIUS', avatar: 'avatar_3.jpg', page: 35, title: 'Der Zenturio', quote: '„Meine Legion kennt keine Gnade!“' },
-  { id: 4, name: 'CASSIUS', avatar: 'avatar_4.jpg', page: 22, title: 'Der Elefantenmeister', quote: '„Die Götter fordern dein Blut!“' }
-];
-
-function getAvatarStyle(customFile, fallbackPage) {
-  return `background-image: url('${customFile}'), url('${getCardImgPath(fallbackPage)}');`;
-}
 
 function startWithPlayers(count) {
   numPlayers = count;
@@ -1242,10 +1238,6 @@ function initGame() {
   updateUI();
   updateAudioUI();
   updateWinBadge();
-
-  // Spieler Avatar setzen
-  const pAvatar = document.getElementById('player-avatar-img');
-  if (pAvatar) pAvatar.style = getAvatarStyle('avatar_1.jpg', 1);
 }
 
 function resetTurn() {
@@ -1276,7 +1268,6 @@ function resetTurn() {
   renderDice();
 }
 
-// ZENTRALE SIEGPRÜFUNG
 function checkGameVictory() {
   if (players[0] && players[0].hand.length === 0) {
     playerVictories++;
@@ -2159,7 +2150,7 @@ function renderDice() {
 }
 
 function updateUI() {
-  // BOTS BÜHNE: AUSBALANCIERT & MIT ABSTAND
+  // BOTS BÜHNE: AVATARE + ECHTE GROSSE KARTEN-FÄCHER
   const stageEl = document.getElementById('bots-stage-area');
   if (stageEl) {
     stageEl.innerHTML = '';
@@ -2171,8 +2162,10 @@ function updateUI() {
       bDiv.className = `bot-card-group ${isActive}`;
       bDiv.innerHTML = `
         <div class="bot-profile-info">
-          <div class="bot-profile-avatar" style="${getAvatarStyle(b.profile.avatar, b.profile.page)}"></div>
-          <div style="font-size: 0.8rem; font-weight: 900; color: var(--gold-bright); margin-top: 4px;">${b.name}</div>
+          <div class="avatar-frame">
+            <img src="${b.profile.avatar}" onerror="this.onerror=null; this.src='cards/Ave Caesar Grafiken plus Cover_page-${String(b.profile.page).padStart(4, '0')}.jpg';">
+          </div>
+          <div style="font-size: 0.82rem; font-weight: 900; color: var(--gold-bright); margin-top: 4px;">${b.name}</div>
           <div style="font-size: 0.65rem; color: #d5be9b;">${b.hand.length} KARTEN</div>
         </div>
         <div class="bot-cards-fan">
