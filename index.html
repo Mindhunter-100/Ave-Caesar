@@ -164,9 +164,7 @@
   .audio-btn:hover, .rules-btn:hover { transform: scale(1.06); background: linear-gradient(180deg, #ffe08d 0%, #a87425 100%); }
   .audio-btn.muted { background: linear-gradient(180deg, #666 0%, #333 100%); color: #bbb; border-color: #888; }
 
-  /* =========================================================
-     BOTS BÜHNE: RIESIGE KARTENFÄCHER OBEN IM SAND!
-     ========================================================= */
+  /* BOTS BÜHNE: RIESIGE KARTENFÄCHER OBEN IM SAND! */
   .bots-stage {
     position: absolute;
     top: 44px; left: 0; width: 100%;
@@ -213,7 +211,7 @@
 
   .bot-cards-fan { display: flex; align-items: center; }
 
-  /* GROSSE, ECHTE BOT KARTEN (120px x 175px AUF DESKTOP!) */
+  /* GROSSE, ECHTE BOT KARTEN (120px x 175px) */
   .bot-card-large {
     width: 120px;
     height: 175px;
@@ -263,9 +261,7 @@
     z-index: 25;
   }
 
-  /* =========================================================
-     ARENA SPIELTISCH (IN DER MITTE DES SANDES!)
-     ========================================================= */
+  /* ARENA SPIELTISCH (IN DER MITTE DES SANDES!) */
   .arena-center {
     position: absolute;
     top: 52%; left: 50%;
@@ -900,6 +896,7 @@
 const isYouTubePlayables = (typeof ytgame !== 'undefined');
 let isAudioMuted = false;
 let audioCtx = null;
+let isAppPaused = false;
 
 function getAudioCtx() {
   if (!audioCtx) {
@@ -910,15 +907,15 @@ function getAudioCtx() {
 }
 
 function playSoundEffect(type) {
-  if (isAudioMuted) return;
+  if (isAudioMuted || isAppPaused) return;
   const ctx = getAudioCtx();
   if (!ctx) return;
   if (ctx.state === 'suspended') ctx.resume();
 
   if (type === 'dice') {
-    // Würfelklappern synthetisieren
     for (let i = 0; i < 4; i++) {
       setTimeout(() => {
+        if (isAudioMuted || isAppPaused) return;
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
         osc.type = 'triangle';
@@ -932,10 +929,10 @@ function playSoundEffect(type) {
       }, i * 70);
     }
   } else if (type === 'fanfare') {
-    // Römische Siegesfanfare
     const notes = [261.6, 329.6, 392.0, 523.25];
     notes.forEach((freq, i) => {
       setTimeout(() => {
+        if (isAudioMuted || isAppPaused) return;
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
         osc.type = 'sine';
@@ -969,11 +966,29 @@ function updateAudioUI() {
   }
 }
 
-if (isYouTubePlayables && ytgame.system && ytgame.system.onAudioEnabledChange) {
-  ytgame.system.onAudioEnabledChange((enabled) => {
-    isAudioMuted = !enabled;
-    updateAudioUI();
-  });
+// YOUTUBE PLAYABLES LIFECYCLE HOOKS (OFFIZIELL!)
+if (isYouTubePlayables && ytgame.system) {
+  if (ytgame.system.isAudioEnabled) {
+    isAudioMuted = !ytgame.system.isAudioEnabled();
+  }
+  if (ytgame.system.onAudioEnabledChange) {
+    ytgame.system.onAudioEnabledChange((enabled) => {
+      isAudioMuted = !enabled;
+      updateAudioUI();
+    });
+  }
+  if (ytgame.system.onPause) {
+    ytgame.system.onPause(() => {
+      isAppPaused = true;
+      if (audioCtx && audioCtx.state === 'running') audioCtx.suspend();
+    });
+  }
+  if (ytgame.system.onResume) {
+    ytgame.system.onResume(() => {
+      isAppPaused = false;
+      if (audioCtx && audioCtx.state === 'suspended' && !isAudioMuted) audioCtx.resume();
+    });
+  }
 }
 
 function getCardImgPath(pageNum) {
@@ -1146,6 +1161,9 @@ function resetTurn() {
 // ZENTRALE SIEGPRÜFUNG MIT FANFARE & SIEGERBILD
 function checkGameVictory() {
   if (players[0] && players[0].hand.length === 0) {
+    if (isYouTubePlayables && ytgame.engagement && ytgame.engagement.sendScore) {
+      ytgame.engagement.sendScore({ value: 100 });
+    }
     showVictoryScreen("TRIUMPH! Du hast alle Karten abgelegt und Rom erobert!");
     return true;
   }
@@ -1811,7 +1829,7 @@ function hideBotTargetCard() {
   if (box) box.classList.remove('visible');
 }
 
-// VETO FUNKTION: FEHLERFREI, ENTJAMMT & SOFORTIGER SIEG-CHECK!
+// VETO FUNKTION: VOLLSTÄNDIG ENTBLOCKIERT & AKTIVER SPIELER SOFORT AUF DICH UMGESCHALTET!
 function triggerPlayerVeto() {
   if (botTurnTimeout) clearTimeout(botTurnTimeout);
   if (vetoTimerInterval) clearInterval(vetoTimerInterval);
@@ -1840,7 +1858,7 @@ function triggerPlayerVeto() {
     discardTop = card;
     canTakeover = false;
 
-    // 1. PRÜFE SOFORT AUF SIEG NACH VETO!
+    // 1. SIEG-CHECK: WAR DAS DIE LETZTE KARTE?
     if (checkGameVictory()) {
       updateUI();
       return;
@@ -1858,8 +1876,8 @@ function triggerPlayerVeto() {
       setAnnouncer(`⚔️ VETO ERFOLGREICH! Du legst ${card.name} ab!`);
       updateUI();
       
-      // 2. ENTSCHEIDENDER FIX GEGEN DEN FREEZE:
-      // Schalte den aktiven Spieler SOFORT auf DICH (0) um!
+      // 2. DAS HERZSTÜCK GEGEN DEN FREEZE:
+      // Schalte den aktiven Spieler sofort auf DICH (0) um!
       currentPlayerIdx = 0;
       setTimeout(() => {
         resetTurn();
@@ -1867,7 +1885,7 @@ function triggerPlayerVeto() {
         const rBtn = document.getElementById('btn-roll');
         rBtn.disabled = false;
         rBtn.classList.add('pulse');
-      }, 1500);
+      }, 1400);
     }
   }
 }
@@ -2016,7 +2034,7 @@ function updateUI() {
       bDiv.innerHTML = `
         <div class="bot-profile-info">
           <div class="bot-profile-avatar" style="background-image:url('${getCardImgPath(b.profile.page)}')"></div>
-          <div style="font-size: 0.8rem; font-weight: 900; color: var(--gold-bright); margin-top: 3px;">${b.name}</div>
+          <div style="font-size: 0.8rem; font-weight: 900; color: var(--gold-bright); margin-top: 4px;">${b.name}</div>
           <div style="font-size: 0.65rem; color: #d5be9b;">${b.hand.length} KARTEN</div>
         </div>
         <div class="bot-cards-fan">
