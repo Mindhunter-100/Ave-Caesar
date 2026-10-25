@@ -150,7 +150,7 @@
   }
 
   /* =========================================================
-     BOTS BÜHNE: PROMINENT OBEN MIT GROSSEN KARTENFÄCHERN!
+     BOTS BÜHNE: GROSSE, ECHTE KARTENFÄCHER OBEN IM SAND!
      ========================================================= */
   .bots-stage {
     position: absolute;
@@ -167,9 +167,9 @@
     align-items: center;
     background: radial-gradient(circle, rgba(38, 12, 17, 0.96) 0%, rgba(15, 5, 7, 0.98) 100%);
     border: 2px solid var(--gold);
-    border-radius: 12px;
-    padding: 5px 12px;
-    box-shadow: 0 6px 18px var(--shadow);
+    border-radius: 14px;
+    padding: 6px 14px;
+    box-shadow: 0 6px 20px var(--shadow);
     transition: transform 0.2s, box-shadow 0.2s;
   }
 
@@ -183,12 +183,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-right: 10px;
+    margin-right: 12px;
   }
 
   .bot-profile-avatar {
-    width: 38px;
-    height: 38px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     border: 2px solid var(--gold-bright);
     background-size: cover;
@@ -198,15 +198,15 @@
 
   .bot-cards-fan { display: flex; align-items: center; }
 
-  /* GROSSE BOT KARTEN (FÄCHER) */
+  /* GROSSE, ECHTE BOT KARTEN */
   .bot-card-large {
-    width: 48px;
-    height: 70px;
-    border-radius: 6px;
-    border: 1.5px solid var(--gold);
+    width: 90px;
+    height: 130px;
+    border-radius: 8px;
+    border: 2px solid var(--gold);
     background: url('card_back.jpg') center/cover;
-    margin-left: -26px;
-    box-shadow: -3px 3px 10px var(--shadow);
+    margin-left: -46px;
+    box-shadow: -4px 4px 12px var(--shadow);
     transition: transform 0.2s;
   }
 
@@ -233,7 +233,7 @@
   /* STATUS ANNOUNCER TICKER */
   .status-announcer {
     position: absolute;
-    top: 130px;
+    top: 132px;
     left: 50%;
     transform: translateX(-50%);
     background: rgba(18, 6, 8, 0.96);
@@ -249,8 +249,8 @@
   }
 
   /* =========================================================
-     ARENA SPIELTISCH (IN DER MITTE DES SANDES!)
-     Kein Auseinanderreißen an die Ränder mehr!
+     ARENA SPIELTISCH (MITTE DES SANDES!)
+     Kein Rand-Abdrängen mehr: Würfel, Zielkarte & Stapel bilden ein Team!
      ========================================================= */
   .arena-center {
     position: absolute;
@@ -259,7 +259,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px;
+    gap: 35px;
     z-index: 15;
     width: auto;
   }
@@ -377,18 +377,22 @@
     text-align: center;
   }
 
-  /* BOT AUFGEDECKTE ZIELKARTE IM ZENTRUM DES SANDES */
+  /* BOT AUFGEDECKTE ZIELKARTE (PERMANENTER MITTEL-SLOT IM SAND) */
   .bot-active-target-box {
-    display: none;
+    display: flex;
     flex-direction: column;
     align-items: center;
     gap: 6px;
-    animation: targetPop 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.25s, transform 0.25s;
+    transform: scale(0.9);
   }
 
-  @keyframes targetPop {
-    0% { transform: scale(0.6); opacity: 0; }
-    100% { transform: scale(1); opacity: 1; }
+  .bot-active-target-box.visible {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
   }
 
   .bot-target-label {
@@ -398,18 +402,25 @@
     color: #ff4444;
     text-shadow: 0 0 10px #000, 0 0 15px #ff2222;
     letter-spacing: 1.5px;
-    background: rgba(15, 3, 5, 0.92);
+    background: rgba(15, 3, 5, 0.94);
     padding: 3px 12px;
     border-radius: 8px;
     border: 1.5px solid #ff4444;
   }
 
   .bot-active-card {
-    width: 130px;
-    height: 185px;
-    border-radius: 8px;
-    border: 3px solid #ff3333;
+    width: 140px;
+    height: 200px;
+    border-radius: 10px;
+    border: 3.5px solid #ff3333;
     box-shadow: 0 0 35px #ff2222, 0 0 60px #000;
+  }
+
+  .bot-target-sub {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--gold-bright);
+    text-shadow: 1px 1px 4px #000;
   }
 
   /* STAPEL (RECHTS IM SPIELTISCH) */
@@ -420,9 +431,9 @@
   }
 
   .deck-pile {
-    width: 130px;
-    height: 185px;
-    border-radius: 8px;
+    width: 140px;
+    height: 200px;
+    border-radius: 10px;
     position: relative;
     box-shadow: 0 6px 20px var(--shadow);
   }
@@ -439,7 +450,7 @@
   }
 
   .deck-pile.discard img {
-    width: 100%; height: 100%; border-radius: 6px; display: block;
+    width: 100%; height: 100%; border-radius: 8px; display: block;
   }
 
   #active-color-indicator {
@@ -572,12 +583,11 @@
     .bots-stage { top: 38px; gap: 15px; }
     .bot-card-group { padding: 3px 8px; }
     .bot-profile-avatar { width: 28px; height: 28px; }
-    .bot-card-large { width: 34px; height: 50px; margin-left: -18px; }
+    .bot-card-large { width: 55px; height: 78px; margin-left: -28px; }
 
     .status-announcer { top: 94px; font-size: 0.76rem; padding: 3px 16px; }
     .speech-bubble { top: 94px; font-size: 0.78rem; }
 
-    /* SPIELTISCH MOBIL */
     .arena-center { top: 52%; gap: 14px; }
     .dice-arena { width: 135px; padding: 6px 10px; gap: 4px; }
     .dice-3d { width: 38px; height: 38px; padding: 3px; }
@@ -587,7 +597,6 @@
     .bot-active-card { width: 85px; height: 120px; }
     .deck-pile { width: 85px; height: 120px; }
 
-    /* HANDKARTEN MOBIL */
     .player-hand-wrapper { bottom: -8px; }
     .hand-card { width: 115px; height: 165px; margin-left: -35px; }
     .hand-card.playable-glow { transform: translateY(-25px) !important; }
@@ -720,7 +729,7 @@
 </head>
 <body>
 
-<!-- SMARTPHONE HOCHKANT WARNUNG -->
+<!-- HOCHKANT WARNUNG -->
 <div id="rotate-device-overlay">
   <div style="font-size: 2.5rem; margin-bottom: 10px;">🔄</div>
   <div style="font-family:'Cinzel Decorative'; font-size:1.4rem; color:var(--gold-bright); margin-bottom:8px;">DREHE DEIN GERÄT!</div>
@@ -777,10 +786,11 @@
     <div id="rolls-info" style="font-size: 0.65rem; color: #d5be9b;">Würfe: -</div>
   </div>
 
-  <!-- BOT AUFGEDECKTE ZIELKARTE -->
+  <!-- BOT AUFGEDECKTE ZIELKARTE (FESTE POSITION IM SAND) -->
   <div class="bot-active-target-box" id="bot-target-box">
     <div class="bot-target-label" id="bot-target-title">GEGNER-ZIEL</div>
     <img class="bot-active-card" id="bot-target-img" src="card_back.jpg">
+    <div class="bot-target-sub" id="bot-target-sub">-</div>
   </div>
 
   <!-- STAPEL (RECHTS IM TISCH) -->
@@ -1431,7 +1441,7 @@ function handleDrawClick() {
 }
 
 // ==========================================
-// BOTS STEUERUNG (ZIELKARTE SOFORT IM SAND DREHEN!)
+// BOTS STEUERUNG (ZIELKARTE SOFORT & DAUERHAFT IM SAND ZEIGEN!)
 // ==========================================
 function startBotTurn() {
   const bot = players[currentPlayerIdx];
@@ -1455,35 +1465,39 @@ function startBotTurn() {
         bot.hand.forEach((c, idx) => { if (c.points > maxPts) { maxPts = c.points; bestIdx = idx; } });
         const discarded = bot.hand.splice(bestIdx, 1)[0];
         displayBotTargetCard(discarded, `${bot.name} LEGT AB (AVE CAESAR!):`);
-        discardTop = discarded;
 
         setTimeout(() => {
+          discardTop = discarded;
           hideBotTargetCard();
           if (discarded.form === FORMATIONS.PORCUS) { executePorcusAction(discarded, bot); return; }
           handleBotColorChoice(bot, discarded);
           canTakeover = false;
           checkBotVictory(bot);
           updateUI();
-          setTimeout(passTurnToNext, 1600);
-        }, 1200);
+          setTimeout(passTurnToNext, 1800);
+        }, 1800);
       }, 1500);
       return;
     }
 
-    // BOT WÄHLT KARTE UND DREHT SIE SOFORT UM!
+    // BOT WÄHLT SEINE ZIELKARTE UND DREHT SIE SOFORT UM!
     let targetCardIdx = chooseBestCardForBot(bot, dice);
     if (targetCardIdx === -1) {
       if (deck.length > 0) bot.hand.push(deck.pop());
       setAnnouncer(`${bot.name} kann nicht bedienen und zieht eine Karte.`);
+      showBotBubble("„Ich muss eine Karte ziehen... Noch bist du im Vorteil!“");
       canTakeover = true;
       updateUI();
-      setTimeout(passTurnToNext, 1600);
+      setTimeout(passTurnToNext, 1800);
       return;
     }
 
     const targetCard = bot.hand[targetCardIdx];
-    displayBotTargetCard(targetCard, `GEGNER-ZIEL: ${bot.name} PEILT AN`);
-    setAnnouncer(`${bot.name} wählt: ${targetCard.name}!`);
+
+    // DREHE DIE KARTE SOFORT OFFEN IM SAND UM!
+    displayBotTargetCard(targetCard, `GEGNER-ZIEL: ${bot.name} WÄHLT`);
+    setAnnouncer(`${bot.name} hat gewürfelt und wählt: ${targetCard.name}!`);
+    showBotBubble(`„Ich spiele auf: ${targetCard.name}! Macht euch bereit!“`);
 
     // VETO PRÜFUNG DURCH DEN SPIELER
     const vetoCardIdx = players[0].hand.findIndex(c => canPlayOnDiscard(c) && checkFormation(dice, c));
@@ -1510,12 +1524,13 @@ function startBotTurn() {
       }, 5200);
 
     } else {
+      // 2 Sekunden Zeit, um die gewählte Karte genau zu betrachten
       setTimeout(() => {
         proceedBotTurnExecution(bot, targetCardIdx);
-      }, 1500);
+      }, 2000);
     }
 
-  }, 1000);
+  }, 1200);
 }
 
 function proceedBotTurnExecution(bot, targetCardIdx) {
@@ -1525,8 +1540,10 @@ function proceedBotTurnExecution(bot, targetCardIdx) {
 
   const card = bot.hand[targetCardIdx];
 
-  // SOFORT GETROFFEN
+  // SOFORT GETROFFEN IM 1. WURF
   if (checkFormation(dice, card)) {
+    setAnnouncer(`Volltreffer! ${bot.name} hat ${card.name} sofort erfüllt!`);
+    displayBotTargetCard(card, `ERFÜLLT: ${bot.name} LEGT AB!`);
     setTimeout(() => {
       bot.hand.splice(targetCardIdx, 1);
       discardTop = card;
@@ -1539,15 +1556,14 @@ function proceedBotTurnExecution(bot, targetCardIdx) {
 
       handleBotColorChoice(bot, card);
       canTakeover = false;
-      setAnnouncer(`Volltreffer! ${bot.name} legt ab: ${card.name}!`);
       checkBotVictory(bot);
       updateUI();
-      setTimeout(passTurnToNext, 1600);
-    }, 1200);
+      setTimeout(passTurnToNext, 1800);
+    }, 1800);
     return;
   }
 
-  // NACHWÜRFELN
+  // NACHWÜRFELN: KARTE BLEIBT DIE GANZE ZEIT OFFEN IM SAND LIEGEN!
   let botRerolls = card.rolls;
   executeBotRerollStep(bot, targetCardIdx, botRerolls);
 }
@@ -1626,7 +1642,8 @@ function executeBotRerollStep(bot, cardIdx, rerollsLeft) {
   const card = bot.hand[cardIdx];
   locked = getSmartBotLocks(dice, card);
   renderDice();
-  setAnnouncer(`${bot.name} sperrt Würfel & würfelt nach (${rerollsLeft} übrig)...`);
+  displayBotTargetCard(card, `${bot.name} PEILT AN (${rerollsLeft} übrig)`);
+  setAnnouncer(`${bot.name} sperrt Würfel (rot) und würfelt nach (${rerollsLeft} übrig)...`);
 
   setTimeout(() => {
     animateDice();
@@ -1638,6 +1655,7 @@ function executeBotRerollStep(bot, cardIdx, rerollsLeft) {
     if (dice[0] === dice[1] && dice[1] === dice[2]) {
       triggerAveCaesarCelebration();
       setAnnouncer(`AVE CAESAR! ${bot.name} würfelt einen Drilling im Nachwurf!`);
+      displayBotTargetCard(card, `AVE CAESAR DRILLING!`);
       setTimeout(() => {
         bot.hand.splice(cardIdx, 1);
         discardTop = card;
@@ -1647,12 +1665,14 @@ function executeBotRerollStep(bot, cardIdx, rerollsLeft) {
         canTakeover = false;
         checkBotVictory(bot);
         updateUI();
-        setTimeout(passTurnToNext, 1600);
-      }, 1500);
+        setTimeout(passTurnToNext, 1800);
+      }, 1800);
       return;
     }
 
     if (checkFormation(dice, card)) {
+      setAnnouncer(`Erfolg! ${bot.name} hat die Formation erfüllt und legt ${card.name} ab!`);
+      displayBotTargetCard(card, `ERFÜLLT: ${bot.name} LEGT AB!`);
       setTimeout(() => {
         bot.hand.splice(cardIdx, 1);
         discardTop = card;
@@ -1660,23 +1680,22 @@ function executeBotRerollStep(bot, cardIdx, rerollsLeft) {
         if (card.form === FORMATIONS.PORCUS) { executePorcusAction(card, bot); return; }
         handleBotColorChoice(bot, card);
         canTakeover = false;
-        setAnnouncer(`Erfolg! ${bot.name} legt ab: ${card.name}!`);
         checkBotVictory(bot);
         updateUI();
-        setTimeout(passTurnToNext, 1600);
-      }, 1200);
+        setTimeout(passTurnToNext, 1800);
+      }, 1800);
     } else if (rerollsLeft > 1) {
-      setTimeout(() => executeBotRerollStep(bot, cardIdx, rerollsLeft - 1), 1600);
+      setTimeout(() => executeBotRerollStep(bot, cardIdx, rerollsLeft - 1), 1800);
     } else {
+      setAnnouncer(`${bot.name} hat die Formation verfehlt! Die Würfel bleiben liegen.`);
       setTimeout(() => {
-        setAnnouncer(`${bot.name} verfehlt die Formation!`);
         hideBotTargetCard();
         canTakeover = true;
         updateUI();
-        setTimeout(passTurnToNext, 1600);
-      }, 1200);
+        setTimeout(passTurnToNext, 1800);
+      }, 1800);
     }
-  }, 1400);
+  }, 1500);
 }
 
 function handleBotColorChoice(bot, card) {
@@ -1698,16 +1717,18 @@ function displayBotTargetCard(card, labelText) {
   const box = document.getElementById('bot-target-box');
   const img = document.getElementById('bot-target-img');
   const label = document.getElementById('bot-target-title');
+  const sub = document.getElementById('bot-target-sub');
   if (box && img && card) {
     img.src = getCardImgPath(card.page);
     if (label && labelText) label.innerText = labelText;
-    box.style.display = 'flex';
+    if (sub) sub.innerText = `${card.name} • ${card.points} Pkt.`;
+    box.classList.add('visible');
   }
 }
 
 function hideBotTargetCard() {
   const box = document.getElementById('bot-target-box');
-  if (box) box.style.display = 'none';
+  if (box) box.classList.remove('visible');
 }
 
 function triggerPlayerVeto() {
@@ -1905,8 +1926,8 @@ function updateUI() {
       bDiv.innerHTML = `
         <div class="bot-profile-info">
           <div class="bot-profile-avatar" style="background-image:url('${getCardImgPath(b.profile.page)}')"></div>
-          <div style="font-size: 0.72rem; font-weight: 800; color: var(--gold-bright); margin-top: 2px;">${b.name}</div>
-          <div style="font-size: 0.6rem; color: #d5be9b;">${b.hand.length} KARTEN</div>
+          <div style="font-size: 0.76rem; font-weight: 800; color: var(--gold-bright); margin-top: 3px;">${b.name}</div>
+          <div style="font-size: 0.62rem; color: #d5be9b;">${b.hand.length} KARTEN</div>
         </div>
         <div class="bot-cards-fan">
           ${Array(b.hand.length).fill('<div class="bot-card-large"></div>').join('')}
@@ -1916,7 +1937,7 @@ function updateUI() {
     }
   }
 
-  // SPIELER HAND: ALLE KARTEN VOLL MASSIV (OPACITY 1), SPIELBARE KARTEN GLÜHEN & FAHREN HOCH!
+  // SPIELER HAND: ALLE KARTEN VOLL MASSIV, SPIELBARE KARTEN GLÜHEN & FAHREN HOCH!
   const fanEl = document.getElementById('player-fan');
   if (fanEl && players[0]) {
     fanEl.innerHTML = '';
@@ -1975,7 +1996,7 @@ function showBotBubble(text) {
   if (b) {
     b.innerText = text;
     b.style.display = 'block';
-    setTimeout(() => b.style.display = 'none', 2500);
+    setTimeout(() => b.style.display = 'none', 2800);
   }
 }
 
