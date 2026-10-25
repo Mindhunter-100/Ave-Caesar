@@ -114,7 +114,7 @@
     background: linear-gradient(180deg, #ffe08d 0%, #a87425 100%);
   }
 
-  /* TOP BAR */
+  /* TOP BAR MIT AUDIO-BUTTON & REGELN */
   .top-bar {
     position: absolute;
     top: 0; left: 0; width: 100%;
@@ -122,7 +122,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 18px;
     background: linear-gradient(180deg, rgba(15, 5, 7, 0.96) 0%, rgba(15, 5, 7, 0.3) 100%);
     z-index: 20;
     border-bottom: 1px solid rgba(223, 177, 91, 0.25);
@@ -137,16 +137,35 @@
     text-shadow: 0 0 10px rgba(223, 177, 91, 0.8);
   }
 
-  .rules-btn {
+  .top-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .icon-btn, .rules-btn {
     background: linear-gradient(180deg, #dfb15b 0%, #875c1a 100%);
     color: #1a0700;
     font-family: 'Cinzel', serif;
     font-weight: 900;
     font-size: 0.75rem;
-    padding: 4px 12px;
+    padding: 4px 10px;
     border: 1.5px solid #ffe39b;
     border-radius: 5px;
     cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    transition: transform 0.15s;
+  }
+
+  .icon-btn:hover, .rules-btn:hover {
+    transform: scale(1.05);
+    background: linear-gradient(180deg, #ffe08d 0%, #a87425 100%);
+  }
+
+  .icon-btn.muted {
+    background: linear-gradient(180deg, #888 0%, #444 100%);
+    color: #eee;
+    border-color: #bbb;
   }
 
   /* =========================================================
@@ -154,20 +173,20 @@
      ========================================================= */
   .bots-stage {
     position: absolute;
-    top: 44px; left: 0; width: 100%;
+    top: 42px; left: 0; width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 25px;
+    gap: 20px;
     z-index: 25;
   }
 
   .bot-card-group {
     display: flex;
     align-items: center;
-    background: radial-gradient(circle, rgba(38, 12, 17, 0.96) 0%, rgba(15, 5, 7, 0.98) 100%);
+    background: radial-gradient(circle, rgba(42, 14, 19, 0.96) 0%, rgba(15, 5, 7, 0.98) 100%);
     border: 2px solid var(--gold);
-    border-radius: 14px;
+    border-radius: 12px;
     padding: 6px 14px;
     box-shadow: 0 6px 20px var(--shadow);
     transition: transform 0.2s, box-shadow 0.2s;
@@ -176,7 +195,7 @@
   .bot-card-group.active-turn {
     border-color: var(--gold-bright);
     box-shadow: 0 0 25px var(--gold-bright);
-    transform: scale(1.05);
+    transform: scale(1.04);
   }
 
   .bot-profile-info {
@@ -198,14 +217,14 @@
 
   .bot-cards-fan { display: flex; align-items: center; }
 
-  /* GROSSE, ECHTE BOT KARTEN */
+  /* GROSSE, ECHTE BOT KARTEN (100px x 145px!) */
   .bot-card-large {
-    width: 90px;
-    height: 130px;
+    width: 100px;
+    height: 145px;
     border-radius: 8px;
     border: 2px solid var(--gold);
     background: url('card_back.jpg') center/cover;
-    margin-left: -46px;
+    margin-left: -52px;
     box-shadow: -4px 4px 12px var(--shadow);
     transition: transform 0.2s;
   }
@@ -214,7 +233,7 @@
 
   .speech-bubble {
     position: absolute;
-    top: 130px;
+    top: 135px;
     left: 50%;
     transform: translateX(-50%);
     background: rgba(247, 235, 212, 0.98);
@@ -233,7 +252,7 @@
   /* STATUS ANNOUNCER TICKER */
   .status-announcer {
     position: absolute;
-    top: 132px;
+    top: 135px;
     left: 50%;
     transform: translateX(-50%);
     background: rgba(18, 6, 8, 0.96);
@@ -249,8 +268,7 @@
   }
 
   /* =========================================================
-     ARENA SPIELTISCH (MITTE DES SANDES!)
-     Kein Rand-Abdrängen mehr: Würfel, Zielkarte & Stapel bilden ein Team!
+     ARENA SPIELTISCH (IN DER MITTE DES SANDES!)
      ========================================================= */
   .arena-center {
     position: absolute;
@@ -259,7 +277,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 35px;
+    gap: 30px;
     z-index: 15;
     width: auto;
   }
@@ -377,7 +395,7 @@
     text-align: center;
   }
 
-  /* BOT AUFGEDECKTE ZIELKARTE (PERMANENTER MITTEL-SLOT IM SAND) */
+  /* BOT AUFGEDECKTE ZIELKARTE (FEST IM SAND!) */
   .bot-active-target-box {
     display: flex;
     flex-direction: column;
@@ -531,7 +549,7 @@
     transform-origin: bottom center;
     box-shadow: -4px 6px 18px var(--shadow);
     position: relative;
-    opacity: 1 !important; /* KEINE DURCHSICHTIGKEIT! */
+    opacity: 1 !important; /* 100% BLICKDICHT! */
   }
 
   .hand-card:first-child { margin-left: 0; }
@@ -543,7 +561,7 @@
     opacity: 1 !important;
   }
 
-  /* SPIELBARE KARTEN: FAHREN WEIT HOCH & PULSIEREN MIT FEUER-GLOW! */
+  /* SPIELBARE KARTEN: FAHREN HOCH & PULSIEREN MIT FEUER-GLOW! */
   .hand-card.playable-glow {
     transform: translateY(-38px) !important;
     z-index: 150;
@@ -577,13 +595,13 @@
   }
 
   /* =========================================================
-     MOBILE LANDSCAPE ANPASSUNG (SMARTPHONES)
+     MOBILE LANDSCAPE ANPASSUNG
      ========================================================= */
   @media (max-height: 580px), (max-width: 900px) and (orientation: landscape) {
     .bots-stage { top: 38px; gap: 15px; }
-    .bot-card-group { padding: 3px 8px; }
-    .bot-profile-avatar { width: 28px; height: 28px; }
-    .bot-card-large { width: 55px; height: 78px; margin-left: -28px; }
+    .bot-card-group { padding: 4px 10px; }
+    .bot-profile-avatar { width: 32px; height: 32px; }
+    .bot-card-large { width: 65px; height: 95px; margin-left: -32px; }
 
     .status-announcer { top: 94px; font-size: 0.76rem; padding: 3px 16px; }
     .speech-bubble { top: 94px; font-size: 0.78rem; }
@@ -660,26 +678,27 @@
     box-shadow: 0 0 25px #000; z-index: 1200; display: none; text-align: center;
   }
 
+  /* SIEGER MODAL MIT DEM ORIGINALEN SIEGERBILD */
   #victory-modal {
     display: none;
     position: fixed;
     top: 0; left: 0; width: 100vw; height: 100vh;
-    background: rgba(0,0,0,0.95) url('victory_ave_caesar.jpg') no-repeat center center;
+    background: #000 url('victory_ave_caesar.jpg') no-repeat center center;
     background-size: cover;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    padding-bottom: 25px;
+    padding-bottom: 30px;
     z-index: 100000;
   }
 
   .victory-banner {
     background: rgba(15, 4, 6, 0.94);
     border: 3px solid var(--gold-bright);
-    padding: 12px 25px;
-    border-radius: 10px;
+    padding: 14px 28px;
+    border-radius: 12px;
     text-align: center;
-    box-shadow: 0 0 40px var(--gold);
+    box-shadow: 0 0 50px var(--gold-bright), 0 0 80px #000;
   }
 
   .modal-overlay {
@@ -729,7 +748,7 @@
 </head>
 <body>
 
-<!-- HOCHKANT WARNUNG -->
+<!-- SMARTPHONE HOCHKANT WARNUNG -->
 <div id="rotate-device-overlay">
   <div style="font-size: 2.5rem; margin-bottom: 10px;">🔄</div>
   <div style="font-family:'Cinzel Decorative'; font-size:1.4rem; color:var(--gold-bright); margin-bottom:8px;">DREHE DEIN GERÄT!</div>
@@ -752,10 +771,13 @@
 <div class="speech-bubble" id="bot-bubble">„Die Götter lachen über dich!“</div>
 <div id="notice-toast">Hinweis</div>
 
-<!-- TOP BAR -->
+<!-- TOP BAR MIT AUDIO TOGGLE & REGELN -->
 <div class="top-bar">
   <div class="game-title">AVE CAESAR</div>
-  <button class="rules-btn" onclick="openRules()">📜 REGELN</button>
+  <div class="top-controls">
+    <button id="audio-toggle-btn" class="icon-btn" onclick="toggleAudio()" title="Ton stummschalten">🔊</button>
+    <button class="rules-btn" onclick="openRules()">📜 REGELN</button>
+  </div>
 </div>
 
 <!-- BOTS BÜHNE OBEN IM SAND (MIT GROSSEN KARTEN-FÄCHERN!) -->
@@ -850,11 +872,11 @@
   <div style="font-size: 0.9rem; color: #fff; margin-top: 2px;">KAISERLICHER DRILLING!</div>
 </div>
 
-<!-- SIEGER MODAL -->
+<!-- SIEGER MODAL MIT DEM ORIGINALEN SIEGERBILD -->
 <div id="victory-modal">
   <div class="victory-banner">
-    <h2 style="font-family:'Cinzel Decorative'; font-size: 1.5rem; color: var(--gold-bright);" id="victory-title">TRIUMPH!</h2>
-    <p style="font-size: 0.85rem; margin: 4px 0 10px 0;" id="victory-desc">Du hast alle Karten abgelegt und Rom erobert!</p>
+    <h2 style="font-family:'Cinzel Decorative'; font-size: 1.8rem; color: var(--gold-bright);" id="victory-title">TRIUMPH!</h2>
+    <p style="font-size: 0.95rem; margin: 6px 0 14px 0;" id="victory-desc">Du hast alle Karten abgelegt und Rom erobert!</p>
     <button class="action-btn" onclick="location.reload()">NEUER KAMPF</button>
   </div>
 </div>
@@ -880,10 +902,34 @@
 </div>
 
 <script>
-// YOUTUBE PLAYABLES SDK BRÜCKE
+// YOUTUBE PLAYABLES SDK BRÜCKE & AUDIO HANDLING
 const isYouTubePlayables = (typeof ytgame !== 'undefined');
+let isAudioMuted = false;
+
 function notifyYTFirstFrame() { if (isYouTubePlayables && ytgame.game) ytgame.game.firstFrameReady(); }
 function notifyYTGameReady() { if (isYouTubePlayables && ytgame.game) ytgame.game.gameReady(); }
+
+function toggleAudio() {
+  isAudioMuted = !isAudioMuted;
+  updateAudioUI();
+}
+
+function updateAudioUI() {
+  const btn = document.getElementById('audio-toggle-btn');
+  if (btn) {
+    btn.innerText = isAudioMuted ? '🔇' : '🔊';
+    btn.title = isAudioMuted ? 'Ton aktivieren' : 'Ton stummschalten';
+    btn.classList.toggle('muted', isAudioMuted);
+  }
+}
+
+// YT Playables SDK System Audio Listener
+if (isYouTubePlayables && ytgame.system && ytgame.system.onAudioEnabledChange) {
+  ytgame.system.onAudioEnabledChange((enabled) => {
+    isAudioMuted = !enabled;
+    updateAudioUI();
+  });
+}
 
 function getCardImgPath(pageNum) {
   const pad = String(pageNum).padStart(4, '0');
@@ -897,12 +943,12 @@ const FORMATIONS = {
 };
 
 const PORCUS_EFFECTS = {
-  SKIP_NEXT: 'SKIP_NEXT',         // Seite 12 (Blau): Nächster Spieler setzt aus
-  PLAY_ANOTHER: 'PLAY_ANOTHER',   // Seite 13 (Blau): Du darfst noch eine Karte spielen
-  ONE_DRAWS: 'ONE_DRAWS',         // Seite 14 (Gelb): Ein Spieler deiner Wahl zieht 1 Karte
-  GIVE_CARD: 'GIVE_CARD',         // Seite 15 (Gelb): Du darfst einem Spieler eine deiner Karten geben
-  ALL_DRAW: 'ALL_DRAW',           // Seite 16 (Rot): Alle ziehen eine Karte, nur du nicht
-  WISH_COLOR: 'WISH_COLOR'        // Seite 17 (Rot): Du darfst dir eine Farbe wünschen
+  SKIP_NEXT: 'SKIP_NEXT',
+  PLAY_ANOTHER: 'PLAY_ANOTHER',
+  ONE_DRAWS: 'ONE_DRAWS',
+  GIVE_CARD: 'GIVE_CARD',
+  ALL_DRAW: 'ALL_DRAW',
+  WISH_COLOR: 'WISH_COLOR'
 };
 
 function buildDeck() {
@@ -914,7 +960,7 @@ function buildDeck() {
   deck.push({ page: 11, form: FORMATIONS.CAESAR, color: 'bunt', rolls: 4, points: 30, name: 'AVE CAESAR' });
   deck.push({ page: 11, form: FORMATIONS.CAESAR, color: 'bunt', rolls: 4, points: 30, name: 'AVE CAESAR' });
 
-  // DIE 6 ECHTEN PORCUS FURIOSUS KARTEN
+  // 6 PORCUS FURIOSUS
   deck.push({ page: 12, form: FORMATIONS.PORCUS, color: 'blau', rolls: 1, points: 50, name: 'PORCUS: AUSSETZEN', effect: PORCUS_EFFECTS.SKIP_NEXT, desc: 'Nächster Spieler setzt aus' });
   deck.push({ page: 13, form: FORMATIONS.PORCUS, color: 'blau', rolls: 1, points: 50, name: 'PORCUS: EXTRAZUG', effect: PORCUS_EFFECTS.PLAY_ANOTHER, desc: 'Darfst noch eine Karte spielen' });
   deck.push({ page: 14, form: FORMATIONS.PORCUS, color: 'gelb', rolls: 1, points: 50, name: 'PORCUS: ZIEHEN LASSEN', effect: PORCUS_EFFECTS.ONE_DRAWS, desc: '1 Spieler deiner Wahl zieht' });
@@ -1021,6 +1067,7 @@ function initGame() {
   canTakeover = false;
   resetTurn();
   updateUI();
+  updateAudioUI();
 }
 
 function resetTurn() {
@@ -1049,6 +1096,21 @@ function resetTurn() {
 
   if (vetoTimerInterval) clearInterval(vetoTimerInterval);
   renderDice();
+}
+
+// ZENTRALE SIEGPRÜFUNG (GARANTIERT DAS WINNER-BILD!)
+function checkGameVictory() {
+  if (players[0] && players[0].hand.length === 0) {
+    showVictoryScreen("TRIUMPH! Du hast alle Karten abgelegt und Rom erobert!");
+    return true;
+  }
+  for (let i = 1; i < numPlayers; i++) {
+    if (players[i] && players[i].hand.length === 0) {
+      showVictoryScreen(`NIEDERLAGE! ${players[i].name} hat alle Karten abgelegt und triumphiert!`);
+      return true;
+    }
+  }
+  return false;
 }
 
 function handleRollClick() {
@@ -1080,7 +1142,6 @@ function rollInitial() {
 }
 
 function checkInitialRollOutcome() {
-  // DRILLING IM 1. WURF = AVE CAESAR!
   if (dice[0] === dice[1] && dice[1] === dice[2]) {
     triggerAveCaesarCelebration();
     setAnnouncer('AVE CAESAR! Kaiser-Drilling! Klicke eine beliebige Karte zum Ablegen!');
@@ -1123,7 +1184,6 @@ function selectCard(idx) {
   previewCardIdx = idx;
   const card = players[0].hand[idx];
 
-  // DRILLING IM 1. WURF: SOFORT ABLEGEN!
   if (dice[0] === dice[1] && dice[1] === dice[2]) {
     lockedCardIdx = idx;
     document.getElementById('btn-play').disabled = false;
@@ -1240,19 +1300,14 @@ function playSelectedCard() {
 
   activeChosenColor = null;
 
-  if (players[0].hand.length === 0) {
-    showVictoryScreen("TRIUMPH! Du hast alle Karten abgelegt und Rom erobert!");
-    return;
-  }
+  if (checkGameVictory()) return;
 
   setAnnouncer('Karte abgelegt!');
   updateUI();
   passTurnToNext();
 }
 
-// ==========================================
-// DIE 6 PORCUS FURIOSUS SOFORT-EFFEKTE
-// ==========================================
+// 6 PORCUS SOFORT-EFFEKTE
 function executePorcusAction(card, player) {
   setAnnouncer(`🐗 PORCUS FURIOSUS! ${card.desc}!`);
   activeChosenColor = null;
@@ -1305,10 +1360,7 @@ function executePorcusAction(card, player) {
 
     case PORCUS_EFFECTS.PLAY_ANOTHER:
       showNoticeToast(`🐗 EXTRAZUG! Du darfst direkt noch einmal spielen!`);
-      if (player.hand.length === 0) {
-        showVictoryScreen("TRIUMPH! Du hast alle Karten abgelegt!");
-        return;
-      }
+      if (checkGameVictory()) return;
       setTimeout(() => {
         resetTurn();
         setAnnouncer('Extrazug! Wirf die Würfel erneut!');
@@ -1318,10 +1370,7 @@ function executePorcusAction(card, player) {
       return;
 
     case PORCUS_EFFECTS.GIVE_CARD:
-      if (player.hand.length === 0) {
-        showVictoryScreen("TRIUMPH! Du hast alle Karten abgelegt!");
-        return;
-      }
+      if (checkGameVictory()) return;
 
       if (player.isHuman) {
         isGivingCardState = true;
@@ -1342,11 +1391,7 @@ function executePorcusAction(card, player) {
 }
 
 function finishOrPassAfterPorcus(player) {
-  if (player.hand.length === 0) {
-    if (player.isHuman) showVictoryScreen("TRIUMPH! Rom liegt dir zu Füßen!");
-    else showVictoryScreen(`NIEDERLAGE! ${player.name} triumphiert im Kolosseum!`);
-    return;
-  }
+  if (checkGameVictory()) return;
   updateUI();
   setTimeout(passTurnToNext, 1600);
 }
@@ -1392,10 +1437,7 @@ function pickColor(col) {
   document.getElementById('color-picker-modal').style.display = 'none';
   setAnnouncer(`Kaiserliche Farbe auf ${col.toUpperCase()} geändert!`);
 
-  if (players[0].hand.length === 0) {
-    showVictoryScreen("TRIUMPH! Du hast alle Karten abgelegt und Rom erobert!");
-    return;
-  }
+  if (checkGameVictory()) return;
 
   updateUI();
   setTimeout(passTurnToNext, 1000);
@@ -1440,21 +1482,17 @@ function handleDrawClick() {
   }
 }
 
-// ==========================================
-// BOTS STEUERUNG (ZIELKARTE SOFORT & DAUERHAFT IM SAND ZEIGEN!)
-// ==========================================
+// BOTS TURN
 function startBotTurn() {
   const bot = players[currentPlayerIdx];
   setAnnouncer(`${bot.name} ist am Zug...`);
   showBotBubble(bot.profile.quote);
 
   setTimeout(() => {
-    // 1. WURF DES BOTS
     animateDice();
     for (let i = 0; i < 3; i++) dice[i] = Math.floor(Math.random() * 6) + 1;
     renderDice();
 
-    // DRILLING IM 1. WURF
     if (dice[0] === dice[1] && dice[1] === dice[2]) {
       triggerAveCaesarCelebration();
       setAnnouncer(`AVE CAESAR! ${bot.name} hat einen Kaiser-Drilling gewürfelt!`);
@@ -1472,7 +1510,7 @@ function startBotTurn() {
           if (discarded.form === FORMATIONS.PORCUS) { executePorcusAction(discarded, bot); return; }
           handleBotColorChoice(bot, discarded);
           canTakeover = false;
-          checkBotVictory(bot);
+          if (checkGameVictory()) return;
           updateUI();
           setTimeout(passTurnToNext, 1800);
         }, 1800);
@@ -1480,7 +1518,6 @@ function startBotTurn() {
       return;
     }
 
-    // BOT WÄHLT SEINE ZIELKARTE UND DREHT SIE SOFORT UM!
     let targetCardIdx = chooseBestCardForBot(bot, dice);
     if (targetCardIdx === -1) {
       if (deck.length > 0) bot.hand.push(deck.pop());
@@ -1493,13 +1530,10 @@ function startBotTurn() {
     }
 
     const targetCard = bot.hand[targetCardIdx];
-
-    // DREHE DIE KARTE SOFORT OFFEN IM SAND UM!
     displayBotTargetCard(targetCard, `GEGNER-ZIEL: ${bot.name} WÄHLT`);
     setAnnouncer(`${bot.name} hat gewürfelt und wählt: ${targetCard.name}!`);
     showBotBubble(`„Ich spiele auf: ${targetCard.name}! Macht euch bereit!“`);
 
-    // VETO PRÜFUNG DURCH DEN SPIELER
     const vetoCardIdx = players[0].hand.findIndex(c => canPlayOnDiscard(c) && checkFormation(dice, c));
     let vetoSeconds = 5;
 
@@ -1524,7 +1558,6 @@ function startBotTurn() {
       }, 5200);
 
     } else {
-      // 2 Sekunden Zeit, um die gewählte Karte genau zu betrachten
       setTimeout(() => {
         proceedBotTurnExecution(bot, targetCardIdx);
       }, 2000);
@@ -1540,7 +1573,6 @@ function proceedBotTurnExecution(bot, targetCardIdx) {
 
   const card = bot.hand[targetCardIdx];
 
-  // SOFORT GETROFFEN IM 1. WURF
   if (checkFormation(dice, card)) {
     setAnnouncer(`Volltreffer! ${bot.name} hat ${card.name} sofort erfüllt!`);
     displayBotTargetCard(card, `ERFÜLLT: ${bot.name} LEGT AB!`);
@@ -1556,14 +1588,13 @@ function proceedBotTurnExecution(bot, targetCardIdx) {
 
       handleBotColorChoice(bot, card);
       canTakeover = false;
-      checkBotVictory(bot);
+      if (checkGameVictory()) return;
       updateUI();
       setTimeout(passTurnToNext, 1800);
     }, 1800);
     return;
   }
 
-  // NACHWÜRFELN: KARTE BLEIBT DIE GANZE ZEIT OFFEN IM SAND LIEGEN!
   let botRerolls = card.rolls;
   executeBotRerollStep(bot, targetCardIdx, botRerolls);
 }
@@ -1663,7 +1694,7 @@ function executeBotRerollStep(bot, cardIdx, rerollsLeft) {
         if (card.form === FORMATIONS.PORCUS) { executePorcusAction(card, bot); return; }
         handleBotColorChoice(bot, card);
         canTakeover = false;
-        checkBotVictory(bot);
+        if (checkGameVictory()) return;
         updateUI();
         setTimeout(passTurnToNext, 1800);
       }, 1800);
@@ -1680,7 +1711,7 @@ function executeBotRerollStep(bot, cardIdx, rerollsLeft) {
         if (card.form === FORMATIONS.PORCUS) { executePorcusAction(card, bot); return; }
         handleBotColorChoice(bot, card);
         canTakeover = false;
-        checkBotVictory(bot);
+        if (checkGameVictory()) return;
         updateUI();
         setTimeout(passTurnToNext, 1800);
       }, 1800);
@@ -1731,6 +1762,7 @@ function hideBotTargetCard() {
   if (box) box.classList.remove('visible');
 }
 
+// VETO FUNKTION: JETZT MIT SOFORTIGER SIEG-PRÜFUNG!
 function triggerPlayerVeto() {
   if (botTurnTimeout) clearTimeout(botTurnTimeout);
   if (vetoTimerInterval) clearInterval(vetoTimerInterval);
@@ -1758,6 +1790,12 @@ function triggerPlayerVeto() {
     const card = players[0].hand.splice(playerCardIdx, 1)[0];
     discardTop = card;
     canTakeover = false;
+
+    // SOFORTIGER CHECK: WAR DAS DIE LETZTE KARTE?
+    if (checkGameVictory()) {
+      updateUI();
+      return;
+    }
 
     if (card.form === FORMATIONS.PORCUS) {
       executePorcusAction(card, players[0]);
@@ -1787,16 +1825,11 @@ function clearVetoCardHighlight() {
   document.querySelectorAll('.hand-card').forEach(c => c.classList.remove('veto-glow'));
 }
 
-function checkBotVictory(bot) {
-  if (bot.hand.length === 0) {
-    showVictoryScreen(`NIEDERLAGE! ${bot.name} hat alle Karten abgelegt und triumphiert!`);
-  }
-}
-
 function showVictoryScreen(msg) {
   const modal = document.getElementById('victory-modal');
-  document.getElementById('victory-desc').innerText = msg;
-  modal.style.display = 'flex';
+  const desc = document.getElementById('victory-desc');
+  if (desc) desc.innerText = msg;
+  if (modal) modal.style.display = 'flex';
 }
 
 function passTurnToNext() {
@@ -1913,7 +1946,7 @@ function renderDice() {
 }
 
 function updateUI() {
-  // BOTS BÜHNE: AVATARE + ECHTE GROSSE KARTEN-FÄCHER FÜR ALLE VARIANTEN!
+  // BOTS BÜHNE: AVATARE + ECHTE GROSSE KARTEN-FÄCHER (100x145px!)
   const stageEl = document.getElementById('bots-stage-area');
   if (stageEl) {
     stageEl.innerHTML = '';
@@ -1937,7 +1970,7 @@ function updateUI() {
     }
   }
 
-  // SPIELER HAND: ALLE KARTEN VOLL MASSIV, SPIELBARE KARTEN GLÜHEN & FAHREN HOCH!
+  // SPIELER HAND: 100% BLICKDICHT, SPIELBARE KARTEN GLÜHEN & FAHREN HOCH!
   const fanEl = document.getElementById('player-fan');
   if (fanEl && players[0]) {
     fanEl.innerHTML = '';
@@ -1947,7 +1980,6 @@ function updateUI() {
       const isPreview = (previewCardIdx === idx) ? 'preview-elevated' : '';
       const isLocked = (lockedCardIdx === idx) ? 'locked-selected' : '';
       const isPlayable = canPlayOnDiscard(card);
-      // SPIELBARE KARTEN: GLÜHEN & FAHREN HOCH!
       const isPlayableGlow = (rollStep === 1 && isPlayable && previewCardIdx === null) ? 'playable-glow' : '';
 
       const cardDiv = document.createElement('div');
