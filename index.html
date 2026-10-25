@@ -114,7 +114,7 @@
     background: linear-gradient(180deg, #ffe08d 0%, #a87425 100%);
   }
 
-  /* TOP BAR MIT LAUTSPRECHER & REGELN */
+  /* TOP BAR MIT LAUTSPRECHER, PAUSE, SIEG-TRACKER & REGELN */
   .top-bar {
     position: absolute;
     top: 0; left: 0; width: 100%;
@@ -128,6 +128,12 @@
     border-bottom: 1px solid rgba(223, 177, 91, 0.25);
   }
 
+  .game-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
   .game-title {
     font-family: 'Cinzel Decorative', serif;
     font-size: 1.15rem;
@@ -137,34 +143,47 @@
     text-shadow: 0 0 10px rgba(223, 177, 91, 0.8);
   }
 
+  .win-trophy-badge {
+    background: rgba(30, 8, 12, 0.9);
+    border: 1px solid var(--gold);
+    color: var(--gold-bright);
+    font-size: 0.75rem;
+    font-weight: 900;
+    padding: 2px 8px;
+    border-radius: 12px;
+    box-shadow: 0 0 8px rgba(223, 177, 91, 0.4);
+  }
+
   .top-controls {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
   }
 
-  .audio-btn, .rules-btn {
+  .audio-btn, .pause-btn, .rules-btn {
     background: linear-gradient(180deg, #dfb15b 0%, #875c1a 100%);
     color: #1a0700;
     font-family: 'Cinzel', serif;
     font-weight: 900;
-    font-size: 0.82rem;
-    padding: 4px 12px;
+    font-size: 0.8rem;
+    padding: 4px 10px;
     border: 1.5px solid #ffe39b;
     border-radius: 6px;
     cursor: pointer;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.5);
     transition: transform 0.15s, background 0.15s;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  .audio-btn { font-size: 1rem; padding: 3px 10px; }
-  .audio-btn:hover, .rules-btn:hover { transform: scale(1.06); background: linear-gradient(180deg, #ffe08d 0%, #a87425 100%); }
+  .audio-btn, .pause-btn { font-size: 0.95rem; width: 34px; height: 28px; padding: 0; }
+  .audio-btn:hover, .pause-btn:hover, .rules-btn:hover { transform: scale(1.06); background: linear-gradient(180deg, #ffe08d 0%, #a87425 100%); }
   .audio-btn.muted { background: linear-gradient(180deg, #666 0%, #333 100%); color: #bbb; border-color: #888; }
 
-  /* BOTS BÜHNE: RIESIGE KARTENFÄCHER OBEN IM SAND! */
+  /* =========================================================
+     BOTS BÜHNE: AUSBALANCIERT & GROSS IM SAND!
+     ========================================================= */
   .bots-stage {
     position: absolute;
     top: 44px; left: 0; width: 100%;
@@ -181,7 +200,7 @@
     background: radial-gradient(circle, rgba(45, 14, 20, 0.96) 0%, rgba(15, 5, 7, 0.98) 100%);
     border: 2px solid var(--gold);
     border-radius: 14px;
-    padding: 8px 16px;
+    padding: 8px 18px;
     box-shadow: 0 6px 20px var(--shadow);
     transition: transform 0.2s, box-shadow 0.2s;
   }
@@ -196,7 +215,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-right: 14px;
+    margin-right: 18px;
+    min-width: 65px;
   }
 
   .bot-profile-avatar {
@@ -211,14 +231,14 @@
 
   .bot-cards-fan { display: flex; align-items: center; }
 
-  /* GROSSE, ECHTE BOT KARTEN (120px x 175px) */
+  /* GROSSE, ECHTE BOT KARTEN (115px x 165px) */
   .bot-card-large {
-    width: 120px;
-    height: 175px;
+    width: 115px;
+    height: 165px;
     border-radius: 10px;
     border: 2px solid var(--gold);
     background: url('card_back.jpg') center/cover;
-    margin-left: -60px;
+    margin-left: -58px;
     box-shadow: -5px 5px 14px var(--shadow);
     transition: transform 0.2s;
   }
@@ -261,7 +281,9 @@
     z-index: 25;
   }
 
-  /* ARENA SPIELTISCH (IN DER MITTE DES SANDES!) */
+  /* =========================================================
+     ARENA SPIELTISCH (IN DER MITTE DES SANDES!)
+     ========================================================= */
   .arena-center {
     position: absolute;
     top: 52%; left: 50%;
@@ -590,6 +612,7 @@
   @media (max-height: 580px), (max-width: 900px) and (orientation: landscape) {
     .bots-stage { top: 38px; gap: 15px; }
     .bot-card-group { padding: 4px 10px; }
+    .bot-profile-info { margin-right: 10px; min-width: 50px; }
     .bot-profile-avatar { width: 34px; height: 34px; }
     .bot-card-large { width: 70px; height: 102px; margin-left: -35px; }
 
@@ -616,7 +639,7 @@
   }
 
   /* MODALS */
-  #target-picker-modal, #color-picker-modal {
+  #target-picker-modal, #color-picker-modal, #pause-modal {
     display: none;
     position: fixed;
     top: 0; left: 0; width: 100vw; height: 100vh;
@@ -626,14 +649,16 @@
     z-index: 10500;
   }
 
-  .target-picker-box, .color-picker-box {
+  .target-picker-box, .color-picker-box, .pause-box {
     background: radial-gradient(circle, #3a1014 0%, #150305 100%);
     border: 3px solid var(--gold);
     border-radius: 12px;
-    padding: 15px 25px;
+    padding: 18px 30px;
     text-align: center;
-    box-shadow: 0 0 40px var(--gold);
+    box-shadow: 0 0 45px var(--gold);
   }
+
+  .pause-btn-group { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
 
   .color-btn-group { display: flex; gap: 10px; margin-top: 10px; }
   .color-btn {
@@ -668,7 +693,7 @@
     box-shadow: 0 0 25px #000; z-index: 1200; display: none; text-align: center;
   }
 
-  /* SIEGER MODAL MIT DEM ORIGINALEN SIEGERBILD */
+  /* SIEGER MODAL MIT DEM ORIGINALEN SIEGERBILD & STRAFPUNKTE-ABRECHNUNG */
   #victory-modal {
     display: none;
     position: fixed;
@@ -761,11 +786,15 @@
 <div class="speech-bubble" id="bot-bubble">„Die Götter lachen über dich!“</div>
 <div id="notice-toast">Hinweis</div>
 
-<!-- TOP BAR MIT AUDIO TOGGLE & REGELN -->
+<!-- TOP BAR MIT AUDIO, PAUSE & SIEG-TRACKER -->
 <div class="top-bar">
-  <div class="game-title">AVE CAESAR</div>
+  <div class="game-title-wrap">
+    <div class="game-title">AVE CAESAR</div>
+    <div class="win-trophy-badge" id="win-badge" title="Deine Siege">🏆 0</div>
+  </div>
   <div class="top-controls">
     <button id="audio-toggle-btn" class="audio-btn" onclick="toggleAudio()" title="Ton stummschalten">🔊</button>
+    <button class="pause-btn" onclick="togglePauseGame()" title="Spiel pausieren">⏸️</button>
     <button class="rules-btn" onclick="openRules()">📜 REGELN</button>
   </div>
 </div>
@@ -833,6 +862,19 @@
   <div class="player-hand-fan" id="player-fan"></div>
 </div>
 
+<!-- PAUSE MODAL (YOUTUBE REQUIREMENTS!) -->
+<div id="pause-modal">
+  <div class="pause-box">
+    <div style="font-family:'Cinzel Decorative'; font-size:1.4rem; color:var(--gold-bright); margin-bottom:6px;">KOLOSSEUM PAUSIERT</div>
+    <div style="font-size:0.8rem; color:#f7ebd4;">DAS SCHICKSAL ROMS WARTET AUF DICH...</div>
+    <div class="pause-btn-group">
+      <button class="action-btn" onclick="togglePauseGame()">▶️ WEITERKÄMPFEN</button>
+      <button class="action-btn" onclick="openRules()">📜 REGELN LESEN</button>
+      <button class="action-btn" onclick="location.reload()">🔄 NEUER KAMPF</button>
+    </div>
+  </div>
+</div>
+
 <!-- OPFER WÄHLEN FÜR STRAFKARTE (PORCUS GELB 1) -->
 <div id="target-picker-modal">
   <div class="target-picker-box">
@@ -862,11 +904,12 @@
   <div style="font-size: 0.9rem; color: #fff; margin-top: 2px;">KAISERLICHER DRILLING!</div>
 </div>
 
-<!-- SIEGER MODAL MIT DEM ORIGINALEN SIEGERBILD -->
+<!-- SIEGER MODAL MIT ORIGINALEM SIEGERBILD & STRAFPUNKT-ABRECHNUNG -->
 <div id="victory-modal">
   <div class="victory-banner">
     <h2 style="font-family:'Cinzel Decorative'; font-size: 1.8rem; color: var(--gold-bright);" id="victory-title">TRIUMPH!</h2>
-    <p style="font-size: 0.95rem; margin: 6px 0 14px 0;" id="victory-desc">Du hast alle Karten abgelegt und Rom erobert!</p>
+    <p style="font-size: 0.95rem; margin: 6px 0 10px 0;" id="victory-desc">Du hast alle Karten abgelegt und Rom erobert!</p>
+    <div id="penalty-breakdown" style="font-size:0.8rem; color:#ffd700; margin-bottom:14px; font-weight:800;">-</div>
     <button class="action-btn" onclick="location.reload()">NEUER KAMPF</button>
   </div>
 </div>
@@ -897,6 +940,7 @@ const isYouTubePlayables = (typeof ytgame !== 'undefined');
 let isAudioMuted = false;
 let audioCtx = null;
 let isAppPaused = false;
+let playerVictories = parseInt(localStorage.getItem('ave_caesar_wins') || '0', 10);
 
 function getAudioCtx() {
   if (!audioCtx) {
@@ -928,6 +972,19 @@ function playSoundEffect(type) {
         osc.stop(ctx.currentTime + 0.08);
       }, i * 70);
     }
+  } else if (type === 'veto') {
+    // RÖMISCHES KRIEGSHORN BEIM VETO
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(140, ctx.currentTime);
+    osc.frequency.linearRampToValueAtTime(110, ctx.currentTime + 0.4);
+    gain.gain.setValueAtTime(0.22, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.45);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start();
+    osc.stop(ctx.currentTime + 0.45);
   } else if (type === 'fanfare') {
     const notes = [261.6, 329.6, 392.0, 523.25];
     notes.forEach((freq, i) => {
@@ -966,7 +1023,27 @@ function updateAudioUI() {
   }
 }
 
-// YOUTUBE PLAYABLES LIFECYCLE HOOKS (OFFIZIELL!)
+function updateWinBadge() {
+  const badge = document.getElementById('win-badge');
+  if (badge) badge.innerText = `🏆 ${playerVictories}`;
+}
+
+// PAUSEN-SYSTEM (OFFIZIELLES YOUTUBE GIMMICK!)
+function togglePauseGame() {
+  isAppPaused = !isAppPaused;
+  const modal = document.getElementById('pause-modal');
+  if (modal) modal.style.display = isAppPaused ? 'flex' : 'none';
+
+  if (isAppPaused) {
+    if (audioCtx && audioCtx.state === 'running') audioCtx.suspend();
+    if (vetoTimerInterval) clearInterval(vetoTimerInterval);
+    if (botTurnTimeout) clearTimeout(botTurnTimeout);
+  } else {
+    if (audioCtx && audioCtx.state === 'suspended' && !isAudioMuted) audioCtx.resume();
+  }
+}
+
+// YOUTUBE PLAYABLES LIFECYCLE HOOKS
 if (isYouTubePlayables && ytgame.system) {
   if (ytgame.system.isAudioEnabled) {
     isAudioMuted = !ytgame.system.isAudioEnabled();
@@ -979,14 +1056,12 @@ if (isYouTubePlayables && ytgame.system) {
   }
   if (ytgame.system.onPause) {
     ytgame.system.onPause(() => {
-      isAppPaused = true;
-      if (audioCtx && audioCtx.state === 'running') audioCtx.suspend();
+      if (!isAppPaused) togglePauseGame();
     });
   }
   if (ytgame.system.onResume) {
     ytgame.system.onResume(() => {
-      isAppPaused = false;
-      if (audioCtx && audioCtx.state === 'suspended' && !isAudioMuted) audioCtx.resume();
+      if (isAppPaused) togglePauseGame();
     });
   }
 }
@@ -1020,7 +1095,7 @@ function buildDeck() {
   deck.push({ page: 11, form: FORMATIONS.CAESAR, color: 'bunt', rolls: 4, points: 30, name: 'AVE CAESAR' });
   deck.push({ page: 11, form: FORMATIONS.CAESAR, color: 'bunt', rolls: 4, points: 30, name: 'AVE CAESAR' });
 
-  // 6 PORCUS FURIOSUS KARTEN
+  // 6 PORCUS FURIOSUS
   deck.push({ page: 12, form: FORMATIONS.PORCUS, color: 'blau', rolls: 1, points: 50, name: 'PORCUS: AUSSETZEN', effect: PORCUS_EFFECTS.SKIP_NEXT, desc: 'Nächster Spieler setzt aus' });
   deck.push({ page: 13, form: FORMATIONS.PORCUS, color: 'blau', rolls: 1, points: 50, name: 'PORCUS: EXTRAZUG', effect: PORCUS_EFFECTS.PLAY_ANOTHER, desc: 'Darfst noch eine Karte spielen' });
   deck.push({ page: 14, form: FORMATIONS.PORCUS, color: 'gelb', rolls: 1, points: 50, name: 'PORCUS: ZIEHEN LASSEN', effect: PORCUS_EFFECTS.ONE_DRAWS, desc: '1 Spieler deiner Wahl zieht' });
@@ -1128,6 +1203,7 @@ function initGame() {
   resetTurn();
   updateUI();
   updateAudioUI();
+  updateWinBadge();
 }
 
 function resetTurn() {
@@ -1158,18 +1234,32 @@ function resetTurn() {
   renderDice();
 }
 
-// ZENTRALE SIEGPRÜFUNG MIT FANFARE & SIEGERBILD
+// ZENTRALE SIEGPRÜFUNG MIT STRAFPUNKT-ABRECHNUNG
 function checkGameVictory() {
   if (players[0] && players[0].hand.length === 0) {
-    if (isYouTubePlayables && ytgame.engagement && ytgame.engagement.sendScore) {
-      ytgame.engagement.sendScore({ value: 100 });
+    playerVictories++;
+    localStorage.setItem('ave_caesar_wins', playerVictories.toString());
+    updateWinBadge();
+
+    // BERECHNE STRAFPUNKTE DER GEGNER
+    let breakdown = [];
+    for (let i = 1; i < numPlayers; i++) {
+      let pts = players[i].hand.reduce((sum, c) => sum + (c.points || 0), 0);
+      breakdown.push(`${players[i].name}: ${players[i].hand.length} Karten (${pts} Strafpunkte)`);
     }
-    showVictoryScreen("TRIUMPH! Du hast alle Karten abgelegt und Rom erobert!");
+
+    if (isYouTubePlayables && ytgame.engagement && ytgame.engagement.sendScore) {
+      ytgame.engagement.sendScore({ value: playerVictories * 100 });
+    }
+
+    showVictoryScreen("TRIUMPH! Du hast alle Karten abgelegt und Rom erobert!", breakdown.join(' • '));
     return true;
   }
+
   for (let i = 1; i < numPlayers; i++) {
     if (players[i] && players[i].hand.length === 0) {
-      showVictoryScreen(`NIEDERLAGE! ${players[i].name} hat alle Karten abgelegt und triumphiert!`);
+      let playerPts = players[0].hand.reduce((sum, c) => sum + (c.points || 0), 0);
+      showVictoryScreen(`NIEDERLAGE! ${players[i].name} triumphiert im Sand!`, `Deine Strafpunkte: ${playerPts} Pkt.`);
       return true;
     }
   }
@@ -1177,7 +1267,7 @@ function checkGameVictory() {
 }
 
 function handleRollClick() {
-  if (currentPlayerIdx !== 0) return;
+  if (currentPlayerIdx !== 0 || isAppPaused) return;
   document.getElementById('takeover-btn').style.display = 'none';
   canTakeover = false;
 
@@ -1186,7 +1276,7 @@ function handleRollClick() {
 }
 
 function handleTakeoverClick() {
-  if (currentPlayerIdx !== 0 || !canTakeover) return;
+  if (currentPlayerIdx !== 0 || !canTakeover || isAppPaused) return;
   document.getElementById('takeover-btn').style.display = 'none';
   canTakeover = false;
   rollStep = 1;
@@ -1233,7 +1323,7 @@ function checkInitialRollOutcome() {
 }
 
 function selectCard(idx) {
-  if (currentPlayerIdx !== 0) return;
+  if (currentPlayerIdx !== 0 || isAppPaused) return;
 
   if (isGivingCardState) {
     executeGiveCardAction(idx);
@@ -1309,7 +1399,7 @@ function confirmCardChoice() {
 }
 
 function rollReroll() {
-  if (rerollsLeft <= 0 || lockedCardIdx === null) return;
+  if (rerollsLeft <= 0 || lockedCardIdx === null || isAppPaused) return;
   rerollsLeft--;
   playSoundEffect('dice');
   animateDice();
@@ -1516,7 +1606,7 @@ function turnFailed() {
 }
 
 function handleDrawClick() {
-  if (currentPlayerIdx !== 0 || deck.length === 0) return;
+  if (currentPlayerIdx !== 0 || deck.length === 0 || isAppPaused) return;
 
   if (rollStep === 0) {
     players[0].hand.push(deck.pop());
@@ -1549,11 +1639,13 @@ function handleDrawClick() {
 
 // BOTS TURN
 function startBotTurn() {
+  if (isAppPaused) return;
   const bot = players[currentPlayerIdx];
   setAnnouncer(`${bot.name} ist am Zug...`);
   showBotBubble(bot.profile.quote);
 
   setTimeout(() => {
+    if (isAppPaused) return;
     playSoundEffect('dice');
     animateDice();
     for (let i = 0; i < 3; i++) dice[i] = Math.floor(Math.random() * 6) + 1;
@@ -1610,6 +1702,7 @@ function startBotTurn() {
       highlightVetoCard(vetoCardIdx);
 
       vetoTimerInterval = setInterval(() => {
+        if (isAppPaused) return;
         vetoSeconds--;
         document.getElementById('veto-timer').innerText = vetoSeconds;
         if (vetoSeconds <= 0) {
@@ -1633,6 +1726,7 @@ function startBotTurn() {
 }
 
 function proceedBotTurnExecution(bot, targetCardIdx) {
+  if (isAppPaused) return;
   document.getElementById('veto-btn').style.display = 'none';
   if (vetoTimerInterval) clearInterval(vetoTimerInterval);
   clearVetoCardHighlight();
@@ -1736,6 +1830,7 @@ function getSmartBotLocks(d, card) {
 }
 
 function executeBotRerollStep(bot, cardIdx, rerollsLeft) {
+  if (isAppPaused) return;
   const card = bot.hand[cardIdx];
   locked = getSmartBotLocks(dice, card);
   renderDice();
@@ -1743,6 +1838,7 @@ function executeBotRerollStep(bot, cardIdx, rerollsLeft) {
   setAnnouncer(`${bot.name} sperrt Würfel (rot) und würfelt nach (${rerollsLeft} übrig)...`);
 
   setTimeout(() => {
+    if (isAppPaused) return;
     playSoundEffect('dice');
     animateDice();
     for (let i = 0; i < 3; i++) {
@@ -1829,13 +1925,15 @@ function hideBotTargetCard() {
   if (box) box.classList.remove('visible');
 }
 
-// VETO FUNKTION: VOLLSTÄNDIG ENTBLOCKIERT & AKTIVER SPIELER SOFORT AUF DICH UMGESCHALTET!
+// VETO FUNKTION MIT KRIEGSHORN & GARANTIERTEM SPIELER-WECHSEL
 function triggerPlayerVeto() {
   if (botTurnTimeout) clearTimeout(botTurnTimeout);
   if (vetoTimerInterval) clearInterval(vetoTimerInterval);
   document.getElementById('veto-btn').style.display = 'none';
   clearVetoCardHighlight();
   hideBotTargetCard();
+
+  playSoundEffect('veto');
 
   const bot = players[currentPlayerIdx];
   const playerCardIdx = players[0].hand.findIndex(c => canPlayOnDiscard(c) && checkFormation(dice, c));
@@ -1858,7 +1956,7 @@ function triggerPlayerVeto() {
     discardTop = card;
     canTakeover = false;
 
-    // 1. SIEG-CHECK: WAR DAS DIE LETZTE KARTE?
+    // SOFORT-SIEG WENN LETZTE KARTE!
     if (checkGameVictory()) {
       updateUI();
       return;
@@ -1876,8 +1974,7 @@ function triggerPlayerVeto() {
       setAnnouncer(`⚔️ VETO ERFOLGREICH! Du legst ${card.name} ab!`);
       updateUI();
       
-      // 2. DAS HERZSTÜCK GEGEN DEN FREEZE:
-      // Schalte den aktiven Spieler sofort auf DICH (0) um!
+      // SOFORT AUF SPIELER UMSCHALTEN!
       currentPlayerIdx = 0;
       setTimeout(() => {
         resetTurn();
@@ -1899,11 +1996,13 @@ function clearVetoCardHighlight() {
   document.querySelectorAll('.hand-card').forEach(c => c.classList.remove('veto-glow'));
 }
 
-function showVictoryScreen(msg) {
+function showVictoryScreen(msg, penaltyInfo) {
   playSoundEffect('fanfare');
   const modal = document.getElementById('victory-modal');
   const desc = document.getElementById('victory-desc');
+  const pen = document.getElementById('penalty-breakdown');
   if (desc) desc.innerText = msg;
+  if (pen) pen.innerText = penaltyInfo ? `Abrechnung: ${penaltyInfo}` : '';
   if (modal) modal.style.display = 'flex';
 }
 
@@ -1985,7 +2084,7 @@ function animateDice() {
 }
 
 function toggleLock(idx) {
-  if (rollStep !== 2 || currentPlayerIdx !== 0) return;
+  if (rollStep !== 2 || currentPlayerIdx !== 0 || isAppPaused) return;
   locked[idx] = !locked[idx];
   renderDice();
 }
@@ -2021,7 +2120,7 @@ function renderDice() {
 }
 
 function updateUI() {
-  // BOTS BÜHNE: AVATARE + ECHTE RIESIGE KARTEN-FÄCHER (120x175px!)
+  // BOTS BÜHNE: AVATARE + ECHTE RIESIGE KARTEN-FÄCHER
   const stageEl = document.getElementById('bots-stage-area');
   if (stageEl) {
     stageEl.innerHTML = '';
@@ -2131,6 +2230,7 @@ function closeRules() { document.getElementById('rules-modal').style.display = '
 window.onload = () => {
   notifyYTFirstFrame();
   updateAudioUI();
+  updateWinBadge();
 };
 </script>
 </body>
