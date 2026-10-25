@@ -77,7 +77,7 @@
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    padding-bottom: 25px;
+    padding-bottom: 30px;
     box-shadow: inset 0 0 100px rgba(0,0,0,0.9);
   }
 
@@ -85,14 +85,14 @@
     background: rgba(20, 8, 10, 0.95);
     border: 3px solid var(--gold);
     border-radius: 12px;
-    padding: 15px 25px;
+    padding: 15px 30px;
     text-align: center;
     box-shadow: 0 0 40px var(--shadow);
   }
 
   .player-btn-group {
     display: flex;
-    gap: 12px;
+    gap: 14px;
     margin-top: 10px;
   }
 
@@ -120,22 +120,23 @@
   .top-bar {
     position: absolute;
     top: 0; left: 0; width: 100%;
-    height: 34px;
+    height: 44px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 15px;
-    background: linear-gradient(180deg, rgba(15, 5, 7, 0.96) 0%, rgba(15, 5, 7, 0.6) 100%);
+    padding: 0 20px;
+    background: linear-gradient(180deg, rgba(15, 5, 7, 0.96) 0%, rgba(15, 5, 7, 0.4) 100%);
     z-index: 20;
     border-bottom: 1px solid rgba(223, 177, 91, 0.3);
   }
 
   .game-title {
     font-family: 'Cinzel Decorative', serif;
-    font-size: 1rem;
+    font-size: 1.3rem;
     font-weight: 900;
     color: var(--gold-bright);
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
+    text-shadow: 0 0 12px rgba(223, 177, 91, 0.8), 2px 2px 4px #000;
   }
 
   .rules-btn {
@@ -143,119 +144,130 @@
     color: #1a0700;
     font-family: 'Cinzel', serif;
     font-weight: 900;
-    font-size: 0.72rem;
-    padding: 3px 10px;
-    border: 1px solid #ffe39b;
-    border-radius: 4px;
+    font-size: 0.8rem;
+    padding: 5px 14px;
+    border: 1.5px solid #ffe39b;
+    border-radius: 5px;
     cursor: pointer;
   }
 
-  /* BOTS BÜHNE (OBEN) */
+  /* BOTS BÜHNE */
   .bots-stage {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
   }
 
   .bot-card-group {
     display: flex;
     align-items: center;
-    background: rgba(25, 9, 12, 0.85);
-    border: 1px solid var(--gold);
-    border-radius: 6px;
-    padding: 2px 6px;
+    background: rgba(25, 9, 12, 0.9);
+    border: 1.5px solid var(--gold);
+    border-radius: 8px;
+    padding: 3px 10px;
+    box-shadow: 0 4px 12px var(--shadow);
   }
 
   .bot-card-group.active-turn {
     border-color: var(--gold-bright);
-    box-shadow: 0 0 10px var(--gold-bright);
+    box-shadow: 0 0 15px var(--gold-bright);
   }
 
   .bot-profile-avatar {
-    width: 22px;
-    height: 22px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
-    border: 1px solid var(--gold-bright);
+    border: 1.5px solid var(--gold-bright);
     background-size: cover;
     background-position: center top;
-    margin-right: 5px;
+    margin-right: 8px;
   }
 
   .bot-info-text {
-    font-size: 0.65rem;
-    font-weight: 800;
-    color: var(--gold-bright);
-    white-space: nowrap;
-  }
-
-  /* STATUS ANNOUNCER */
-  .status-announcer {
-    position: absolute;
-    top: 38px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(18, 6, 8, 0.95);
-    border: 1.5px solid var(--gold);
-    padding: 3px 16px;
-    border-radius: 14px;
     font-size: 0.75rem;
     font-weight: 800;
     color: var(--gold-bright);
     white-space: nowrap;
-    box-shadow: 0 0 15px rgba(0,0,0,0.95);
-    z-index: 25;
   }
 
   .speech-bubble {
     position: absolute;
-    top: 66px;
+    top: 90px;
     left: 50%;
     transform: translateX(-50%);
     background: rgba(247, 235, 212, 0.98);
     color: #2b1104;
-    font-size: 0.75rem;
+    font-size: 0.85rem;
     font-weight: 900;
-    padding: 4px 14px;
-    border-radius: 6px;
+    padding: 6px 18px;
+    border-radius: 8px;
     border: 2px solid var(--gold);
-    box-shadow: 0 4px 15px var(--shadow);
+    box-shadow: 0 5px 20px var(--shadow);
     z-index: 60;
     display: none;
     white-space: nowrap;
   }
 
-  /* WÜRFEL BEREICH (LINKS) */
-  .dice-arena {
+  /* =========================================================
+     DESKTOP & TABLET: GROSSES, MAJESTÄTISCHES KOLOSSEUM
+     ========================================================= */
+  .arena-center {
     position: absolute;
-    left: 12px;
-    top: 52%;
-    transform: translateY(-50%);
+    top: 45%; left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    width: 100%;
+    max-width: 1100px;
+    z-index: 10;
+  }
+
+  .status-announcer {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(18, 6, 8, 0.95);
+    border: 2px solid var(--gold);
+    padding: 6px 26px;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--gold-bright);
+    white-space: nowrap;
+    box-shadow: 0 0 20px rgba(0,0,0,0.95);
+    z-index: 25;
+  }
+
+  .dice-arena {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     background: radial-gradient(circle, rgba(40, 14, 18, 0.94) 0%, rgba(15, 5, 7, 0.98) 100%);
-    border: 2px solid var(--gold);
-    border-radius: 10px;
-    padding: 8px 10px;
-    box-shadow: 0 0 25px rgba(0,0,0,0.95);
-    z-index: 30;
-    width: 140px;
+    border: 3px solid var(--gold);
+    border-radius: 14px;
+    padding: 12px 20px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.95);
+    position: relative;
+    width: 250px;
   }
 
-  .dice-row { display: flex; gap: 6px; }
+  .dice-row { display: flex; gap: 12px; }
 
   .dice-3d {
-    width: 36px;
-    height: 36px;
+    width: 58px;
+    height: 58px;
     background: radial-gradient(circle, #fffef9 25%, #d5be9b 100%);
-    border: 2px solid #5a3d16;
-    border-radius: 8px;
+    border: 3px solid #5a3d16;
+    border-radius: 12px;
     display: grid;
     grid-template: repeat(3, 1fr) / repeat(3, 1fr);
-    padding: 3px;
+    padding: 5px;
     cursor: pointer;
-    box-shadow: 2px 4px 10px rgba(0,0,0,0.85);
+    box-shadow: 3px 5px 12px rgba(0,0,0,0.85);
     transition: transform 0.2s, box-shadow 0.2s;
   }
 
@@ -263,8 +275,8 @@
   .dice-3d.locked {
     border-color: #ff3333;
     background: radial-gradient(circle, #ffdede 25%, #c17575 100%);
-    transform: translateY(-4px);
-    box-shadow: 0 0 14px #ff2222;
+    transform: translateY(-6px);
+    box-shadow: 0 0 18px #ff2222;
   }
 
   @keyframes rollDiceAnim {
@@ -274,8 +286,8 @@
   }
 
   .pip {
-    width: 7px;
-    height: 7px;
+    width: 11px;
+    height: 11px;
     background: radial-gradient(circle, #2b1104 60%, #000 100%);
     border-radius: 50%;
     align-self: center;
@@ -284,29 +296,30 @@
 
   .dice-btn-row {
     display: flex;
-    flex-direction: column;
-    gap: 4px;
-    width: 100%;
+    gap: 8px;
+    margin-top: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .action-btn {
     background: linear-gradient(180deg, #dfb15b 0%, #875c1a 100%);
     color: #1a0700;
     font-family: 'Cinzel', serif;
-    font-size: 0.72rem;
+    font-size: 0.85rem;
     font-weight: 900;
-    padding: 5px 8px;
-    border: 1.5px solid #ffe39b;
-    border-radius: 5px;
+    padding: 8px 16px;
+    border: 2px solid #ffe39b;
+    border-radius: 6px;
     cursor: pointer;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.6);
     transition: all 0.2s;
-    text-align: center;
   }
 
   .action-btn:hover:not(:disabled) {
     background: linear-gradient(180deg, #ffe08d 0%, #a87425 100%);
-    box-shadow: 0 0 12px var(--gold);
+    transform: translateY(-2px);
+    box-shadow: 0 0 16px var(--gold);
   }
 
   .action-btn:disabled {
@@ -319,139 +332,223 @@
   .action-btn.pulse { animation: pulseGold 1.5s infinite; }
 
   @keyframes pulseGold {
-    0%, 100% { box-shadow: 0 0 8px var(--gold); }
-    50% { box-shadow: 0 0 20px var(--gold-bright); }
+    0%, 100% { box-shadow: 0 0 10px var(--gold); }
+    50% { box-shadow: 0 0 25px var(--gold-bright); }
   }
 
   #takeover-btn { display: none; background: linear-gradient(180deg, #ffd700 0%, #b8860b 100%); color: #000; }
   #must-draw-btn { display: none; background: linear-gradient(180deg, #ff4444 0%, #990000 100%); color: #fff; }
   #veto-btn {
     display: none;
+    position: absolute;
+    bottom: -50px;
     background: linear-gradient(180deg, #ff2222 0%, #880000 100%);
     color: #fff;
-    font-size: 0.7rem;
-    padding: 4px 8px;
-    border: 1.5px solid #ffaaaa;
-    border-radius: 5px;
-    box-shadow: 0 0 15px #ff2222;
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 0.9rem;
+    font-weight: 900;
+    padding: 8px 20px;
+    border: 2px solid #ffaaaa;
+    border-radius: 8px;
+    box-shadow: 0 0 25px #ff2222;
+    cursor: pointer;
+    white-space: nowrap;
+    z-index: 100;
   }
 
-  /* STAPEL (RECHTS) */
-  .table-decks {
-    position: absolute;
-    right: 12px;
-    top: 52%;
-    transform: translateY(-50%);
-    display: flex;
-    gap: 8px;
-    z-index: 30;
-  }
+  /* STAPEL */
+  .table-decks { display: flex; gap: 16px; align-items: center; }
 
   .deck-pile {
-    width: 68px;
-    height: 98px;
-    border-radius: 6px;
+    width: 130px;
+    height: 185px;
+    border-radius: 8px;
     position: relative;
-    box-shadow: 0 4px 15px var(--shadow);
+    box-shadow: 0 6px 20px var(--shadow);
   }
 
   .deck-pile.draw {
     background: url('card_back.jpg') center/cover;
-    border: 1.5px solid var(--gold);
+    border: 2.5px solid var(--gold);
     cursor: pointer;
   }
 
   .deck-pile.discard {
-    border: 1.5px solid var(--gold-bright);
+    border: 2.5px solid var(--gold-bright);
     background: rgba(20, 8, 10, 0.85);
   }
 
   .deck-pile.discard img {
-    width: 100%; height: 100%; border-radius: 5px; display: block;
+    width: 100%; height: 100%; border-radius: 6px; display: block;
   }
 
   #active-color-indicator {
     display: none;
     position: absolute;
-    top: -10px; left: 50%;
+    top: -12px; left: 50%;
     transform: translateX(-50%);
-    padding: 1px 6px;
-    border-radius: 8px;
-    font-size: 0.6rem;
+    padding: 2px 10px;
+    border-radius: 10px;
+    font-size: 0.7rem;
     font-weight: 900;
     color: #fff;
-    border: 1px solid #fff;
+    border: 1.5px solid #fff;
     z-index: 50;
     white-space: nowrap;
   }
 
-  .active-color-rot { background: #990000; box-shadow: 0 0 10px #ff2222; }
-  .active-color-blau { background: #003388; box-shadow: 0 0 10px #2266ff; }
-  .active-color-gelb { background: #886600; box-shadow: 0 0 10px #ffbb00; }
+  .active-color-rot { background: #990000; box-shadow: 0 0 12px #ff2222; }
+  .active-color-blau { background: #003388; box-shadow: 0 0 12px #2266ff; }
+  .active-color-gelb { background: #886600; box-shadow: 0 0 12px #ffbb00; }
 
-  /* ZIELKARTE DES BOTS IM ZENTRUM */
   .bot-active-target-box {
     display: none;
-    position: absolute;
-    top: 48%; left: 50%;
-    transform: translate(-50%, -50%);
     flex-direction: column;
     align-items: center;
-    gap: 2px;
-    z-index: 35;
+    gap: 4px;
   }
 
   .bot-active-card {
-    width: 72px;
-    height: 102px;
-    border-radius: 6px;
-    border: 2px solid #ff4444;
-    box-shadow: 0 0 20px rgba(255, 68, 68, 0.8);
+    width: 130px;
+    height: 185px;
+    border-radius: 8px;
+    border: 2.5px solid #ff4444;
+    box-shadow: 0 0 25px rgba(255, 68, 68, 0.8);
   }
 
-  /* HANDKARTEN (UNTEN) */
+  /* DESKTOP HANDKARTEN (GROSS & MAJESTÄTISCH) */
   .player-hand-wrapper {
     position: absolute;
-    bottom: 2px; left: 50%;
+    bottom: -15px; left: 50%;
     transform: translateX(-50%);
-    width: calc(100vw - 320px);
+    width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    z-index: 40;
-    pointer-events: none;
+    flex-direction: column;
+    align-items: center;
+    z-index: 30;
   }
 
-  .player-hand-fan {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    pointer-events: auto;
+  #confirm-dialogue-box {
+    display: none;
+    background: radial-gradient(circle, rgba(45, 12, 16, 0.98) 0%, rgba(18, 5, 7, 0.98) 100%);
+    border: 2px solid var(--gold-bright);
+    border-radius: 10px;
+    padding: 8px 24px;
+    text-align: center;
+    box-shadow: 0 0 30px var(--gold);
+    margin-bottom: 12px;
+    z-index: 500;
   }
+
+  .confirm-title { font-family: 'Cinzel Decorative', serif; font-size: 0.95rem; color: var(--gold-bright); }
+  .confirm-btn-group { display: flex; gap: 10px; justify-content: center; margin-top: 6px; }
+
+  .btn-confirm-yes {
+    background: linear-gradient(180deg, #2ecc71 0%, #1e8449 100%);
+    color: #fff; font-family: 'Cinzel', serif; font-weight: 900; font-size: 0.85rem; padding: 5px 16px;
+    border: 1.5px solid #a9dfbf; border-radius: 5px; cursor: pointer;
+  }
+
+  .btn-confirm-no {
+    background: linear-gradient(180deg, #e74c3c 0%, #922b21 100%);
+    color: #fff; font-family: 'Cinzel', serif; font-weight: 900; font-size: 0.85rem; padding: 5px 16px;
+    border: 1.5px solid #f5b7b1; border-radius: 5px; cursor: pointer;
+  }
+
+  .player-hand-fan { display: flex; justify-content: center; align-items: flex-end; }
 
   .hand-card {
-    width: 66px;
-    height: 94px;
-    border-radius: 6px;
-    margin-left: -20px;
+    width: 155px;
+    height: 225px;
+    border-radius: 8px;
+    margin-left: -55px;
     cursor: pointer;
-    transition: transform 0.15s ease-out;
+    transition: all 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
     transform-origin: bottom center;
-    box-shadow: -2px 4px 10px var(--shadow);
+    box-shadow: -3px 5px 14px var(--shadow);
     position: relative;
   }
 
   .hand-card:first-child { margin-left: 0; }
-  .hand-card img { width: 100%; height: 100%; border-radius: 6px; border: 1.5px solid rgba(223, 177, 91, 0.5); display: block; }
-  .hand-card.valid-glow img { border-color: var(--gold-bright); box-shadow: 0 0 15px var(--gold-bright); }
-  .hand-card.veto-glow img { border-color: #ff3333 !important; box-shadow: 0 0 25px #ff2222 !important; }
+  .hand-card img { width: 100%; height: 100%; border-radius: 8px; border: 2px solid rgba(223, 177, 91, 0.5); display: block; }
 
-  /* ZENTRALE KARTEN-LUPE MIT BESTÄTIGUNG */
+  .hand-card:hover {
+    transform: translateY(-60px) scale(1.16) !important;
+    z-index: 200 !important;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.98), 0 0 25px var(--gold);
+  }
+
+  .hand-card.preview-elevated, .hand-card.locked-selected {
+    transform: translateY(-75px) scale(1.2) !important;
+    z-index: 300 !important;
+  }
+
+  .hand-card.preview-elevated img, .hand-card.locked-selected img {
+    border: 3px solid var(--gold-bright);
+    box-shadow: 0 0 30px var(--gold-bright);
+  }
+
+  .hand-card.valid-glow img { border-color: var(--gold-bright); box-shadow: 0 0 18px var(--gold-bright); }
+  .hand-card.veto-glow img { border-color: #ff3333 !important; box-shadow: 0 0 30px #ff2222 !important; }
+
+  /* =========================================================
+     MOBILE LANDSCAPE OVERRIDE: SMARTPHONES (ZWEI-DAUMEN-LAYOUT)
+     ========================================================= */
+  @media (max-height: 580px), (max-width: 900px) and (orientation: landscape) {
+    .top-bar { height: 32px; padding: 0 12px; }
+    .game-title { font-size: 0.95rem; }
+    .rules-btn { font-size: 0.7rem; padding: 3px 8px; }
+
+    .bots-stage { gap: 6px; }
+    .bot-card-group { padding: 1px 6px; }
+    .bot-profile-avatar { width: 20px; height: 20px; margin-right: 4px; }
+    .bot-info-text { font-size: 0.62rem; }
+
+    .status-announcer { top: 34px; font-size: 0.72rem; padding: 2px 14px; }
+
+    /* WÜRFEL FEST LINKS */
+    .arena-center { position: static; transform: none; width: 100%; height: 100%; }
+    .dice-arena {
+      position: absolute; left: 8px; top: 52%; transform: translateY(-50%);
+      width: 130px; padding: 6px 8px; gap: 4px;
+    }
+    .dice-row { gap: 6px; }
+    .dice-3d { width: 36px; height: 36px; border-radius: 8px; padding: 3px; }
+    .pip { width: 7px; height: 7px; }
+    .action-btn { font-size: 0.68rem; padding: 4px 6px; width: 100%; }
+    #veto-btn { bottom: -38px; font-size: 0.7rem; padding: 4px 10px; }
+
+    /* STAPEL FEST RECHTS */
+    .table-decks {
+      position: absolute; right: 8px; top: 52%; transform: translateY(-50%);
+      gap: 6px;
+    }
+    .deck-pile { width: 70px; height: 100px; }
+    .bot-active-card { width: 70px; height: 100px; }
+
+    /* HANDKARTEN MITTE UNTEN */
+    .player-hand-wrapper {
+      bottom: -6px; width: calc(100vw - 300px); max-width: 500px;
+    }
+    .hand-card {
+      width: 68px; height: 98px; margin-left: -24px;
+    }
+    .hand-card:hover { transform: none !important; }
+
+    #confirm-dialogue-box {
+      position: fixed; bottom: 15px; left: 50%;
+      transform: translateX(-50%); padding: 5px 14px; margin: 0; z-index: 1100;
+    }
+    .confirm-title { font-size: 0.75rem; }
+    .btn-confirm-yes, .btn-confirm-no { font-size: 0.7rem; padding: 4px 10px; }
+  }
+
+  /* ZENTRALE KARTEN-LUPE FÜR MOBIL */
   #card-zoom-modal {
     display: none;
     position: fixed;
     top: 0; left: 0; width: 100vw; height: 100vh;
-    background: rgba(0, 0, 0, 0.75);
+    background: rgba(0, 0, 0, 0.78);
     z-index: 1000;
     justify-content: center;
     align-items: center;
@@ -462,17 +559,17 @@
     flex-direction: column;
     align-items: center;
     gap: 8px;
-    animation: zoomIn 0.2s ease-out;
+    animation: popIn 0.2s ease-out;
   }
 
-  @keyframes zoomIn {
+  @keyframes popIn {
     0% { transform: scale(0.7); opacity: 0; }
     100% { transform: scale(1); opacity: 1; }
   }
 
   .zoomed-card-img {
-    width: 140px;
-    height: 200px;
+    width: 145px;
+    height: 205px;
     border-radius: 10px;
     border: 3px solid var(--gold-bright);
     box-shadow: 0 0 35px var(--gold-bright), 0 0 60px #000;
@@ -487,21 +584,7 @@
     box-shadow: 0 0 25px var(--gold);
   }
 
-  .zoom-btn-group { display: flex; gap: 10px; justify-content: center; margin-top: 6px; }
-
-  .btn-confirm-yes {
-    background: linear-gradient(180deg, #2ecc71 0%, #1e8449 100%);
-    color: #fff; font-family: 'Cinzel', serif; font-weight: 900; font-size: 0.75rem; padding: 6px 14px;
-    border: 1.5px solid #a9dfbf; border-radius: 5px; cursor: pointer;
-  }
-
-  .btn-confirm-no {
-    background: linear-gradient(180deg, #e74c3c 0%, #922b21 100%);
-    color: #fff; font-family: 'Cinzel', serif; font-weight: 900; font-size: 0.75rem; padding: 6px 14px;
-    border: 1.5px solid #f5b7b1; border-radius: 5px; cursor: pointer;
-  }
-
-  /* PORCUS TARGET MODAL (ZIEL FÜR STRAFKARTE WÄHLEN) */
+  /* PORCUS TARGET MODAL (OPFER WÄHLEN FÜR STRAFKARTE) */
   #target-picker-modal {
     display: none;
     position: fixed;
@@ -567,11 +650,11 @@
 
   #notice-toast {
     position: fixed;
-    bottom: 105px; left: 50%;
+    bottom: 250px; left: 50%;
     transform: translateX(-50%);
     background: rgba(100, 10, 20, 0.96);
     color: #fff; border: 2px solid var(--gold);
-    padding: 6px 16px; border-radius: 6px; font-size: 0.78rem; font-weight: 800;
+    padding: 6px 16px; border-radius: 6px; font-size: 0.85rem; font-weight: 800;
     box-shadow: 0 0 25px #000; z-index: 1200; display: none; text-align: center;
   }
 
@@ -598,7 +681,7 @@
     box-shadow: 0 0 40px var(--gold);
   }
 
-  /* REGELN */
+  /* REGEL MODAL */
   .modal-overlay {
     display: none;
     position: fixed;
@@ -633,7 +716,7 @@
     text-align: center;
   }
 
-  .scroll-parchment table { width: 100%; border-collapse: collapse; margin: 6px 0; font-size: 0.7rem; }
+  .scroll-parchment table { width: 100%; border-collapse: collapse; margin: 6px 0; font-size: 0.72rem; }
   .scroll-parchment th, .scroll-parchment td { border: 1px solid #c7ab82; padding: 4px 6px; text-align: left; }
   .scroll-parchment th { background: #e2cca4; color: #551216; }
 
@@ -679,60 +762,72 @@
 <!-- STATUS ANNOUNCER -->
 <div class="status-announcer" id="status-text">DEIN ZUG: WIRF DIE SCHICKSALSKNOCHEN!</div>
 
-<!-- ARENA WÜRFEL (LINKS) -->
-<div class="dice-arena">
-  <div style="font-size: 0.55rem; color: var(--gold); letter-spacing: 1.5px;">WÜRFEL</div>
-  <div class="dice-row">
-    <div class="dice-3d" id="die-0" onclick="toggleLock(0)"></div>
-    <div class="dice-3d" id="die-1" onclick="toggleLock(1)"></div>
-    <div class="dice-3d" id="die-2" onclick="toggleLock(2)"></div>
-  </div>
-  
-  <div class="dice-btn-row">
-    <button class="action-btn pulse" id="btn-roll" onclick="handleRollClick()">WÜRFELN</button>
-    <button class="action-btn" id="takeover-btn" onclick="handleTakeoverClick()">⚡ ÜBERNEHMEN</button>
-    <button class="action-btn" id="must-draw-btn" onclick="handleDrawClick()">📥 ZIEHEN</button>
-    <button class="action-btn" id="btn-play" onclick="playSelectedCard()" disabled>ABLEGEN</button>
+<!-- ARENA TISCH (DESKTOP ZENTRIERT / MOBIL FESTER WÜRFELBEREICH) -->
+<div class="arena-center">
+  <div class="dice-arena">
+    <div style="font-size: 0.65rem; color: var(--gold); letter-spacing: 1.5px;">SCHICKSALSKNOCHEN</div>
+    <div class="dice-row">
+      <div class="dice-3d" id="die-0" onclick="toggleLock(0)"></div>
+      <div class="dice-3d" id="die-1" onclick="toggleLock(1)"></div>
+      <div class="dice-3d" id="die-2" onclick="toggleLock(2)"></div>
+    </div>
+    
+    <div class="dice-btn-row">
+      <button class="action-btn pulse" id="btn-roll" onclick="handleRollClick()">WÜRFELN</button>
+      <button class="action-btn" id="takeover-btn" onclick="handleTakeoverClick()">⚡ ÜBERNEHMEN</button>
+      <button class="action-btn" id="must-draw-btn" onclick="handleDrawClick()">📥 ZIEHEN</button>
+      <button class="action-btn" id="btn-play" onclick="playSelectedCard()" disabled>ABLEGEN</button>
+    </div>
+
+    <div id="rolls-info" style="font-size: 0.65rem; color: #d5be9b;">Würfe: Noch nicht gewürfelt</div>
     <button id="veto-btn" onclick="triggerPlayerVeto()">⚔️ VETO! [<span id="veto-timer">5</span>s]</button>
   </div>
 
-  <div id="rolls-info" style="font-size: 0.6rem; color: #d5be9b;">Würfe: -</div>
-</div>
+  <!-- BOT AUFGEDECKTE ZIELKARTE -->
+  <div class="bot-active-target-box" id="bot-target-box">
+    <div style="font-size: 0.65rem; font-weight: 800; color: #ff5555;">GEGNER-ZIEL</div>
+    <img class="bot-active-card" id="bot-target-img" src="card_back.jpg">
+  </div>
 
-<!-- BOT AUFGEDECKTE ZIELKARTE IN DER MITTE -->
-<div class="bot-active-target-box" id="bot-target-box">
-  <div style="font-size: 0.6rem; font-weight: 800; color: #ff5555;">GEGNER-ZIEL</div>
-  <img class="bot-active-card" id="bot-target-img" src="card_back.jpg">
-</div>
-
-<!-- STAPEL (RECHTS) -->
-<div class="table-decks">
-  <div class="deck-pile draw" id="draw-pile" onclick="handleDrawClick()" title="Karte ziehen">
-    <div style="position: absolute; bottom: 4px; width: 100%; text-align: center; font-size: 0.65rem; font-weight: 900; color: var(--gold-bright);">
-      STAPEL (<span id="draw-count">30</span>)
+  <!-- STAPEL (RECHTS) -->
+  <div class="table-decks">
+    <div class="deck-pile draw" id="draw-pile" onclick="handleDrawClick()" title="Karte ziehen">
+      <div style="position: absolute; bottom: 6px; width: 100%; text-align: center; font-size: 0.75rem; font-weight: 900; color: var(--gold-bright);">
+        STAPEL (<span id="draw-count">30</span>)
+      </div>
+    </div>
+    <div class="deck-pile discard" id="discard-pile">
+      <img id="discard-img" src="card_back.jpg">
+      <div id="active-color-indicator"></div>
     </div>
   </div>
-  <div class="deck-pile discard" id="discard-pile">
-    <img id="discard-img" src="card_back.jpg">
-    <div id="active-color-indicator"></div>
-  </div>
 </div>
 
-<!-- SPIELER HAND (UNTEN) -->
+<!-- SPIELER HAND -->
 <div class="player-hand-wrapper">
+  <!-- DESKTOP BESTÄTIGUNGS BOX -->
+  <div id="confirm-dialogue-box">
+    <div class="confirm-title">„Diese Karte, sicher Gladiator?“</div>
+    <div id="confirm-card-desc" style="font-size: 0.75rem; color: #f7ebd4;">-</div>
+    <div class="confirm-btn-group">
+      <button class="btn-confirm-yes" onclick="confirmCardChoice()">✓ JA, KÄMPFEN!</button>
+      <button class="btn-confirm-no" onclick="cancelCardChoice()">✕ ANDERE</button>
+    </div>
+  </div>
+
   <div class="player-hand-fan" id="player-fan"></div>
 </div>
 
-<!-- ZENTRALE KARTEN-LUPE MIT BESTÄTIGUNG -->
+<!-- ZENTRALE KARTEN-LUPE FÜR MOBIL -->
 <div id="card-zoom-modal">
   <div class="zoom-content">
     <img id="zoomed-card-img" class="zoomed-card-img" src="card_back.jpg">
     <div class="zoom-dialog-box">
       <div id="zoom-card-title" style="font-family:'Cinzel Decorative'; font-size:0.85rem; color:var(--gold-bright);">KARTE WÄHLEN?</div>
       <div id="zoom-card-details" style="font-size:0.7rem; color:#f7ebd4; margin-top:2px;">-</div>
-      <div class="zoom-btn-group">
+      <div class="confirm-btn-group" style="margin-top:8px;">
         <button class="btn-confirm-yes" onclick="confirmCardChoice()">✓ JA, KÄMPFEN!</button>
-        <button class="btn-confirm-no" onclick="closeCardZoom()">✕ ANDERE</button>
+        <button class="btn-confirm-no" onclick="cancelCardChoice()">✕ ANDERE</button>
       </div>
     </div>
   </div>
@@ -793,7 +888,6 @@
       <tr><td><strong>Ave Caesar! (Drilling)</strong></td><td>Drei gleiche Würfelaugen (z. B. 4-4-4)</td><td>Beliebige Karte sofort ablegen!</td></tr>
       <tr><td><strong>Porcus Furiosus (6 Eber)</strong></td><td>FEHLWURF (keine andere Formation passt)</td><td>Führt die aufgedruckte Sofort-Aktion aus!</td></tr>
     </table>
-    <p><strong>Porcus-Aktionen:</strong> Nächster setzt aus • Alle ziehen • 1 Spieler zieht • Farbwahl • Extrazug • Eigene Karte verschenken.</p>
   </div>
 </div>
 
@@ -840,7 +934,7 @@ function buildDeck() {
   deck.push({ page: 16, form: FORMATIONS.PORCUS, color: 'rot', rolls: 1, points: 50, name: 'PORCUS: ALLE ZIEHEN', effect: PORCUS_EFFECTS.ALL_DRAW, desc: 'Alle ziehen, nur du nicht' });
   deck.push({ page: 17, form: FORMATIONS.PORCUS, color: 'rot', rolls: 1, points: 50, name: 'PORCUS: FARBWAHL', effect: PORCUS_EFFECTS.WISH_COLOR, desc: 'Farbe wünschen' });
 
-  // REGULÄRE KARTEN
+  // REGULÄRE FORMATIONEN
   deck.push({ page: 3, form: FORMATIONS.SALTUS, color: 'blau', rolls: 2, points: 30, name: 'SALTUS BLAU A' });
   deck.push({ page: 4, form: FORMATIONS.SALTUS, color: 'blau', rolls: 3, points: 40, name: 'SALTUS BLAU B' });
   deck.push({ page: 5, form: FORMATIONS.SALTUS, color: 'gelb', rolls: 2, points: 30, name: 'SALTUS GELB A' });
@@ -893,7 +987,7 @@ let dice = [1, 2, 3];
 let locked = [false, false, false];
 let rerollsLeft = 0;
 let rollStep = 0;
-let zoomedCardIdx = null;
+let previewCardIdx = null;
 let lockedCardIdx = null;
 
 let canTakeover = false;
@@ -905,6 +999,10 @@ const botProfiles = [
   { name: 'AURELIUS', page: 35, title: 'Der Zenturio', quote: '„Meine Legion kennt keine Gnade!“' },
   { name: 'CASSIUS', page: 22, title: 'Der Elefantenmeister', quote: '„Die Götter fordern dein Blut!“' }
 ];
+
+function isMobileLayout() {
+  return window.innerHeight <= 580 || (window.innerWidth <= 900 && window.innerWidth > window.innerHeight);
+}
 
 function startWithPlayers(count) {
   numPlayers = count;
@@ -945,7 +1043,7 @@ function resetTurn() {
   locked = [false, false, false];
   rerollsLeft = 0;
   rollStep = 0;
-  zoomedCardIdx = null;
+  previewCardIdx = null;
   lockedCardIdx = null;
   isGivingCardState = false;
 
@@ -957,6 +1055,7 @@ function resetTurn() {
   const takeoverBtn = document.getElementById('takeover-btn');
   takeoverBtn.style.display = (currentPlayerIdx === 0 && canTakeover) ? 'block' : 'none';
 
+  document.getElementById('confirm-dialogue-box').style.display = 'none';
   document.getElementById('must-draw-btn').style.display = 'none';
   document.getElementById('btn-play').disabled = true;
   document.getElementById('btn-play').classList.remove('pulse');
@@ -983,6 +1082,7 @@ function handleTakeoverClick() {
   document.getElementById('takeover-btn').style.display = 'none';
   canTakeover = false;
   rollStep = 1;
+  document.getElementById('rolls-info').innerText = '1. Wurf übernommen';
   setAnnouncer('WURF ÜBERNOMMEN! Wähle jetzt eine Karte.');
   checkInitialRollOutcome();
 }
@@ -992,6 +1092,7 @@ function rollInitial() {
   animateDice();
   for (let i = 0; i < 3; i++) dice[i] = Math.floor(Math.random() * 6) + 1;
   renderDice();
+  document.getElementById('rolls-info').innerText = '1. Wurf liegt';
   checkInitialRollOutcome();
 }
 
@@ -999,7 +1100,7 @@ function checkInitialRollOutcome() {
   // DRILLING IM 1. WURF = AVE CAESAR!
   if (dice[0] === dice[1] && dice[1] === dice[2]) {
     triggerAveCaesarCelebration();
-    setAnnouncer('AVE CAESAR! Kaiser-Drilling! Tippe eine Karte an zum Ablegen!');
+    setAnnouncer('AVE CAESAR! Kaiser-Drilling! Klicke eine Karte zum Ablegen!');
     document.getElementById('btn-roll').disabled = true;
     document.getElementById('btn-roll').classList.remove('pulse');
     updateUI();
@@ -1023,11 +1124,9 @@ function checkInitialRollOutcome() {
   updateUI();
 }
 
-// KARTE ANKAUFEN / VORSCHAU IN DER LUPEN-MODAL
 function selectCard(idx) {
   if (currentPlayerIdx !== 0) return;
 
-  // SPEZIAL-FALL: EIGENE KARTE ABGEBEN (PORCUS EFFEKT)
   if (isGivingCardState) {
     executeGiveCardAction(idx);
     return;
@@ -1038,48 +1137,66 @@ function selectCard(idx) {
     return;
   }
 
-  zoomedCardIdx = idx;
+  previewCardIdx = idx;
   const card = players[0].hand[idx];
 
-  // MODAL ÖFFNEN MIT DETAILS
-  const imgEl = document.getElementById('zoomed-card-img');
-  imgEl.src = getCardImgPath(card.page);
+  // DRILLING IM 1. WURF: SOFORT ABLEGEN!
+  if (dice[0] === dice[1] && dice[1] === dice[2]) {
+    lockedCardIdx = idx;
+    document.getElementById('btn-play').disabled = false;
+    document.getElementById('btn-play').classList.add('pulse');
+    updateUI();
+    return;
+  }
 
-  document.getElementById('zoom-card-title').innerText = card.name;
-  let info = `${card.rolls} Nachwürfe • Strafpunkte: ${card.points}`;
-  if (card.desc) info += `<br><span style="color:#ffbb44;">${card.desc}</span>`;
-  document.getElementById('zoom-card-details').innerHTML = info;
+  // MOBIL: GROSSE ZENTRALE LUPE
+  if (isMobileLayout()) {
+    const imgEl = document.getElementById('zoomed-card-img');
+    imgEl.src = getCardImgPath(card.page);
+    document.getElementById('zoom-card-title').innerText = card.name;
+    let info = `${card.rolls} Nachwürfe • Strafpunkte: ${card.points}`;
+    if (card.desc) info += `<br><span style="color:#ffbb44;">${card.desc}</span>`;
+    document.getElementById('zoom-card-details').innerHTML = info;
+    document.getElementById('card-zoom-modal').style.display = 'flex';
+  } else {
+    // DESKTOP: ELEGANTE SCHWEBENDE BESTÄTIGUNG DIREKT ÜBER DER HAND
+    const descEl = document.getElementById('confirm-card-desc');
+    let info = `${card.name} • ${card.rolls} Nachwürfe • Strafpunkte: ${card.points}`;
+    if (card.desc) info += ` (${card.desc})`;
+    descEl.innerText = info;
+    document.getElementById('confirm-dialogue-box').style.display = 'block';
+  }
 
-  document.getElementById('card-zoom-modal').style.display = 'flex';
+  updateUI();
 }
 
 function closeCardZoom() {
-  zoomedCardIdx = null;
   document.getElementById('card-zoom-modal').style.display = 'none';
 }
 
+function cancelCardChoice() {
+  previewCardIdx = null;
+  document.getElementById('confirm-dialogue-box').style.display = 'none';
+  closeCardZoom();
+  setAnnouncer('Wähle eine andere Karte aus deiner Hand!');
+  updateUI();
+}
+
 function confirmCardChoice() {
-  if (zoomedCardIdx === null) return;
-  const card = players[0].hand[zoomedCardIdx];
+  if (previewCardIdx === null) return;
+  const card = players[0].hand[previewCardIdx];
 
   if (!canPlayOnDiscard(card)) {
     const colName = activeChosenColor ? activeChosenColor.toUpperCase() : (discardTop && discardTop.color ? discardTop.color.toUpperCase() : 'PASSEND');
     showNoticeToast(`Halt, Gladiator! Diese Karte bedient weder Farbe (${colName}) noch Formation der Ablage!`);
-    closeCardZoom();
+    cancelCardChoice();
     return;
   }
 
-  lockedCardIdx = zoomedCardIdx;
+  lockedCardIdx = previewCardIdx;
+  previewCardIdx = null;
+  document.getElementById('confirm-dialogue-box').style.display = 'none';
   closeCardZoom();
-
-  // DRILLING IM 1. WURF: SOFORT ABLEGEN!
-  if (dice[0] === dice[1] && dice[1] === dice[2]) {
-    document.getElementById('btn-play').disabled = false;
-    document.getElementById('btn-play').classList.add('pulse');
-    setAnnouncer('Drilling erfüllt! Klicke auf ABLEGEN.');
-    updateUI();
-    return;
-  }
 
   rerollsLeft = card.rolls;
   rollStep = 2;
@@ -1131,7 +1248,7 @@ function rollReroll() {
     document.getElementById('btn-play').classList.add('pulse');
     document.getElementById('btn-roll').disabled = true;
   } else if (rerollsLeft <= 0) {
-    setAnnouncer('Keine Nachwürfe mehr! Karte misslungen.');
+    setAnnouncer('Keine Nachwürfe mehr! Formation misslungen.');
     document.getElementById('btn-roll').disabled = true;
     setTimeout(turnFailed, 1500);
   }
@@ -1185,7 +1302,7 @@ function executePorcusAction(card, player) {
 
     case PORCUS_EFFECTS.ALL_DRAW:
       showNoticeToast(`🐗 Sturm über Rom! Alle anderen ziehen 1 Karte!`);
-      players.forEach((p, idx) => {
+      players.forEach(p => {
         if (p !== player && deck.length > 0) p.hand.push(deck.pop());
       });
       updateUI();
@@ -1202,7 +1319,6 @@ function executePorcusAction(card, player) {
           openTargetPickerModal();
         }
       } else {
-        // Bot wählt den Spieler mit den wenigsten Karten als Opfer
         let target = players[0];
         let minCards = players[0].hand.length;
         players.forEach(p => {
@@ -1246,10 +1362,9 @@ function executePorcusAction(card, player) {
       if (player.isHuman) {
         isGivingCardState = true;
         setAnnouncer('🐗 Wähle jetzt eine deiner Handkarten zum Verschenken!');
-        showNoticeToast('Tippe eine Handkarte an, die du abgeben willst!');
+        showNoticeToast('Klicke eine Handkarte an, die du abgeben willst!');
         updateUI();
       } else {
-        // Bot gibt seine punktreichste Karte an den Führenden ab
         let maxPts = -1, bestIdx = 0;
         player.hand.forEach((c, i) => { if (c.points > maxPts) { maxPts = c.points; bestIdx = i; } });
         const given = player.hand.splice(bestIdx, 1)[0];
@@ -1280,7 +1395,7 @@ function openTargetPickerModal() {
     const b = players[i];
     const btn = document.createElement('button');
     btn.className = 'player-choice-btn';
-    btn.innerHTML = `${b.name}<br><span style="font-size:0.6rem;">${b.hand.length} KARTEN</span>`;
+    btn.innerHTML = `${b.name}<br><span style="font-size:0.65rem;">${b.hand.length} KARTEN</span>`;
     btn.onclick = () => {
       document.getElementById('target-picker-modal').style.display = 'none';
       if (deck.length > 0) b.hand.push(deck.pop());
@@ -1297,7 +1412,6 @@ function executeGiveCardAction(cardIdx) {
   isGivingCardState = false;
   const given = players[0].hand.splice(cardIdx, 1)[0];
 
-  // Gebe Karte an Bot mit den wenigsten Karten
   let target = players[1];
   let minCards = players[1].hand.length;
   for (let i = 2; i < numPlayers; i++) {
@@ -1743,7 +1857,6 @@ function checkFormation(d, card) {
     case FORMATIONS.CAESAR:
       return (d[0] === d[1] && d[1] === d[2]);
     case FORMATIONS.PORCUS:
-      // Fehlwurf: keine Duplex, keine Clamp, kein Cursus, kein Saltus, kein Caesar
       return !checkFormation(d, {form: FORMATIONS.DUPLEX}) &&
              !checkFormation(d, {form: FORMATIONS.CLAMP}) &&
              !checkFormation(d, {form: FORMATIONS.CURSUS}) &&
@@ -1828,12 +1941,13 @@ function updateUI() {
     const total = players[0].hand.length;
 
     players[0].hand.forEach((card, idx) => {
-      const isSelected = (lockedCardIdx === idx) ? 'valid-glow' : '';
+      const isPreview = (previewCardIdx === idx) ? 'preview-elevated' : '';
+      const isLocked = (lockedCardIdx === idx) ? 'locked-selected' : '';
       const isValid = (rollStep === 1 && canPlayOnDiscard(card)) ? 'valid-glow' : '';
 
       const cardDiv = document.createElement('div');
-      cardDiv.className = `hand-card ${isSelected} ${isValid}`;
-      cardDiv.style.zIndex = idx + 1;
+      cardDiv.className = `hand-card ${isPreview} ${isLocked} ${isValid}`;
+      cardDiv.style.zIndex = (previewCardIdx === idx || lockedCardIdx === idx) ? 300 : idx + 1;
       cardDiv.onclick = () => selectCard(idx);
 
       cardDiv.innerHTML = `<img src="${getCardImgPath(card.page)}" onerror="this.src='card_back.jpg'">`;
