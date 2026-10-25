@@ -2,6 +2,9 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>AVE CAESAR - Arena der Gladiatoren</title>
 
@@ -47,7 +50,7 @@
     100% { opacity: 0.7; }
   }
 
-  /* HANDY HOCHKANT WARNUNG */
+  /* HOCHKANT WARNUNG */
   #rotate-device-overlay {
     display: none;
     position: fixed;
@@ -115,11 +118,11 @@
   .top-bar {
     position: absolute;
     top: 0; left: 0; width: 100%;
-    height: 36px;
+    height: 38px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 16px;
+    padding: 0 18px;
     background: linear-gradient(180deg, rgba(15, 5, 7, 0.96) 0%, rgba(15, 5, 7, 0.3) 100%);
     z-index: 20;
     border-bottom: 1px solid rgba(223, 177, 91, 0.25);
@@ -127,7 +130,7 @@
 
   .game-title {
     font-family: 'Cinzel Decorative', serif;
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     font-weight: 900;
     color: var(--gold-bright);
     letter-spacing: 2px;
@@ -147,78 +150,79 @@
   }
 
   /* =========================================================
-     BOTS BÜHNE (OBEN IN DER ARENA)
+     BOTS BÜHNE: PROMINENT OBEN IM KOLOSSEUM MIT KARTENFÄCHER!
      ========================================================= */
   .bots-stage {
     position: absolute;
-    top: 40px; left: 0; width: 100%;
+    top: 44px; left: 0; width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 16px;
+    gap: 20px;
     z-index: 25;
   }
 
   .bot-card-group {
     display: flex;
     align-items: center;
-    background: rgba(25, 9, 12, 0.9);
-    border: 1.5px solid var(--gold);
-    border-radius: 8px;
-    padding: 3px 8px;
-    box-shadow: 0 4px 12px var(--shadow);
-    transition: all 0.2s;
+    background: radial-gradient(circle, rgba(35, 12, 16, 0.95) 0%, rgba(15, 5, 7, 0.98) 100%);
+    border: 2px solid var(--gold);
+    border-radius: 10px;
+    padding: 4px 10px;
+    box-shadow: 0 4px 15px var(--shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
   }
 
   .bot-card-group.active-turn {
     border-color: var(--gold-bright);
-    box-shadow: 0 0 15px var(--gold-bright);
-    transform: scale(1.04);
+    box-shadow: 0 0 20px var(--gold-bright);
+    transform: scale(1.06);
   }
 
   .bot-profile-info {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-right: 6px;
+    margin-right: 8px;
   }
 
   .bot-profile-avatar {
-    width: 30px;
-    height: 30px;
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
-    border: 1.5px solid var(--gold-bright);
+    border: 2px solid var(--gold-bright);
     background-size: cover;
     background-position: center top;
+    box-shadow: 0 0 10px rgba(0,0,0,0.8);
   }
 
   .bot-cards-fan { display: flex; align-items: center; }
 
   .bot-card-large {
-    width: 32px;
-    height: 46px;
+    width: 36px;
+    height: 52px;
     border-radius: 4px;
-    border: 1px solid var(--gold);
+    border: 1.5px solid var(--gold);
     background: url('card_back.jpg') center/cover;
-    margin-left: -18px;
-    box-shadow: -2px 2px 6px var(--shadow);
+    margin-left: -20px;
+    box-shadow: -2px 3px 8px var(--shadow);
   }
 
   .bot-card-large:first-child { margin-left: 0; }
 
   .speech-bubble {
     position: absolute;
-    top: 95px;
+    top: 112px;
     left: 50%;
     transform: translateX(-50%);
     background: rgba(247, 235, 212, 0.98);
     color: #2b1104;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     font-weight: 900;
-    padding: 5px 16px;
+    padding: 6px 18px;
     border-radius: 8px;
     border: 2px solid var(--gold);
-    box-shadow: 0 4px 15px var(--shadow);
+    box-shadow: 0 4px 20px var(--shadow);
     z-index: 60;
     display: none;
     white-space: nowrap;
@@ -227,53 +231,53 @@
   /* STATUS ANNOUNCER TICKER */
   .status-announcer {
     position: absolute;
-    top: 96px;
+    top: 110px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(18, 6, 8, 0.95);
-    border: 1.5px solid var(--gold);
-    padding: 3px 18px;
-    border-radius: 16px;
-    font-size: 0.78rem;
+    background: rgba(18, 6, 8, 0.96);
+    border: 2px solid var(--gold);
+    padding: 5px 22px;
+    border-radius: 18px;
+    font-size: 0.88rem;
     font-weight: 800;
     color: var(--gold-bright);
     white-space: nowrap;
-    box-shadow: 0 0 15px rgba(0,0,0,0.95);
+    box-shadow: 0 0 20px rgba(0,0,0,0.95);
     z-index: 25;
   }
 
   /* =========================================================
-     ARENA HAUPTFELD (LINKS WÜRFEL, MITTE ZIEL, RECHTS STAPEL)
+     ARENA HAUPTFELD (LINKS WÜRFEL, MITTE ZIELKARTE, RECHTS STAPEL)
      ========================================================= */
   .dice-arena {
     position: absolute;
-    left: 16px;
-    top: 55%;
+    left: 20px;
+    top: 52%;
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 5px;
-    background: radial-gradient(circle, rgba(40, 14, 18, 0.94) 0%, rgba(15, 5, 7, 0.98) 100%);
+    gap: 6px;
+    background: radial-gradient(circle, rgba(40, 14, 18, 0.95) 0%, rgba(15, 5, 7, 0.98) 100%);
     border: 2.5px solid var(--gold);
-    border-radius: 12px;
-    padding: 6px 10px;
-    box-shadow: 0 0 25px rgba(0,0,0,0.95);
+    border-radius: 14px;
+    padding: 8px 12px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.95);
     z-index: 30;
-    width: 145px;
+    width: 155px;
   }
 
-  .dice-row { display: flex; gap: 6px; }
+  .dice-row { display: flex; gap: 8px; }
 
   .dice-3d {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     background: radial-gradient(circle, #fffef9 25%, #d5be9b 100%);
-    border: 2px solid #5a3d16;
-    border-radius: 8px;
+    border: 2.5px solid #5a3d16;
+    border-radius: 10px;
     display: grid;
     grid-template: repeat(3, 1fr) / repeat(3, 1fr);
-    padding: 3px;
+    padding: 4px;
     cursor: pointer;
     box-shadow: 2px 4px 10px rgba(0,0,0,0.85);
     transition: transform 0.2s, box-shadow 0.2s;
@@ -283,7 +287,7 @@
   .dice-3d.locked {
     border-color: #ff3333;
     background: radial-gradient(circle, #ffdede 25%, #c17575 100%);
-    transform: translateY(-4px);
+    transform: translateY(-5px);
     box-shadow: 0 0 16px #ff2222;
   }
 
@@ -294,8 +298,8 @@
   }
 
   .pip {
-    width: 7px;
-    height: 7px;
+    width: 8px;
+    height: 8px;
     background: radial-gradient(circle, #2b1104 60%, #000 100%);
     border-radius: 50%;
     align-self: center;
@@ -305,20 +309,20 @@
   .dice-btn-row {
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    gap: 4px;
     width: 100%;
-    margin-top: 2px;
+    margin-top: 4px;
   }
 
   .action-btn {
     background: linear-gradient(180deg, #dfb15b 0%, #875c1a 100%);
     color: #1a0700;
     font-family: 'Cinzel', serif;
-    font-size: 0.72rem;
+    font-size: 0.78rem;
     font-weight: 900;
-    padding: 5px 8px;
+    padding: 6px 10px;
     border: 1.5px solid #ffe39b;
-    border-radius: 5px;
+    border-radius: 6px;
     cursor: pointer;
     box-shadow: 0 3px 8px rgba(0,0,0,0.6);
     transition: all 0.2s;
@@ -351,61 +355,74 @@
     background: linear-gradient(180deg, #ff2222 0%, #880000 100%);
     color: #fff;
     font-family: 'Cinzel Decorative', serif;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     font-weight: 900;
-    padding: 4px 8px;
+    padding: 5px 10px;
     border: 1.5px solid #ffaaaa;
-    border-radius: 5px;
-    box-shadow: 0 0 18px #ff2222;
+    border-radius: 6px;
+    box-shadow: 0 0 20px #ff2222;
     cursor: pointer;
     white-space: nowrap;
     text-align: center;
   }
 
-  /* BOT AUFGEDECKTE ZIELKARTE IM ZENTRUM */
+  /* BOT AUFGEDECKTE ZIELKARTE IM ZENTRUM DES SANDES */
   .bot-active-target-box {
     display: none;
     position: absolute;
-    top: 52%; left: 50%;
+    top: 50%; left: 50%;
     transform: translate(-50%, -50%);
     flex-direction: column;
     align-items: center;
-    gap: 3px;
+    gap: 5px;
     z-index: 35;
-    animation: targetPop 0.25s ease-out;
+    animation: targetPop 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
   }
 
   @keyframes targetPop {
-    0% { transform: translate(-50%, -50%) scale(0.6); opacity: 0; }
+    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
     100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
   }
 
+  .bot-target-label {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 0.75rem;
+    font-weight: 900;
+    color: #ff4444;
+    text-shadow: 0 0 10px #000, 0 0 15px #ff2222;
+    letter-spacing: 1.5px;
+    background: rgba(15, 3, 5, 0.9);
+    padding: 2px 10px;
+    border-radius: 8px;
+    border: 1px solid #ff4444;
+  }
+
   .bot-active-card {
-    width: 82px;
-    height: 116px;
-    border-radius: 6px;
-    border: 2.5px solid #ff3333;
-    box-shadow: 0 0 25px rgba(255, 51, 51, 0.9), 0 0 40px #000;
+    width: 105px;
+    height: 150px;
+    border-radius: 8px;
+    border: 3px solid #ff3333;
+    box-shadow: 0 0 35px #ff2222, 0 0 60px #000;
   }
 
   /* STAPEL (RECHTS) */
   .table-decks {
     position: absolute;
-    right: 16px;
-    top: 55%;
+    right: 20px;
+    top: 52%;
     transform: translateY(-50%);
     display: flex;
-    gap: 10px;
+    gap: 12px;
     align-items: center;
     z-index: 30;
   }
 
   .deck-pile {
-    width: 82px;
-    height: 116px;
-    border-radius: 6px;
+    width: 95px;
+    height: 135px;
+    border-radius: 8px;
     position: relative;
-    box-shadow: 0 4px 15px var(--shadow);
+    box-shadow: 0 6px 18px var(--shadow);
   }
 
   .deck-pile.draw {
@@ -420,34 +437,34 @@
   }
 
   .deck-pile.discard img {
-    width: 100%; height: 100%; border-radius: 5px; display: block;
+    width: 100%; height: 100%; border-radius: 6px; display: block;
   }
 
   #active-color-indicator {
     display: none;
     position: absolute;
-    top: -10px; left: 50%;
+    top: -12px; left: 50%;
     transform: translateX(-50%);
-    padding: 1px 8px;
-    border-radius: 8px;
-    font-size: 0.65rem;
+    padding: 2px 10px;
+    border-radius: 10px;
+    font-size: 0.68rem;
     font-weight: 900;
     color: #fff;
-    border: 1px solid #fff;
+    border: 1.5px solid #fff;
     z-index: 50;
     white-space: nowrap;
   }
 
-  .active-color-rot { background: #990000; box-shadow: 0 0 10px #ff2222; }
-  .active-color-blau { background: #003388; box-shadow: 0 0 10px #2266ff; }
-  .active-color-gelb { background: #886600; box-shadow: 0 0 10px #ffbb00; }
+  .active-color-rot { background: #990000; box-shadow: 0 0 12px #ff2222; }
+  .active-color-blau { background: #003388; box-shadow: 0 0 12px #2266ff; }
+  .active-color-gelb { background: #886600; box-shadow: 0 0 12px #ffbb00; }
 
   /* =========================================================
-     GROSSE, LESBARE HANDKARTEN (UNTEN)
+     RIESIGE, SATTE HANDKARTEN (100% BLICKDICHT & FEURIG HERVORRAGEND)
      ========================================================= */
   .player-hand-wrapper {
     position: absolute;
-    bottom: -6px; left: 50%;
+    bottom: -10px; left: 50%;
     transform: translateX(-50%);
     display: flex;
     flex-direction: column;
@@ -457,105 +474,134 @@
 
   #confirm-dialogue-box {
     display: none;
-    background: radial-gradient(circle, rgba(45, 12, 16, 0.98) 0%, rgba(18, 5, 7, 0.98) 100%);
-    border: 2px solid var(--gold-bright);
-    border-radius: 10px;
-    padding: 5px 16px;
+    background: radial-gradient(circle, rgba(55, 12, 18, 0.98) 0%, rgba(18, 5, 7, 0.98) 100%);
+    border: 2.5px solid var(--gold-bright);
+    border-radius: 12px;
+    padding: 6px 20px;
     text-align: center;
-    box-shadow: 0 0 30px var(--gold);
-    margin-bottom: 6px;
+    box-shadow: 0 0 35px var(--gold-bright), 0 0 50px #000;
+    margin-bottom: 8px;
     z-index: 500;
     animation: popUp 0.18s ease-out;
   }
 
   @keyframes popUp {
-    0% { transform: translateY(10px) scale(0.9); opacity: 0; }
+    0% { transform: translateY(12px) scale(0.9); opacity: 0; }
     100% { transform: translateY(0) scale(1); opacity: 1; }
   }
 
-  .confirm-title { font-family: 'Cinzel Decorative', serif; font-size: 0.82rem; color: var(--gold-bright); }
-  .confirm-btn-group { display: flex; gap: 8px; justify-content: center; margin-top: 4px; }
+  .confirm-title { font-family: 'Cinzel Decorative', serif; font-size: 0.88rem; color: var(--gold-bright); }
+  .confirm-btn-group { display: flex; gap: 10px; justify-content: center; margin-top: 5px; }
 
   .btn-confirm-yes {
     background: linear-gradient(180deg, #2ecc71 0%, #1e8449 100%);
-    color: #fff; font-family: 'Cinzel', serif; font-weight: 900; font-size: 0.78rem; padding: 4px 12px;
-    border: 1.5px solid #a9dfbf; border-radius: 5px; cursor: pointer;
+    color: #fff; font-family: 'Cinzel', serif; font-weight: 900; font-size: 0.82rem; padding: 5px 16px;
+    border: 1.5px solid #a9dfbf; border-radius: 6px; cursor: pointer;
   }
 
   .btn-confirm-no {
     background: linear-gradient(180deg, #e74c3c 0%, #922b21 100%);
-    color: #fff; font-family: 'Cinzel', serif; font-weight: 900; font-size: 0.78rem; padding: 4px 12px;
-    border: 1.5px solid #f5b7b1; border-radius: 5px; cursor: pointer;
+    color: #fff; font-family: 'Cinzel', serif; font-weight: 900; font-size: 0.82rem; padding: 5px 16px;
+    border: 1.5px solid #f5b7b1; border-radius: 6px; cursor: pointer;
   }
 
   .player-hand-fan { display: flex; justify-content: center; align-items: flex-end; }
 
-  /* HANDKARTEN: 105px x 148px (HERVORRAGEND LESBAR!) */
+  /* HANDKARTEN: 115px x 165px (GROSS & DEUTLICH!) */
   .hand-card {
-    width: 105px;
-    height: 148px;
-    border-radius: 8px;
-    margin-left: -32px;
+    width: 115px;
+    height: 165px;
+    border-radius: 10px;
+    margin-left: -35px;
     cursor: pointer;
-    transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s;
+    transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.22s;
     transform-origin: bottom center;
-    box-shadow: -3px 4px 12px var(--shadow);
+    box-shadow: -4px 5px 15px var(--shadow);
     position: relative;
+    opacity: 1 !important; /* KEINE DURCHSICHTIGKEIT MEHR! */
   }
 
   .hand-card:first-child { margin-left: 0; }
-  .hand-card img { width: 100%; height: 100%; border-radius: 8px; border: 2px solid rgba(223, 177, 91, 0.5); display: block; }
-
-  .hand-card.valid-glow img {
-    border-color: var(--gold-bright);
-    box-shadow: 0 0 20px var(--gold-bright);
+  .hand-card img {
+    width: 100%; height: 100%;
+    border-radius: 10px;
+    border: 2px solid rgba(223, 177, 91, 0.6);
+    display: block;
+    opacity: 1 !important;
   }
 
-  .hand-card.dimmed { opacity: 0.55; filter: brightness(0.7); }
+  /* SPIELBARE KARTEN: FAHREN HOCH & PULSIEREN MIT FEUER-GLOW! */
+  .hand-card.playable-glow {
+    transform: translateY(-28px) !important;
+    z-index: 150;
+  }
 
+  .hand-card.playable-glow img {
+    border: 3px solid #ff3333 !important;
+    box-shadow: 0 0 25px #ff2222, 0 0 40px #ffaa00 !important;
+    animation: flamePulse 1.2s infinite alternate ease-in-out;
+  }
+
+  @keyframes flamePulse {
+    0% { box-shadow: 0 0 20px #ff2222, 0 0 30px #dfb15b; border-color: #ff4444; }
+    100% { box-shadow: 0 0 35px #ff0000, 0 0 50px #ffea9f; border-color: #ffea9f; }
+  }
+
+  /* VOM SPIELER ANGETIPPTE / VORGEWÄHLTE KARTE */
   .hand-card.preview-elevated, .hand-card.locked-selected {
-    transform: translateY(-40px) scale(1.12) !important;
+    transform: translateY(-48px) scale(1.1) !important;
     z-index: 300 !important;
   }
 
   .hand-card.preview-elevated img, .hand-card.locked-selected img {
-    border: 2.5px solid var(--gold-bright);
-    box-shadow: 0 0 25px var(--gold-bright);
+    border: 3px solid var(--gold-bright) !important;
+    box-shadow: 0 0 35px var(--gold-bright), 0 0 50px #fff !important;
+  }
+
+  .hand-card.veto-glow img {
+    border: 3px solid #ff2222 !important;
+    box-shadow: 0 0 35px #ff2222 !important;
   }
 
   /* =========================================================
-     DESKTOP MONITOR VERGRÖSSERUNG
+     DESKTOP MONITOR VERGRÖSSERUNG (GIGANTISCH & MAJESTÄTISCH)
      ========================================================= */
   @media (min-width: 1024px) and (min-height: 650px) {
-    .bots-stage { top: 50px; gap: 25px; }
-    .bot-card-group { padding: 4px 10px; }
-    .bot-profile-avatar { width: 38px; height: 38px; }
-    .bot-card-large { width: 44px; height: 62px; margin-left: -22px; }
+    .bots-stage { top: 48px; gap: 30px; }
+    .bot-card-group { padding: 5px 14px; border-radius: 12px; }
+    .bot-profile-avatar { width: 44px; height: 44px; }
+    .bot-card-large { width: 48px; height: 68px; margin-left: -24px; }
 
-    .status-announcer { top: 120px; font-size: 0.95rem; padding: 5px 24px; }
-    .speech-bubble { top: 120px; font-size: 0.9rem; }
+    .status-announcer { top: 135px; font-size: 1rem; padding: 6px 28px; }
+    .speech-bubble { top: 135px; font-size: 0.95rem; }
 
-    .dice-arena { width: 200px; padding: 12px 18px; left: 40px; }
-    .dice-3d { width: 54px; height: 54px; padding: 4px; }
+    .dice-arena { width: 220px; padding: 14px 20px; left: 40px; }
+    .dice-3d { width: 56px; height: 56px; padding: 5px; }
     .pip { width: 10px; height: 10px; }
-    .action-btn { font-size: 0.85rem; padding: 7px 12px; }
+    .action-btn { font-size: 0.85rem; padding: 8px 14px; }
     
-    .table-decks { right: 40px; gap: 18px; }
-    .deck-pile { width: 120px; height: 170px; }
-    .bot-active-card { width: 120px; height: 170px; }
+    .table-decks { right: 40px; gap: 20px; }
+    .deck-pile { width: 135px; height: 195px; }
+    .bot-active-card { width: 135px; height: 195px; }
 
+    /* DESKTOP HANDKARTEN: RIESIG! */
     .hand-card {
-      width: 155px;
-      height: 220px;
-      margin-left: -48px;
+      width: 185px;
+      height: 265px;
+      margin-left: -50px;
     }
+
+    .hand-card.playable-glow {
+      transform: translateY(-38px) !important;
+    }
+
     .hand-card.preview-elevated, .hand-card.locked-selected {
-      transform: translateY(-65px) scale(1.16) !important;
+      transform: translateY(-75px) scale(1.14) !important;
     }
   }
 
-  /* PORCUS TARGET MODAL */
-  #target-picker-modal {
+  /* MODALS */
+  #target-picker-modal, #color-picker-modal {
     display: none;
     position: fixed;
     top: 0; left: 0; width: 100vw; height: 100vh;
@@ -565,27 +611,7 @@
     z-index: 10500;
   }
 
-  .target-picker-box {
-    background: radial-gradient(circle, #3a1014 0%, #150305 100%);
-    border: 3px solid var(--gold);
-    border-radius: 12px;
-    padding: 15px 25px;
-    text-align: center;
-    box-shadow: 0 0 40px var(--gold);
-  }
-
-  /* FARBWAHL MODAL */
-  #color-picker-modal {
-    display: none;
-    position: fixed;
-    top: 0; left: 0; width: 100vw; height: 100vh;
-    background: rgba(0, 0, 0, 0.85);
-    justify-content: center;
-    align-items: center;
-    z-index: 11000;
-  }
-
-  .color-picker-box {
+  .target-picker-box, .color-picker-box {
     background: radial-gradient(circle, #3a1014 0%, #150305 100%);
     border: 3px solid var(--gold);
     border-radius: 12px;
@@ -603,7 +629,6 @@
   .btn-blau { background: #003388; color: #fff; }
   .btn-gelb { background: #997700; color: #fff; }
 
-  /* AVE CAESAR FLASH BANNER */
   #caesar-flash-banner {
     display: none;
     position: fixed;
@@ -620,15 +645,14 @@
 
   #notice-toast {
     position: fixed;
-    bottom: 175px; left: 50%;
+    bottom: 200px; left: 50%;
     transform: translateX(-50%);
     background: rgba(100, 10, 20, 0.96);
     color: #fff; border: 2px solid var(--gold);
-    padding: 6px 18px; border-radius: 6px; font-size: 0.82rem; font-weight: 800;
+    padding: 6px 18px; border-radius: 6px; font-size: 0.85rem; font-weight: 800;
     box-shadow: 0 0 25px #000; z-index: 1200; display: none; text-align: center;
   }
 
-  /* SIEGER MODAL */
   #victory-modal {
     display: none;
     position: fixed;
@@ -651,7 +675,6 @@
     box-shadow: 0 0 40px var(--gold);
   }
 
-  /* REGEL MODAL */
   .modal-overlay {
     display: none;
     position: fixed;
@@ -728,7 +751,7 @@
   <button class="rules-btn" onclick="openRules()">📜 REGELN</button>
 </div>
 
-<!-- BOTS BÜHNE OBEN IM SAND (MIT KARTEN-FÄCHERN!) -->
+<!-- BOTS BÜHNE OBEN IM SAND (MIT ECHTEN KARTEN-FÄCHERN!) -->
 <div class="bots-stage" id="bots-stage-area"></div>
 
 <!-- STATUS ANNOUNCER -->
@@ -736,7 +759,7 @@
 
 <!-- ARENA WÜRFEL (LINKS) -->
 <div class="dice-arena">
-  <div style="font-size: 0.6rem; color: var(--gold); letter-spacing: 1.5px;">WÜRFEL</div>
+  <div style="font-size: 0.62rem; color: var(--gold); letter-spacing: 1.5px;">WÜRFEL</div>
   <div class="dice-row">
     <div class="dice-3d" id="die-0" onclick="toggleLock(0)"></div>
     <div class="dice-3d" id="die-1" onclick="toggleLock(1)"></div>
@@ -751,19 +774,19 @@
     <button id="veto-btn" onclick="triggerPlayerVeto()">⚔️ VETO! [<span id="veto-timer">5</span>s]</button>
   </div>
 
-  <div id="rolls-info" style="font-size: 0.62rem; color: #d5be9b;">Würfe: -</div>
+  <div id="rolls-info" style="font-size: 0.65rem; color: #d5be9b;">Würfe: -</div>
 </div>
 
 <!-- BOT AUFGEDECKTE ZIELKARTE IN DER ARENA-MITTE -->
 <div class="bot-active-target-box" id="bot-target-box">
-  <div style="font-size: 0.65rem; font-weight: 900; color: #ff4444; letter-spacing: 1px; text-shadow: 0 0 8px #000;">GEGNER-ZIEL</div>
+  <div class="bot-target-label" id="bot-target-title">GEGNER-ZIEL</div>
   <img class="bot-active-card" id="bot-target-img" src="card_back.jpg">
 </div>
 
 <!-- STAPEL (RECHTS) -->
 <div class="table-decks">
   <div class="deck-pile draw" id="draw-pile" onclick="handleDrawClick()" title="Karte ziehen">
-    <div style="position: absolute; bottom: 6px; width: 100%; text-align: center; font-size: 0.7rem; font-weight: 900; color: var(--gold-bright);">
+    <div style="position: absolute; bottom: 6px; width: 100%; text-align: center; font-size: 0.72rem; font-weight: 900; color: var(--gold-bright);">
       STAPEL (<span id="draw-count">30</span>)
     </div>
   </div>
@@ -777,7 +800,7 @@
 <div class="player-hand-wrapper">
   <div id="confirm-dialogue-box">
     <div class="confirm-title">„Diese Karte, sicher Gladiator?“</div>
-    <div id="confirm-card-desc" style="font-size: 0.72rem; color: #f7ebd4;">-</div>
+    <div id="confirm-card-desc" style="font-size: 0.75rem; color: #f7ebd4;">-</div>
     <div class="confirm-btn-group">
       <button class="btn-confirm-yes" onclick="confirmCardChoice()">✓ JA, KÄMPFEN!</button>
       <button class="btn-confirm-no" onclick="cancelCardChoice()">✕ ANDERE</button>
@@ -811,9 +834,9 @@
 
 <!-- AVE CAESAR JUBEL FLASH -->
 <div id="caesar-flash-banner">
-  <div style="font-size: 2rem; margin-bottom: 2px;">👑 🦅 👑</div>
-  <div style="font-family:'Cinzel Decorative'; font-size: 1.8rem; color: var(--gold-bright); text-shadow: 0 0 15px #fff;">AVE CAESAR!</div>
-  <div style="font-size: 0.85rem; color: #fff; margin-top: 2px;">KAISERLICHER DRILLING!</div>
+  <div style="font-size: 2.2rem; margin-bottom: 2px;">👑 🦅 👑</div>
+  <div style="font-family:'Cinzel Decorative'; font-size: 1.9rem; color: var(--gold-bright); text-shadow: 0 0 15px #fff;">AVE CAESAR!</div>
+  <div style="font-size: 0.9rem; color: #fff; margin-top: 2px;">KAISERLICHER DRILLING!</div>
 </div>
 
 <!-- SIEGER MODAL -->
@@ -1032,7 +1055,7 @@ function handleTakeoverClick() {
   canTakeover = false;
   rollStep = 1;
   document.getElementById('rolls-info').innerText = '1. Wurf übernommen';
-  setAnnouncer('WURF ÜBERNOMMEN! Wähle jetzt eine Karte.');
+  setAnnouncer('WURF ÜBERNOMMEN! Wähle jetzt eine glühende Karte.');
   checkInitialRollOutcome();
 }
 
@@ -1049,7 +1072,7 @@ function checkInitialRollOutcome() {
   // DRILLING IM 1. WURF = AVE CAESAR!
   if (dice[0] === dice[1] && dice[1] === dice[2]) {
     triggerAveCaesarCelebration();
-    setAnnouncer('AVE CAESAR! Kaiser-Drilling! Tippe eine Karte zum Ablegen an!');
+    setAnnouncer('AVE CAESAR! Kaiser-Drilling! Klicke eine beliebige Karte zum Ablegen!');
     document.getElementById('btn-roll').disabled = true;
     document.getElementById('btn-roll').classList.remove('pulse');
     updateUI();
@@ -1067,7 +1090,7 @@ function checkInitialRollOutcome() {
     return;
   }
 
-  setAnnouncer('1. Wurf liegt! Tippe deine Wunsch-Karte an.');
+  setAnnouncer('1. Wurf liegt! Wähle eine glühende Karte.');
   document.getElementById('btn-roll').disabled = true;
   document.getElementById('btn-roll').classList.remove('pulse');
   updateUI();
@@ -1292,7 +1315,7 @@ function executePorcusAction(card, player) {
       if (player.isHuman) {
         isGivingCardState = true;
         setAnnouncer('🐗 Wähle jetzt eine deiner Handkarten zum Verschenken!');
-        showNoticeToast('Tippe eine Handkarte an, die du abgeben willst!');
+        showNoticeToast('Klicke eine Handkarte an, die du abgeben willst!');
         updateUI();
       } else {
         let maxPts = -1, bestIdx = 0;
@@ -1407,7 +1430,7 @@ function handleDrawClick() {
 }
 
 // ==========================================
-// BOTS STEUERUNG (ZIELKARTE SOFORT UMDREHEN!)
+// BOTS STEUERUNG (ZIELKARTE SOFORT DREHEN!)
 // ==========================================
 function startBotTurn() {
   const bot = players[currentPlayerIdx];
@@ -1430,7 +1453,7 @@ function startBotTurn() {
         let bestIdx = 0, maxPts = -1;
         bot.hand.forEach((c, idx) => { if (c.points > maxPts) { maxPts = c.points; bestIdx = idx; } });
         const discarded = bot.hand.splice(bestIdx, 1)[0];
-        displayBotTargetCard(discarded);
+        displayBotTargetCard(discarded, `${bot.name} LEGT AB (AVE CAESAR!):`);
         discardTop = discarded;
 
         setTimeout(() => {
@@ -1446,7 +1469,7 @@ function startBotTurn() {
       return;
     }
 
-    // BOT WÄHLT SEINE ZIELKARTE UND DREHT SIE SOFORT UM!
+    // BOT WÄHLT KARTE UND DREHT SIE SOFORT UM!
     let targetCardIdx = chooseBestCardForBot(bot, dice);
     if (targetCardIdx === -1) {
       if (deck.length > 0) bot.hand.push(deck.pop());
@@ -1458,7 +1481,7 @@ function startBotTurn() {
     }
 
     const targetCard = bot.hand[targetCardIdx];
-    displayBotTargetCard(targetCard);
+    displayBotTargetCard(targetCard, `GEGNER-ZIEL: ${bot.name} PEILT AN`);
     setAnnouncer(`${bot.name} wählt: ${targetCard.name}!`);
 
     // VETO PRÜFUNG DURCH DEN SPIELER
@@ -1488,7 +1511,7 @@ function startBotTurn() {
     } else {
       setTimeout(() => {
         proceedBotTurnExecution(bot, targetCardIdx);
-      }, 1400);
+      }, 1500);
     }
 
   }, 1000);
@@ -1670,11 +1693,13 @@ function handleBotColorChoice(bot, card) {
   showBotBubble(`„Ich bestimme die nächste Farbe: ${chosen.toUpperCase()}!“`);
 }
 
-function displayBotTargetCard(card) {
+function displayBotTargetCard(card, labelText) {
   const box = document.getElementById('bot-target-box');
   const img = document.getElementById('bot-target-img');
+  const label = document.getElementById('bot-target-title');
   if (box && img && card) {
     img.src = getCardImgPath(card.page);
+    if (label && labelText) label.innerText = labelText;
     box.style.display = 'flex';
   }
 }
@@ -1866,7 +1891,7 @@ function renderDice() {
 }
 
 function updateUI() {
-  // BOTS BÜHNE: AVATARE + ECHTE KARTEN-FÄCHER FÜR ALLE SPIELER-VARIANTEN!
+  // BOTS BÜHNE: AVATARE + ECHTE KARTEN-FÄCHER FÜR ALLE VARIANTEN!
   const stageEl = document.getElementById('bots-stage-area');
   if (stageEl) {
     stageEl.innerHTML = '';
@@ -1879,8 +1904,8 @@ function updateUI() {
       bDiv.innerHTML = `
         <div class="bot-profile-info">
           <div class="bot-profile-avatar" style="background-image:url('${getCardImgPath(b.profile.page)}')"></div>
-          <div style="font-size: 0.68rem; font-weight: 800; color: var(--gold-bright); margin-top: 1px;">${b.name}</div>
-          <div style="font-size: 0.55rem; color: #d5be9b;">${b.hand.length} KARTEN</div>
+          <div style="font-size: 0.72rem; font-weight: 800; color: var(--gold-bright); margin-top: 2px;">${b.name}</div>
+          <div style="font-size: 0.6rem; color: #d5be9b;">${b.hand.length} KARTEN</div>
         </div>
         <div class="bot-cards-fan">
           ${Array(b.hand.length).fill('<div class="bot-card-large"></div>').join('')}
@@ -1890,7 +1915,7 @@ function updateUI() {
     }
   }
 
-  // SPIELER HAND
+  // SPIELER HAND: ALLE KARTEN VOLL MASSIV, SPIELBARE KARTEN GLÜHEN UND FAHREN HOCH!
   const fanEl = document.getElementById('player-fan');
   if (fanEl && players[0]) {
     fanEl.innerHTML = '';
@@ -1900,11 +1925,11 @@ function updateUI() {
       const isPreview = (previewCardIdx === idx) ? 'preview-elevated' : '';
       const isLocked = (lockedCardIdx === idx) ? 'locked-selected' : '';
       const isPlayable = canPlayOnDiscard(card);
-      const isValid = (rollStep === 1 && isPlayable) ? 'valid-glow' : '';
-      const isDimmed = (rollStep === 1 && !isPlayable) ? 'dimmed' : '';
+      // SPIELBARE KARTEN: GLÜHEN & FAHREN HOCH
+      const isPlayableGlow = (rollStep === 1 && isPlayable && previewCardIdx === null) ? 'playable-glow' : '';
 
       const cardDiv = document.createElement('div');
-      cardDiv.className = `hand-card ${isPreview} ${isLocked} ${isValid} ${isDimmed}`;
+      cardDiv.className = `hand-card ${isPreview} ${isLocked} ${isPlayableGlow}`;
       cardDiv.style.zIndex = (previewCardIdx === idx || lockedCardIdx === idx) ? 300 : idx + 1;
       cardDiv.onclick = () => selectCard(idx);
 
