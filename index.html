@@ -114,11 +114,11 @@
     background: linear-gradient(180deg, #ffe08d 0%, #a87425 100%);
   }
 
-  /* TOP BAR MIT AUDIO-BUTTON & REGELN */
+  /* TOP BAR MIT LAUTSPRECHER & REGELN */
   .top-bar {
     position: absolute;
     top: 0; left: 0; width: 100%;
-    height: 38px;
+    height: 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -140,54 +140,50 @@
   .top-controls {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
   }
 
-  .icon-btn, .rules-btn {
+  .audio-btn, .rules-btn {
     background: linear-gradient(180deg, #dfb15b 0%, #875c1a 100%);
     color: #1a0700;
     font-family: 'Cinzel', serif;
     font-weight: 900;
-    font-size: 0.75rem;
-    padding: 4px 10px;
+    font-size: 0.82rem;
+    padding: 4px 12px;
     border: 1.5px solid #ffe39b;
-    border-radius: 5px;
+    border-radius: 6px;
     cursor: pointer;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.5);
-    transition: transform 0.15s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    transition: transform 0.15s, background 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .icon-btn:hover, .rules-btn:hover {
-    transform: scale(1.05);
-    background: linear-gradient(180deg, #ffe08d 0%, #a87425 100%);
-  }
-
-  .icon-btn.muted {
-    background: linear-gradient(180deg, #888 0%, #444 100%);
-    color: #eee;
-    border-color: #bbb;
-  }
+  .audio-btn { font-size: 1rem; padding: 3px 10px; }
+  .audio-btn:hover, .rules-btn:hover { transform: scale(1.06); background: linear-gradient(180deg, #ffe08d 0%, #a87425 100%); }
+  .audio-btn.muted { background: linear-gradient(180deg, #666 0%, #333 100%); color: #bbb; border-color: #888; }
 
   /* =========================================================
-     BOTS BÜHNE: GROSSE, ECHTE KARTENFÄCHER OBEN IM SAND!
+     BOTS BÜHNE: RIESIGE KARTENFÄCHER OBEN IM SAND!
      ========================================================= */
   .bots-stage {
     position: absolute;
-    top: 42px; left: 0; width: 100%;
+    top: 44px; left: 0; width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 25px;
     z-index: 25;
   }
 
   .bot-card-group {
     display: flex;
     align-items: center;
-    background: radial-gradient(circle, rgba(42, 14, 19, 0.96) 0%, rgba(15, 5, 7, 0.98) 100%);
+    background: radial-gradient(circle, rgba(45, 14, 20, 0.96) 0%, rgba(15, 5, 7, 0.98) 100%);
     border: 2px solid var(--gold);
-    border-radius: 12px;
-    padding: 6px 14px;
+    border-radius: 14px;
+    padding: 8px 16px;
     box-shadow: 0 6px 20px var(--shadow);
     transition: transform 0.2s, box-shadow 0.2s;
   }
@@ -202,30 +198,30 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-right: 12px;
+    margin-right: 14px;
   }
 
   .bot-profile-avatar {
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     border: 2px solid var(--gold-bright);
     background-size: cover;
     background-position: center top;
-    box-shadow: 0 0 12px rgba(0,0,0,0.8);
+    box-shadow: 0 0 14px rgba(0,0,0,0.8);
   }
 
   .bot-cards-fan { display: flex; align-items: center; }
 
-  /* GROSSE, ECHTE BOT KARTEN (100px x 145px!) */
+  /* GROSSE, ECHTE BOT KARTEN (120px x 175px AUF DESKTOP!) */
   .bot-card-large {
-    width: 100px;
-    height: 145px;
-    border-radius: 8px;
+    width: 120px;
+    height: 175px;
+    border-radius: 10px;
     border: 2px solid var(--gold);
     background: url('card_back.jpg') center/cover;
-    margin-left: -52px;
-    box-shadow: -4px 4px 12px var(--shadow);
+    margin-left: -60px;
+    box-shadow: -5px 5px 14px var(--shadow);
     transition: transform 0.2s;
   }
 
@@ -233,14 +229,14 @@
 
   .speech-bubble {
     position: absolute;
-    top: 135px;
+    top: 145px;
     left: 50%;
     transform: translateX(-50%);
     background: rgba(247, 235, 212, 0.98);
     color: #2b1104;
-    font-size: 0.88rem;
+    font-size: 0.9rem;
     font-weight: 900;
-    padding: 6px 20px;
+    padding: 6px 22px;
     border-radius: 8px;
     border: 2px solid var(--gold);
     box-shadow: 0 4px 20px var(--shadow);
@@ -252,7 +248,7 @@
   /* STATUS ANNOUNCER TICKER */
   .status-announcer {
     position: absolute;
-    top: 135px;
+    top: 145px;
     left: 50%;
     transform: translateX(-50%);
     background: rgba(18, 6, 8, 0.96);
@@ -272,7 +268,7 @@
      ========================================================= */
   .arena-center {
     position: absolute;
-    top: 48%; left: 50%;
+    top: 52%; left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
     justify-content: center;
@@ -386,16 +382,16 @@
     font-family: 'Cinzel Decorative', serif;
     font-size: 0.78rem;
     font-weight: 900;
-    padding: 5px 12px;
+    padding: 6px 14px;
     border: 1.5px solid #ffaaaa;
     border-radius: 6px;
-    box-shadow: 0 0 20px #ff2222;
+    box-shadow: 0 0 22px #ff2222;
     cursor: pointer;
     white-space: nowrap;
     text-align: center;
   }
 
-  /* BOT AUFGEDECKTE ZIELKARTE (FEST IM SAND!) */
+  /* BOT AUFGEDECKTE ZIELKARTE */
   .bot-active-target-box {
     display: flex;
     flex-direction: column;
@@ -441,7 +437,7 @@
     text-shadow: 1px 1px 4px #000;
   }
 
-  /* STAPEL (RECHTS IM SPIELTISCH) */
+  /* STAPEL */
   .table-decks {
     display: flex;
     gap: 16px;
@@ -538,7 +534,7 @@
 
   .player-hand-fan { display: flex; justify-content: center; align-items: flex-end; }
 
-  /* HANDKARTEN: 200px x 285px (GIGANTISCH & SCHARF!) */
+  /* HANDKARTEN: 200px x 285px */
   .hand-card {
     width: 200px;
     height: 285px;
@@ -549,7 +545,7 @@
     transform-origin: bottom center;
     box-shadow: -4px 6px 18px var(--shadow);
     position: relative;
-    opacity: 1 !important; /* 100% BLICKDICHT! */
+    opacity: 1 !important;
   }
 
   .hand-card:first-child { margin-left: 0; }
@@ -561,7 +557,6 @@
     opacity: 1 !important;
   }
 
-  /* SPIELBARE KARTEN: FAHREN HOCH & PULSIEREN MIT FEUER-GLOW! */
   .hand-card.playable-glow {
     transform: translateY(-38px) !important;
     z-index: 150;
@@ -578,7 +573,6 @@
     100% { box-shadow: 0 0 40px #ff0000, 0 0 60px #ffea9f; border-color: #ffea9f; }
   }
 
-  /* VORGEWÄHLTE KARTE */
   .hand-card.preview-elevated, .hand-card.locked-selected {
     transform: translateY(-65px) scale(1.12) !important;
     z-index: 300 !important;
@@ -600,11 +594,11 @@
   @media (max-height: 580px), (max-width: 900px) and (orientation: landscape) {
     .bots-stage { top: 38px; gap: 15px; }
     .bot-card-group { padding: 4px 10px; }
-    .bot-profile-avatar { width: 32px; height: 32px; }
-    .bot-card-large { width: 65px; height: 95px; margin-left: -32px; }
+    .bot-profile-avatar { width: 34px; height: 34px; }
+    .bot-card-large { width: 70px; height: 102px; margin-left: -35px; }
 
-    .status-announcer { top: 94px; font-size: 0.76rem; padding: 3px 16px; }
-    .speech-bubble { top: 94px; font-size: 0.78rem; }
+    .status-announcer { top: 96px; font-size: 0.76rem; padding: 3px 16px; }
+    .speech-bubble { top: 96px; font-size: 0.78rem; }
 
     .arena-center { top: 52%; gap: 14px; }
     .dice-arena { width: 135px; padding: 6px 10px; gap: 4px; }
@@ -683,19 +677,19 @@
     display: none;
     position: fixed;
     top: 0; left: 0; width: 100vw; height: 100vh;
-    background: #000 url('victory_ave_caesar.jpg') no-repeat center center;
+    background: #000 url('victory_ave_caesar.jpg') no-repeat center center fixed;
     background-size: cover;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    padding-bottom: 30px;
+    padding-bottom: 35px;
     z-index: 100000;
   }
 
   .victory-banner {
     background: rgba(15, 4, 6, 0.94);
     border: 3px solid var(--gold-bright);
-    padding: 14px 28px;
+    padding: 16px 32px;
     border-radius: 12px;
     text-align: center;
     box-shadow: 0 0 50px var(--gold-bright), 0 0 80px #000;
@@ -775,7 +769,7 @@
 <div class="top-bar">
   <div class="game-title">AVE CAESAR</div>
   <div class="top-controls">
-    <button id="audio-toggle-btn" class="icon-btn" onclick="toggleAudio()" title="Ton stummschalten">🔊</button>
+    <button id="audio-toggle-btn" class="audio-btn" onclick="toggleAudio()" title="Ton stummschalten">🔊</button>
     <button class="rules-btn" onclick="openRules()">📜 REGELN</button>
   </div>
 </div>
@@ -902,9 +896,60 @@
 </div>
 
 <script>
-// YOUTUBE PLAYABLES SDK BRÜCKE & AUDIO HANDLING
+// YOUTUBE PLAYABLES SDK BRÜCKE & AUDIO SYNTHESIZER
 const isYouTubePlayables = (typeof ytgame !== 'undefined');
 let isAudioMuted = false;
+let audioCtx = null;
+
+function getAudioCtx() {
+  if (!audioCtx) {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (AudioContext) audioCtx = new AudioContext();
+  }
+  return audioCtx;
+}
+
+function playSoundEffect(type) {
+  if (isAudioMuted) return;
+  const ctx = getAudioCtx();
+  if (!ctx) return;
+  if (ctx.state === 'suspended') ctx.resume();
+
+  if (type === 'dice') {
+    // Würfelklappern synthetisieren
+    for (let i = 0; i < 4; i++) {
+      setTimeout(() => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(200 + Math.random() * 250, ctx.currentTime);
+        gain.gain.setValueAtTime(0.12, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.08);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.08);
+      }, i * 70);
+    }
+  } else if (type === 'fanfare') {
+    // Römische Siegesfanfare
+    const notes = [261.6, 329.6, 392.0, 523.25];
+    notes.forEach((freq, i) => {
+      setTimeout(() => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, ctx.currentTime);
+        gain.gain.setValueAtTime(0.2, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.4);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.4);
+      }, i * 140);
+    });
+  }
+}
 
 function notifyYTFirstFrame() { if (isYouTubePlayables && ytgame.game) ytgame.game.firstFrameReady(); }
 function notifyYTGameReady() { if (isYouTubePlayables && ytgame.game) ytgame.game.gameReady(); }
@@ -912,6 +957,7 @@ function notifyYTGameReady() { if (isYouTubePlayables && ytgame.game) ytgame.gam
 function toggleAudio() {
   isAudioMuted = !isAudioMuted;
   updateAudioUI();
+  if (!isAudioMuted) playSoundEffect('dice');
 }
 
 function updateAudioUI() {
@@ -923,7 +969,6 @@ function updateAudioUI() {
   }
 }
 
-// YT Playables SDK System Audio Listener
 if (isYouTubePlayables && ytgame.system && ytgame.system.onAudioEnabledChange) {
   ytgame.system.onAudioEnabledChange((enabled) => {
     isAudioMuted = !enabled;
@@ -960,7 +1005,7 @@ function buildDeck() {
   deck.push({ page: 11, form: FORMATIONS.CAESAR, color: 'bunt', rolls: 4, points: 30, name: 'AVE CAESAR' });
   deck.push({ page: 11, form: FORMATIONS.CAESAR, color: 'bunt', rolls: 4, points: 30, name: 'AVE CAESAR' });
 
-  // 6 PORCUS FURIOSUS
+  // 6 PORCUS FURIOSUS KARTEN
   deck.push({ page: 12, form: FORMATIONS.PORCUS, color: 'blau', rolls: 1, points: 50, name: 'PORCUS: AUSSETZEN', effect: PORCUS_EFFECTS.SKIP_NEXT, desc: 'Nächster Spieler setzt aus' });
   deck.push({ page: 13, form: FORMATIONS.PORCUS, color: 'blau', rolls: 1, points: 50, name: 'PORCUS: EXTRAZUG', effect: PORCUS_EFFECTS.PLAY_ANOTHER, desc: 'Darfst noch eine Karte spielen' });
   deck.push({ page: 14, form: FORMATIONS.PORCUS, color: 'gelb', rolls: 1, points: 50, name: 'PORCUS: ZIEHEN LASSEN', effect: PORCUS_EFFECTS.ONE_DRAWS, desc: '1 Spieler deiner Wahl zieht' });
@@ -1098,7 +1143,7 @@ function resetTurn() {
   renderDice();
 }
 
-// ZENTRALE SIEGPRÜFUNG (GARANTIERT DAS WINNER-BILD!)
+// ZENTRALE SIEGPRÜFUNG MIT FANFARE & SIEGERBILD
 function checkGameVictory() {
   if (players[0] && players[0].hand.length === 0) {
     showVictoryScreen("TRIUMPH! Du hast alle Karten abgelegt und Rom erobert!");
@@ -1134,6 +1179,7 @@ function handleTakeoverClick() {
 
 function rollInitial() {
   rollStep = 1;
+  playSoundEffect('dice');
   animateDice();
   for (let i = 0; i < 3; i++) dice[i] = Math.floor(Math.random() * 6) + 1;
   renderDice();
@@ -1247,6 +1293,7 @@ function confirmCardChoice() {
 function rollReroll() {
   if (rerollsLeft <= 0 || lockedCardIdx === null) return;
   rerollsLeft--;
+  playSoundEffect('dice');
   animateDice();
 
   for (let i = 0; i < 3; i++) {
@@ -1489,6 +1536,7 @@ function startBotTurn() {
   showBotBubble(bot.profile.quote);
 
   setTimeout(() => {
+    playSoundEffect('dice');
     animateDice();
     for (let i = 0; i < 3; i++) dice[i] = Math.floor(Math.random() * 6) + 1;
     renderDice();
@@ -1677,6 +1725,7 @@ function executeBotRerollStep(bot, cardIdx, rerollsLeft) {
   setAnnouncer(`${bot.name} sperrt Würfel (rot) und würfelt nach (${rerollsLeft} übrig)...`);
 
   setTimeout(() => {
+    playSoundEffect('dice');
     animateDice();
     for (let i = 0; i < 3; i++) {
       if (!locked[i]) dice[i] = Math.floor(Math.random() * 6) + 1;
@@ -1762,7 +1811,7 @@ function hideBotTargetCard() {
   if (box) box.classList.remove('visible');
 }
 
-// VETO FUNKTION: JETZT MIT SOFORTIGER SIEG-PRÜFUNG!
+// VETO FUNKTION: FEHLERFREI, ENTJAMMT & SOFORTIGER SIEG-CHECK!
 function triggerPlayerVeto() {
   if (botTurnTimeout) clearTimeout(botTurnTimeout);
   if (vetoTimerInterval) clearInterval(vetoTimerInterval);
@@ -1791,7 +1840,7 @@ function triggerPlayerVeto() {
     discardTop = card;
     canTakeover = false;
 
-    // SOFORTIGER CHECK: WAR DAS DIE LETZTE KARTE?
+    // 1. PRÜFE SOFORT AUF SIEG NACH VETO!
     if (checkGameVictory()) {
       updateUI();
       return;
@@ -1808,10 +1857,17 @@ function triggerPlayerVeto() {
       activeChosenColor = null;
       setAnnouncer(`⚔️ VETO ERFOLGREICH! Du legst ${card.name} ab!`);
       updateUI();
+      
+      // 2. ENTSCHEIDENDER FIX GEGEN DEN FREEZE:
+      // Schalte den aktiven Spieler SOFORT auf DICH (0) um!
+      currentPlayerIdx = 0;
       setTimeout(() => {
         resetTurn();
-        setAnnouncer('Dein Zug nach geglücktem Veto!');
-      }, 1800);
+        setAnnouncer('Veto geglückt! Dein Zug: Wirf die Schicksalsknochen!');
+        const rBtn = document.getElementById('btn-roll');
+        rBtn.disabled = false;
+        rBtn.classList.add('pulse');
+      }, 1500);
     }
   }
 }
@@ -1826,6 +1882,7 @@ function clearVetoCardHighlight() {
 }
 
 function showVictoryScreen(msg) {
+  playSoundEffect('fanfare');
   const modal = document.getElementById('victory-modal');
   const desc = document.getElementById('victory-desc');
   if (desc) desc.innerText = msg;
@@ -1946,7 +2003,7 @@ function renderDice() {
 }
 
 function updateUI() {
-  // BOTS BÜHNE: AVATARE + ECHTE GROSSE KARTEN-FÄCHER (100x145px!)
+  // BOTS BÜHNE: AVATARE + ECHTE RIESIGE KARTEN-FÄCHER (120x175px!)
   const stageEl = document.getElementById('bots-stage-area');
   if (stageEl) {
     stageEl.innerHTML = '';
@@ -1959,8 +2016,8 @@ function updateUI() {
       bDiv.innerHTML = `
         <div class="bot-profile-info">
           <div class="bot-profile-avatar" style="background-image:url('${getCardImgPath(b.profile.page)}')"></div>
-          <div style="font-size: 0.76rem; font-weight: 800; color: var(--gold-bright); margin-top: 3px;">${b.name}</div>
-          <div style="font-size: 0.62rem; color: #d5be9b;">${b.hand.length} KARTEN</div>
+          <div style="font-size: 0.8rem; font-weight: 900; color: var(--gold-bright); margin-top: 3px;">${b.name}</div>
+          <div style="font-size: 0.65rem; color: #d5be9b;">${b.hand.length} KARTEN</div>
         </div>
         <div class="bot-cards-fan">
           ${Array(b.hand.length).fill('<div class="bot-card-large"></div>').join('')}
@@ -2042,6 +2099,7 @@ function showNoticeToast(msg) {
 }
 
 function triggerAveCaesarCelebration() {
+  playSoundEffect('fanfare');
   const banner = document.getElementById('caesar-flash-banner');
   if (banner) {
     banner.style.display = 'block';
@@ -2052,7 +2110,10 @@ function triggerAveCaesarCelebration() {
 function openRules() { document.getElementById('rules-modal').style.display = 'flex'; }
 function closeRules() { document.getElementById('rules-modal').style.display = 'none'; }
 
-window.onload = notifyYTFirstFrame;
+window.onload = () => {
+  notifyYTFirstFrame();
+  updateAudioUI();
+};
 </script>
 </body>
 </html>
