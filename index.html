@@ -115,7 +115,7 @@
   .top-bar {
     position: absolute;
     top: 0; left: 0; width: 100%;
-    height: 38px;
+    height: 36px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -146,44 +146,69 @@
     cursor: pointer;
   }
 
-  /* BOTS BÜHNE IN DER TOP-BAR */
-  .bots-stage { display: flex; align-items: center; gap: 8px; }
+  /* =========================================================
+     BOTS BÜHNE (OBEN IN DER ARENA)
+     ========================================================= */
+  .bots-stage {
+    position: absolute;
+    top: 40px; left: 0; width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    z-index: 25;
+  }
 
   .bot-card-group {
     display: flex;
     align-items: center;
     background: rgba(25, 9, 12, 0.9);
     border: 1.5px solid var(--gold);
-    border-radius: 6px;
-    padding: 2px 8px;
-    box-shadow: 0 2px 8px var(--shadow);
+    border-radius: 8px;
+    padding: 3px 8px;
+    box-shadow: 0 4px 12px var(--shadow);
+    transition: all 0.2s;
   }
 
   .bot-card-group.active-turn {
     border-color: var(--gold-bright);
-    box-shadow: 0 0 12px var(--gold-bright);
+    box-shadow: 0 0 15px var(--gold-bright);
+    transform: scale(1.04);
+  }
+
+  .bot-profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 6px;
   }
 
   .bot-profile-avatar {
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     border: 1.5px solid var(--gold-bright);
     background-size: cover;
     background-position: center top;
-    margin-right: 6px;
   }
 
-  .bot-info-text {
-    font-size: 0.7rem;
-    font-weight: 800;
-    color: var(--gold-bright);
-    white-space: nowrap;
+  .bot-cards-fan { display: flex; align-items: center; }
+
+  .bot-card-large {
+    width: 32px;
+    height: 46px;
+    border-radius: 4px;
+    border: 1px solid var(--gold);
+    background: url('card_back.jpg') center/cover;
+    margin-left: -18px;
+    box-shadow: -2px 2px 6px var(--shadow);
   }
+
+  .bot-card-large:first-child { margin-left: 0; }
 
   .speech-bubble {
     position: absolute;
-    top: 48px;
+    top: 95px;
     left: 50%;
     transform: translateX(-50%);
     background: rgba(247, 235, 212, 0.98);
@@ -202,14 +227,14 @@
   /* STATUS ANNOUNCER TICKER */
   .status-announcer {
     position: absolute;
-    top: 42px;
+    top: 96px;
     left: 50%;
     transform: translateX(-50%);
     background: rgba(18, 6, 8, 0.95);
     border: 1.5px solid var(--gold);
-    padding: 4px 20px;
+    padding: 3px 18px;
     border-radius: 16px;
-    font-size: 0.82rem;
+    font-size: 0.78rem;
     font-weight: 800;
     color: var(--gold-bright);
     white-space: nowrap;
@@ -218,37 +243,37 @@
   }
 
   /* =========================================================
-     ARENA HAUPTFELD (LINKS WÜRFEL, RECHTS STAPEL)
+     ARENA HAUPTFELD (LINKS WÜRFEL, MITTE ZIEL, RECHTS STAPEL)
      ========================================================= */
   .dice-arena {
     position: absolute;
     left: 16px;
-    top: 46%;
+    top: 55%;
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 6px;
+    gap: 5px;
     background: radial-gradient(circle, rgba(40, 14, 18, 0.94) 0%, rgba(15, 5, 7, 0.98) 100%);
     border: 2.5px solid var(--gold);
     border-radius: 12px;
-    padding: 8px 12px;
+    padding: 6px 10px;
     box-shadow: 0 0 25px rgba(0,0,0,0.95);
     z-index: 30;
-    width: 155px;
+    width: 145px;
   }
 
-  .dice-row { display: flex; gap: 8px; }
+  .dice-row { display: flex; gap: 6px; }
 
   .dice-3d {
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
     background: radial-gradient(circle, #fffef9 25%, #d5be9b 100%);
-    border: 2.5px solid #5a3d16;
-    border-radius: 10px;
+    border: 2px solid #5a3d16;
+    border-radius: 8px;
     display: grid;
     grid-template: repeat(3, 1fr) / repeat(3, 1fr);
-    padding: 4px;
+    padding: 3px;
     cursor: pointer;
     box-shadow: 2px 4px 10px rgba(0,0,0,0.85);
     transition: transform 0.2s, box-shadow 0.2s;
@@ -258,7 +283,7 @@
   .dice-3d.locked {
     border-color: #ff3333;
     background: radial-gradient(circle, #ffdede 25%, #c17575 100%);
-    transform: translateY(-5px);
+    transform: translateY(-4px);
     box-shadow: 0 0 16px #ff2222;
   }
 
@@ -269,8 +294,8 @@
   }
 
   .pip {
-    width: 8px;
-    height: 8px;
+    width: 7px;
+    height: 7px;
     background: radial-gradient(circle, #2b1104 60%, #000 100%);
     border-radius: 50%;
     align-self: center;
@@ -280,7 +305,7 @@
   .dice-btn-row {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 3px;
     width: 100%;
     margin-top: 2px;
   }
@@ -289,9 +314,9 @@
     background: linear-gradient(180deg, #dfb15b 0%, #875c1a 100%);
     color: #1a0700;
     font-family: 'Cinzel', serif;
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     font-weight: 900;
-    padding: 6px 10px;
+    padding: 5px 8px;
     border: 1.5px solid #ffe39b;
     border-radius: 5px;
     cursor: pointer;
@@ -326,9 +351,9 @@
     background: linear-gradient(180deg, #ff2222 0%, #880000 100%);
     color: #fff;
     font-family: 'Cinzel Decorative', serif;
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     font-weight: 900;
-    padding: 5px 10px;
+    padding: 4px 8px;
     border: 1.5px solid #ffaaaa;
     border-radius: 5px;
     box-shadow: 0 0 18px #ff2222;
@@ -337,22 +362,48 @@
     text-align: center;
   }
 
+  /* BOT AUFGEDECKTE ZIELKARTE IM ZENTRUM */
+  .bot-active-target-box {
+    display: none;
+    position: absolute;
+    top: 52%; left: 50%;
+    transform: translate(-50%, -50%);
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    z-index: 35;
+    animation: targetPop 0.25s ease-out;
+  }
+
+  @keyframes targetPop {
+    0% { transform: translate(-50%, -50%) scale(0.6); opacity: 0; }
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  }
+
+  .bot-active-card {
+    width: 82px;
+    height: 116px;
+    border-radius: 6px;
+    border: 2.5px solid #ff3333;
+    box-shadow: 0 0 25px rgba(255, 51, 51, 0.9), 0 0 40px #000;
+  }
+
   /* STAPEL (RECHTS) */
   .table-decks {
     position: absolute;
     right: 16px;
-    top: 46%;
+    top: 55%;
     transform: translateY(-50%);
     display: flex;
-    gap: 12px;
+    gap: 10px;
     align-items: center;
     z-index: 30;
   }
 
   .deck-pile {
-    width: 92px;
-    height: 132px;
-    border-radius: 8px;
+    width: 82px;
+    height: 116px;
+    border-radius: 6px;
     position: relative;
     box-shadow: 0 4px 15px var(--shadow);
   }
@@ -369,7 +420,7 @@
   }
 
   .deck-pile.discard img {
-    width: 100%; height: 100%; border-radius: 6px; display: block;
+    width: 100%; height: 100%; border-radius: 5px; display: block;
   }
 
   #active-color-indicator {
@@ -377,12 +428,12 @@
     position: absolute;
     top: -10px; left: 50%;
     transform: translateX(-50%);
-    padding: 2px 8px;
+    padding: 1px 8px;
     border-radius: 8px;
     font-size: 0.65rem;
     font-weight: 900;
     color: #fff;
-    border: 1.5px solid #fff;
+    border: 1px solid #fff;
     z-index: 50;
     white-space: nowrap;
   }
@@ -391,31 +442,12 @@
   .active-color-blau { background: #003388; box-shadow: 0 0 10px #2266ff; }
   .active-color-gelb { background: #886600; box-shadow: 0 0 10px #ffbb00; }
 
-  .bot-active-target-box {
-    display: none;
-    position: absolute;
-    top: 46%; left: 50%;
-    transform: translate(-50%, -50%);
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    z-index: 35;
-  }
-
-  .bot-active-card {
-    width: 88px;
-    height: 126px;
-    border-radius: 8px;
-    border: 2px solid #ff4444;
-    box-shadow: 0 0 20px rgba(255, 68, 68, 0.8);
-  }
-
   /* =========================================================
      GROSSE, LESBARE HANDKARTEN (UNTEN)
      ========================================================= */
   .player-hand-wrapper {
     position: absolute;
-    bottom: -8px; left: 50%;
+    bottom: -6px; left: 50%;
     transform: translateX(-50%);
     display: flex;
     flex-direction: column;
@@ -428,10 +460,10 @@
     background: radial-gradient(circle, rgba(45, 12, 16, 0.98) 0%, rgba(18, 5, 7, 0.98) 100%);
     border: 2px solid var(--gold-bright);
     border-radius: 10px;
-    padding: 6px 18px;
+    padding: 5px 16px;
     text-align: center;
     box-shadow: 0 0 30px var(--gold);
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     z-index: 500;
     animation: popUp 0.18s ease-out;
   }
@@ -441,31 +473,27 @@
     100% { transform: translateY(0) scale(1); opacity: 1; }
   }
 
-  .confirm-title { font-family: 'Cinzel Decorative', serif; font-size: 0.85rem; color: var(--gold-bright); }
-  .confirm-btn-group { display: flex; gap: 10px; justify-content: center; margin-top: 5px; }
+  .confirm-title { font-family: 'Cinzel Decorative', serif; font-size: 0.82rem; color: var(--gold-bright); }
+  .confirm-btn-group { display: flex; gap: 8px; justify-content: center; margin-top: 4px; }
 
   .btn-confirm-yes {
     background: linear-gradient(180deg, #2ecc71 0%, #1e8449 100%);
-    color: #fff; font-family: 'Cinzel', serif; font-weight: 900; font-size: 0.8rem; padding: 5px 14px;
+    color: #fff; font-family: 'Cinzel', serif; font-weight: 900; font-size: 0.78rem; padding: 4px 12px;
     border: 1.5px solid #a9dfbf; border-radius: 5px; cursor: pointer;
   }
 
   .btn-confirm-no {
     background: linear-gradient(180deg, #e74c3c 0%, #922b21 100%);
-    color: #fff; font-family: 'Cinzel', serif; font-weight: 900; font-size: 0.8rem; padding: 5px 14px;
+    color: #fff; font-family: 'Cinzel', serif; font-weight: 900; font-size: 0.78rem; padding: 4px 12px;
     border: 1.5px solid #f5b7b1; border-radius: 5px; cursor: pointer;
   }
 
-  .player-hand-fan {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-  }
+  .player-hand-fan { display: flex; justify-content: center; align-items: flex-end; }
 
-  /* HANDKARTEN: 108px x 152px AUF HANDY (SEHR GUT LESBAR!) */
+  /* HANDKARTEN: 105px x 148px (HERVORRAGEND LESBAR!) */
   .hand-card {
-    width: 108px;
-    height: 152px;
+    width: 105px;
+    height: 148px;
     border-radius: 8px;
     margin-left: -32px;
     cursor: pointer;
@@ -478,18 +506,13 @@
   .hand-card:first-child { margin-left: 0; }
   .hand-card img { width: 100%; height: 100%; border-radius: 8px; border: 2px solid rgba(223, 177, 91, 0.5); display: block; }
 
-  /* KARTEN-STATUS: LEUCHTEN BEI PASSENDER FORMATION */
   .hand-card.valid-glow img {
     border-color: var(--gold-bright);
     box-shadow: 0 0 20px var(--gold-bright);
   }
 
-  .hand-card.dimmed {
-    opacity: 0.55;
-    filter: brightness(0.7);
-  }
+  .hand-card.dimmed { opacity: 0.55; filter: brightness(0.7); }
 
-  /* HOCHGEZOGENE KARTE */
   .hand-card.preview-elevated, .hand-card.locked-selected {
     transform: translateY(-40px) scale(1.12) !important;
     z-index: 300 !important;
@@ -501,17 +524,25 @@
   }
 
   /* =========================================================
-     DESKTOP MONITOR VERGRÖSSERUNG (GROSSES DISPLAY)
+     DESKTOP MONITOR VERGRÖSSERUNG
      ========================================================= */
   @media (min-width: 1024px) and (min-height: 650px) {
-    .dice-arena { width: 220px; padding: 14px 20px; left: 40px; }
-    .dice-3d { width: 56px; height: 56px; padding: 5px; }
+    .bots-stage { top: 50px; gap: 25px; }
+    .bot-card-group { padding: 4px 10px; }
+    .bot-profile-avatar { width: 38px; height: 38px; }
+    .bot-card-large { width: 44px; height: 62px; margin-left: -22px; }
+
+    .status-announcer { top: 120px; font-size: 0.95rem; padding: 5px 24px; }
+    .speech-bubble { top: 120px; font-size: 0.9rem; }
+
+    .dice-arena { width: 200px; padding: 12px 18px; left: 40px; }
+    .dice-3d { width: 54px; height: 54px; padding: 4px; }
     .pip { width: 10px; height: 10px; }
-    .action-btn { font-size: 0.85rem; padding: 8px 14px; }
+    .action-btn { font-size: 0.85rem; padding: 7px 12px; }
     
-    .table-decks { right: 40px; gap: 20px; }
-    .deck-pile { width: 125px; height: 180px; }
-    .bot-active-card { width: 125px; height: 180px; }
+    .table-decks { right: 40px; gap: 18px; }
+    .deck-pile { width: 120px; height: 170px; }
+    .bot-active-card { width: 120px; height: 170px; }
 
     .hand-card {
       width: 155px;
@@ -589,7 +620,7 @@
 
   #notice-toast {
     position: fixed;
-    bottom: 180px; left: 50%;
+    bottom: 175px; left: 50%;
     transform: translateX(-50%);
     background: rgba(100, 10, 20, 0.96);
     color: #fff; border: 2px solid var(--gold);
@@ -694,9 +725,11 @@
 <!-- TOP BAR -->
 <div class="top-bar">
   <div class="game-title">AVE CAESAR</div>
-  <div class="bots-stage" id="bots-stage-area"></div>
   <button class="rules-btn" onclick="openRules()">📜 REGELN</button>
 </div>
+
+<!-- BOTS BÜHNE OBEN IM SAND (MIT KARTEN-FÄCHERN!) -->
+<div class="bots-stage" id="bots-stage-area"></div>
 
 <!-- STATUS ANNOUNCER -->
 <div class="status-announcer" id="status-text">DEIN ZUG: WIRF DIE SCHICKSALSKNOCHEN!</div>
@@ -721,16 +754,16 @@
   <div id="rolls-info" style="font-size: 0.62rem; color: #d5be9b;">Würfe: -</div>
 </div>
 
-<!-- BOT AUFGEDECKTE ZIELKARTE IN DER ARENA -->
+<!-- BOT AUFGEDECKTE ZIELKARTE IN DER ARENA-MITTE -->
 <div class="bot-active-target-box" id="bot-target-box">
-  <div style="font-size: 0.65rem; font-weight: 800; color: #ff5555;">GEGNER-ZIEL</div>
+  <div style="font-size: 0.65rem; font-weight: 900; color: #ff4444; letter-spacing: 1px; text-shadow: 0 0 8px #000;">GEGNER-ZIEL</div>
   <img class="bot-active-card" id="bot-target-img" src="card_back.jpg">
 </div>
 
 <!-- STAPEL (RECHTS) -->
 <div class="table-decks">
   <div class="deck-pile draw" id="draw-pile" onclick="handleDrawClick()" title="Karte ziehen">
-    <div style="position: absolute; bottom: 6px; width: 100%; text-align: center; font-size: 0.72rem; font-weight: 900; color: var(--gold-bright);">
+    <div style="position: absolute; bottom: 6px; width: 100%; text-align: center; font-size: 0.7rem; font-weight: 900; color: var(--gold-bright);">
       STAPEL (<span id="draw-count">30</span>)
     </div>
   </div>
@@ -742,7 +775,6 @@
 
 <!-- SPIELER HAND (UNTEN) -->
 <div class="player-hand-wrapper">
-  <!-- SCHWEBENDER BESTÄTIGUNGS-DIALOG -->
   <div id="confirm-dialogue-box">
     <div class="confirm-title">„Diese Karte, sicher Gladiator?“</div>
     <div id="confirm-card-desc" style="font-size: 0.72rem; color: #f7ebd4;">-</div>
@@ -979,7 +1011,7 @@ function resetTurn() {
   document.getElementById('btn-play').classList.remove('pulse');
   document.getElementById('rolls-info').innerText = 'Würfe: Noch nicht gewürfelt';
   document.getElementById('veto-btn').style.display = 'none';
-  document.getElementById('bot-target-box').style.display = 'none';
+  hideBotTargetCard();
 
   if (vetoTimerInterval) clearInterval(vetoTimerInterval);
   renderDice();
@@ -1162,7 +1194,6 @@ function playSelectedCard() {
   canTakeover = false;
   document.getElementById('btn-play').classList.remove('pulse');
 
-  // PRÜFUNG AUF PORCUS FURIOSUS SOFORT-EFFEKT
   if (card.form === FORMATIONS.PORCUS && card.effect) {
     executePorcusAction(card, players[0]);
     return;
@@ -1376,7 +1407,7 @@ function handleDrawClick() {
 }
 
 // ==========================================
-// BOTS STEUERUNG
+// BOTS STEUERUNG (ZIELKARTE SOFORT UMDREHEN!)
 // ==========================================
 function startBotTurn() {
   const bot = players[currentPlayerIdx];
@@ -1384,10 +1415,12 @@ function startBotTurn() {
   showBotBubble(bot.profile.quote);
 
   setTimeout(() => {
+    // 1. WURF DES BOTS
     animateDice();
     for (let i = 0; i < 3; i++) dice[i] = Math.floor(Math.random() * 6) + 1;
     renderDice();
 
+    // DRILLING IM 1. WURF
     if (dice[0] === dice[1] && dice[1] === dice[2]) {
       triggerAveCaesarCelebration();
       setAnnouncer(`AVE CAESAR! ${bot.name} hat einen Kaiser-Drilling gewürfelt!`);
@@ -1397,29 +1430,45 @@ function startBotTurn() {
         let bestIdx = 0, maxPts = -1;
         bot.hand.forEach((c, idx) => { if (c.points > maxPts) { maxPts = c.points; bestIdx = idx; } });
         const discarded = bot.hand.splice(bestIdx, 1)[0];
+        displayBotTargetCard(discarded);
         discardTop = discarded;
 
-        if (discarded.form === FORMATIONS.PORCUS) {
-          executePorcusAction(discarded, bot);
-          return;
-        }
-
-        handleBotColorChoice(bot, discarded);
-        canTakeover = false;
-        checkBotVictory(bot);
-        updateUI();
-        setTimeout(passTurnToNext, 1600);
+        setTimeout(() => {
+          hideBotTargetCard();
+          if (discarded.form === FORMATIONS.PORCUS) { executePorcusAction(discarded, bot); return; }
+          handleBotColorChoice(bot, discarded);
+          canTakeover = false;
+          checkBotVictory(bot);
+          updateUI();
+          setTimeout(passTurnToNext, 1600);
+        }, 1200);
       }, 1500);
       return;
     }
 
+    // BOT WÄHLT SEINE ZIELKARTE UND DREHT SIE SOFORT UM!
+    let targetCardIdx = chooseBestCardForBot(bot, dice);
+    if (targetCardIdx === -1) {
+      if (deck.length > 0) bot.hand.push(deck.pop());
+      setAnnouncer(`${bot.name} kann nicht bedienen und zieht eine Karte.`);
+      canTakeover = true;
+      updateUI();
+      setTimeout(passTurnToNext, 1600);
+      return;
+    }
+
+    const targetCard = bot.hand[targetCardIdx];
+    displayBotTargetCard(targetCard);
+    setAnnouncer(`${bot.name} wählt: ${targetCard.name}!`);
+
+    // VETO PRÜFUNG DURCH DEN SPIELER
     const vetoCardIdx = players[0].hand.findIndex(c => canPlayOnDiscard(c) && checkFormation(dice, c));
     let vetoSeconds = 5;
 
     if (vetoCardIdx !== -1) {
       document.getElementById('veto-btn').style.display = 'block';
       document.getElementById('veto-timer').innerText = vetoSeconds;
-      setAnnouncer(`⚠️ ${bot.name} hat gewürfelt! VETO MÖGLICH!`);
+      setAnnouncer(`⚠️ ${bot.name} peilt ${targetCard.name} an! VETO MÖGLICH!`);
       highlightVetoCard(vetoCardIdx);
 
       vetoTimerInterval = setInterval(() => {
@@ -1433,41 +1482,31 @@ function startBotTurn() {
       }, 1000);
 
       botTurnTimeout = setTimeout(() => {
-        proceedBotTurnExecution(bot);
+        proceedBotTurnExecution(bot, targetCardIdx);
       }, 5200);
 
     } else {
       setTimeout(() => {
-        proceedBotTurnExecution(bot);
-      }, 1000);
+        proceedBotTurnExecution(bot, targetCardIdx);
+      }, 1400);
     }
 
   }, 1000);
 }
 
-function proceedBotTurnExecution(bot) {
+function proceedBotTurnExecution(bot, targetCardIdx) {
   document.getElementById('veto-btn').style.display = 'none';
   if (vetoTimerInterval) clearInterval(vetoTimerInterval);
   clearVetoCardHighlight();
 
-  let targetCardIdx = chooseBestCardForBot(bot, dice);
-  if (targetCardIdx === -1) {
-    if (deck.length > 0) bot.hand.push(deck.pop());
-    setAnnouncer(`${bot.name} kann nicht bedienen und zieht eine Karte.`);
-    canTakeover = true;
-    updateUI();
-    setTimeout(passTurnToNext, 1600);
-    return;
-  }
-
   const card = bot.hand[targetCardIdx];
-  displayBotTargetCard(card);
-  setAnnouncer(`${bot.name} peilt an: ${card.name}!`);
 
+  // SOFORT GETROFFEN
   if (checkFormation(dice, card)) {
     setTimeout(() => {
       bot.hand.splice(targetCardIdx, 1);
       discardTop = card;
+      hideBotTargetCard();
 
       if (card.form === FORMATIONS.PORCUS) {
         executePorcusAction(card, bot);
@@ -1484,6 +1523,7 @@ function proceedBotTurnExecution(bot) {
     return;
   }
 
+  // NACHWÜRFELN
   let botRerolls = card.rolls;
   executeBotRerollStep(bot, targetCardIdx, botRerolls);
 }
@@ -1577,6 +1617,7 @@ function executeBotRerollStep(bot, cardIdx, rerollsLeft) {
       setTimeout(() => {
         bot.hand.splice(cardIdx, 1);
         discardTop = card;
+        hideBotTargetCard();
         if (card.form === FORMATIONS.PORCUS) { executePorcusAction(card, bot); return; }
         handleBotColorChoice(bot, card);
         canTakeover = false;
@@ -1591,6 +1632,7 @@ function executeBotRerollStep(bot, cardIdx, rerollsLeft) {
       setTimeout(() => {
         bot.hand.splice(cardIdx, 1);
         discardTop = card;
+        hideBotTargetCard();
         if (card.form === FORMATIONS.PORCUS) { executePorcusAction(card, bot); return; }
         handleBotColorChoice(bot, card);
         canTakeover = false;
@@ -1604,6 +1646,7 @@ function executeBotRerollStep(bot, cardIdx, rerollsLeft) {
     } else {
       setTimeout(() => {
         setAnnouncer(`${bot.name} verfehlt die Formation!`);
+        hideBotTargetCard();
         canTakeover = true;
         updateUI();
         setTimeout(passTurnToNext, 1600);
@@ -1630,8 +1673,15 @@ function handleBotColorChoice(bot, card) {
 function displayBotTargetCard(card) {
   const box = document.getElementById('bot-target-box');
   const img = document.getElementById('bot-target-img');
-  img.src = getCardImgPath(card.page);
-  box.style.display = 'flex';
+  if (box && img && card) {
+    img.src = getCardImgPath(card.page);
+    box.style.display = 'flex';
+  }
+}
+
+function hideBotTargetCard() {
+  const box = document.getElementById('bot-target-box');
+  if (box) box.style.display = 'none';
 }
 
 function triggerPlayerVeto() {
@@ -1639,6 +1689,7 @@ function triggerPlayerVeto() {
   if (vetoTimerInterval) clearInterval(vetoTimerInterval);
   document.getElementById('veto-btn').style.display = 'none';
   clearVetoCardHighlight();
+  hideBotTargetCard();
 
   const bot = players[currentPlayerIdx];
   const playerCardIdx = players[0].hand.findIndex(c => canPlayOnDiscard(c) && checkFormation(dice, c));
@@ -1815,7 +1866,7 @@ function renderDice() {
 }
 
 function updateUI() {
-  // BOTS BÜHNE
+  // BOTS BÜHNE: AVATARE + ECHTE KARTEN-FÄCHER FÜR ALLE SPIELER-VARIANTEN!
   const stageEl = document.getElementById('bots-stage-area');
   if (stageEl) {
     stageEl.innerHTML = '';
@@ -1826,8 +1877,14 @@ function updateUI() {
       const bDiv = document.createElement('div');
       bDiv.className = `bot-card-group ${isActive}`;
       bDiv.innerHTML = `
-        <div class="bot-profile-avatar" style="background-image:url('${getCardImgPath(b.profile.page)}')"></div>
-        <div class="bot-info-text">${b.name} (${b.hand.length})</div>
+        <div class="bot-profile-info">
+          <div class="bot-profile-avatar" style="background-image:url('${getCardImgPath(b.profile.page)}')"></div>
+          <div style="font-size: 0.68rem; font-weight: 800; color: var(--gold-bright); margin-top: 1px;">${b.name}</div>
+          <div style="font-size: 0.55rem; color: #d5be9b;">${b.hand.length} KARTEN</div>
+        </div>
+        <div class="bot-cards-fan">
+          ${Array(b.hand.length).fill('<div class="bot-card-large"></div>').join('')}
+        </div>
       `;
       stageEl.appendChild(bDiv);
     }
