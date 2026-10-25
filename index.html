@@ -182,7 +182,7 @@
   .top-bar-btn.muted { background: linear-gradient(180deg, #666 0%, #333 100%); color: #bbb; border-color: #888; }
 
   /* =========================================================
-     BOTS BÜHNE: AVATARE + GROSSE KARTENFÄCHER OBEN
+     BOTS BÜHNE OBEN IM SAND (GROSSE KARTEN & FREIER RAUM!)
      ========================================================= */
   .bots-stage {
     position: absolute;
@@ -216,17 +216,18 @@
     flex-direction: column;
     align-items: center;
     margin-right: 18px;
-    min-width: 70px;
+    min-width: 65px;
   }
 
   .avatar-frame {
-    width: 52px;
-    height: 52px;
+    width: 54px;
+    height: 54px;
     border-radius: 50%;
     border: 2.5px solid var(--gold-bright);
     overflow: hidden;
     box-shadow: 0 0 14px rgba(0,0,0,0.85);
     background: #110507;
+    display: block;
   }
 
   .avatar-frame img {
@@ -239,13 +240,13 @@
   .bot-cards-fan { display: flex; align-items: center; }
 
   .bot-card-large {
-    width: 105px;
-    height: 155px;
-    border-radius: 10px;
+    width: 100px;
+    height: 145px;
+    border-radius: 8px;
     border: 2px solid var(--gold);
     background: url('card_back.jpg') center/cover;
-    margin-left: -52px;
-    box-shadow: -5px 5px 14px var(--shadow);
+    margin-left: -50px;
+    box-shadow: -4px 4px 12px var(--shadow);
     transition: transform 0.2s;
   }
 
@@ -253,7 +254,7 @@
 
   .speech-bubble {
     position: absolute;
-    top: 215px;
+    top: 200px;
     left: 50%;
     transform: translateX(-50%);
     background: rgba(247, 235, 212, 0.98);
@@ -269,31 +270,13 @@
     white-space: nowrap;
   }
 
-  /* STATUS ANNOUNCER TICKER (TIEFER GELEGT BEI 225px: FREIE SICHT AUF DIE KARTEN!) */
-  .status-announcer {
-    position: absolute;
-    top: 225px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(18, 6, 8, 0.96);
-    border: 2.5px solid var(--gold);
-    padding: 7px 32px;
-    border-radius: 22px;
-    font-size: 1rem;
-    font-weight: 900;
-    color: var(--gold-bright);
-    white-space: nowrap;
-    box-shadow: 0 0 25px rgba(0,0,0,0.95);
-    z-index: 25;
-    letter-spacing: 0.5px;
-  }
-
   /* =========================================================
-     ARENA SPIELTISCH (HÖHER GESETZT BEI 38% -> KEINE KOLLISION!)
+     ARENA SPIELTISCH (HÖHER GELEGT BEI 36% -> KEINE KOLLISION!)
+     Hier sitzt jetzt auch das Status-Banner sicher über den Würfeln!
      ========================================================= */
   .arena-center {
     position: absolute;
-    top: 38%; left: 50%;
+    top: 36%; left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
     justify-content: center;
@@ -301,6 +284,25 @@
     gap: 35px;
     z-index: 15;
     width: auto;
+  }
+
+  /* STATUS ANNOUNCER: FEST ÜBER DEM SPIELTISCH IM FREIEN SAND! */
+  .status-announcer {
+    position: absolute;
+    top: -55px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(18, 6, 8, 0.96);
+    border: 2.5px solid var(--gold);
+    padding: 8px 34px;
+    border-radius: 22px;
+    font-size: 1.05rem;
+    font-weight: 900;
+    color: var(--gold-bright);
+    white-space: nowrap;
+    box-shadow: 0 0 25px rgba(0,0,0,0.95);
+    z-index: 25;
+    letter-spacing: 0.5px;
   }
 
   /* WÜRFEL BEREICH */
@@ -448,8 +450,8 @@
   }
 
   .bot-active-card {
-    width: 135px;
-    height: 195px;
+    width: 130px;
+    height: 185px;
     border-radius: 10px;
     border: 3.5px solid #ff3333;
     box-shadow: 0 0 35px #ff2222, 0 0 60px #000;
@@ -470,8 +472,8 @@
   }
 
   .deck-pile {
-    width: 135px;
-    height: 195px;
+    width: 130px;
+    height: 185px;
     border-radius: 10px;
     position: relative;
     box-shadow: 0 6px 20px var(--shadow);
@@ -512,7 +514,32 @@
   .active-color-gelb { background: #886600; box-shadow: 0 0 12px #ffbb00; }
 
   /* =========================================================
-     RIESIGE HANDKARTEN & SPIELER-AVATAR LINKS UNTEN
+     SPIELER-AVATAR LINKS UNTEN (FEST IM SAND!)
+     ========================================================= */
+  .player-avatar-dock {
+    position: absolute;
+    bottom: 25px;
+    left: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: radial-gradient(circle, rgba(45, 14, 20, 0.96) 0%, rgba(15, 5, 7, 0.98) 100%);
+    border: 2px solid var(--gold);
+    border-radius: 14px;
+    padding: 6px 12px;
+    box-shadow: 0 6px 18px var(--shadow);
+    z-index: 45;
+  }
+
+  .player-name-tag {
+    font-size: 0.78rem;
+    font-weight: 900;
+    color: var(--gold-bright);
+    margin-top: 3px;
+  }
+
+  /* =========================================================
+     HANDKARTEN UNTEN
      ========================================================= */
   .player-hand-wrapper {
     position: absolute;
@@ -522,32 +549,6 @@
     flex-direction: column;
     align-items: center;
     z-index: 40;
-  }
-
-  .player-station {
-    display: flex;
-    align-items: flex-end;
-    gap: 16px;
-  }
-
-  /* SPIELER AVATAR STATION (DAUERHAFT SICHTBAR!) */
-  .player-profile-badge {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: radial-gradient(circle, rgba(45, 14, 20, 0.96) 0%, rgba(15, 5, 7, 0.98) 100%);
-    border: 2px solid var(--gold);
-    border-radius: 14px;
-    padding: 6px 12px;
-    box-shadow: 0 6px 18px var(--shadow);
-    margin-bottom: 25px;
-  }
-
-  .player-name-tag {
-    font-size: 0.78rem;
-    font-weight: 900;
-    color: var(--gold-bright);
-    margin-top: 3px;
   }
 
   #confirm-dialogue-box {
@@ -585,12 +586,12 @@
 
   .player-hand-fan { display: flex; justify-content: center; align-items: flex-end; }
 
-  /* HANDKARTEN: 185px x 265px */
+  /* HANDKARTEN: 175px x 250px (MAJESTÄTISCH, ABER PERFEKT IM VERTIKALEN BUDGET!) */
   .hand-card {
-    width: 185px;
-    height: 265px;
+    width: 175px;
+    height: 250px;
     border-radius: 12px;
-    margin-left: -50px;
+    margin-left: -48px;
     cursor: pointer;
     transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.22s;
     transform-origin: bottom center;
@@ -609,7 +610,7 @@
   }
 
   .hand-card.playable-glow {
-    transform: translateY(-32px) !important;
+    transform: translateY(-28px) !important;
     z-index: 150;
   }
 
@@ -626,7 +627,7 @@
 
   /* MODERATER HUB: KEINE BERÜHRUNG MIT DEM WÜRFELKASTEN MEHR! */
   .hand-card.preview-elevated, .hand-card.locked-selected {
-    transform: translateY(-42px) scale(1.06) !important;
+    transform: translateY(-38px) scale(1.05) !important;
     z-index: 300 !important;
   }
 
@@ -638,40 +639,6 @@
   .hand-card.veto-glow img {
     border: 3.5px solid #ff2222 !important;
     box-shadow: 0 0 40px #ff2222 !important;
-  }
-
-  /* =========================================================
-     MOBILE LANDSCAPE ANPASSUNG
-     ========================================================= */
-  @media (max-height: 580px), (max-width: 900px) and (orientation: landscape) {
-    .bots-stage { top: 38px; gap: 15px; }
-    .bot-card-group { padding: 4px 10px; }
-    .bot-profile-info { margin-right: 10px; min-width: 50px; }
-    .avatar-frame { width: 36px; height: 36px; }
-    .bot-card-large { width: 70px; height: 102px; margin-left: -35px; }
-
-    .status-announcer { top: 150px; font-size: 0.78rem; padding: 4px 18px; }
-    .speech-bubble { top: 150px; font-size: 0.78rem; }
-
-    .arena-center { top: 44%; gap: 14px; }
-    .dice-arena { width: 135px; padding: 6px 10px; gap: 4px; }
-    .dice-3d { width: 38px; height: 38px; padding: 3px; }
-    .pip { width: 7px; height: 7px; }
-    .action-btn { font-size: 0.7rem; padding: 4px 8px; }
-    
-    .bot-active-card { width: 85px; height: 120px; }
-    .deck-pile { width: 85px; height: 120px; }
-
-    .player-hand-wrapper { bottom: -8px; }
-    .player-profile-badge { padding: 3px 6px; margin-bottom: 12px; }
-    .player-profile-badge .avatar-frame { width: 34px; height: 34px; }
-    .hand-card { width: 110px; height: 155px; margin-left: -35px; }
-    .hand-card.playable-glow { transform: translateY(-20px) !important; }
-    .hand-card.preview-elevated, .hand-card.locked-selected { transform: translateY(-34px) scale(1.06) !important; }
-
-    #confirm-dialogue-box { padding: 4px 14px; margin-bottom: 4px; }
-    .confirm-title { font-size: 0.75rem; }
-    .btn-confirm-yes, .btn-confirm-no { font-size: 0.75rem; padding: 4px 10px; }
   }
 
   /* MODALS */
@@ -838,11 +805,11 @@
 <!-- BOTS BÜHNE OBEN IM SAND -->
 <div class="bots-stage" id="bots-stage-area"></div>
 
-<!-- STATUS ANNOUNCER (TIEFER GESETZT BEI 225px: FREIE SICHT AUF DIE KARTEN!) -->
-<div class="status-announcer" id="status-text">DEIN ZUG: WIRF DIE SCHICKSALSKNOCHEN!</div>
-
-<!-- ARENA SPIELTISCH (HÖHER GESETZT BEI 38% -> KEINE KOLLISION MEHR MIT DER HAND!) -->
+<!-- ARENA SPIELTISCH (HÖHER GESETZT BEI 36% -> STATUS ANNOUNCER JETZT FEST IM FREIEN SAND!) -->
 <div class="arena-center">
+  <!-- STATUS ANNOUNCER: JETZT FEST ÜBER DEN WÜRFELN IM FREIEN RAUM! -->
+  <div class="status-announcer" id="status-text">DEIN ZUG: WIRF DIE SCHICKSALSKNOCHEN!</div>
+
   <!-- WÜRFEL BEREICH -->
   <div class="dice-arena">
     <div style="font-size: 0.62rem; color: var(--gold); letter-spacing: 1.5px;">WÜRFEL</div>
@@ -884,7 +851,15 @@
   </div>
 </div>
 
-<!-- SPIELER HAND & AVATAR UNTEN LINKS -->
+<!-- SPIELER-AVATAR (LINKS UNTEN FEST IM SAND VERANKERT!) -->
+<div class="player-avatar-dock">
+  <div class="avatar-frame">
+    <img src="avatar_1.jpg" onerror="this.onerror=null; this.src='cards/Ave Caesar Grafiken plus Cover_page-0001.jpg';">
+  </div>
+  <div class="player-name-tag">DU</div>
+</div>
+
+<!-- SPIELER HAND UNTEN -->
 <div class="player-hand-wrapper">
   <div id="confirm-dialogue-box">
     <div class="confirm-title">„Diese Karte, sicher Gladiator?“</div>
@@ -895,17 +870,7 @@
     </div>
   </div>
 
-  <div class="player-station">
-    <!-- DEIN SPIELER-AVATAR (AVATAR_1.JPG) MIT AUTOMATISCHEM FALLBACK -->
-    <div class="player-profile-badge">
-      <div class="avatar-frame">
-        <img src="avatar_1.jpg" onerror="this.onerror=null; this.src='cards/Ave Caesar Grafiken plus Cover_page-0001.jpg';">
-      </div>
-      <div class="player-name-tag">DU</div>
-    </div>
-
-    <div class="player-hand-fan" id="player-fan"></div>
-  </div>
+  <div class="player-hand-fan" id="player-fan"></div>
 </div>
 
 <!-- PAUSE MODAL -->
@@ -1176,7 +1141,7 @@ function shuffle(a) {
   return a;
 }
 
-// BOT PROFILES (NANO BANANA ARCHITEKTUR MIT SICHEREM BILD-FALLBACK)
+// BOT PROFILES (NANO BANANA ARCHITEKTUR MIT BILD-FALLBACK)
 const botProfiles = [
   { id: 2, name: 'MAXIMUS', avatar: 'avatar_2.jpg', page: 1, title: 'Der Schlächter', quote: '„Spüre den Sand, Feigling!“' },
   { id: 3, name: 'AURELIUS', avatar: 'avatar_3.jpg', page: 35, title: 'Der Zenturio', quote: '„Meine Legion kennt keine Gnade!“' },
@@ -1268,6 +1233,7 @@ function resetTurn() {
   renderDice();
 }
 
+// ZENTRALE SIEGPRÜFUNG
 function checkGameVictory() {
   if (players[0] && players[0].hand.length === 0) {
     playerVictories++;
