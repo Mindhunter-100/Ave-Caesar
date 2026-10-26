@@ -6,7 +6,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>AVE CAESAR - Arena der Gladiatoren</title>
+<title>AVE CAESAR - Arena of Gladiators</title>
 
 <!-- OFFIZIELLES YOUTUBE PLAYABLES SDK -->
 <script src="https://www.youtube.com/game_api/v1"></script>
@@ -114,7 +114,7 @@
     background: linear-gradient(180deg, #ffe08d 0%, #a87425 100%);
   }
 
-  /* TOP BAR */
+  /* TOP BAR MIT SPRACHE, AUDIO, PAUSE & SIEG-TRACKER */
   .top-bar {
     position: absolute;
     top: 0; left: 0; width: 100%;
@@ -165,8 +165,8 @@
     color: #1a0700;
     font-family: 'Cinzel', serif;
     font-weight: 900;
-    font-size: 0.78rem;
-    padding: 5px 12px;
+    font-size: 0.76rem;
+    padding: 4px 10px;
     border: 1.5px solid #ffe39b;
     border-radius: 6px;
     cursor: pointer;
@@ -175,11 +175,12 @@
     display: inline-flex !important;
     align-items: center;
     justify-content: center;
-    gap: 5px;
+    gap: 4px;
   }
 
   .top-bar-btn:hover { transform: scale(1.05); background: linear-gradient(180deg, #ffe08d 0%, #a87425 100%); }
   .top-bar-btn.muted { background: linear-gradient(180deg, #666 0%, #333 100%); color: #bbb; border-color: #888; }
+  .lang-btn { font-family: 'Cinzel', serif; font-size: 0.75rem; font-weight: 900; min-width: 60px; }
 
   /* BOTS BÜHNE */
   .bots-stage {
@@ -252,7 +253,7 @@
 
   .bot-card-large:first-child { margin-left: 0; }
 
-  /* SYMMETRISCHER ARENA-SPIELTISCH (DESKTOP) */
+  /* SYMMETRISCHER ARENA-SPIELTISCH (48% HÖHE) */
   .arena-center {
     position: absolute;
     top: 48%; left: 50%;
@@ -502,7 +503,7 @@
   .active-color-blau { background: #003388; box-shadow: 0 0 12px #2266ff; }
   .active-color-gelb { background: #886600; box-shadow: 0 0 12px #ffbb00; }
 
-  /* SPIELER-STATION UNTEN (DESKTOP) */
+  /* SPIELER-STATION UNTEN */
   .player-hand-wrapper {
     position: absolute;
     bottom: -15px; left: 50%;
@@ -600,7 +601,7 @@
 
   .player-hand-fan { display: flex; justify-content: center; align-items: flex-end; }
 
-  /* HANDKARTEN (DESKTOP) */
+  /* HANDKARTEN: 170px x 245px */
   .hand-card {
     width: 170px;
     height: 245px;
@@ -797,49 +798,36 @@
     border-radius: 50%; width: 26px; height: 26px; font-size: 0.8rem; font-weight: 900; cursor: pointer;
   }
 
-  /* ==========================================================================
-     SPEZIELLE SMARTPHONE-SKALIERUNG IM QUERFORMAT (MAX-HEIGHT <= 500px)
-     Greift NUR auf Mobilgeräten im Querformat! Lässt Desktop zu 100% unberührt!
-     ========================================================================== */
+  /* SMARTPHONE-SKALIERUNG */
   @media (max-height: 500px) and (orientation: landscape) {
     .top-bar { height: 32px; padding: 0 12px; }
     .game-title { font-size: 0.95rem; }
     .win-trophy-badge { font-size: 0.65rem; padding: 1px 6px; }
-    .top-bar-btn { font-size: 0.7rem; padding: 3px 8px; }
+    .top-bar-btn { font-size: 0.7rem; padding: 3px 6px; }
 
-    /* BOTS OBEN: SCHLANK & NICHT ERDRÜCKEND */
     .bots-stage { top: 34px; gap: 8px; }
     .bot-card-group { padding: 3px 8px; border-radius: 8px; }
     .bot-profile-info { margin-right: 6px; min-width: auto; }
     .avatar-frame { width: 34px; height: 34px; border-width: 1.5px; }
-    .bot-profile-info div:nth-child(2) { font-size: 0.65rem !important; }
-    .bot-profile-info div:nth-child(3) { font-size: 0.55rem !important; }
     .bot-card-large { width: 44px; height: 64px; margin-left: -22px; border-radius: 4px; }
 
-    /* SPIELTISCH MITTE: PERFEKT EINGEPASST */
     .arena-center { top: 48%; gap: 14px; width: auto; max-width: 96vw; }
     .status-announcer { top: -38px; font-size: 0.75rem; padding: 3px 18px; border-radius: 14px; }
 
-    /* WÜRFEL */
     .dice-arena { width: 140px; padding: 4px 8px; gap: 3px; border-radius: 8px; }
     .dice-row { gap: 4px; }
     .dice-3d { width: 34px; height: 34px; padding: 2px; border-radius: 6px; }
     .pip { width: 6px; height: 6px; }
     .action-btn { font-size: 0.68rem; padding: 3px 6px; border-radius: 4px; }
-    #rolls-info { font-size: 0.55rem !important; }
 
-    /* SHOWDOWN-SLOT */
     .center-duell-slot { width: 90px; height: 110px; }
     .spqr-eagle-icon { font-size: 1.8rem; }
     .spqr-seal-text { font-size: 0.55rem; }
     .bot-active-card { width: 72px; height: 104px; border-width: 2px; border-radius: 6px; }
 
-    /* STAPEL */
     .table-decks { width: 150px; gap: 8px; }
     .deck-pile { width: 70px; height: 100px; border-radius: 6px; }
-    .deck-pile.draw div { font-size: 0.6rem !important; bottom: 4px !important; }
 
-    /* HANDKARTEN UNTEN: AUF 118px SKALIERT (VERDECKEN NICHTS MEHR!) */
     .player-hand-wrapper { bottom: -10px; }
     .player-station { gap: 10px; }
     .player-hero-card { padding: 4px 6px; margin-bottom: 12px; border-radius: 10px; }
@@ -852,13 +840,9 @@
 
     #confirm-dialogue-box { bottom: 130px; padding: 4px 14px; border-radius: 8px; }
     .confirm-title { font-size: 0.72rem; }
-    #confirm-card-desc { font-size: 0.62rem !important; }
     .btn-confirm-yes, .btn-confirm-no { font-size: 0.68rem; padding: 3px 10px; border-radius: 4px; }
 
-    /* FARBWAHL MODAL */
     .color-picker-box { padding: 10px 18px; margin-bottom: 20px; }
-    .color-picker-box div:first-child { font-size: 0.95rem !important; }
-    .color-picker-box div:nth-child(2) { font-size: 0.68rem !important; }
     .color-btn { font-size: 0.72rem; padding: 5px 10px; }
   }
 </style>
@@ -868,19 +852,19 @@
 <!-- SMARTPHONE HOCHKANT WARNUNG -->
 <div id="rotate-device-overlay">
   <div style="font-size: 2.5rem; margin-bottom: 10px;">🔄</div>
-  <div style="font-family:'Cinzel Decorative'; font-size:1.4rem; color:var(--gold-bright); margin-bottom:8px;">DREHE DEIN GERÄT!</div>
-  <div style="font-size: 0.85rem; max-width: 280px;">Das Kolosseum entfaltet seine Pracht nur im Querformat, Gladiator!</div>
+  <div style="font-family:'Cinzel Decorative'; font-size:1.4rem; color:var(--gold-bright); margin-bottom:8px;" id="rotate-title">DREHE DEIN GERÄT!</div>
+  <div style="font-size: 0.85rem; max-width: 280px;" id="rotate-desc">Das Kolosseum entfaltet seine Pracht nur im Querformat, Gladiator!</div>
 </div>
 
 <!-- START BILDSCHIRM -->
 <div id="splash-screen">
   <div class="player-select-box">
-    <div style="font-family:'Cinzel Decorative'; font-size:1.3rem; color:var(--gold-bright); margin-bottom:4px;">WÄHLE DEINE ARENA</div>
-    <div style="font-size:0.75rem; color:#d1b48c;">WIE VIELE GLADIATOREN TRETEN AN?</div>
+    <div style="font-family:'Cinzel Decorative'; font-size:1.3rem; color:var(--gold-bright); margin-bottom:4px;" id="splash-title">WÄHLE DEINE ARENA</div>
+    <div style="font-size:0.75rem; color:#d1b48c;" id="splash-subtitle">WIE VIELE GLADIATOREN TRETEN AN?</div>
     <div class="player-btn-group">
-      <button class="player-choice-btn" onclick="startWithPlayers(2)">2 SPIELER<br><span style="font-size:0.6rem; font-family:'Cinzel';">VS. MAXIMUS</span></button>
-      <button class="player-choice-btn" onclick="startWithPlayers(3)">3 SPIELER<br><span style="font-size:0.6rem; font-family:'Cinzel';">+ AURELIUS</span></button>
-      <button class="player-choice-btn" onclick="startWithPlayers(4)">4 SPIELER<br><span style="font-size:0.6rem; font-family:'Cinzel';">+ CASSIUS</span></button>
+      <button class="player-choice-btn" id="btn-choice-2" onclick="startWithPlayers(2)">2 SPIELER<br><span style="font-size:0.6rem; font-family:'Cinzel';">VS. MAXIMUS</span></button>
+      <button class="player-choice-btn" id="btn-choice-3" onclick="startWithPlayers(3)">3 SPIELER<br><span style="font-size:0.6rem; font-family:'Cinzel';">+ AURELIUS</span></button>
+      <button class="player-choice-btn" id="btn-choice-4" onclick="startWithPlayers(4)">4 SPIELER<br><span style="font-size:0.6rem; font-family:'Cinzel';">+ CASSIUS</span></button>
     </div>
   </div>
 </div>
@@ -891,12 +875,13 @@
 <div class="top-bar">
   <div class="game-title-wrap">
     <div class="game-title">AVE CAESAR</div>
-    <div class="win-trophy-badge" id="win-badge" title="Deine Siege">🏆 0</div>
+    <div class="win-trophy-badge" id="win-badge" title="Trophies">🏆 0</div>
   </div>
   <div class="top-controls">
+    <button id="lang-toggle-btn" class="top-bar-btn lang-btn" onclick="toggleLanguage()" title="Language / Sprache">🇬🇧 EN</button>
     <button id="audio-toggle-btn" class="top-bar-btn" onclick="toggleAudio()" title="Ton an/aus">🔊</button>
-    <button id="pause-toggle-btn" class="top-bar-btn" onclick="togglePauseGame()" title="Spiel pausieren">⏸️ PAUSE</button>
-    <button class="top-bar-btn rules-btn" onclick="openRules()">📜 REGELN</button>
+    <button id="pause-toggle-btn" class="top-bar-btn" onclick="togglePauseGame()" title="Pause">⏸️ PAUSE</button>
+    <button class="top-bar-btn rules-btn" id="rules-top-btn" onclick="openRules()">📜 REGELN</button>
   </div>
 </div>
 
@@ -905,12 +890,11 @@
 
 <!-- ARENA SPIELTISCH -->
 <div class="arena-center">
-  <!-- STATUS ANNOUNCER -->
   <div class="status-announcer" id="status-text">DEIN ZUG: WIRF DIE SCHICKSALSKNOCHEN!</div>
 
   <!-- ZONE 1: WÜRFEL BEREICH -->
   <div class="dice-arena">
-    <div style="font-size: 0.62rem; color: var(--gold); letter-spacing: 1.5px;">WÜRFEL</div>
+    <div style="font-size: 0.62rem; color: var(--gold); letter-spacing: 1.5px;" id="dice-label">WÜRFEL</div>
     <div class="dice-row">
       <div class="dice-3d" id="die-0" onclick="toggleLock(0)"></div>
       <div class="dice-3d" id="die-1" onclick="toggleLock(1)"></div>
@@ -942,9 +926,9 @@
 
   <!-- ZONE 3: STAPEL -->
   <div class="table-decks">
-    <div class="deck-pile draw" id="draw-pile" onclick="handleDrawClick()" title="Karte ziehen">
+    <div class="deck-pile draw" id="draw-pile" onclick="handleDrawClick()" title="Deck">
       <div style="position: absolute; bottom: 8px; width: 100%; text-align: center; font-size: 0.75rem; font-weight: 900; color: var(--gold-bright);">
-        STAPEL (<span id="draw-count">30</span>)
+        <span id="draw-pile-title">STAPEL</span> (<span id="draw-count">30</span>)
       </div>
     </div>
     <div class="deck-pile discard" id="discard-pile">
@@ -958,20 +942,20 @@
 <div class="player-hand-wrapper">
   <!-- BESTÄTIGUNGSBOX -->
   <div id="confirm-dialogue-box">
-    <div class="confirm-title">„Diese Karte, sicher Gladiator?“</div>
+    <div class="confirm-title" id="confirm-title-text">„Diese Karte, sicher Gladiator?“</div>
     <div id="confirm-card-desc" style="font-size: 0.75rem; color: #f7ebd4;">-</div>
     <div class="confirm-btn-group">
-      <button class="btn-confirm-yes" onclick="confirmCardChoice()">✓ JA, KÄMPFEN!</button>
-      <button class="btn-confirm-no" onclick="cancelCardChoice()">✕ ANDERE</button>
+      <button class="btn-confirm-yes" id="btn-confirm-yes" onclick="confirmCardChoice()">✓ JA, KÄMPFEN!</button>
+      <button class="btn-confirm-no" id="btn-confirm-no" onclick="cancelCardChoice()">✕ ANDERE</button>
     </div>
   </div>
 
   <div class="player-station">
     <div class="player-hero-card">
       <div class="hero-avatar-frame">
-        <img id="player-avatar-img" src="avatar_1.jpg" alt="Du">
+        <img id="player-avatar-img" src="avatar_1.jpg" alt="Player">
       </div>
-      <div class="hero-name-plate">DU</div>
+      <div class="hero-name-plate" id="player-hero-name">DU</div>
     </div>
 
     <div class="player-hand-fan" id="player-fan"></div>
@@ -981,12 +965,12 @@
 <!-- FARBWAHL MODAL -->
 <div id="color-picker-modal">
   <div class="color-picker-box">
-    <div style="font-family:'Cinzel Decorative'; font-size:1.2rem; color:var(--gold-bright); margin-bottom:4px;">KAISERLICHES DEKRET</div>
-    <div style="font-size:0.8rem; color:#f7ebd4;">WÄHLE DIE NÄCHSTE FARBE FÜR DAS KOLOSSEUM:</div>
+    <div style="font-family:'Cinzel Decorative'; font-size:1.2rem; color:var(--gold-bright); margin-bottom:4px;" id="color-modal-title">KAISERLICHES DEKRET</div>
+    <div style="font-size:0.8rem; color:#f7ebd4;" id="color-modal-subtitle">WÄHLE DIE NÄCHSTE FARBE FÜR DAS KOLOSSEUM:</div>
     <div class="color-btn-group">
-      <button class="color-btn btn-rot" onclick="pickColor('rot')">🔴 ROT</button>
-      <button class="color-btn btn-blau" onclick="pickColor('blau')">🔵 BLAU</button>
-      <button class="color-btn btn-gelb" onclick="pickColor('gelb')">🟡 GELB</button>
+      <button class="color-btn btn-rot" id="color-btn-red" onclick="pickColor('rot')">🔴 ROT</button>
+      <button class="color-btn btn-blau" id="color-btn-blue" onclick="pickColor('blau')">🔵 BLAU</button>
+      <button class="color-btn btn-gelb" id="color-btn-yellow" onclick="pickColor('gelb')">🟡 GELB</button>
     </div>
   </div>
 </div>
@@ -994,12 +978,12 @@
 <!-- PAUSE MODAL -->
 <div id="pause-modal">
   <div class="pause-box">
-    <div style="font-family:'Cinzel Decorative'; font-size:1.4rem; color:var(--gold-bright); margin-bottom:6px;">KOLOSSEUM PAUSIERT</div>
-    <div style="font-size:0.8rem; color:#f7ebd4;">DAS SCHICKSAL ROMS WARTET AUF DICH...</div>
+    <div style="font-family:'Cinzel Decorative'; font-size:1.4rem; color:var(--gold-bright); margin-bottom:6px;" id="pause-modal-title">KOLOSSEUM PAUSIERT</div>
+    <div style="font-size:0.8rem; color:#f7ebd4;" id="pause-modal-subtitle">DAS SCHICKSAL ROMS WARTET AUF DICH...</div>
     <div class="pause-btn-group">
-      <button class="action-btn" onclick="togglePauseGame()">▶️ WEITERKÄMPFEN</button>
-      <button class="action-btn" onclick="openRules()">📜 REGELN LESEN</button>
-      <button class="action-btn" onclick="location.reload()">🔄 NEUER KAMPF</button>
+      <button class="action-btn" id="pause-btn-resume" onclick="togglePauseGame()">▶️ WEITERKÄMPFEN</button>
+      <button class="action-btn" id="pause-btn-rules" onclick="openRules()">📜 REGELN LESEN</button>
+      <button class="action-btn" id="pause-btn-restart" onclick="location.reload()">🔄 NEUER KAMPF</button>
     </div>
   </div>
 </div>
@@ -1007,8 +991,8 @@
 <!-- OPFER WÄHLEN FÜR STRAFKARTE -->
 <div id="target-picker-modal">
   <div class="target-picker-box">
-    <div style="font-family:'Cinzel Decorative'; font-size:1.1rem; color:var(--gold-bright); margin-bottom:4px;">PORCUS FURIOSUS!</div>
-    <div style="font-size:0.75rem; color:#f7ebd4; margin-bottom:10px;">WÄHLE EINEN GLADIATOR FÜR DIE STRAFKARTE:</div>
+    <div style="font-family:'Cinzel Decorative'; font-size:1.1rem; color:var(--gold-bright); margin-bottom:4px;" id="target-modal-title">PORCUS FURIOSUS!</div>
+    <div style="font-size:0.75rem; color:#f7ebd4; margin-bottom:10px;" id="target-modal-subtitle">WÄHLE EINEN GLADIATOR FÜR DIE STRAFKARTE:</div>
     <div class="player-btn-group" id="target-buttons-group"></div>
   </div>
 </div>
@@ -1017,7 +1001,7 @@
 <div id="caesar-flash-banner">
   <div style="font-size: 2.2rem; margin-bottom: 2px;">👑 🦅 👑</div>
   <div style="font-family:'Cinzel Decorative'; font-size: 1.9rem; color: var(--gold-bright); text-shadow: 0 0 15px #fff;">AVE CAESAR!</div>
-  <div style="font-size: 0.9rem; color: #fff; margin-top: 2px;">KAISERLICHER DRILLING!</div>
+  <div style="font-size: 0.9rem; color: #fff; margin-top: 2px;" id="caesar-flash-sub">KAISERLICHER DRILLING!</div>
 </div>
 
 <!-- SIEGER MODAL MIT STRAFPUNKTE-ABRECHNUNG -->
@@ -1026,32 +1010,339 @@
     <h2 style="font-family:'Cinzel Decorative'; font-size: 1.8rem; color: var(--gold-bright);" id="victory-title">TRIUMPH!</h2>
     <p style="font-size: 0.95rem; margin: 6px 0 10px 0;" id="victory-desc">Du hast alle Karten abgelegt und Rom erobert!</p>
     <div id="penalty-breakdown" style="font-size:0.82rem; color:#ffd700; margin-bottom:14px; font-weight:800;">-</div>
-    <button class="action-btn" onclick="location.reload()">NEUER KAMPF</button>
+    <button class="action-btn" id="victory-restart-btn" onclick="location.reload()">NEUER KAMPF</button>
   </div>
 </div>
 
 <!-- REGEL MODAL -->
 <div class="modal-overlay" id="rules-modal">
-  <div class="scroll-parchment">
+  <div class="scroll-parchment" id="rules-parchment">
     <button class="close-scroll" onclick="closeRules()">✕</button>
-    <h2>AVE CAESAR • DIE ARENA-REGELN</h2>
-    <p><strong>Ziel des Spiels:</strong> Werde als Erster alle Handkarten los. Restkarten zählen Strafpunkte (X=10 bis L=50).</p>
-    <table>
-      <tr><th>Formation</th><th>Würfel-Bedingung</th><th>Effekt / Funktion</th></tr>
-      <tr><td><strong>Arena-Zange (Duplex)</strong></td><td>Außen gleich, Mitte höher (1-5-1, 2-4-2)</td><td>Reguläre Ablagekarte</td></tr>
-      <tr><td><strong>Koloss-Zange (Clamp)</strong></td><td>Außen gleich, Mitte tiefer (5-3-5, 4-1-4)</td><td>Reguläre Ablagekarte</td></tr>
-      <tr><td><strong>Legionstreppe (Cursus)</strong></td><td>3 fortlaufende Zahlen (2-3-4, 4-5-6)</td><td>Reguläre Ablagekarte</td></tr>
-      <tr><td><strong>Sprung d. Quadriga (Saltus)</strong></td><td>Nur ungerade (1-3-5) oder nur gerade (2-4-6)</td><td>Reguläre Ablagekarte</td></tr>
-      <tr><td><strong>Jupiters Zorn (15+)</strong></td><td>Augensumme aller 3 Würfel ≥ 15</td><td>Mehrfarbig / Sofortige Farbwahl</td></tr>
-      <tr><td><strong>Katakomben (6-)</strong></td><td>Augensumme aller 3 Würfel ≤ 6</td><td>Mehrfarbig / Sofortige Farbwahl</td></tr>
-      <tr><td><strong>Ave Caesar! (Drilling)</strong></td><td>Drei gleiche Würfelaugen (z. B. 4-4-4)</td><td>Beliebige Karte sofort ablegen!</td></tr>
-      <tr><td><strong>Porcus Furiosus (6 Eber)</strong></td><td>FEHLWURF (keine andere Formation passt)</td><td>Führt die aufgedruckte Sofort-Aktion aus!</td></tr>
+    <h2 id="rules-heading">AVE CAESAR • DIE ARENA-REGELN</h2>
+    <p id="rules-goal"><strong>Ziel des Spiels:</strong> Werde als Erster alle Handkarten los. Restkarten zählen Strafpunkte (X=10 bis L=50).</p>
+    <table id="rules-table">
+      <!-- Wird dynamisch befüllt -->
     </table>
   </div>
 </div>
 
 <script>
-// YOUTUBE PLAYABLES SDK BRÜCKE & AUDIO SYNTHESIZER
+// ==========================================
+// MULTILINGUALES I18N SYSTEM (DE / EN)
+// ==========================================
+const TRANSLATIONS = {
+  de: {
+    langBtn: "🇬🇧 EN",
+    rotateTitle: "DREHE DEIN GERÄT!",
+    rotateDesc: "Das Kolosseum entfaltet seine Pracht nur im Querformat, Gladiator!",
+    splashTitle: "WÄHLE DEINE ARENA",
+    splashSubtitle: "WIE VIELE GLADIATOREN TRETEN AN?",
+    choice2: "2 SPIELER<br><span style='font-size:0.6rem; font-family:Cinzel;'>VS. MAXIMUS</span>",
+    choice3: "3 SPIELER<br><span style='font-size:0.6rem; font-family:Cinzel;'>+ AURELIUS</span>",
+    choice4: "4 SPIELER<br><span style='font-size:0.6rem; font-family:Cinzel;'>+ CASSIUS</span>",
+    diceLabel: "WÜRFEL",
+    btnRoll: "WÜRFELN",
+    btnTakeover: "⚡ ÜBERNEHMEN",
+    btnDraw: "📥 ZIEHEN",
+    btnPlay: "ABLEGEN",
+    btnVeto: "⚔️ VETO!",
+    drawPileTitle: "STAPEL",
+    heroName: "DU",
+    confirmTitle: "„Diese Karte, sicher Gladiator?“",
+    btnConfirmYes: "✓ JA, KÄMPFEN!",
+    btnConfirmNo: "✕ ANDERE",
+    colorTitle: "KAISERLICHES DEKRET",
+    colorSubtitle: "WÄHLE DIE NÄCHSTE FARBE FÜR DAS KOLOSSEUM:",
+    btnRed: "🔴 ROT",
+    btnBlue: "🔵 BLAU",
+    btnYellow: "🟡 GELB",
+    pauseTitle: "KOLOSSEUM PAUSIERT",
+    pauseSubtitle: "DAS SCHICKSAL ROMS WARTET AUF DICH...",
+    pauseResume: "▶️ WEITERKÄMPFEN",
+    pauseRules: "📜 REGELN LESEN",
+    pauseRestart: "🔄 NEUER KAMPF",
+    targetTitle: "PORCUS FURIOSUS!",
+    targetSubtitle: "WÄHLE EINEN GLADIATOR FÜR DIE STRAFKARTE:",
+    caesarSub: "KAISERLICHER DRILLING!",
+    rulesBtn: "📜 REGELN",
+    victoryTriumph: "TRIUMPH!",
+    victoryDefeat: "NIEDERLAGE!",
+    victoryDescWin: "Du hast alle Karten abgelegt und Rom erobert!",
+    victoryDescLoss: (name) => `${name} hat alle Karten abgelegt und triumphiert!`,
+    victoryRestart: "NEUER KAMPF",
+    penaltyPrefix: "Abrechnung",
+    cardsWord: "Karten",
+    ptsWord: "Strafpunkte",
+    rollsNotYet: "Würfe: Noch nicht gewürfelt",
+    rollsFirst: "1. Wurf liegt",
+    rollsTaken: "1. Wurf übernommen",
+    rollsLeft: "Nachwürfe: ",
+    announcerYourTurn: "DEIN ZUG: WIRF DIE SCHICKSALSKNOCHEN!",
+    announcer1stRoll: "1. Wurf liegt! Wähle eine der feurig glühenden Karten.",
+    announcerTakeover: "WURF ÜBERNOMMEN! Wähle jetzt eine glühende Karte.",
+    announcerCannotPlay: "Keine passende Karte! Klicke auf ZIEHEN.",
+    announcerAvePlayer: "AVE CAESAR! Kaiser-Drilling! Klicke eine beliebige Karte zum Ablegen!",
+    announcerFulfill: (c) => `Perfekt! Formation erfüllt (${c})! Klicke auf ABLEGEN.`,
+    announcerLocked: (c, r) => `Eingeloggt: ${c}! Würfel sperren & NACHWÜRFELN (${r} übrig)!`,
+    announcerFailed: "Keine Nachwürfe mehr! Formation misslungen.",
+    announcerPlayed: "Karte abgelegt!",
+    announcerDrawnFit: "Gezogene Karte passt! Versuche sie zu erwürfeln.",
+    announcerDrawnNoFit: "Gezogene Karte passt nicht. Nächster Gladiator!",
+    announcerCardDrawn: "Karte gezogen! Zug beendet.",
+    announcerMissTurn: "Misserfolg! Die Würfel bleiben für den Nächsten liegen.",
+    colorChanged: (c) => `Kaiserliche Farbe auf ${c.toUpperCase()} geändert!`,
+    toastSkip: "🐗 Der nächste Gladiator muss aussetzen!",
+    toastAllDraw: "🐗 Sturm über Rom! Alle anderen ziehen 1 Karte!",
+    toastOneDraw: (name) => `🐗 ${name} muss 1 Karte ziehen!`,
+    toastExtra: "🐗 EXTRAZUG! Du darfst direkt noch einmal spielen!",
+    toastGiveSelf: "🐗 Wähle jetzt eine deiner Handkarten zum Verschenken!",
+    toastGiveSelfClick: "Klicke eine Handkarte an, die du abgeben willst!",
+    toastGiveDone: (target, card) => `Du hast ${target} eine ${card} übergeben!`,
+    toastGiveBot: (name, card) => `${name} schenkt dir eine ${card}!`,
+    vetoDefended: "🛡️ VETO ABGEWEHRT! Du ziehst 1 Strafkarte!",
+    vetoSuccess: (c) => `⚔️ VETO ERFOLGREICH! Du legst ${c} ab!`,
+    vetoNextTurn: "Veto geglückt! Dein Zug: Wirf die Schicksalsknochen!",
+    vetoPossible: (sec) => `⚠️ VETO MÖGLICH! [${sec}s]`,
+    botTurnAnnounce: (name) => `${name} ist am Zug...`,
+    botRolledAnnounce: (name) => `${name} hat gewürfelt.`,
+    botTargetAnnounce: (name) => `${name} peilt Ziel an...`,
+    botLockingAnnounce: (name) => `${name} sperrt Würfel (rot)...`,
+    botDirectHit: (name) => `Volltreffer! ${name} legt ab!`,
+    botHit: (name) => `Erfolg! ${name} legt ab!`,
+    botMissed: (name) => `${name} verfehlt die Formation!`,
+    botDrilling: (name) => `AVE CAESAR! ${name} hat einen Kaiser-Drilling gewürfelt!`,
+    botCannotPlay: (name) => `${name} kann nicht bedienen und zieht eine Karte.`,
+    rulesHeading: "AVE CAESAR • DIE ARENA-REGELN",
+    rulesGoal: "<strong>Ziel des Spiels:</strong> Werde als Erster alle Handkarten los. Restkarten zählen Strafpunkte (X=10 bis L=50).",
+    rulesTh: ["Formation", "Würfel-Bedingung", "Effekt / Funktion"],
+    rulesRows: [
+      ["Arena-Zange (Duplex)", "Außen gleich, Mitte höher (1-5-1, 2-4-2)", "Reguläre Ablagekarte"],
+      ["Koloss-Zange (Clamp)", "Außen gleich, Mitte tiefer (5-3-5, 4-1-4)", "Reguläre Ablagekarte"],
+      ["Legionstreppe (Cursus)", "3 fortlaufende Zahlen (2-3-4, 4-5-6)", "Reguläre Ablagekarte"],
+      ["Sprung d. Quadriga (Saltus)", "Nur ungerade (1-3-5) oder nur gerade (2-4-6)", "Reguläre Ablagekarte"],
+      ["Jupiters Zorn (15+)", "Augensumme aller 3 Würfel ≥ 15", "Mehrfarbig / Sofortige Farbwahl"],
+      ["Katakomben (6-)", "Augensumme aller 3 Würfel ≤ 6", "Mehrfarbig / Sofortige Farbwahl"],
+      ["Ave Caesar! (Drilling)", "Drei gleiche Würfelaugen (z. B. 4-4-4)", "Beliebige Karte sofort ablegen!"],
+      ["Porcus Furiosus (6 Eber)", "FEHLWURF (keine andere Formation passt)", "Führt die aufgedruckte Sofort-Aktion aus!"]
+    ]
+  },
+  en: {
+    langBtn: "🇩🇪 DE",
+    rotateTitle: "ROTATE YOUR DEVICE!",
+    rotateDesc: "The Colosseum reveals its glory only in landscape mode, Gladiator!",
+    splashTitle: "CHOOSE YOUR ARENA",
+    splashSubtitle: "HOW MANY GLADIATORS WILL COMPETE?",
+    choice2: "2 PLAYERS<br><span style='font-size:0.6rem; font-family:Cinzel;'>VS. MAXIMUS</span>",
+    choice3: "3 PLAYERS<br><span style='font-size:0.6rem; font-family:Cinzel;'>+ AURELIUS</span>",
+    choice4: "4 PLAYERS<br><span style='font-size:0.6rem; font-family:Cinzel;'>+ CASSIUS</span>",
+    diceLabel: "DICE",
+    btnRoll: "ROLL",
+    btnTakeover: "⚡ TAKEOVER",
+    btnDraw: "📥 DRAW",
+    btnPlay: "DISCARD",
+    btnVeto: "⚔️ VETO!",
+    drawPileTitle: "DECK",
+    heroName: "YOU",
+    confirmTitle: "“Play this card, Gladiator?”",
+    btnConfirmYes: "✓ YES, FIGHT!",
+    btnConfirmNo: "✕ CANCEL",
+    colorTitle: "IMPERIAL DECREE",
+    colorSubtitle: "CHOOSE THE NEXT COLOR FOR THE COLOSSEUM:",
+    btnRed: "🔴 RED",
+    btnBlue: "🔵 BLUE",
+    btnYellow: "🟡 YELLOW",
+    pauseTitle: "COLOSSEUM PAUSED",
+    pauseSubtitle: "THE FATE OF ROME AWAITS YOU...",
+    pauseResume: "▶️ RESUME BATTLE",
+    pauseRules: "📜 READ RULES",
+    pauseRestart: "🔄 NEW BATTLE",
+    targetTitle: "PORCUS FURIOSUS!",
+    targetSubtitle: "CHOOSE A GLADIATOR FOR THE PENALTY CARD:",
+    caesarSub: "IMPERIAL TRIPLE!",
+    rulesBtn: "📜 RULES",
+    victoryTriumph: "TRIUMPH!",
+    victoryDefeat: "DEFEAT!",
+    victoryDescWin: "You discarded all cards and conquered Rome!",
+    victoryDescLoss: (name) => `${name} discarded all cards and triumphs!`,
+    victoryRestart: "NEW BATTLE",
+    penaltyPrefix: "Score Breakdown",
+    cardsWord: "cards",
+    ptsWord: "penalty points",
+    rollsNotYet: "Rolls: Not rolled yet",
+    rollsFirst: "1st roll set",
+    rollsTaken: "1st roll taken over",
+    rollsLeft: "Re-rolls left: ",
+    announcerYourTurn: "YOUR TURN: ROLL THE FATE BONES!",
+    announcer1stRoll: "1st roll set! Choose one of the glowing cards.",
+    announcerTakeover: "ROLL TAKEN OVER! Choose a glowing card.",
+    announcerCannotPlay: "No matching card! Click DRAW.",
+    announcerAvePlayer: "AVE CAESAR! Imperial Triple! Click any card to discard!",
+    announcerFulfill: (c) => `Perfect! Formation matched (${c})! Click DISCARD.`,
+    announcerLocked: (c, r) => `Locked in: ${c}! Lock dice & RE-ROLL (${r} left)!`,
+    announcerFailed: "No re-rolls left! Formation failed.",
+    announcerPlayed: "Card discarded!",
+    announcerDrawnFit: "Drawn card matches! Attempt to roll it.",
+    announcerDrawnNoFit: "Drawn card doesn't match. Next Gladiator!",
+    announcerCardDrawn: "Card drawn! Turn ended.",
+    announcerMissTurn: "Missed! The dice remain on the table.",
+    colorChanged: (c) => `Imperial color changed to ${c.toUpperCase()}!`,
+    toastSkip: "🐗 The next gladiator must skip a turn!",
+    toastAllDraw: "🐗 Storm over Rome! All opponents draw 1 card!",
+    toastOneDraw: (name) => `🐗 ${name} must draw 1 card!`,
+    toastExtra: "🐗 EXTRA TURN! You may play another card immediately!",
+    toastGiveSelf: "🐗 Choose one of your hand cards to give away!",
+    toastGiveSelfClick: "Click a hand card to give to an opponent!",
+    toastGiveDone: (target, card) => `You gave a ${card} to ${target}!`,
+    toastGiveBot: (name, card) => `${name} hands you a ${card}!`,
+    vetoDefended: "🛡️ VETO BLOCKED! You draw 1 penalty card!",
+    vetoSuccess: (c) => `⚔️ VETO SUCCESSFUL! You discard ${c}!`,
+    vetoNextTurn: "Veto succeeded! Your turn: Roll the fate bones!",
+    vetoPossible: (sec) => `⚠️ VETO POSSIBLE! [${sec}s]`,
+    botTurnAnnounce: (name) => `${name} is rolling...`,
+    botRolledAnnounce: (name) => `${name} has rolled.`,
+    botTargetAnnounce: (name) => `${name} targets card...`,
+    botLockingAnnounce: (name) => `${name} locks dice (red)...`,
+    botDirectHit: (name) => `Direct hit! ${name} discards!`,
+    botHit: (name) => `Success! ${name} discards!`,
+    botMissed: (name) => `${name} missed the formation!`,
+    botDrilling: (name) => `AVE CAESAR! ${name} rolled a Triple!`,
+    botCannotPlay: (name) => `${name} cannot play and draws a card.`,
+    rulesHeading: "AVE CAESAR • THE ARENA RULES",
+    rulesGoal: "<strong>Goal of the Game:</strong> Be the first to empty your hand. Remaining cards count as penalty points (X=10 to L=50).",
+    rulesTh: ["Formation", "Dice Condition", "Effect / Function"],
+    rulesRows: [
+      ["Arena Pincer (Duplex)", "Flanks equal, center higher (1-5-1, 2-4-2)", "Standard play card"],
+      ["Colossus Clamp", "Flanks equal, center lower (5-3-5, 4-1-4)", "Standard play card"],
+      ["Legion Steps (Cursus)", "3 consecutive numbers (2-3-4, 4-5-6)", "Standard play card"],
+      ["Chariot Leap (Saltus)", "All odd (1-3-5) or all even (2-4-6)", "Standard play card"],
+      ["Jupiter's Wrath (15+)", "Total dice sum ≥ 15", "Multicolor / Instant color decree"],
+      ["Catacombs (6-)", "Total dice sum ≤ 6", "Multicolor / Instant color decree"],
+      ["Ave Caesar! (Triple)", "Three identical dice (e.g. 4-4-4)", "Discard any card immediately!"],
+      ["Porcus Furiosus (6 Boars)", "MISSED THROW (no other formation matches)", "Triggers the printed instant action!"]
+    ]
+  }
+};
+
+// Automatische Spracherkennung (Standard: DE, bei englischem Browser: EN)
+let currentLang = 'de';
+try {
+  const navLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+  if (!navLang.startsWith('de')) currentLang = 'en';
+} catch(e) {}
+
+function t(key, ...args) {
+  const dict = TRANSLATIONS[currentLang] || TRANSLATIONS.de;
+  const val = dict[key];
+  if (typeof val === 'function') return val(...args);
+  return val || key;
+}
+
+function toggleLanguage() {
+  currentLang = (currentLang === 'de') ? 'en' : 'de';
+  applyLanguage();
+}
+
+function applyLanguage() {
+  document.getElementById('lang-toggle-btn').innerText = t('langBtn');
+  document.getElementById('rotate-title').innerText = t('rotateTitle');
+  document.getElementById('rotate-desc').innerText = t('rotateDesc');
+  document.getElementById('splash-title').innerText = t('splashTitle');
+  document.getElementById('splash-subtitle').innerText = t('splashSubtitle');
+  document.getElementById('btn-choice-2').innerHTML = t('choice2');
+  document.getElementById('btn-choice-3').innerHTML = t('choice3');
+  document.getElementById('btn-choice-4').innerHTML = t('choice4');
+  document.getElementById('rules-top-btn').innerText = t('rulesBtn');
+  document.getElementById('dice-label').innerText = t('diceLabel');
+  document.getElementById('btn-roll').innerText = t('btnRoll');
+  document.getElementById('takeover-btn').innerText = t('btnTakeover');
+  document.getElementById('must-draw-btn').innerText = t('btnDraw');
+  document.getElementById('btn-play').innerText = t('btnPlay');
+  document.getElementById('draw-pile-title').innerText = t('drawPileTitle');
+  document.getElementById('player-hero-name').innerText = t('heroName');
+  document.getElementById('confirm-title-text').innerText = t('confirmTitle');
+  document.getElementById('btn-confirm-yes').innerText = t('btnConfirmYes');
+  document.getElementById('btn-confirm-no').innerText = t('btnConfirmNo');
+  document.getElementById('color-modal-title').innerText = t('colorTitle');
+  document.getElementById('color-modal-subtitle').innerText = t('colorSubtitle');
+  document.getElementById('color-btn-red').innerText = t('btnRed');
+  document.getElementById('color-btn-blue').innerText = t('btnBlue');
+  document.getElementById('color-btn-yellow').innerText = t('btnYellow');
+  document.getElementById('pause-modal-title').innerText = t('pauseTitle');
+  document.getElementById('pause-modal-subtitle').innerText = t('pauseSubtitle');
+  document.getElementById('pause-btn-resume').innerText = t('pauseResume');
+  document.getElementById('pause-btn-rules').innerText = t('pauseRules');
+  document.getElementById('pause-btn-restart').innerText = t('pauseRestart');
+  document.getElementById('target-modal-title').innerText = t('targetTitle');
+  document.getElementById('target-modal-subtitle').innerText = t('targetSubtitle');
+  document.getElementById('caesar-flash-sub').innerText = t('caesarSub');
+  document.getElementById('victory-restart-btn').innerText = t('victoryRestart');
+
+  // Regeln Parchment befüllen
+  document.getElementById('rules-heading').innerText = t('rulesHeading');
+  document.getElementById('rules-goal').innerHTML = t('rulesGoal');
+  const rTable = document.getElementById('rules-table');
+  const ths = t('rulesTh');
+  const rows = t('rulesRows');
+  let tableHtml = `<tr><th>${ths[0]}</th><th>${ths[1]}</th><th>${ths[2]}</th></tr>`;
+  rows.forEach(r => {
+    tableHtml += `<tr><td><strong>${r[0]}</strong></td><td>${r[1]}</td><td>${r[2]}</td></tr>`;
+  });
+  rTable.innerHTML = tableHtml;
+
+  // Status Ticker aktualisieren
+  if (rollStep === 0 && currentPlayerIdx === 0) {
+    setAnnouncer(t('announcerYourTurn'));
+    document.getElementById('rolls-info').innerText = t('rollsNotYet');
+  }
+
+  updateUI();
+}
+
+// Porcus Kartennamen & Beschreibungen dynamisch übersetzen
+const PORCUS_META = {
+  12: {
+    de: { name: 'PORCUS: AUSSETZEN', desc: 'Nächster Spieler setzt aus' },
+    en: { name: 'PORCUS: SKIP TURN', desc: 'Next player skips turn' }
+  },
+  13: {
+    de: { name: 'PORCUS: EXTRAZUG', desc: 'Darfst noch eine Karte spielen' },
+    en: { name: 'PORCUS: EXTRA TURN', desc: 'Play another card immediately' }
+  },
+  14: {
+    de: { name: 'PORCUS: ZIEHEN LASSEN', desc: '1 Spieler deiner Wahl zieht' },
+    en: { name: 'PORCUS: FORCE DRAW', desc: 'Target player draws 1 card' }
+  },
+  15: {
+    de: { name: 'PORCUS: KARTE ABGEBEN', desc: 'Eigene Karte verschenken' },
+    en: { name: 'PORCUS: GIVE CARD', desc: 'Give 1 of your cards away' }
+  },
+  16: {
+    de: { name: 'PORCUS: ALLE ZIEHEN', desc: 'Alle ziehen, nur du nicht' },
+    en: { name: 'PORCUS: ALL DRAW', desc: 'All opponents draw 1 card' }
+  },
+  17: {
+    de: { name: 'PORCUS: FARBWAHL', desc: 'Farbe wünschen' },
+    en: { name: 'PORCUS: COLOR DECREE', desc: 'Choose next color' }
+  }
+};
+
+function getCardName(card) {
+  if (card.form === FORMATIONS.PORCUS && PORCUS_META[card.page]) {
+    return PORCUS_META[card.page][currentLang].name;
+  }
+  return card.name;
+}
+
+function getCardDesc(card) {
+  if (card.form === FORMATIONS.PORCUS && PORCUS_META[card.page]) {
+    return PORCUS_META[card.page][currentLang].desc;
+  }
+  return card.desc || '';
+}
+
+// ==========================================
+// YOUTUBE PLAYABLES SDK & AUDIO SYNTHESIZER
+// ==========================================
 const isYouTubePlayables = (typeof ytgame !== 'undefined');
 let isAudioMuted = false;
 let audioCtx = null;
@@ -1133,7 +1424,7 @@ function updateAudioUI() {
   const btn = document.getElementById('audio-toggle-btn');
   if (btn) {
     btn.innerText = isAudioMuted ? '🔇' : '🔊';
-    btn.title = isAudioMuted ? 'Ton aktivieren' : 'Ton stummschalten';
+    btn.title = isAudioMuted ? 'Unmute' : 'Mute';
     btn.classList.toggle('muted', isAudioMuted);
   }
 }
@@ -1223,12 +1514,12 @@ function buildDeck() {
   deck.push({ page: 11, form: FORMATIONS.CAESAR, color: 'bunt', rolls: 4, points: 30, name: 'AVE CAESAR' });
 
   // 6 PORCUS FURIOSUS
-  deck.push({ page: 12, form: FORMATIONS.PORCUS, color: 'blau', rolls: 1, points: 50, name: 'PORCUS: AUSSETZEN', effect: PORCUS_EFFECTS.SKIP_NEXT, desc: 'Nächster Spieler setzt aus' });
-  deck.push({ page: 13, form: FORMATIONS.PORCUS, color: 'blau', rolls: 1, points: 50, name: 'PORCUS: EXTRAZUG', effect: PORCUS_EFFECTS.PLAY_ANOTHER, desc: 'Darfst noch eine Karte spielen' });
-  deck.push({ page: 14, form: FORMATIONS.PORCUS, color: 'gelb', rolls: 1, points: 50, name: 'PORCUS: ZIEHEN LASSEN', effect: PORCUS_EFFECTS.ONE_DRAWS, desc: '1 Spieler deiner Wahl zieht' });
-  deck.push({ page: 15, form: FORMATIONS.PORCUS, color: 'gelb', rolls: 1, points: 50, name: 'PORCUS: KARTE ABGEBEN', effect: PORCUS_EFFECTS.GIVE_CARD, desc: 'Eigene Karte verschenken' });
-  deck.push({ page: 16, form: FORMATIONS.PORCUS, color: 'rot', rolls: 1, points: 50, name: 'PORCUS: ALLE ZIEHEN', effect: PORCUS_EFFECTS.ALL_DRAW, desc: 'Alle ziehen, nur du nicht' });
-  deck.push({ page: 17, form: FORMATIONS.PORCUS, color: 'rot', rolls: 1, points: 50, name: 'PORCUS: FARBWAHL', effect: PORCUS_EFFECTS.WISH_COLOR, desc: 'Farbe wünschen' });
+  deck.push({ page: 12, form: FORMATIONS.PORCUS, color: 'blau', rolls: 1, points: 50, name: 'PORCUS: AUSSETZEN', effect: PORCUS_EFFECTS.SKIP_NEXT });
+  deck.push({ page: 13, form: FORMATIONS.PORCUS, color: 'blau', rolls: 1, points: 50, name: 'PORCUS: EXTRAZUG', effect: PORCUS_EFFECTS.PLAY_ANOTHER });
+  deck.push({ page: 14, form: FORMATIONS.PORCUS, color: 'gelb', rolls: 1, points: 50, name: 'PORCUS: ZIEHEN LASSEN', effect: PORCUS_EFFECTS.ONE_DRAWS });
+  deck.push({ page: 15, form: FORMATIONS.PORCUS, color: 'gelb', rolls: 1, points: 50, name: 'PORCUS: KARTE ABGEBEN', effect: PORCUS_EFFECTS.GIVE_CARD });
+  deck.push({ page: 16, form: FORMATIONS.PORCUS, color: 'rot', rolls: 1, points: 50, name: 'PORCUS: ALLE ZIEHEN', effect: PORCUS_EFFECTS.ALL_DRAW });
+  deck.push({ page: 17, form: FORMATIONS.PORCUS, color: 'rot', rolls: 1, points: 50, name: 'PORCUS: FARBWAHL', effect: PORCUS_EFFECTS.WISH_COLOR });
 
   // REGULÄRE FORMATIONEN
   deck.push({ page: 3, form: FORMATIONS.SALTUS, color: 'blau', rolls: 2, points: 30, name: 'SALTUS BLAU A' });
@@ -1270,11 +1561,10 @@ function shuffle(a) {
   return a;
 }
 
-// BOT PROFILES
 const botProfiles = [
-  { id: 2, name: 'MAXIMUS', avatar: 'avatar_2.jpg', page: 1, title: 'Der Schlächter' },
-  { id: 3, name: 'AURELIUS', avatar: 'avatar_3.jpg', page: 35, title: 'Der Zenturio' },
-  { id: 4, name: 'CASSIUS', avatar: 'avatar_4.jpg', page: 22, title: 'Der Elefantenmeister' }
+  { id: 2, name: 'MAXIMUS', avatar: 'avatar_2.jpg', page: 1, title: 'The Butcher' },
+  { id: 3, name: 'AURELIUS', avatar: 'avatar_3.jpg', page: 35, title: 'The Centurion' },
+  { id: 4, name: 'CASSIUS', avatar: 'avatar_4.jpg', page: 22, title: 'The Master of Elephants' }
 ];
 
 let numPlayers = 2;
@@ -1308,7 +1598,7 @@ function initGame() {
   deck = buildDeck();
   players = [];
 
-  players.push({ name: 'DU', isHuman: true, avatar: 'avatar_1.jpg', hand: deck.splice(0, 5) });
+  players.push({ name: t('heroName'), isHuman: true, avatar: 'avatar_1.jpg', hand: deck.splice(0, 5) });
 
   for (let i = 1; i < numPlayers; i++) {
     players.push({
@@ -1356,7 +1646,7 @@ function resetTurn() {
   document.getElementById('must-draw-btn').style.display = 'none';
   document.getElementById('btn-play').disabled = true;
   document.getElementById('btn-play').classList.remove('pulse');
-  document.getElementById('rolls-info').innerText = 'Würfe: Noch nicht gewürfelt';
+  document.getElementById('rolls-info').innerText = t('rollsNotYet');
   document.getElementById('veto-btn').style.display = 'none';
   hideBotTargetCard();
 
@@ -1364,6 +1654,7 @@ function resetTurn() {
   renderDice();
 }
 
+// ZENTRALE SIEGPRÜFUNG
 function checkGameVictory() {
   if (players[0] && players[0].hand.length === 0) {
     playerVictories++;
@@ -1373,21 +1664,21 @@ function checkGameVictory() {
     let breakdown = [];
     for (let i = 1; i < numPlayers; i++) {
       let pts = players[i].hand.reduce((sum, c) => sum + (c.points || 0), 0);
-      breakdown.push(`${players[i].name}: ${players[i].hand.length} Karten (${pts} Strafpunkte)`);
+      breakdown.push(`${players[i].name}: ${players[i].hand.length} ${t('cardsWord')} (${pts} ${t('ptsWord')})`);
     }
 
     if (isYouTubePlayables && ytgame.engagement && ytgame.engagement.sendScore) {
       ytgame.engagement.sendScore({ value: playerVictories * 100 });
     }
 
-    showVictoryScreen("TRIUMPH! Du hast alle Karten abgelegt und Rom erobert!", breakdown.join(' • '));
+    showVictoryScreen(t('victoryTriumph'), t('victoryDescWin'), breakdown.join(' • '));
     return true;
   }
 
   for (let i = 1; i < numPlayers; i++) {
     if (players[i] && players[i].hand.length === 0) {
       let playerPts = players[0].hand.reduce((sum, c) => sum + (c.points || 0), 0);
-      showVictoryScreen(`NIEDERLAGE! ${players[i].name} triumphiert im Sand!`, `Deine Strafpunkte: ${playerPts} Pkt.`);
+      showVictoryScreen(t('victoryDefeat'), t('victoryDescLoss', players[i].name), `${t('penaltyPrefix')}: ${playerPts} ${t('ptsWord')}`);
       return true;
     }
   }
@@ -1408,8 +1699,8 @@ function handleTakeoverClick() {
   document.getElementById('takeover-btn').style.display = 'none';
   canTakeover = false;
   rollStep = 1;
-  document.getElementById('rolls-info').innerText = '1. Wurf übernommen';
-  setAnnouncer('WURF ÜBERNOMMEN! Wähle jetzt eine glühende Karte.');
+  document.getElementById('rolls-info').innerText = t('rollsTaken');
+  setAnnouncer(t('announcerTakeover'));
   checkInitialRollOutcome();
 }
 
@@ -1419,14 +1710,14 @@ function rollInitial() {
   animateDice();
   for (let i = 0; i < 3; i++) dice[i] = Math.floor(Math.random() * 6) + 1;
   renderDice();
-  document.getElementById('rolls-info').innerText = '1. Wurf liegt';
+  document.getElementById('rolls-info').innerText = t('rollsFirst');
   checkInitialRollOutcome();
 }
 
 function checkInitialRollOutcome() {
   if (dice[0] === dice[1] && dice[1] === dice[2]) {
     triggerAveCaesarCelebration();
-    setAnnouncer('AVE CAESAR! Kaiser-Drilling! Klicke eine beliebige Karte zum Ablegen!');
+    setAnnouncer(t('announcerAvePlayer'));
     document.getElementById('btn-roll').disabled = true;
     document.getElementById('btn-roll').classList.remove('pulse');
     updateUI();
@@ -1435,7 +1726,7 @@ function checkInitialRollOutcome() {
 
   const hasPlayable = players[0].hand.some(card => canPlayOnDiscard(card));
   if (!hasPlayable) {
-    setAnnouncer('Keine passende Karte! Klicke auf ZIEHEN.');
+    setAnnouncer(t('announcerCannotPlay'));
     document.getElementById('btn-roll').disabled = true;
     document.getElementById('btn-roll').classList.remove('pulse');
     document.getElementById('must-draw-btn').style.display = 'block';
@@ -1443,7 +1734,7 @@ function checkInitialRollOutcome() {
     return;
   }
 
-  setAnnouncer('1. Wurf liegt! Wähle eine der feurig glühenden Karten.');
+  setAnnouncer(t('announcer1stRoll'));
   document.getElementById('btn-roll').disabled = true;
   document.getElementById('btn-roll').classList.remove('pulse');
   updateUI();
@@ -1458,7 +1749,7 @@ function selectCard(idx) {
   }
 
   if (rollStep === 0) {
-    showNoticeToast('Zuerst die Schicksalsknochen werfen, Gladiator!');
+    showNoticeToast(t('announcerYourTurn'));
     return;
   }
 
@@ -1474,8 +1765,10 @@ function selectCard(idx) {
   }
 
   const descEl = document.getElementById('confirm-card-desc');
-  let info = `${card.name} • ${card.rolls} Nachwürfe • Strafpunkte: ${card.points}`;
-  if (card.desc) info += `<br><strong style="color:#ffbb44;">${card.desc}</strong>`;
+  const cardName = getCardName(card);
+  const cardDesc = getCardDesc(card);
+  let info = `${cardName} • ${card.rolls} ${t('rollsLeft').replace(':', '')} • ${card.points} Pts`;
+  if (cardDesc) info += `<br><strong style="color:#ffbb44;">${cardDesc}</strong>`;
   descEl.innerHTML = info;
   document.getElementById('confirm-dialogue-box').style.display = 'block';
 
@@ -1485,7 +1778,7 @@ function selectCard(idx) {
 function cancelCardChoice() {
   previewCardIdx = null;
   document.getElementById('confirm-dialogue-box').style.display = 'none';
-  setAnnouncer('Wähle eine andere Karte aus deiner Hand!');
+  setAnnouncer(t('announcer1stRoll'));
   updateUI();
 }
 
@@ -1494,8 +1787,6 @@ function confirmCardChoice() {
   const card = players[0].hand[previewCardIdx];
 
   if (!canPlayOnDiscard(card)) {
-    const colName = activeChosenColor ? activeChosenColor.toUpperCase() : (discardTop && discardTop.color ? discardTop.color.toUpperCase() : 'PASSEND');
-    showNoticeToast(`Halt, Gladiator! Diese Karte bedient weder Farbe (${colName}) noch Formation der Ablage!`);
     cancelCardChoice();
     return;
   }
@@ -1507,8 +1798,9 @@ function confirmCardChoice() {
   rerollsLeft = card.rolls;
   rollStep = 2;
 
+  const cardName = getCardName(card);
   if (checkFormation(dice, card)) {
-    setAnnouncer(`Perfekt! Formation erfüllt (${card.name})! Klicke auf ABLEGEN.`);
+    setAnnouncer(t('announcerFulfill', cardName));
     document.getElementById('btn-play').disabled = false;
     document.getElementById('btn-play').classList.add('pulse');
     document.getElementById('btn-roll').disabled = true;
@@ -1518,8 +1810,8 @@ function confirmCardChoice() {
     document.getElementById('btn-roll').classList.add('pulse');
     document.getElementById('btn-play').disabled = true;
     document.getElementById('btn-play').classList.remove('pulse');
-    setAnnouncer(`Eingeloggt: ${card.name}! Würfel sperren & NACHWÜRFELN (${rerollsLeft} übrig)!`);
-    document.getElementById('rolls-info').innerText = `Nachwürfe: ${rerollsLeft}`;
+    setAnnouncer(t('announcerLocked', cardName, rerollsLeft));
+    document.getElementById('rolls-info').innerText = `${t('rollsLeft')}${rerollsLeft}`;
   }
 
   updateUI();
@@ -1538,7 +1830,7 @@ function rollReroll() {
 
   if (dice[0] === dice[1] && dice[1] === dice[2]) {
     triggerAveCaesarCelebration();
-    setAnnouncer('AVE CAESAR! Drilling im Nachwurf! Klicke auf ABLEGEN!');
+    setAnnouncer(t('announcerAvePlayer'));
     document.getElementById('btn-play').disabled = false;
     document.getElementById('btn-play').classList.add('pulse');
     document.getElementById('btn-roll').disabled = true;
@@ -1547,15 +1839,16 @@ function rollReroll() {
   }
 
   const card = players[0].hand[lockedCardIdx];
-  document.getElementById('rolls-info').innerText = `Nachwürfe: ${rerollsLeft}`;
+  document.getElementById('rolls-info').innerText = `${t('rollsLeft')}${rerollsLeft}`;
+  const cardName = getCardName(card);
 
   if (checkFormation(dice, card)) {
-    setAnnouncer('FORMATION ERREICHT! Klicke auf ABLEGEN.');
+    setAnnouncer(t('announcerFulfill', cardName));
     document.getElementById('btn-play').disabled = false;
     document.getElementById('btn-play').classList.add('pulse');
     document.getElementById('btn-roll').disabled = true;
   } else if (rerollsLeft <= 0) {
-    setAnnouncer('Keine Nachwürfe mehr! Formation misslungen.');
+    setAnnouncer(t('announcerFailed'));
     document.getElementById('btn-roll').disabled = true;
     setTimeout(turnFailed, 1500);
   }
@@ -1584,25 +1877,25 @@ function playSelectedCard() {
 
   if (checkGameVictory()) return;
 
-  setAnnouncer('Karte abgelegt!');
+  setAnnouncer(t('announcerCardPlayed'));
   updateUI();
   passTurnToNext();
 }
 
 // 6 PORCUS SOFORT-EFFEKTE
 function executePorcusAction(card, player) {
-  setAnnouncer(`🐗 PORCUS FURIOSUS! ${card.desc}!`);
+  setAnnouncer(`🐗 ${getCardName(card)}!`);
   activeChosenColor = null;
 
   switch(card.effect) {
     case PORCUS_EFFECTS.SKIP_NEXT:
       skipNextPlayerFlag = true;
-      showNoticeToast(`🐗 Der nächste Gladiator muss aussetzen!`);
+      showNoticeToast(t('toastSkip'));
       finishOrPassAfterPorcus(player);
       break;
 
     case PORCUS_EFFECTS.ALL_DRAW:
-      showNoticeToast(`🐗 Sturm über Rom! Alle anderen ziehen 1 Karte!`);
+      showNoticeToast(t('toastAllDraw'));
       players.forEach(p => {
         if (p !== player && deck.length > 0) p.hand.push(deck.pop());
       });
@@ -1614,7 +1907,7 @@ function executePorcusAction(card, player) {
       if (player.isHuman) {
         if (numPlayers === 2) {
           if (deck.length > 0) players[1].hand.push(deck.pop());
-          showNoticeToast(`🐗 ${players[1].name} muss 1 Karte ziehen!`);
+          showNoticeToast(t('toastOneDraw', players[1].name));
           finishOrPassAfterPorcus(player);
         } else {
           openTargetPickerModal();
@@ -1640,11 +1933,11 @@ function executePorcusAction(card, player) {
       break;
 
     case PORCUS_EFFECTS.PLAY_ANOTHER:
-      showNoticeToast(`🐗 EXTRAZUG! Du darfst direkt noch einmal spielen!`);
+      showNoticeToast(t('toastExtra'));
       if (checkGameVictory()) return;
       setTimeout(() => {
         resetTurn();
-        setAnnouncer('Extrazug! Wirf die Würfel erneut!');
+        setAnnouncer(t('announcerYourTurn'));
         if (player.isHuman) document.getElementById('btn-roll').classList.add('pulse');
         else startBotTurn();
       }, 1000);
@@ -1655,15 +1948,15 @@ function executePorcusAction(card, player) {
 
       if (player.isHuman) {
         isGivingCardState = true;
-        setAnnouncer('🐗 Wähle jetzt eine deiner Handkarten zum Verschenken!');
-        showNoticeToast('Klicke eine Handkarte an, die du abgeben willst!');
+        setAnnouncer(t('toastGiveSelf'));
+        showNoticeToast(t('toastGiveSelfClick'));
         updateUI();
       } else {
         let maxPts = -1, bestIdx = 0;
         player.hand.forEach((c, i) => { if (c.points > maxPts) { maxPts = c.points; bestIdx = i; } });
         const given = player.hand.splice(bestIdx, 1)[0];
         players[0].hand.push(given);
-        showNoticeToast(`${player.name} schenkt dir eine ${given.name}!`);
+        showNoticeToast(t('toastGiveBot', player.name, getCardName(given)));
         finishOrPassAfterPorcus(player);
       }
       break;
@@ -1684,11 +1977,11 @@ function openTargetPickerModal() {
     const b = players[i];
     const btn = document.createElement('button');
     btn.className = 'player-choice-btn';
-    btn.innerHTML = `${b.name}<br><span style="font-size:0.65rem;">${b.hand.length} KARTEN</span>`;
+    btn.innerHTML = `${b.name}<br><span style="font-size:0.65rem;">${b.hand.length} ${t('cardsWord')}</span>`;
     btn.onclick = () => {
       document.getElementById('target-picker-modal').style.display = 'none';
       if (deck.length > 0) b.hand.push(deck.pop());
-      showNoticeToast(`🐗 ${b.name} muss 1 Karte ziehen!`);
+      showNoticeToast(t('toastOneDraw', b.name));
       finishOrPassAfterPorcus(players[0]);
     };
     container.appendChild(btn);
@@ -1708,14 +2001,14 @@ function executeGiveCardAction(cardIdx) {
   }
 
   target.hand.push(given);
-  showNoticeToast(`Du hast ${target.name} eine ${given.name} übergeben!`);
+  showNoticeToast(t('toastGiveDone', target.name, getCardName(given)));
   finishOrPassAfterPorcus(players[0]);
 }
 
 function pickColor(col) {
   activeChosenColor = col;
   document.getElementById('color-picker-modal').style.display = 'none';
-  setAnnouncer(`Kaiserliche Farbe auf ${col.toUpperCase()} geändert!`);
+  setAnnouncer(t('colorChanged', col));
 
   if (checkGameVictory()) return;
 
@@ -1724,7 +2017,7 @@ function pickColor(col) {
 }
 
 function turnFailed() {
-  setAnnouncer('Misserfolg! Die Würfel bleiben für den Nächsten liegen.');
+  setAnnouncer(t('announcerMissTurn'));
   canTakeover = true;
   updateUI();
   passTurnToNext();
@@ -1735,7 +2028,7 @@ function handleDrawClick() {
 
   if (rollStep === 0) {
     players[0].hand.push(deck.pop());
-    setAnnouncer('Karte gezogen! Zug beendet.');
+    setAnnouncer(t('announcerCardDrawn'));
     canTakeover = false;
     updateUI();
     passTurnToNext();
@@ -1745,15 +2038,15 @@ function handleDrawClick() {
     document.getElementById('must-draw-btn').style.display = 'none';
 
     if (canPlayOnDiscard(drawn)) {
-      setAnnouncer('Gezogene Karte passt! Versuche sie zu erwürfeln.');
+      setAnnouncer(t('announcerDrawnFit'));
       lockedCardIdx = players[0].hand.length - 1;
       rerollsLeft = drawn.rolls;
       rollStep = 2;
       document.getElementById('btn-roll').disabled = false;
       document.getElementById('btn-roll').classList.add('pulse');
-      document.getElementById('rolls-info').innerText = `Nachwürfe: ${rerollsLeft}`;
+      document.getElementById('rolls-info').innerText = `${t('rollsLeft')}${rerollsLeft}`;
     } else {
-      setAnnouncer('Gezogene Karte passt nicht. Nächster Gladiator!');
+      setAnnouncer(t('announcerDrawnNoFit'));
       canTakeover = true;
       updateUI();
       setTimeout(passTurnToNext, 1000);
@@ -1766,7 +2059,7 @@ function handleDrawClick() {
 function startBotTurn() {
   if (isAppPaused) return;
   const bot = players[currentPlayerIdx];
-  setAnnouncer(`${bot.name} ist am Zug...`);
+  setAnnouncer(t('botTurnAnnounce', bot.name));
 
   setTimeout(() => {
     if (isAppPaused) return;
@@ -1777,7 +2070,7 @@ function startBotTurn() {
 
     if (dice[0] === dice[1] && dice[1] === dice[2]) {
       triggerAveCaesarCelebration();
-      setAnnouncer(`AVE CAESAR! ${bot.name} hat einen Kaiser-Drilling gewürfelt!`);
+      setAnnouncer(t('botDrilling', bot.name));
 
       setTimeout(() => {
         let bestIdx = 0, maxPts = -1;
@@ -1802,7 +2095,7 @@ function startBotTurn() {
     let targetCardIdx = chooseBestCardForBot(bot, dice);
     if (targetCardIdx === -1) {
       if (deck.length > 0) bot.hand.push(deck.pop());
-      setAnnouncer(`${bot.name} kann nicht bedienen und zieht eine Karte.`);
+      setAnnouncer(t('botCannotPlay', bot.name));
       canTakeover = true;
       updateUI();
       setTimeout(passTurnToNext, 900);
@@ -1812,7 +2105,7 @@ function startBotTurn() {
     const targetCard = bot.hand[targetCardIdx];
 
     displayBotTargetCard(targetCard);
-    setAnnouncer(`${bot.name} hat gewürfelt.`);
+    setAnnouncer(t('botTargetAnnounce', bot.name));
 
     const vetoCardIdx = players[0].hand.findIndex(c => canPlayOnDiscard(c) && checkFormation(dice, c));
     let vetoSeconds = 3;
@@ -1820,7 +2113,7 @@ function startBotTurn() {
     if (vetoCardIdx !== -1) {
       document.getElementById('veto-btn').style.display = 'block';
       document.getElementById('veto-timer').innerText = vetoSeconds;
-      setAnnouncer(`⚠️ VETO MÖGLICH! [${vetoSeconds}s]`);
+      setAnnouncer(t('vetoPossible', vetoSeconds));
       highlightVetoCard(vetoCardIdx);
 
       vetoTimerInterval = setInterval(() => {
@@ -1856,7 +2149,7 @@ function proceedBotTurnExecution(bot, targetCardIdx) {
   const card = bot.hand[targetCardIdx];
 
   if (checkFormation(dice, card)) {
-    setAnnouncer(`Volltreffer! ${bot.name} legt ab!`);
+    setAnnouncer(t('botDirectHit', bot.name));
     displayBotTargetCard(card);
     setTimeout(() => {
       bot.hand.splice(targetCardIdx, 1);
@@ -1957,7 +2250,7 @@ function executeBotRerollStep(bot, cardIdx, rerollsLeft) {
   locked = getSmartBotLocks(dice, card);
   renderDice();
   displayBotTargetCard(card);
-  setAnnouncer(`${bot.name} sperrt Würfel (rot)...`);
+  setAnnouncer(t('botLockingAnnounce', bot.name));
 
   setTimeout(() => {
     if (isAppPaused) return;
@@ -1970,7 +2263,7 @@ function executeBotRerollStep(bot, cardIdx, rerollsLeft) {
 
     if (dice[0] === dice[1] && dice[1] === dice[2]) {
       triggerAveCaesarCelebration();
-      setAnnouncer(`AVE CAESAR! ${bot.name} würfelt einen Drilling!`);
+      setAnnouncer(t('botDrilling', bot.name));
       displayBotTargetCard(card);
       setTimeout(() => {
         bot.hand.splice(cardIdx, 1);
@@ -1987,7 +2280,7 @@ function executeBotRerollStep(bot, cardIdx, rerollsLeft) {
     }
 
     if (checkFormation(dice, card)) {
-      setAnnouncer(`Erfolg! ${bot.name} legt ab!`);
+      setAnnouncer(t('botHit', bot.name));
       displayBotTargetCard(card);
       setTimeout(() => {
         bot.hand.splice(cardIdx, 1);
@@ -2003,7 +2296,7 @@ function executeBotRerollStep(bot, cardIdx, rerollsLeft) {
     } else if (rerollsLeft > 1) {
       setTimeout(() => executeBotRerollStep(bot, cardIdx, rerollsLeft - 1), 700);
     } else {
-      setAnnouncer(`${bot.name} verfehlt die Formation!`);
+      setAnnouncer(t('botMissed', bot.name));
       setTimeout(() => {
         hideBotTargetCard();
         canTakeover = true;
@@ -2067,7 +2360,7 @@ function triggerPlayerVeto() {
 
     if (deck.length > 0) players[0].hand.push(deck.pop());
 
-    setAnnouncer(`🛡️ VETO ABGEWEHRT! Du ziehst 1 Strafkarte!`);
+    setAnnouncer(t('vetoDefended'));
     updateUI();
     setTimeout(() => { passTurnToNext(); }, 1500);
 
@@ -2090,13 +2383,13 @@ function triggerPlayerVeto() {
       document.getElementById('color-picker-modal').style.display = 'flex';
     } else {
       activeChosenColor = null;
-      setAnnouncer(`⚔️ VETO ERFOLGREICH! Du legst ${card.name} ab!`);
+      setAnnouncer(t('vetoSuccess', getCardName(card)));
       updateUI();
       
       currentPlayerIdx = 0;
       setTimeout(() => {
         resetTurn();
-        setAnnouncer('Veto geglückt! Dein Zug: Wirf die Schicksalsknochen!');
+        setAnnouncer(t('vetoNextTurn'));
         const rBtn = document.getElementById('btn-roll');
         rBtn.disabled = false;
         rBtn.classList.add('pulse');
@@ -2114,13 +2407,13 @@ function clearVetoCardHighlight() {
   document.querySelectorAll('.hand-card').forEach(c => c.classList.remove('veto-glow'));
 }
 
-function showVictoryScreen(msg, penaltyInfo) {
+function showVictoryScreen(title, desc, penaltyInfo) {
   playSoundEffect('fanfare');
   const modal = document.getElementById('victory-modal');
-  const desc = document.getElementById('victory-desc');
+  document.getElementById('victory-title').innerText = title;
+  document.getElementById('victory-desc').innerText = desc;
   const pen = document.getElementById('penalty-breakdown');
-  if (desc) desc.innerText = msg;
-  if (pen) pen.innerText = penaltyInfo ? `Abrechnung: ${penaltyInfo}` : '';
+  if (pen) pen.innerText = penaltyInfo ? `${penaltyInfo}` : '';
   if (modal) modal.style.display = 'flex';
 }
 
@@ -2129,7 +2422,7 @@ function passTurnToNext() {
 
   if (skipNextPlayerFlag) {
     skipNextPlayerFlag = false;
-    showNoticeToast(`${players[nextIdx].name} setzt aus!`);
+    showNoticeToast(t('toastSkip'));
     nextIdx = (nextIdx + 1) % numPlayers;
   }
 
@@ -2138,7 +2431,7 @@ function passTurnToNext() {
   updateUI();
 
   if (currentPlayerIdx === 0) {
-    setAnnouncer('DEIN ZUG: WIRF DIE SCHICKSALSKNOCHEN!');
+    setAnnouncer(t('announcerYourTurn'));
     document.getElementById('btn-roll').classList.add('pulse');
   } else {
     startBotTurn();
@@ -2238,7 +2531,7 @@ function renderDice() {
 }
 
 function updateUI() {
-  // BOTS BÜHNE: AVATARE + ECHTE KARTEN-FÄCHER
+  // BOTS BÜHNE
   const stageEl = document.getElementById('bots-stage-area');
   if (stageEl) {
     stageEl.innerHTML = '';
@@ -2254,7 +2547,7 @@ function updateUI() {
             <img id="bot-avatar-${i}" alt="${b.name}">
           </div>
           <div style="font-size: 0.82rem; font-weight: 900; color: var(--gold-bright); margin-top: 4px;">${b.name}</div>
-          <div style="font-size: 0.65rem; color: #d5be9b;">${b.hand.length} KARTEN</div>
+          <div style="font-size: 0.65rem; color: #d5be9b;">${b.hand.length} ${t('cardsWord')}</div>
         </div>
         <div class="bot-cards-fan">
           ${Array(b.hand.length).fill('<div class="bot-card-large"></div>').join('')}
@@ -2303,7 +2596,7 @@ function updateUI() {
   if (colorBadge) {
     if (activeChosenColor) {
       colorBadge.className = `active-color-badge active-color-${activeChosenColor}`;
-      colorBadge.innerText = `FARBE: ${activeChosenColor.toUpperCase()}`;
+      colorBadge.innerText = `${t('colorTitle')}: ${activeChosenColor.toUpperCase()}`;
       colorBadge.style.display = 'block';
     } else {
       colorBadge.style.display = 'none';
@@ -2320,11 +2613,11 @@ function setAnnouncer(text) {
 }
 
 function showNoticeToast(msg) {
-  const t = document.getElementById('notice-toast');
-  if (t) {
-    t.innerText = msg;
-    t.style.display = 'block';
-    setTimeout(() => t.style.display = 'none', 1600);
+  const tEl = document.getElementById('notice-toast');
+  if (tEl) {
+    tEl.innerText = msg;
+    tEl.style.display = 'block';
+    setTimeout(() => tEl.style.display = 'none', 1600);
   }
 }
 
@@ -2344,6 +2637,7 @@ window.onload = () => {
   notifyYTFirstFrame();
   updateAudioUI();
   updateWinBadge();
+  applyLanguage();
 };
 </script>
 </body>
