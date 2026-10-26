@@ -25,6 +25,7 @@
   html, body {
     width: 100vw;
     height: 100vh;
+    height: 100dvh; /* Berücksichtigt Safari-Adressleiste auf Smartphones */
     overflow: hidden;
     position: fixed;
     background: #0d0607 url('arena_bg.jpg') no-repeat center center fixed;
@@ -128,11 +129,7 @@
     border-bottom: 1px solid rgba(223, 177, 91, 0.25);
   }
 
-  .game-title-wrap {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
+  .game-title-wrap { display: flex; align-items: center; gap: 12px; }
 
   .game-title {
     font-family: 'Cinzel Decorative', serif;
@@ -154,11 +151,7 @@
     box-shadow: 0 0 8px rgba(223, 177, 91, 0.4);
   }
 
-  .top-controls {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
+  .top-controls { display: flex; align-items: center; gap: 8px; }
 
   .top-bar-btn {
     background: linear-gradient(180deg, #dfb15b 0%, #875c1a 100%);
@@ -189,7 +182,7 @@
     justify-content: center;
     align-items: center;
     gap: 20px;
-    z-index: 25;
+    z-index: 10; /* Z-Index auf 10 gesenkt, damit der Announcer immer darüber liegt! */
   }
 
   .bot-card-group {
@@ -230,11 +223,7 @@
   }
 
   .avatar-frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    border-radius: 50%;
+    width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 50%;
   }
 
   .bot-cards-fan { display: flex; align-items: center; }
@@ -270,7 +259,7 @@
     white-space: nowrap;
   }
 
-  /* ARENA-SPIELTISCH */
+  /* ARENA-SPIELTISCH DESKTOP */
   .arena-center {
     position: absolute;
     top: 48%; left: 50%;
@@ -279,7 +268,7 @@
     justify-content: center;
     align-items: center;
     gap: 25px;
-    z-index: 15;
+    z-index: 20;
     width: 780px;
     max-width: 95vw;
   }
@@ -299,7 +288,7 @@
     color: var(--gold-bright);
     white-space: nowrap;
     box-shadow: 0 0 25px rgba(0,0,0,0.95);
-    z-index: 30;
+    z-index: 100 !important; /* Immer ganz oben sichtbar! */
     letter-spacing: 0.5px;
   }
 
@@ -349,20 +338,14 @@
   }
 
   .pip {
-    width: 8px;
-    height: 8px;
+    width: 8px; height: 8px;
     background: radial-gradient(circle, #2b1104 60%, #000 100%);
     border-radius: 50%;
-    align-self: center;
-    justify-self: center;
+    align-self: center; justify-self: center;
   }
 
   .dice-btn-row {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    width: 100%;
-    margin-top: 3px;
+    display: flex; flex-direction: column; gap: 4px; width: 100%; margin-top: 3px;
   }
 
   .action-btn {
@@ -386,10 +369,7 @@
   }
 
   .action-btn:disabled {
-    background: #3a2e28;
-    color: #6d6159;
-    border-color: #4a3c34;
-    cursor: not-allowed;
+    background: #3a2e28; color: #6d6159; border-color: #4a3c34; cursor: not-allowed;
   }
 
   .action-btn.pulse { animation: pulseGold 1.5s infinite; }
@@ -419,104 +399,56 @@
 
   /* ZONE 2: SHOWDOWN-SLOT */
   .center-duell-slot {
-    width: 160px;
-    height: 180px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    flex-shrink: 0;
+    width: 160px; height: 180px;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    position: relative; flex-shrink: 0;
   }
 
   .spqr-idle-seal {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    opacity: 0.35;
-    text-align: center;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0.35; text-align: center;
   }
 
   .spqr-eagle-icon { font-size: 2.6rem; filter: drop-shadow(0 0 10px var(--gold)); }
   .spqr-seal-text { font-family: 'Cinzel Decorative', serif; font-size: 0.7rem; color: var(--gold-bright); letter-spacing: 2px; margin-top: 3px; }
 
   .bot-active-target-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    position: absolute;
-    top: 50%; left: 50%;
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    position: absolute; top: 50%; left: 50%;
     transform: translate(-50%, -50%) scale(0.9);
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.25s, transform 0.25s;
-    z-index: 20;
+    visibility: hidden; opacity: 0; transition: opacity 0.25s, transform 0.25s; z-index: 20;
   }
 
-  .bot-active-target-box.visible {
-    visibility: visible;
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
+  .bot-active-target-box.visible { visibility: visible; opacity: 1; transform: translate(-50%, -50%) scale(1); }
 
   .bot-target-label {
     font-family: 'Cinzel Decorative', serif;
-    font-size: 0.72rem;
-    font-weight: 900;
-    color: #ff4444;
-    text-shadow: 0 0 10px #000, 0 0 15px #ff2222;
-    letter-spacing: 1.5px;
-    background: rgba(15, 3, 5, 0.94);
-    padding: 2px 10px;
-    border-radius: 8px;
-    border: 1.5px solid #ff4444;
-    margin-bottom: 2px;
+    font-size: 0.72rem; font-weight: 900; color: #ff4444;
+    text-shadow: 0 0 10px #000, 0 0 15px #ff2222; letter-spacing: 1.5px;
+    background: rgba(15, 3, 5, 0.94); padding: 2px 10px; border-radius: 8px; border: 1.5px solid #ff4444; margin-bottom: 2px;
   }
 
   .bot-active-card {
-    width: 115px;
-    height: 165px;
-    border-radius: 8px;
-    border: 3.5px solid #ff3333;
+    width: 115px; height: 165px; border-radius: 8px; border: 3.5px solid #ff3333;
     box-shadow: 0 0 35px #ff2222, 0 0 60px #000;
   }
 
-  .bot-target-sub {
-    font-size: 0.72rem;
-    font-weight: 800;
-    color: var(--gold-bright);
-    text-shadow: 1px 1px 4px #000;
-  }
+  .bot-target-sub { font-size: 0.72rem; font-weight: 800; color: var(--gold-bright); text-shadow: 1px 1px 4px #000; }
 
   /* ZONE 3: STAPEL */
   .table-decks {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    width: 210px;
-    justify-content: flex-end;
-    flex-shrink: 0;
+    display: flex; gap: 12px; align-items: center; width: 210px; justify-content: flex-end; flex-shrink: 0;
   }
 
   .deck-pile {
-    width: 100px;
-    height: 145px;
-    border-radius: 8px;
-    position: relative;
-    box-shadow: 0 6px 18px var(--shadow);
+    width: 100px; height: 145px; border-radius: 8px; position: relative; box-shadow: 0 6px 18px var(--shadow);
   }
 
   .deck-pile.draw {
-    background: url('card_back.jpg') center/cover;
-    border: 2.5px solid var(--gold);
-    cursor: pointer;
+    background: url('card_back.jpg') center/cover; border: 2.5px solid var(--gold); cursor: pointer;
   }
 
   .deck-pile.discard {
-    border: 2.5px solid var(--gold-bright);
-    background: rgba(20, 8, 10, 0.85);
+    border: 2.5px solid var(--gold-bright); background: rgba(20, 8, 10, 0.85);
   }
 
   .deck-pile.discard img {
@@ -524,97 +456,49 @@
   }
 
   #active-color-indicator {
-    display: none;
-    position: absolute;
-    top: -12px; left: 50%;
-    transform: translateX(-50%);
-    padding: 2px 10px;
-    border-radius: 10px;
-    font-size: 0.7rem;
-    font-weight: 900;
-    color: #fff;
-    border: 1.5px solid #fff;
-    z-index: 50;
-    white-space: nowrap;
+    display: none; position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+    padding: 2px 10px; border-radius: 10px; font-size: 0.7rem; font-weight: 900;
+    color: #fff; border: 1.5px solid #fff; z-index: 50; white-space: nowrap;
   }
 
   .active-color-rot { background: #990000; box-shadow: 0 0 12px #ff2222; }
   .active-color-blau { background: #003388; box-shadow: 0 0 12px #2266ff; }
   .active-color-gelb { background: #886600; box-shadow: 0 0 12px #ffbb00; }
 
-  /* SPIELER-STATION */
+  /* SPIELER-STATION DESKTOP */
   .player-hand-wrapper {
-    position: absolute;
-    bottom: -15px; left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 12000;
+    position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; z-index: 12000;
   }
 
-  .player-station {
-    display: flex;
-    align-items: flex-end;
-    gap: 16px;
-  }
+  .player-station { display: flex; align-items: flex-end; gap: 16px; }
 
   .player-hero-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: flex; flex-direction: column; align-items: center;
     background: radial-gradient(circle, rgba(45, 14, 20, 0.96) 0%, rgba(15, 5, 7, 0.98) 100%);
-    border: 2px solid var(--gold);
-    border-radius: 16px;
-    padding: 8px 12px;
-    box-shadow: 0 6px 20px var(--shadow);
-    margin-bottom: 25px;
-    flex-shrink: 0;
+    border: 2px solid var(--gold); border-radius: 16px; padding: 8px 12px;
+    box-shadow: 0 6px 20px var(--shadow); margin-bottom: 25px; flex-shrink: 0;
   }
 
   .hero-avatar-frame {
-    width: 68px;
-    height: 68px;
-    border-radius: 50%;
-    overflow: hidden;
+    width: 68px; height: 68px; border-radius: 50%; overflow: hidden;
     box-shadow: 0 0 16px rgba(0,0,0,0.9), 0 0 12px var(--gold);
-    background: #110507;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background: #110507; display: flex; justify-content: center; align-items: center;
   }
 
   .hero-avatar-frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    border-radius: 50%;
+    width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 50%;
   }
 
   .hero-name-plate {
-    font-size: 0.85rem;
-    font-weight: 900;
-    color: var(--gold-bright);
-    margin-top: 4px;
-    letter-spacing: 1px;
+    font-size: 0.85rem; font-weight: 900; color: var(--gold-bright); margin-top: 4px; letter-spacing: 1px;
   }
 
   #confirm-dialogue-box {
-    display: none;
-    position: absolute;
-    bottom: 260px;
-    left: 50%;
-    transform: translateX(-50%);
+    display: none; position: absolute; bottom: 260px; left: 50%; transform: translateX(-50%);
     background: radial-gradient(circle, rgba(55, 12, 18, 0.98) 0%, rgba(18, 5, 7, 0.98) 100%);
-    border: 2.5px solid var(--gold-bright);
-    border-radius: 12px;
-    padding: 6px 24px;
-    text-align: center;
-    box-shadow: 0 0 35px var(--gold-bright), 0 0 50px #000;
-    z-index: 500;
-    animation: popUp 0.18s ease-out;
-    white-space: nowrap;
+    border: 2.5px solid var(--gold-bright); border-radius: 12px; padding: 6px 24px; text-align: center;
+    box-shadow: 0 0 35px var(--gold-bright), 0 0 50px #000; z-index: 500; animation: popUp 0.18s ease-out; white-space: nowrap;
   }
 
   @keyframes popUp {
@@ -641,32 +525,17 @@
 
   /* HANDKARTEN DESKTOP */
   .hand-card {
-    width: 170px;
-    height: 245px;
-    border-radius: 12px;
-    margin-left: -46px;
-    cursor: pointer;
+    width: 170px; height: 245px; border-radius: 12px; margin-left: -46px; cursor: pointer;
     transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.22s;
-    transform-origin: bottom center;
-    box-shadow: -4px 6px 18px var(--shadow);
-    position: relative;
-    opacity: 1 !important;
+    transform-origin: bottom center; box-shadow: -4px 6px 18px var(--shadow); position: relative; opacity: 1 !important;
   }
 
   .hand-card:first-child { margin-left: 0; }
   .hand-card img {
-    width: 100%; height: 100%;
-    border-radius: 12px;
-    border: 2px solid rgba(223, 177, 91, 0.6);
-    display: block;
-    opacity: 1 !important;
+    width: 100%; height: 100%; border-radius: 12px; border: 2px solid rgba(223, 177, 91, 0.6); display: block; opacity: 1 !important;
   }
 
-  .hand-card.playable-glow {
-    transform: translateY(-24px) !important;
-    z-index: 150;
-  }
-
+  .hand-card.playable-glow { transform: translateY(-24px) !important; z-index: 150; }
   .hand-card.playable-glow img {
     border: 3.5px solid #ff3333 !important;
     box-shadow: 0 0 25px #ff2222, 0 0 45px #ffaa00 !important;
@@ -679,39 +548,23 @@
   }
 
   .hand-card.preview-elevated, .hand-card.locked-selected {
-    transform: translateY(-34px) scale(1.04) !important;
-    z-index: 300 !important;
+    transform: translateY(-34px) scale(1.04) !important; z-index: 300 !important;
   }
-
   .hand-card.preview-elevated img, .hand-card.locked-selected img {
-    border: 3.5px solid var(--gold-bright) !important;
-    box-shadow: 0 0 40px var(--gold-bright), 0 0 60px #fff !important;
+    border: 3.5px solid var(--gold-bright) !important; box-shadow: 0 0 40px var(--gold-bright), 0 0 60px #fff !important;
   }
+  .hand-card.veto-glow img { border: 3.5px solid #ff2222 !important; box-shadow: 0 0 40px #ff2222 !important; }
 
-  .hand-card.veto-glow img {
-    border: 3.5px solid #ff2222 !important;
-    box-shadow: 0 0 40px #ff2222 !important;
-  }
-
-  /* MODALS & BANNER */
+  /* MODALS & OVERLAYS */
   #color-picker-modal, #target-picker-modal, #pause-modal {
-    display: none;
-    position: fixed;
-    top: 0; left: 0; width: 100vw; height: 100vh;
-    background: rgba(0, 0, 0, 0.45);
-    justify-content: center;
-    align-items: center;
-    z-index: 10500;
+    display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(0, 0, 0, 0.45); justify-content: center; align-items: center; z-index: 10500;
   }
 
   .color-picker-box, .target-picker-box, .pause-box {
     background: radial-gradient(circle, #3a1014 0%, #150305 100%);
-    border: 3px solid var(--gold);
-    border-radius: 14px;
-    padding: 16px 28px;
-    text-align: center;
-    box-shadow: 0 0 50px var(--gold), 0 0 60px #000;
-    margin-bottom: 30px;
+    border: 3px solid var(--gold); border-radius: 14px; padding: 16px 28px;
+    text-align: center; box-shadow: 0 0 50px var(--gold), 0 0 60px #000; margin-bottom: 30px;
   }
 
   .color-btn-group, .pause-btn-group { display: flex; gap: 12px; margin-top: 10px; }
@@ -726,83 +579,47 @@
   .btn-gelb { background: #997700; color: #fff; }
 
   #caesar-flash-banner {
-    display: none;
-    position: fixed;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
+    display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
     background: radial-gradient(circle, rgba(100, 15, 20, 0.98) 0%, rgba(20, 5, 8, 0.98) 100%);
-    border: 3px solid var(--gold-bright);
-    border-radius: 14px;
-    padding: 15px 30px;
-    text-align: center;
-    box-shadow: 0 0 70px var(--gold-bright), 0 0 100px #fff;
-    z-index: 100000;
+    border: 3px solid var(--gold-bright); border-radius: 14px; padding: 15px 30px;
+    text-align: center; box-shadow: 0 0 70px var(--gold-bright), 0 0 100px #fff; z-index: 100000;
   }
 
   #notice-toast {
-    position: fixed;
-    bottom: 220px; left: 50%;
-    transform: translateX(-50%);
-    background: rgba(100, 10, 20, 0.96);
-    color: #fff; border: 2px solid var(--gold);
+    position: fixed; bottom: 220px; left: 50%; transform: translateX(-50%);
+    background: rgba(100, 10, 20, 0.96); color: #fff; border: 2px solid var(--gold);
     padding: 6px 18px; border-radius: 6px; font-size: 0.85rem; font-weight: 800;
     box-shadow: 0 0 25px #000; z-index: 1200; display: none; text-align: center;
   }
 
   #victory-modal {
-    display: none;
-    position: fixed;
-    top: 0; left: 0; width: 100vw; height: 100vh;
+    display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
     background: #000 url('victory_ave_caesar.jpg') no-repeat center center fixed;
-    background-size: cover;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    padding-bottom: 35px;
-    z-index: 100000;
+    background-size: cover; flex-direction: column; justify-content: flex-end; align-items: center;
+    padding-bottom: 35px; z-index: 100000;
   }
 
   .victory-banner {
-    background: rgba(15, 4, 6, 0.94);
-    border: 3px solid var(--gold-bright);
-    padding: 16px 32px;
-    border-radius: 12px;
-    text-align: center;
+    background: rgba(15, 4, 6, 0.94); border: 3px solid var(--gold-bright);
+    padding: 16px 32px; border-radius: 12px; text-align: center;
     box-shadow: 0 0 50px var(--gold-bright), 0 0 80px #000;
   }
 
   .modal-overlay {
-    display: none;
-    position: fixed;
-    top: 0; left: 0; width: 100vw; height: 100vh;
-    background: rgba(0, 0, 0, 0.88);
-    justify-content: center;
-    align-items: center;
-    z-index: 99999;
+    display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(0, 0, 0, 0.88); justify-content: center; align-items: center; z-index: 99999;
   }
 
   .scroll-parchment {
     background: #f4ebd6 radial-gradient(circle, #f9f4e6 0%, #ecd9b5 100%);
-    color: #2b1104;
-    border: 4px solid #8c6023;
-    border-radius: 10px;
-    width: 90%;
-    max-width: 750px;
-    max-height: 85vh;
-    overflow-y: auto;
-    padding: 18px;
-    box-shadow: 0 0 40px rgba(0,0,0,0.9);
-    position: relative;
+    color: #2b1104; border: 4px solid #8c6023; border-radius: 10px;
+    width: 90%; max-width: 750px; max-height: 85vh; overflow-y: auto; padding: 18px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.9); position: relative;
   }
 
   .scroll-parchment h2 {
-    font-family: 'Cinzel Decorative', serif;
-    font-size: 1.2rem;
-    color: #631018;
-    border-bottom: 2px solid #8c6023;
-    padding-bottom: 4px;
-    margin-bottom: 6px;
-    text-align: center;
+    font-family: 'Cinzel Decorative', serif; font-size: 1.2rem; color: #631018;
+    border-bottom: 2px solid #8c6023; padding-bottom: 4px; margin-bottom: 6px; text-align: center;
   }
 
   .scroll-parchment table { width: 100%; border-collapse: collapse; margin: 6px 0; font-size: 0.72rem; }
@@ -810,71 +627,103 @@
   .scroll-parchment th { background: #e2cca4; color: #551216; }
 
   .close-scroll {
-    position: absolute; top: 8px; right: 10px;
-    background: #631018; color: #fff; border: 1.5px solid #dfb15b;
-    border-radius: 50%; width: 26px; height: 26px; font-size: 0.8rem; font-weight: 900; cursor: pointer;
+    position: absolute; top: 8px; right: 10px; background: #631018; color: #fff;
+    border: 1.5px solid #dfb15b; border-radius: 50%; width: 26px; height: 26px; font-size: 0.8rem; font-weight: 900; cursor: pointer;
   }
 
   /* ==========================================================================
-     SMARTPHONE QUERFORMAT RETTUNGS-BLOCK (NUR AKTIV BEI BILDHÖHE UNTER 520px!)
-     Auf Laptops, PCs und Tablets bleibt alles 100% groß wie bisher.
+     ULTRA-PRÄZISE SMARTPHONE-QUERFORMAT ANPASSUNG
+     (Aktiviert sich automatisch bei Bildschirmen unter 550px Höhe)
      ========================================================================== */
-  @media (max-height: 520px) and (orientation: landscape) {
-    .top-bar { height: 30px; padding: 0 10px; }
-    .game-title { font-size: 0.85rem; letter-spacing: 1px; }
-    .win-trophy-badge { font-size: 0.65rem; padding: 1px 6px; }
-    .top-bar-btn { font-size: 0.65rem; padding: 3px 8px; }
+  @media (max-height: 550px) and (orientation: landscape) {
+    /* 1. OBERE LEISTE */
+    .top-bar { height: 28px; padding: 0 10px; }
+    .game-title { font-size: 0.82rem; letter-spacing: 1px; }
+    .win-trophy-badge { font-size: 0.62rem; padding: 1px 6px; }
+    .top-bar-btn { font-size: 0.65rem; padding: 2px 7px; }
 
-    /* Bots oben verkleinern */
-    .bots-stage { top: 32px; gap: 8px; }
-    .bot-card-group { padding: 2px 8px; border-radius: 8px; }
-    .bot-profile-info { min-width: 45px; margin-right: 6px; }
-    .avatar-frame { width: 34px; height: 34px; }
-    .bot-card-large { width: 44px; height: 65px; margin-left: -24px; border-radius: 4px; }
-    .speech-bubble { top: 105px; font-size: 0.75rem; padding: 3px 12px; }
+    /* 2. BOTS BÜHNE: SCHLANK & FLIEGEND */
+    .bots-stage { top: 30px; gap: 8px; z-index: 10; }
+    .bot-card-group { padding: 2px 6px; border-radius: 6px; border-width: 1.5px; }
+    .bot-profile-info { min-width: 38px; margin-right: 4px; }
+    .avatar-frame { width: 30px; height: 30px; }
+    .bot-profile-info div:nth-child(2) { font-size: 0.65rem !important; margin-top: 1px !important; }
+    .bot-profile-info div:nth-child(3) { font-size: 0.52rem !important; }
+    .bot-card-large { width: 32px; height: 48px; margin-left: -18px; border-radius: 4px; border-width: 1px; }
+    .speech-bubble { top: 78px; font-size: 0.72rem; padding: 2px 10px; }
 
-    /* Arena-Mitte zentrieren & anpassen */
+    /* 3. ARENA MITTE: TISCH & STATUS */
     .arena-center {
-      top: 45%;
+      top: 48%;
       gap: 12px;
+      width: auto;
       max-width: 98vw;
-      transform: translate(-50%, -50%) scale(0.85);
+      transform: translate(-50%, -50%);
     }
+
+    /* STATUS-BANNER: Sitzt jetzt sauber in der freien Lücke zwischen Bot & Tisch! */
     .status-announcer {
-      top: -38px;
-      font-size: 0.72rem;
+      top: -34px;
+      font-size: 0.7rem;
       padding: 3px 14px;
       border-radius: 12px;
+      border-width: 1.5px;
+      z-index: 9999 !important;
     }
 
-    /* Spieler unten verkleinern, damit Platz für die Mitte bleibt */
-    .player-hand-wrapper { bottom: -10px; }
+    /* WÜRFEL BEREICH */
+    .dice-arena { width: 130px; padding: 4px 6px; border-radius: 8px; border-width: 1.5px; gap: 3px; }
+    .dice-arena div:first-child { font-size: 0.55rem !important; }
+    .dice-row { gap: 5px; }
+    .dice-3d { width: 30px; height: 30px; border-radius: 6px; border-width: 1.5px; padding: 2px; }
+    .pip { width: 5px; height: 5px; }
+    .dice-btn-row { gap: 3px; margin-top: 2px; }
+    .action-btn { font-size: 0.65rem; padding: 3px 6px; border-radius: 4px; }
+    #rolls-info { font-size: 0.55rem; }
+
+    /* DUELL / SPQR SLOT */
+    .center-duell-slot { width: 85px; height: 95px; }
+    .spqr-eagle-icon { font-size: 1.6rem; }
+    .spqr-seal-text { font-size: 0.52rem; }
+    .bot-active-card { width: 66px; height: 94px; border-width: 2px; }
+    .bot-target-label { font-size: 0.55rem; padding: 1px 6px; }
+    .bot-target-sub { font-size: 0.55rem; }
+
+    /* KARTENSTAPEL */
+    .table-decks { width: 130px; gap: 8px; }
+    .deck-pile { width: 62px; height: 90px; border-radius: 6px; border-width: 1.5px; }
+    .deck-pile.draw div { font-size: 0.58rem !important; bottom: 4px !important; }
+    #active-color-indicator { font-size: 0.55rem; padding: 1px 6px; top: -10px; }
+
+    /* 4. SPIELER UNTEN: SCHNUCKLIG & FREI */
+    .player-hand-wrapper { bottom: -6px; z-index: 12000; }
     .player-station { gap: 8px; }
-    .player-hero-card { margin-bottom: 15px; padding: 4px 8px; border-radius: 10px; }
-    .hero-avatar-frame { width: 40px; height: 40px; }
-    .hero-name-plate { font-size: 0.65rem; margin-top: 2px; }
+    .player-hero-card { margin-bottom: 8px; padding: 3px 6px; border-radius: 8px; border-width: 1.5px; }
+    .hero-avatar-frame { width: 34px; height: 34px; }
+    .hero-name-plate { font-size: 0.62rem; margin-top: 1px; }
 
-    /* Handkarten: Sanfte Smartphone-Größe */
+    /* HANDKARTEN: Perfekte Handy-Größe (überdecken nichts mehr!) */
     .hand-card {
-      width: 95px;
-      height: 137px;
-      border-radius: 8px;
-      margin-left: -28px;
+      width: 72px;
+      height: 104px;
+      border-radius: 6px;
+      margin-left: -20px;
     }
-    .hand-card img { border-radius: 8px; }
+    .hand-card img { border-radius: 6px; border-width: 1.5px; }
 
     .hand-card.playable-glow {
-      transform: translateY(-14px) !important;
+      transform: translateY(-10px) !important;
     }
     .hand-card.preview-elevated, .hand-card.locked-selected {
-      transform: translateY(-20px) scale(1.05) !important;
+      transform: translateY(-16px) scale(1.05) !important;
     }
 
-    /* Popups für flache Bildschirme */
-    #confirm-dialogue-box { bottom: 145px; padding: 4px 14px; }
-    .confirm-title { font-size: 0.75rem; }
-    .btn-confirm-yes, .btn-confirm-no { font-size: 0.7rem; padding: 3px 10px; }
-    #notice-toast { bottom: 135px; font-size: 0.72rem; padding: 4px 12px; }
+    /* DIALOGE */
+    #confirm-dialogue-box { bottom: 110px; padding: 4px 12px; border-width: 1.5px; }
+    .confirm-title { font-size: 0.72rem; }
+    #confirm-card-desc { font-size: 0.65rem !important; }
+    .btn-confirm-yes, .btn-confirm-no { font-size: 0.65rem; padding: 3px 10px; }
+    #notice-toast { bottom: 105px; font-size: 0.68rem; padding: 3px 10px; }
   }
 </style>
 </head>
