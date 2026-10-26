@@ -114,7 +114,7 @@
     background: linear-gradient(180deg, #ffe08d 0%, #a87425 100%);
   }
 
-  /* TOP BAR MIT SPRACHE, AUDIO, PAUSE & SIEG-TRACKER */
+  /* TOP BAR */
   .top-bar {
     position: absolute;
     top: 0; left: 0; width: 100%;
@@ -131,7 +131,7 @@
   .game-title-wrap {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
   }
 
   .game-title {
@@ -141,6 +141,16 @@
     color: var(--gold-bright);
     letter-spacing: 2px;
     text-shadow: 0 0 10px rgba(223, 177, 91, 0.8);
+  }
+
+  .version-tag {
+    font-size: 0.6rem;
+    font-weight: 900;
+    color: #ffcc00;
+    border: 1px solid #ffcc00;
+    padding: 1px 4px;
+    border-radius: 4px;
+    background: rgba(0,0,0,0.6);
   }
 
   .win-trophy-badge {
@@ -166,7 +176,7 @@
     font-family: 'Cinzel', serif;
     font-weight: 900;
     font-size: 0.76rem;
-    padding: 4px 10px;
+    padding: 5px 10px;
     border: 1.5px solid #ffe39b;
     border-radius: 6px;
     cursor: pointer;
@@ -180,7 +190,7 @@
 
   .top-bar-btn:hover { transform: scale(1.05); background: linear-gradient(180deg, #ffe08d 0%, #a87425 100%); }
   .top-bar-btn.muted { background: linear-gradient(180deg, #666 0%, #333 100%); color: #bbb; border-color: #888; }
-  .lang-btn { font-family: 'Cinzel', serif; font-size: 0.75rem; font-weight: 900; min-width: 60px; }
+  .lang-btn { font-family: 'Cinzel', serif; font-size: 0.78rem; font-weight: 900; min-width: 65px; border-color: #fff; }
 
   /* BOTS BÜHNE */
   .bots-stage {
@@ -267,7 +277,6 @@
     max-width: 95vw;
   }
 
-  /* STATUS ANNOUNCER */
   .status-announcer {
     position: absolute;
     top: -65px;
@@ -503,7 +512,7 @@
   .active-color-blau { background: #003388; box-shadow: 0 0 12px #2266ff; }
   .active-color-gelb { background: #886600; box-shadow: 0 0 12px #ffbb00; }
 
-  /* SPIELER-STATION UNTEN */
+  /* SPIELER-STATION UNTEN: AVATAR DIREKT NEBEN DEM FÄCHER */
   .player-hand-wrapper {
     position: absolute;
     bottom: -15px; left: 50%;
@@ -601,7 +610,7 @@
 
   .player-hand-fan { display: flex; justify-content: center; align-items: flex-end; }
 
-  /* HANDKARTEN: 170px x 245px */
+  /* HANDKARTEN (DESKTOP) */
   .hand-card {
     width: 170px;
     height: 245px;
@@ -731,7 +740,7 @@
     box-shadow: 0 0 25px #000; z-index: 1200; display: none; text-align: center;
   }
 
-  /* SIEGER MODAL MIT STRAFPUNKTE-ABRECHNUNG */
+  /* SIEGER MODAL */
   #victory-modal {
     display: none;
     position: fixed;
@@ -875,6 +884,7 @@
 <div class="top-bar">
   <div class="game-title-wrap">
     <div class="game-title">AVE CAESAR</div>
+    <div class="version-tag">v2.0</div>
     <div class="win-trophy-badge" id="win-badge" title="Trophies">🏆 0</div>
   </div>
   <div class="top-controls">
@@ -938,9 +948,8 @@
   </div>
 </div>
 
-<!-- SPIELER-STATION UNTEN -->
+<!-- SPIELER-STATION UNTEN: AVATAR DIREKT NEBEN DEM FÄCHER -->
 <div class="player-hand-wrapper">
-  <!-- BESTÄTIGUNGSBOX -->
   <div id="confirm-dialogue-box">
     <div class="confirm-title" id="confirm-title-text">„Diese Karte, sicher Gladiator?“</div>
     <div id="confirm-card-desc" style="font-size: 0.75rem; color: #f7ebd4;">-</div>
@@ -1020,9 +1029,7 @@
     <button class="close-scroll" onclick="closeRules()">✕</button>
     <h2 id="rules-heading">AVE CAESAR • DIE ARENA-REGELN</h2>
     <p id="rules-goal"><strong>Ziel des Spiels:</strong> Werde als Erster alle Handkarten los. Restkarten zählen Strafpunkte (X=10 bis L=50).</p>
-    <table id="rules-table">
-      <!-- Wird dynamisch befüllt -->
-    </table>
+    <table id="rules-table"></table>
   </div>
 </div>
 
@@ -1223,7 +1230,6 @@ const TRANSLATIONS = {
   }
 };
 
-// Automatische Spracherkennung (Standard: DE, bei englischem Browser: EN)
 let currentLang = 'de';
 try {
   const navLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
@@ -1237,68 +1243,77 @@ function t(key, ...args) {
   return val || key;
 }
 
+function safeText(id, text) {
+  const el = document.getElementById(id);
+  if (el) el.innerText = text;
+}
+
+function safeHtml(id, html) {
+  const el = document.getElementById(id);
+  if (el) el.innerHTML = html;
+}
+
 function toggleLanguage() {
   currentLang = (currentLang === 'de') ? 'en' : 'de';
   applyLanguage();
 }
 
 function applyLanguage() {
-  document.getElementById('lang-toggle-btn').innerText = t('langBtn');
-  document.getElementById('rotate-title').innerText = t('rotateTitle');
-  document.getElementById('rotate-desc').innerText = t('rotateDesc');
-  document.getElementById('splash-title').innerText = t('splashTitle');
-  document.getElementById('splash-subtitle').innerText = t('splashSubtitle');
-  document.getElementById('btn-choice-2').innerHTML = t('choice2');
-  document.getElementById('btn-choice-3').innerHTML = t('choice3');
-  document.getElementById('btn-choice-4').innerHTML = t('choice4');
-  document.getElementById('rules-top-btn').innerText = t('rulesBtn');
-  document.getElementById('dice-label').innerText = t('diceLabel');
-  document.getElementById('btn-roll').innerText = t('btnRoll');
-  document.getElementById('takeover-btn').innerText = t('btnTakeover');
-  document.getElementById('must-draw-btn').innerText = t('btnDraw');
-  document.getElementById('btn-play').innerText = t('btnPlay');
-  document.getElementById('draw-pile-title').innerText = t('drawPileTitle');
-  document.getElementById('player-hero-name').innerText = t('heroName');
-  document.getElementById('confirm-title-text').innerText = t('confirmTitle');
-  document.getElementById('btn-confirm-yes').innerText = t('btnConfirmYes');
-  document.getElementById('btn-confirm-no').innerText = t('btnConfirmNo');
-  document.getElementById('color-modal-title').innerText = t('colorTitle');
-  document.getElementById('color-modal-subtitle').innerText = t('colorSubtitle');
-  document.getElementById('color-btn-red').innerText = t('btnRed');
-  document.getElementById('color-btn-blue').innerText = t('btnBlue');
-  document.getElementById('color-btn-yellow').innerText = t('btnYellow');
-  document.getElementById('pause-modal-title').innerText = t('pauseTitle');
-  document.getElementById('pause-modal-subtitle').innerText = t('pauseSubtitle');
-  document.getElementById('pause-btn-resume').innerText = t('pauseResume');
-  document.getElementById('pause-btn-rules').innerText = t('pauseRules');
-  document.getElementById('pause-btn-restart').innerText = t('pauseRestart');
-  document.getElementById('target-modal-title').innerText = t('targetTitle');
-  document.getElementById('target-modal-subtitle').innerText = t('targetSubtitle');
-  document.getElementById('caesar-flash-sub').innerText = t('caesarSub');
-  document.getElementById('victory-restart-btn').innerText = t('victoryRestart');
+  safeText('lang-toggle-btn', t('langBtn'));
+  safeText('rotate-title', t('rotateTitle'));
+  safeText('rotate-desc', t('rotateDesc'));
+  safeText('splash-title', t('splashTitle'));
+  safeText('splash-subtitle', t('splashSubtitle'));
+  safeHtml('btn-choice-2', t('choice2'));
+  safeHtml('btn-choice-3', t('choice3'));
+  safeHtml('btn-choice-4', t('choice4'));
+  safeText('rules-top-btn', t('rulesBtn'));
+  safeText('dice-label', t('diceLabel'));
+  safeText('btn-roll', t('btnRoll'));
+  safeText('takeover-btn', t('btnTakeover'));
+  safeText('must-draw-btn', t('btnDraw'));
+  safeText('btn-play', t('btnPlay'));
+  safeText('draw-pile-title', t('drawPileTitle'));
+  safeText('player-hero-name', t('heroName'));
+  safeText('confirm-title-text', t('confirmTitle'));
+  safeText('btn-confirm-yes', t('btnConfirmYes'));
+  safeText('btn-confirm-no', t('btnConfirmNo'));
+  safeText('color-modal-title', t('colorTitle'));
+  safeText('color-modal-subtitle', t('colorSubtitle'));
+  safeText('color-btn-red', t('btnRed'));
+  safeText('color-btn-blue', t('btnBlue'));
+  safeText('color-btn-yellow', t('btnYellow'));
+  safeText('pause-modal-title', t('pauseTitle'));
+  safeText('pause-modal-subtitle', t('pauseSubtitle'));
+  safeText('pause-btn-resume', t('pauseResume'));
+  safeText('pause-btn-rules', t('pauseRules'));
+  safeText('pause-btn-restart', t('pauseRestart'));
+  safeText('target-modal-title', t('targetTitle'));
+  safeText('target-modal-subtitle', t('targetSubtitle'));
+  safeText('caesar-flash-sub', t('caesarSub'));
+  safeText('victory-restart-btn', t('victoryRestart'));
 
-  // Regeln Parchment befüllen
-  document.getElementById('rules-heading').innerText = t('rulesHeading');
-  document.getElementById('rules-goal').innerHTML = t('rulesGoal');
+  safeText('rules-heading', t('rulesHeading'));
+  safeHtml('rules-goal', t('rulesGoal'));
   const rTable = document.getElementById('rules-table');
-  const ths = t('rulesTh');
-  const rows = t('rulesRows');
-  let tableHtml = `<tr><th>${ths[0]}</th><th>${ths[1]}</th><th>${ths[2]}</th></tr>`;
-  rows.forEach(r => {
-    tableHtml += `<tr><td><strong>${r[0]}</strong></td><td>${r[1]}</td><td>${r[2]}</td></tr>`;
-  });
-  rTable.innerHTML = tableHtml;
+  if (rTable) {
+    const ths = t('rulesTh');
+    const rows = t('rulesRows');
+    let tableHtml = `<tr><th>${ths[0]}</th><th>${ths[1]}</th><th>${ths[2]}</th></tr>`;
+    rows.forEach(r => {
+      tableHtml += `<tr><td><strong>${r[0]}</strong></td><td>${r[1]}</td><td>${r[2]}</td></tr>`;
+    });
+    rTable.innerHTML = tableHtml;
+  }
 
-  // Status Ticker aktualisieren
   if (rollStep === 0 && currentPlayerIdx === 0) {
     setAnnouncer(t('announcerYourTurn'));
-    document.getElementById('rolls-info').innerText = t('rollsNotYet');
+    safeText('rolls-info', t('rollsNotYet'));
   }
 
   updateUI();
 }
 
-// Porcus Kartennamen & Beschreibungen dynamisch übersetzen
 const PORCUS_META = {
   12: {
     de: { name: 'PORCUS: AUSSETZEN', desc: 'Nächster Spieler setzt aus' },
@@ -1434,7 +1449,6 @@ function updateWinBadge() {
   if (badge) badge.innerText = `🏆 ${playerVictories}`;
 }
 
-// PAUSEN-SYSTEM
 function togglePauseGame() {
   isAppPaused = !isAppPaused;
   const modal = document.getElementById('pause-modal');
@@ -1449,7 +1463,6 @@ function togglePauseGame() {
   }
 }
 
-// YOUTUBE PLAYABLES LIFECYCLE HOOKS
 if (isYouTubePlayables && ytgame.system) {
   if (ytgame.system.isAudioEnabled) isAudioMuted = !ytgame.system.isAudioEnabled();
   if (ytgame.system.onAudioEnabledChange) {
@@ -1468,7 +1481,6 @@ function getCardImgPath(pageNum) {
   return `cards/Ave Caesar Grafiken plus Cover_page-${pad}.jpg`;
 }
 
-// MULTI-EXTENSION AVATAR LOADER
 function smartAvatarLoad(imgElement, baseName, fallbackPage) {
   if (!imgElement) return;
   const candidates = [
@@ -1646,7 +1658,7 @@ function resetTurn() {
   document.getElementById('must-draw-btn').style.display = 'none';
   document.getElementById('btn-play').disabled = true;
   document.getElementById('btn-play').classList.remove('pulse');
-  document.getElementById('rolls-info').innerText = t('rollsNotYet');
+  safeText('rolls-info', t('rollsNotYet'));
   document.getElementById('veto-btn').style.display = 'none';
   hideBotTargetCard();
 
@@ -1654,7 +1666,6 @@ function resetTurn() {
   renderDice();
 }
 
-// ZENTRALE SIEGPRÜFUNG
 function checkGameVictory() {
   if (players[0] && players[0].hand.length === 0) {
     playerVictories++;
@@ -1699,7 +1710,7 @@ function handleTakeoverClick() {
   document.getElementById('takeover-btn').style.display = 'none';
   canTakeover = false;
   rollStep = 1;
-  document.getElementById('rolls-info').innerText = t('rollsTaken');
+  safeText('rolls-info', t('rollsTaken'));
   setAnnouncer(t('announcerTakeover'));
   checkInitialRollOutcome();
 }
@@ -1710,7 +1721,7 @@ function rollInitial() {
   animateDice();
   for (let i = 0; i < 3; i++) dice[i] = Math.floor(Math.random() * 6) + 1;
   renderDice();
-  document.getElementById('rolls-info').innerText = t('rollsFirst');
+  safeText('rolls-info', t('rollsFirst'));
   checkInitialRollOutcome();
 }
 
@@ -1769,7 +1780,7 @@ function selectCard(idx) {
   const cardDesc = getCardDesc(card);
   let info = `${cardName} • ${card.rolls} ${t('rollsLeft').replace(':', '')} • ${card.points} Pts`;
   if (cardDesc) info += `<br><strong style="color:#ffbb44;">${cardDesc}</strong>`;
-  descEl.innerHTML = info;
+  if (descEl) descEl.innerHTML = info;
   document.getElementById('confirm-dialogue-box').style.display = 'block';
 
   updateUI();
@@ -1811,7 +1822,7 @@ function confirmCardChoice() {
     document.getElementById('btn-play').disabled = true;
     document.getElementById('btn-play').classList.remove('pulse');
     setAnnouncer(t('announcerLocked', cardName, rerollsLeft));
-    document.getElementById('rolls-info').innerText = `${t('rollsLeft')}${rerollsLeft}`;
+    safeText('rolls-info', `${t('rollsLeft')}${rerollsLeft}`);
   }
 
   updateUI();
@@ -1839,7 +1850,7 @@ function rollReroll() {
   }
 
   const card = players[0].hand[lockedCardIdx];
-  document.getElementById('rolls-info').innerText = `${t('rollsLeft')}${rerollsLeft}`;
+  safeText('rolls-info', `${t('rollsLeft')}${rerollsLeft}`);
   const cardName = getCardName(card);
 
   if (checkFormation(dice, card)) {
@@ -1877,12 +1888,11 @@ function playSelectedCard() {
 
   if (checkGameVictory()) return;
 
-  setAnnouncer(t('announcerCardPlayed'));
+  setAnnouncer(t('announcerPlayed'));
   updateUI();
   passTurnToNext();
 }
 
-// 6 PORCUS SOFORT-EFFEKTE
 function executePorcusAction(card, player) {
   setAnnouncer(`🐗 ${getCardName(card)}!`);
   activeChosenColor = null;
@@ -1971,6 +1981,7 @@ function finishOrPassAfterPorcus(player) {
 
 function openTargetPickerModal() {
   const container = document.getElementById('target-buttons-group');
+  if (!container) return;
   container.innerHTML = '';
 
   for (let i = 1; i < numPlayers; i++) {
@@ -2044,7 +2055,7 @@ function handleDrawClick() {
       rollStep = 2;
       document.getElementById('btn-roll').disabled = false;
       document.getElementById('btn-roll').classList.add('pulse');
-      document.getElementById('rolls-info').innerText = `${t('rollsLeft')}${rerollsLeft}`;
+      safeText('rolls-info', `${t('rollsLeft')}${rerollsLeft}`);
     } else {
       setAnnouncer(t('announcerDrawnNoFit'));
       canTakeover = true;
@@ -2339,7 +2350,6 @@ function hideBotTargetCard() {
   if (seal) seal.style.display = 'flex';
 }
 
-// VETO FUNKTION
 function triggerPlayerVeto() {
   if (botTurnTimeout) clearTimeout(botTurnTimeout);
   if (vetoTimerInterval) clearInterval(vetoTimerInterval);
@@ -2410,10 +2420,9 @@ function clearVetoCardHighlight() {
 function showVictoryScreen(title, desc, penaltyInfo) {
   playSoundEffect('fanfare');
   const modal = document.getElementById('victory-modal');
-  document.getElementById('victory-title').innerText = title;
-  document.getElementById('victory-desc').innerText = desc;
-  const pen = document.getElementById('penalty-breakdown');
-  if (pen) pen.innerText = penaltyInfo ? `${penaltyInfo}` : '';
+  safeText('victory-title', title);
+  safeText('victory-desc', desc);
+  safeText('penalty-breakdown', penaltyInfo || '');
   if (modal) modal.style.display = 'flex';
 }
 
