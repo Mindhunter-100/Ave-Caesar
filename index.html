@@ -252,7 +252,7 @@
 
   .bot-card-large:first-child { margin-left: 0; }
 
-  /* SYMMETRISCHER ARENA-SPIELTISCH */
+  /* SYMMETRISCHER ARENA-SPIELTISCH (48% HÖHE) */
   .arena-center {
     position: absolute;
     top: 48%; left: 50%;
@@ -266,10 +266,10 @@
     max-width: 95vw;
   }
 
-  /* STATUS ANNOUNCER */
+  /* SCHWARZER STATUS ANNOUNCER: SAUBER POSITIONIERT & ALLEGEMEIN INFORMIEREND */
   .status-announcer {
     position: absolute;
-    top: -75px;
+    top: -65px;
     left: 50%;
     transform: translateX(-50%);
     background: rgba(18, 6, 8, 0.96);
@@ -399,7 +399,7 @@
     text-align: center;
   }
 
-  /* ZONE 2: ARENA-MITTE (REINE KARTE OHNE STÖRENDE TEXT-BANNER!) */
+  /* ZONE 2: ARENA-MITTE (REINE KARTE OHNE TEXT-BANNER!) */
   .center-duell-slot {
     width: 160px;
     height: 180px;
@@ -838,7 +838,7 @@
 <!-- BOTS BÜHNE OBEN IM SAND -->
 <div class="bots-stage" id="bots-stage-area"></div>
 
-<!-- ARENA SPIELTISCH (ABGESENKT AUF 48%) -->
+<!-- ARENA SPIELTISCH -->
 <div class="arena-center">
   <!-- STATUS ANNOUNCER -->
   <div class="status-announcer" id="status-text">DEIN ZUG: WIRF DIE SCHICKSALSKNOCHEN!</div>
@@ -863,7 +863,7 @@
     <div id="rolls-info" style="font-size: 0.65rem; color: #d5be9b;">Würfe: -</div>
   </div>
 
-  <!-- ZONE 2: ARENA-MITTE (REINE KARTE OHNE TEXT-BANNER!) -->
+  <!-- ZONE 2: ARENA-MITTE -->
   <div class="center-duell-slot">
     <div class="spqr-idle-seal" id="spqr-idle-seal">
       <div class="spqr-eagle-icon">🦅</div>
@@ -891,7 +891,6 @@
 
 <!-- SPIELER-STATION UNTEN -->
 <div class="player-hand-wrapper">
-  <!-- BESTÄTIGUNGSBOX -->
   <div id="confirm-dialogue-box">
     <div class="confirm-title">„Diese Karte, sicher Gladiator?“</div>
     <div id="confirm-card-desc" style="font-size: 0.75rem; color: #f7ebd4;">-</div>
@@ -902,7 +901,6 @@
   </div>
 
   <div class="player-station">
-    <!-- DEIN AVATAR -->
     <div class="player-hero-card">
       <div class="hero-avatar-frame">
         <img id="player-avatar-img" src="avatar_1.jpg" alt="Du">
@@ -910,7 +908,6 @@
       <div class="hero-name-plate">DU</div>
     </div>
 
-    <!-- DEINE HANDKARTEN -->
     <div class="player-hand-fan" id="player-fan"></div>
   </div>
 </div>
@@ -1209,9 +1206,9 @@ function shuffle(a) {
 
 // BOT PROFILES
 const botProfiles = [
-  { id: 2, name: 'MAXIMUS', avatar: 'avatar_2.jpg', page: 1, title: 'Der Schlächter', quote: '„Spüre den Sand, Feigling!“' },
-  { id: 3, name: 'AURELIUS', avatar: 'avatar_3.jpg', page: 35, title: 'Der Zenturio', quote: '„Meine Legion kennt keine Gnade!“' },
-  { id: 4, name: 'CASSIUS', avatar: 'avatar_4.jpg', page: 22, title: 'Der Elefantenmeister', quote: '„Die Götter fordern dein Blut!“' }
+  { id: 2, name: 'MAXIMUS', avatar: 'avatar_2.jpg', page: 1, title: 'Der Schlächter' },
+  { id: 3, name: 'AURELIUS', avatar: 'avatar_3.jpg', page: 35, title: 'Der Zenturio' },
+  { id: 4, name: 'CASSIUS', avatar: 'avatar_4.jpg', page: 22, title: 'Der Elefantenmeister' }
 ];
 
 let numPlayers = 2;
@@ -1301,6 +1298,7 @@ function resetTurn() {
   renderDice();
 }
 
+// ZENTRALE SIEGPRÜFUNG
 function checkGameVictory() {
   if (players[0] && players[0].hand.length === 0) {
     playerVictories++;
@@ -1584,7 +1582,7 @@ function executePorcusAction(card, player) {
         setAnnouncer('Extrazug! Wirf die Würfel erneut!');
         if (player.isHuman) document.getElementById('btn-roll').classList.add('pulse');
         else startBotTurn();
-      }, 1600);
+      }, 1000);
       return;
 
     case PORCUS_EFFECTS.GIVE_CARD:
@@ -1610,7 +1608,7 @@ function executePorcusAction(card, player) {
 function finishOrPassAfterPorcus(player) {
   if (checkGameVictory()) return;
   updateUI();
-  setTimeout(passTurnToNext, 1600);
+  setTimeout(passTurnToNext, 600);
 }
 
 function openTargetPickerModal() {
@@ -1657,7 +1655,7 @@ function pickColor(col) {
   if (checkGameVictory()) return;
 
   updateUI();
-  setTimeout(passTurnToNext, 1000);
+  setTimeout(passTurnToNext, 600);
 }
 
 function turnFailed() {
@@ -1693,21 +1691,21 @@ function handleDrawClick() {
       setAnnouncer('Gezogene Karte passt nicht. Nächster Gladiator!');
       canTakeover = true;
       updateUI();
-      setTimeout(passTurnToNext, 1600);
+      setTimeout(passTurnToNext, 1000);
     }
     updateUI();
   }
 }
 
 // ==========================================
-// BOTS TURN: JEDE AKTION -1,8 SEKUNDEN (FLÜSSIG & DYNAMISCH!)
+// BOTS TURN: DYNAMISCH, SCHNELL & OHNE VERZÖGERUNGEN!
 // ==========================================
 function startBotTurn() {
   if (isAppPaused) return;
   const bot = players[currentPlayerIdx];
   setAnnouncer(`${bot.name} ist am Zug...`);
 
-  // Vor dem 1. Wurf: 1600ms (-1,8s)
+  // Schneller Start: nur 600ms vor dem 1. Wurf!
   setTimeout(() => {
     if (isAppPaused) return;
     playSoundEffect('dice');
@@ -1734,9 +1732,9 @@ function startBotTurn() {
           canTakeover = false;
           if (checkGameVictory()) return;
           updateUI();
-          setTimeout(passTurnToNext, 1200);
-        }, 2000); // -1,8s
-      }, 1000);
+          setTimeout(passTurnToNext, 500);
+        }, 900);
+      }, 600);
       return;
     }
 
@@ -1746,18 +1744,18 @@ function startBotTurn() {
       setAnnouncer(`${bot.name} kann nicht bedienen und zieht eine Karte.`);
       canTakeover = true;
       updateUI();
-      setTimeout(passTurnToNext, 2000); // -1,8s
+      setTimeout(passTurnToNext, 900);
       return;
     }
 
     const targetCard = bot.hand[targetCardIdx];
 
-    // DREHE ZIELKARTE UM (2,4s statt 4,2s!)
+    // DREHE ZIELKARTE UM
     displayBotTargetCard(targetCard);
-    setAnnouncer(`${bot.name} hat gewürfelt.`);
+    setAnnouncer(`${bot.name} peilt Ziel an...`);
 
     const vetoCardIdx = players[0].hand.findIndex(c => canPlayOnDiscard(c) && checkFormation(dice, c));
-    let vetoSeconds = 5;
+    let vetoSeconds = 3;
 
     if (vetoCardIdx !== -1) {
       document.getElementById('veto-btn').style.display = 'block';
@@ -1778,15 +1776,16 @@ function startBotTurn() {
 
       botTurnTimeout = setTimeout(() => {
         proceedBotTurnExecution(bot, targetCardIdx);
-      }, 5200);
+      }, 3400);
 
     } else {
+      // Wenn kein Veto möglich ist: nur 800ms warten und direkt weiter!
       setTimeout(() => {
         proceedBotTurnExecution(bot, targetCardIdx);
-      }, 2400); // -1,8s
+      }, 800);
     }
 
-  }, 1600); // -1,8s
+  }, 600);
 }
 
 function proceedBotTurnExecution(bot, targetCardIdx) {
@@ -1815,8 +1814,8 @@ function proceedBotTurnExecution(bot, targetCardIdx) {
       canTakeover = false;
       if (checkGameVictory()) return;
       updateUI();
-      setTimeout(passTurnToNext, 1200);
-    }, 2400); // -1,8s
+      setTimeout(passTurnToNext, 500);
+    }, 900);
     return;
   }
 
@@ -1901,9 +1900,9 @@ function executeBotRerollStep(bot, cardIdx, rerollsLeft) {
   locked = getSmartBotLocks(dice, card);
   renderDice();
   displayBotTargetCard(card);
-  setAnnouncer(`${bot.name} sperrt Würfel (rot)...`);
+  setAnnouncer(`${bot.name} sperrt Würfel (rot) und würfelt...`);
 
-  // 2,0 Sekunden Zeit (-1,8s)
+  // Schnelle Würfelsperre: nur 700ms!
   setTimeout(() => {
     if (isAppPaused) return;
     playSoundEffect('dice');
@@ -1915,7 +1914,7 @@ function executeBotRerollStep(bot, cardIdx, rerollsLeft) {
 
     if (dice[0] === dice[1] && dice[1] === dice[2]) {
       triggerAveCaesarCelebration();
-      setAnnouncer(`AVE CAESAR! ${bot.name} würfelt einen Drilling im Nachwurf!`);
+      setAnnouncer(`AVE CAESAR! ${bot.name} würfelt einen Drilling!`);
       displayBotTargetCard(card);
       setTimeout(() => {
         bot.hand.splice(cardIdx, 1);
@@ -1926,8 +1925,8 @@ function executeBotRerollStep(bot, cardIdx, rerollsLeft) {
         canTakeover = false;
         if (checkGameVictory()) return;
         updateUI();
-        setTimeout(passTurnToNext, 1200);
-      }, 2000); // -1,8s
+        setTimeout(passTurnToNext, 500);
+      }, 900);
       return;
     }
 
@@ -1943,20 +1942,20 @@ function executeBotRerollStep(bot, cardIdx, rerollsLeft) {
         canTakeover = false;
         if (checkGameVictory()) return;
         updateUI();
-        setTimeout(passTurnToNext, 1200);
-      }, 2400); // -1,8s
+        setTimeout(passTurnToNext, 500);
+      }, 900);
     } else if (rerollsLeft > 1) {
-      setTimeout(() => executeBotRerollStep(bot, cardIdx, rerollsLeft - 1), 2200); // -1,8s
+      setTimeout(() => executeBotRerollStep(bot, cardIdx, rerollsLeft - 1), 700);
     } else {
       setAnnouncer(`${bot.name} verfehlt die Formation!`);
       setTimeout(() => {
         hideBotTargetCard();
         canTakeover = true;
         updateUI();
-        setTimeout(passTurnToNext, 1500);
-      }, 2400); // -1,8s
+        setTimeout(passTurnToNext, 700);
+      }, 900);
     }
-  }, 2000); // -1,8s
+  }, 700);
 }
 
 function handleBotColorChoice(bot, card) {
@@ -2014,7 +2013,7 @@ function triggerPlayerVeto() {
 
     setAnnouncer(`🛡️ VETO ABGEWEHRT! Du ziehst 1 Strafkarte!`);
     updateUI();
-    setTimeout(() => { passTurnToNext(); }, 2000);
+    setTimeout(() => { passTurnToNext(); }, 1500);
 
   } else {
     const card = players[0].hand.splice(playerCardIdx, 1)[0];
@@ -2045,7 +2044,7 @@ function triggerPlayerVeto() {
         const rBtn = document.getElementById('btn-roll');
         rBtn.disabled = false;
         rBtn.classList.add('pulse');
-      }, 1200);
+      }, 900);
     }
   }
 }
@@ -2269,7 +2268,7 @@ function showNoticeToast(msg) {
   if (t) {
     t.innerText = msg;
     t.style.display = 'block';
-    setTimeout(() => t.style.display = 'none', 2000);
+    setTimeout(() => t.style.display = 'none', 1600);
   }
 }
 
@@ -2278,7 +2277,7 @@ function triggerAveCaesarCelebration() {
   const banner = document.getElementById('caesar-flash-banner');
   if (banner) {
     banner.style.display = 'block';
-    setTimeout(() => { banner.style.display = 'none'; }, 1500);
+    setTimeout(() => { banner.style.display = 'none'; }, 1200);
   }
 }
 
