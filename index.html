@@ -57,7 +57,7 @@
     top: 0; left: 0; width: 100vw; height: 100vh;
     background: #0c0406;
     color: var(--gold-bright);
-    z-index: 999999;
+    z-index: 9999999;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -69,13 +69,13 @@
     #rotate-device-overlay { display: flex; }
   }
 
-  /* START BILDSCHIRM */
+  /* START BILDSCHIRM (Z-INDEX JETZT ABSOLUT MAXIMAL -> KEIN DURCHDRÜCKEN VON AVATAREN!) */
   #splash-screen {
     position: fixed;
     top: 0; left: 0; width: 100vw; height: 100vh;
     background: #080203 url('cards/Ave Caesar Grafiken plus Cover_page-0001.jpg') no-repeat center center;
     background-size: contain;
-    z-index: 10000;
+    z-index: 9999999 !important;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -181,9 +181,7 @@
   .top-bar-btn:hover { transform: scale(1.05); background: linear-gradient(180deg, #ffe08d 0%, #a87425 100%); }
   .top-bar-btn.muted { background: linear-gradient(180deg, #666 0%, #333 100%); color: #bbb; border-color: #888; }
 
-  /* =========================================================
-     BOTS BÜHNE: PRUNKVOLL & KOMPAKT IM SAND
-     ========================================================= */
+  /* BOTS BÜHNE */
   .bots-stage {
     position: absolute;
     top: 44px; left: 0; width: 100%;
@@ -273,11 +271,11 @@
   }
 
   /* =========================================================
-     SYMMETRISCHER ARENA-SPIELTISCH (EXAKT AUSGEWOGEN BEI 44%)
+     SYMMETRISCHER ARENA-SPIELTISCH (ABGESENKT AUF 48%!)
      ========================================================= */
   .arena-center {
     position: absolute;
-    top: 44%; left: 50%;
+    top: 48%; left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
     justify-content: center;
@@ -288,10 +286,10 @@
     max-width: 95vw;
   }
 
-  /* STATUS ANNOUNCER: FEST VERANKERT ÜBER DEM TISCH IM SAND! */
+  /* STATUS ANNOUNCER: JETZT BEI TOP: -75px (MASSIG ABSTAND ZUM ROTEN ZIEL-TEXT!) */
   .status-announcer {
     position: absolute;
-    top: -55px;
+    top: -75px;
     left: 50%;
     transform: translateX(-50%);
     background: rgba(18, 6, 8, 0.96);
@@ -465,6 +463,7 @@
     transform: translate(-50%, -50%) scale(1);
   }
 
+  /* ROTER SCHRIFTZUG: SAUBER POSITIONIERT OHNE ÜBERSCHNEIDUNG! */
   .bot-target-label {
     font-family: 'Cinzel Decorative', serif;
     font-size: 0.72rem;
@@ -476,6 +475,7 @@
     padding: 2px 10px;
     border-radius: 8px;
     border: 1.5px solid #ff4444;
+    margin-bottom: 2px;
   }
 
   .bot-active-card {
@@ -546,7 +546,7 @@
   .active-color-gelb { background: #886600; box-shadow: 0 0 12px #ffbb00; }
 
   /* =========================================================
-     SPIELER-STATION: AVATAR DIREKT NEBEN DEM FÄCHER!
+     SPIELER-STATION UNTEN: AVATAR DIREKT LINKS NEBEN DEM FÄCHER!
      ========================================================= */
   .player-hand-wrapper {
     position: absolute;
@@ -555,7 +555,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    z-index: 12000; /* IMMER SICHTBAR & HELL! */
+    z-index: 12000;
   }
 
   .player-station {
@@ -564,7 +564,6 @@
     gap: 16px;
   }
 
-  /* DEIN AVATAR MEDAILLON DIREKT LINKS NEBEN DEN KARTEN */
   .player-hero-card {
     display: flex;
     flex-direction: column;
@@ -707,7 +706,7 @@
     display: none;
     position: fixed;
     top: 0; left: 0; width: 100vw; height: 100vh;
-    background: rgba(0, 0, 0, 0.35); /* Sehr dezent, Karten unten bleiben 100% sichtbar! */
+    background: rgba(0, 0, 0, 0.35);
     justify-content: center;
     align-items: center;
     z-index: 10500;
@@ -720,7 +719,7 @@
     padding: 16px 28px;
     text-align: center;
     box-shadow: 0 0 50px var(--gold), 0 0 60px #000;
-    margin-bottom: 60px; /* Leicht über den Spieltisch angehoben */
+    margin-bottom: 60px;
   }
 
   .color-btn-group { display: flex; gap: 12px; margin-top: 10px; }
@@ -855,7 +854,7 @@
   <div style="font-size: 0.85rem; max-width: 280px;">Das Kolosseum entfaltet seine Pracht nur im Querformat, Gladiator!</div>
 </div>
 
-<!-- START BILDSCHIRM -->
+<!-- START BILDSCHIRM (Z-INDEX 9999999 -> COVER VOLLKOMMEN SAUBER!) -->
 <div id="splash-screen">
   <div class="player-select-box">
     <div style="font-family:'Cinzel Decorative'; font-size:1.3rem; color:var(--gold-bright); margin-bottom:4px;">WÄHLE DEINE ARENA</div>
@@ -887,9 +886,9 @@
 <!-- BOTS BÜHNE OBEN IM SAND -->
 <div class="bots-stage" id="bots-stage-area"></div>
 
-<!-- ARENA SPIELTISCH (PERFEKT AUSGEWOGEN BEI 44%) -->
+<!-- ARENA SPIELTISCH (PERFEKT AUSGEWOGEN BEI 48%) -->
 <div class="arena-center">
-  <!-- STATUS ANNOUNCER: FEST VERANKERT ÜBER DEM SPIELTISCH! -->
+  <!-- STATUS ANNOUNCER: BEI TOP: -75px (MASSIG FREIRAUM ZUM ZIEL-TEXT!) -->
   <div class="status-announcer" id="status-text">DEIN ZUG: WIRF DIE SCHICKSALSKNOCHEN!</div>
 
   <!-- ZONE 1: WÜRFEL BEREICH -->
@@ -966,7 +965,7 @@
   </div>
 </div>
 
-<!-- FARBWAHL MODAL (TRANSPARENT NACH UNTEN: HANDKARTEN BLEIBEN VOLL SICHTBAR!) -->
+<!-- FARBWAHL MODAL (TRANSPARENT NACH UNTEN: HANDKARTEN BLEIBEN HELL!) -->
 <div id="color-picker-modal">
   <div class="color-picker-box">
     <div style="font-family:'Cinzel Decorative'; font-size:1.2rem; color:var(--gold-bright); margin-bottom:4px;">KAISERLICHES DEKRET</div>
@@ -1321,7 +1320,7 @@ function initGame() {
   updateAudioUI();
   updateWinBadge();
 
-  // Spieler-Avatar über intelligenten Loader laden
+  // Spieler-Avatar laden
   smartAvatarLoad(document.getElementById('player-avatar-img'), 'avatar_1.jpg', 1);
 }
 
@@ -1353,7 +1352,6 @@ function resetTurn() {
   renderDice();
 }
 
-// ZENTRALE SIEGPRÜFUNG
 function checkGameVictory() {
   if (players[0] && players[0].hand.length === 0) {
     playerVictories++;
@@ -1756,7 +1754,7 @@ function handleDrawClick() {
 }
 
 // ==========================================
-// BOTS TURN: KINOREIFE, PERFEKT NACHVOLLZIEHBARE GESCHWINDIGKEIT!
+// BOTS TURN: MINDESTENS +2 SEKUNDEN ENTSPANNTES & SPANNENDES PACING!
 // ==========================================
 function startBotTurn() {
   if (isAppPaused) return;
@@ -1764,6 +1762,7 @@ function startBotTurn() {
   setAnnouncer(`${bot.name} tritt an die Schicksalsknochen...`);
   showBotBubble(bot.profile.quote);
 
+  // +2,0s Denkzeit vor dem ersten Wurf (3400ms statt 1400ms!)
   setTimeout(() => {
     if (isAppPaused) return;
     playSoundEffect('dice');
@@ -1791,9 +1790,9 @@ function startBotTurn() {
           canTakeover = false;
           if (checkGameVictory()) return;
           updateUI();
-          setTimeout(passTurnToNext, 1800);
-        }, 2200);
-      }, 1800);
+          setTimeout(passTurnToNext, 2000);
+        }, 3800); // +2s Pause
+      }, 2500);
       return;
     }
 
@@ -1804,13 +1803,13 @@ function startBotTurn() {
       showBotBubble("„Ich muss eine Karte ziehen... Noch bist du im Vorteil!“");
       canTakeover = true;
       updateUI();
-      setTimeout(passTurnToNext, 2200);
+      setTimeout(passTurnToNext, 3800); // +2s Pause
       return;
     }
 
     const targetCard = bot.hand[targetCardIdx];
 
-    // DREHE DIE ZIELKARTE UM UND GIB DEM SPIELER ZEIT ZUM LESEN (2,2s!)
+    // DREHE DIE ZIELKARTE UM: 4,2 SEKUNDEN ZEIT ZUM LESEN (STATT 2,2s)!
     displayBotTargetCard(targetCard, `GEGNER-ZIEL: ${bot.name} WÄHLT`);
     setAnnouncer(`${bot.name} peilt an: ${targetCard.name}!`);
     showBotBubble(`„Ich spiele auf: ${targetCard.name}! Macht euch bereit!“`);
@@ -1840,13 +1839,13 @@ function startBotTurn() {
       }, 5200);
 
     } else {
-      // 2,2 Sekunden Pause zum Betrachten
+      // 4,2 Sekunden Pause zum Betrachten (+2s!)
       setTimeout(() => {
         proceedBotTurnExecution(bot, targetCardIdx);
-      }, 2200);
+      }, 4200);
     }
 
-  }, 1400);
+  }, 3400);
 }
 
 function proceedBotTurnExecution(bot, targetCardIdx) {
@@ -1875,12 +1874,12 @@ function proceedBotTurnExecution(bot, targetCardIdx) {
       canTakeover = false;
       if (checkGameVictory()) return;
       updateUI();
-      setTimeout(passTurnToNext, 2000);
-    }, 2200);
+      setTimeout(passTurnToNext, 2500);
+    }, 4200); // +2s Pause
     return;
   }
 
-  // NACHWÜRFELN MIT BEDACHT
+  // NACHWÜRFELN
   let botRerolls = card.rolls;
   executeBotRerollStep(bot, targetCardIdx, botRerolls);
 }
@@ -1963,7 +1962,7 @@ function executeBotRerollStep(bot, cardIdx, rerollsLeft) {
   displayBotTargetCard(card, `${bot.name} PEILT AN (${rerollsLeft} übrig)`);
   setAnnouncer(`${bot.name} sperrt Würfel (rot) und bereitet Nachwurf vor...`);
 
-  // 1,8 Sekunden Zeit, um die roten Sperrwürfel wahrzunehmen!
+  // 3,8 Sekunden Zeit (+2s!), um die roten Sperrwürfel wahrzunehmen!
   setTimeout(() => {
     if (isAppPaused) return;
     playSoundEffect('dice');
@@ -1987,7 +1986,7 @@ function executeBotRerollStep(bot, cardIdx, rerollsLeft) {
         if (checkGameVictory()) return;
         updateUI();
         setTimeout(passTurnToNext, 2000);
-      }, 2200);
+      }, 3800); // +2s Pause
       return;
     }
 
@@ -2004,19 +2003,19 @@ function executeBotRerollStep(bot, cardIdx, rerollsLeft) {
         if (checkGameVictory()) return;
         updateUI();
         setTimeout(passTurnToNext, 2000);
-      }, 2200);
+      }, 4200); // +2s Pause
     } else if (rerollsLeft > 1) {
-      setTimeout(() => executeBotRerollStep(bot, cardIdx, rerollsLeft - 1), 2000);
+      setTimeout(() => executeBotRerollStep(bot, cardIdx, rerollsLeft - 1), 4000); // +2s Pause
     } else {
       setAnnouncer(`${bot.name} verfehlt die Formation! Die Würfel bleiben für dich liegen.`);
       setTimeout(() => {
         hideBotTargetCard();
         canTakeover = true;
         updateUI();
-        setTimeout(passTurnToNext, 2200);
-      }, 2200);
+        setTimeout(passTurnToNext, 2500);
+      }, 4200); // +2s Pause
     }
-  }, 1800);
+  }, 3800);
 }
 
 function handleBotColorChoice(bot, card) {
@@ -2273,6 +2272,7 @@ function updateUI() {
       `;
       stageEl.appendChild(bDiv);
 
+      // Smart Avatar Load für Bot
       smartAvatarLoad(bDiv.querySelector(`#bot-avatar-${i}`), b.profile.avatar, b.profile.page);
     }
   }
@@ -2335,7 +2335,7 @@ function showBotBubble(text) {
   if (b) {
     b.innerText = text;
     b.style.display = 'block';
-    setTimeout(() => b.style.display = 'none', 2800);
+    setTimeout(() => b.style.display = 'none', 3000);
   }
 }
 
