@@ -252,7 +252,7 @@
 
   .bot-card-large:first-child { margin-left: 0; }
 
-  /* SYMMETRISCHER ARENA-SPIELTISCH (48% HÖHE) */
+  /* SYMMETRISCHER ARENA-SPIELTISCH (DESKTOP) */
   .arena-center {
     position: absolute;
     top: 48%; left: 50%;
@@ -266,7 +266,7 @@
     max-width: 95vw;
   }
 
-  /* SCHWARZER STATUS ANNOUNCER: SAUBER POSITIONIERT & ALLEGEMEIN INFORMIEREND */
+  /* STATUS ANNOUNCER */
   .status-announcer {
     position: absolute;
     top: -65px;
@@ -399,7 +399,7 @@
     text-align: center;
   }
 
-  /* ZONE 2: ARENA-MITTE (REINE KARTE OHNE TEXT-BANNER!) */
+  /* ZONE 2: ARENA-MITTE */
   .center-duell-slot {
     width: 160px;
     height: 180px;
@@ -502,7 +502,7 @@
   .active-color-blau { background: #003388; box-shadow: 0 0 12px #2266ff; }
   .active-color-gelb { background: #886600; box-shadow: 0 0 12px #ffbb00; }
 
-  /* SPIELER-STATION UNTEN */
+  /* SPIELER-STATION UNTEN (DESKTOP) */
   .player-hand-wrapper {
     position: absolute;
     bottom: -15px; left: 50%;
@@ -600,7 +600,7 @@
 
   .player-hand-fan { display: flex; justify-content: center; align-items: flex-end; }
 
-  /* HANDKARTEN: 170px x 245px */
+  /* HANDKARTEN (DESKTOP) */
   .hand-card {
     width: 170px;
     height: 245px;
@@ -796,6 +796,71 @@
     background: #631018; color: #fff; border: 1.5px solid #dfb15b;
     border-radius: 50%; width: 26px; height: 26px; font-size: 0.8rem; font-weight: 900; cursor: pointer;
   }
+
+  /* ==========================================================================
+     SPEZIELLE SMARTPHONE-SKALIERUNG IM QUERFORMAT (MAX-HEIGHT <= 500px)
+     Greift NUR auf Mobilgeräten im Querformat! Lässt Desktop zu 100% unberührt!
+     ========================================================================== */
+  @media (max-height: 500px) and (orientation: landscape) {
+    .top-bar { height: 32px; padding: 0 12px; }
+    .game-title { font-size: 0.95rem; }
+    .win-trophy-badge { font-size: 0.65rem; padding: 1px 6px; }
+    .top-bar-btn { font-size: 0.7rem; padding: 3px 8px; }
+
+    /* BOTS OBEN: SCHLANK & NICHT ERDRÜCKEND */
+    .bots-stage { top: 34px; gap: 8px; }
+    .bot-card-group { padding: 3px 8px; border-radius: 8px; }
+    .bot-profile-info { margin-right: 6px; min-width: auto; }
+    .avatar-frame { width: 34px; height: 34px; border-width: 1.5px; }
+    .bot-profile-info div:nth-child(2) { font-size: 0.65rem !important; }
+    .bot-profile-info div:nth-child(3) { font-size: 0.55rem !important; }
+    .bot-card-large { width: 44px; height: 64px; margin-left: -22px; border-radius: 4px; }
+
+    /* SPIELTISCH MITTE: PERFEKT EINGEPASST */
+    .arena-center { top: 48%; gap: 14px; width: auto; max-width: 96vw; }
+    .status-announcer { top: -38px; font-size: 0.75rem; padding: 3px 18px; border-radius: 14px; }
+
+    /* WÜRFEL */
+    .dice-arena { width: 140px; padding: 4px 8px; gap: 3px; border-radius: 8px; }
+    .dice-row { gap: 4px; }
+    .dice-3d { width: 34px; height: 34px; padding: 2px; border-radius: 6px; }
+    .pip { width: 6px; height: 6px; }
+    .action-btn { font-size: 0.68rem; padding: 3px 6px; border-radius: 4px; }
+    #rolls-info { font-size: 0.55rem !important; }
+
+    /* SHOWDOWN-SLOT */
+    .center-duell-slot { width: 90px; height: 110px; }
+    .spqr-eagle-icon { font-size: 1.8rem; }
+    .spqr-seal-text { font-size: 0.55rem; }
+    .bot-active-card { width: 72px; height: 104px; border-width: 2px; border-radius: 6px; }
+
+    /* STAPEL */
+    .table-decks { width: 150px; gap: 8px; }
+    .deck-pile { width: 70px; height: 100px; border-radius: 6px; }
+    .deck-pile.draw div { font-size: 0.6rem !important; bottom: 4px !important; }
+
+    /* HANDKARTEN UNTEN: AUF 118px SKALIERT (VERDECKEN NICHTS MEHR!) */
+    .player-hand-wrapper { bottom: -10px; }
+    .player-station { gap: 10px; }
+    .player-hero-card { padding: 4px 6px; margin-bottom: 12px; border-radius: 10px; }
+    .hero-avatar-frame { width: 38px; height: 38px; }
+    .hero-name-plate { font-size: 0.65rem; margin-top: 2px; }
+
+    .hand-card { width: 82px; height: 118px; margin-left: -24px; border-radius: 6px; }
+    .hand-card.playable-glow { transform: translateY(-16px) !important; }
+    .hand-card.preview-elevated, .hand-card.locked-selected { transform: translateY(-24px) scale(1.05) !important; }
+
+    #confirm-dialogue-box { bottom: 130px; padding: 4px 14px; border-radius: 8px; }
+    .confirm-title { font-size: 0.72rem; }
+    #confirm-card-desc { font-size: 0.62rem !important; }
+    .btn-confirm-yes, .btn-confirm-no { font-size: 0.68rem; padding: 3px 10px; border-radius: 4px; }
+
+    /* FARBWAHL MODAL */
+    .color-picker-box { padding: 10px 18px; margin-bottom: 20px; }
+    .color-picker-box div:first-child { font-size: 0.95rem !important; }
+    .color-picker-box div:nth-child(2) { font-size: 0.68rem !important; }
+    .color-btn { font-size: 0.72rem; padding: 5px 10px; }
+  }
 </style>
 </head>
 <body>
@@ -891,6 +956,7 @@
 
 <!-- SPIELER-STATION UNTEN -->
 <div class="player-hand-wrapper">
+  <!-- BESTÄTIGUNGSBOX -->
   <div id="confirm-dialogue-box">
     <div class="confirm-title">„Diese Karte, sicher Gladiator?“</div>
     <div id="confirm-card-desc" style="font-size: 0.75rem; color: #f7ebd4;">-</div>
@@ -1298,7 +1364,6 @@ function resetTurn() {
   renderDice();
 }
 
-// ZENTRALE SIEGPRÜFUNG
 function checkGameVictory() {
   if (players[0] && players[0].hand.length === 0) {
     playerVictories++;
@@ -1697,15 +1762,12 @@ function handleDrawClick() {
   }
 }
 
-// ==========================================
-// BOTS TURN: DYNAMISCH, SCHNELL & OHNE VERZÖGERUNGEN!
-// ==========================================
+// BOTS TURN
 function startBotTurn() {
   if (isAppPaused) return;
   const bot = players[currentPlayerIdx];
   setAnnouncer(`${bot.name} ist am Zug...`);
 
-  // Schneller Start: nur 600ms vor dem 1. Wurf!
   setTimeout(() => {
     if (isAppPaused) return;
     playSoundEffect('dice');
@@ -1713,7 +1775,6 @@ function startBotTurn() {
     for (let i = 0; i < 3; i++) dice[i] = Math.floor(Math.random() * 6) + 1;
     renderDice();
 
-    // DRILLING IM 1. WURF
     if (dice[0] === dice[1] && dice[1] === dice[2]) {
       triggerAveCaesarCelebration();
       setAnnouncer(`AVE CAESAR! ${bot.name} hat einen Kaiser-Drilling gewürfelt!`);
@@ -1750,9 +1811,8 @@ function startBotTurn() {
 
     const targetCard = bot.hand[targetCardIdx];
 
-    // DREHE ZIELKARTE UM
     displayBotTargetCard(targetCard);
-    setAnnouncer(`${bot.name} peilt Ziel an...`);
+    setAnnouncer(`${bot.name} hat gewürfelt.`);
 
     const vetoCardIdx = players[0].hand.findIndex(c => canPlayOnDiscard(c) && checkFormation(dice, c));
     let vetoSeconds = 3;
@@ -1779,7 +1839,6 @@ function startBotTurn() {
       }, 3400);
 
     } else {
-      // Wenn kein Veto möglich ist: nur 800ms warten und direkt weiter!
       setTimeout(() => {
         proceedBotTurnExecution(bot, targetCardIdx);
       }, 800);
@@ -1796,7 +1855,6 @@ function proceedBotTurnExecution(bot, targetCardIdx) {
 
   const card = bot.hand[targetCardIdx];
 
-  // SOFORT GETROFFEN
   if (checkFormation(dice, card)) {
     setAnnouncer(`Volltreffer! ${bot.name} legt ab!`);
     displayBotTargetCard(card);
@@ -1819,7 +1877,6 @@ function proceedBotTurnExecution(bot, targetCardIdx) {
     return;
   }
 
-  // NACHWÜRFELN
   let botRerolls = card.rolls;
   executeBotRerollStep(bot, targetCardIdx, botRerolls);
 }
@@ -1900,9 +1957,8 @@ function executeBotRerollStep(bot, cardIdx, rerollsLeft) {
   locked = getSmartBotLocks(dice, card);
   renderDice();
   displayBotTargetCard(card);
-  setAnnouncer(`${bot.name} sperrt Würfel (rot) und würfelt...`);
+  setAnnouncer(`${bot.name} sperrt Würfel (rot)...`);
 
-  // Schnelle Würfelsperre: nur 700ms!
   setTimeout(() => {
     if (isAppPaused) return;
     playSoundEffect('dice');
