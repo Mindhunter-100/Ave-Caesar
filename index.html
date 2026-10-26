@@ -25,7 +25,6 @@
   html, body {
     width: 100vw;
     height: 100vh;
-    height: 100dvh; /* Berücksichtigt Safari-Adressleiste auf Smartphones */
     overflow: hidden;
     position: fixed;
     background: #0d0607 url('arena_bg.jpg') no-repeat center center fixed;
@@ -129,7 +128,11 @@
     border-bottom: 1px solid rgba(223, 177, 91, 0.25);
   }
 
-  .game-title-wrap { display: flex; align-items: center; gap: 12px; }
+  .game-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
 
   .game-title {
     font-family: 'Cinzel Decorative', serif;
@@ -151,7 +154,11 @@
     box-shadow: 0 0 8px rgba(223, 177, 91, 0.4);
   }
 
-  .top-controls { display: flex; align-items: center; gap: 8px; }
+  .top-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
 
   .top-bar-btn {
     background: linear-gradient(180deg, #dfb15b 0%, #875c1a 100%);
@@ -182,7 +189,7 @@
     justify-content: center;
     align-items: center;
     gap: 20px;
-    z-index: 10; /* Z-Index auf 10 gesenkt, damit der Announcer immer darüber liegt! */
+    z-index: 25;
   }
 
   .bot-card-group {
@@ -223,7 +230,11 @@
   }
 
   .avatar-frame img {
-    width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 50%;
   }
 
   .bot-cards-fan { display: flex; align-items: center; }
@@ -241,25 +252,7 @@
 
   .bot-card-large:first-child { margin-left: 0; }
 
-  .speech-bubble {
-    position: absolute;
-    top: 195px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(247, 235, 212, 0.98);
-    color: #2b1104;
-    font-size: 0.9rem;
-    font-weight: 900;
-    padding: 6px 22px;
-    border-radius: 8px;
-    border: 2px solid var(--gold);
-    box-shadow: 0 4px 20px var(--shadow);
-    z-index: 60;
-    display: none;
-    white-space: nowrap;
-  }
-
-  /* ARENA-SPIELTISCH DESKTOP */
+  /* SYMMETRISCHER ARENA-SPIELTISCH */
   .arena-center {
     position: absolute;
     top: 48%; left: 50%;
@@ -268,7 +261,7 @@
     justify-content: center;
     align-items: center;
     gap: 25px;
-    z-index: 20;
+    z-index: 15;
     width: 780px;
     max-width: 95vw;
   }
@@ -288,7 +281,7 @@
     color: var(--gold-bright);
     white-space: nowrap;
     box-shadow: 0 0 25px rgba(0,0,0,0.95);
-    z-index: 100 !important; /* Immer ganz oben sichtbar! */
+    z-index: 30;
     letter-spacing: 0.5px;
   }
 
@@ -338,14 +331,20 @@
   }
 
   .pip {
-    width: 8px; height: 8px;
+    width: 8px;
+    height: 8px;
     background: radial-gradient(circle, #2b1104 60%, #000 100%);
     border-radius: 50%;
-    align-self: center; justify-self: center;
+    align-self: center;
+    justify-self: center;
   }
 
   .dice-btn-row {
-    display: flex; flex-direction: column; gap: 4px; width: 100%; margin-top: 3px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+    margin-top: 3px;
   }
 
   .action-btn {
@@ -369,7 +368,10 @@
   }
 
   .action-btn:disabled {
-    background: #3a2e28; color: #6d6159; border-color: #4a3c34; cursor: not-allowed;
+    background: #3a2e28;
+    color: #6d6159;
+    border-color: #4a3c34;
+    cursor: not-allowed;
   }
 
   .action-btn.pulse { animation: pulseGold 1.5s infinite; }
@@ -397,58 +399,84 @@
     text-align: center;
   }
 
-  /* ZONE 2: SHOWDOWN-SLOT */
+  /* ZONE 2: ARENA-MITTE (REINE KARTE OHNE STÖRENDE TEXT-BANNER!) */
   .center-duell-slot {
-    width: 160px; height: 180px;
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
-    position: relative; flex-shrink: 0;
+    width: 160px;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    flex-shrink: 0;
   }
 
   .spqr-idle-seal {
-    display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0.35; text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.35;
+    text-align: center;
   }
 
   .spqr-eagle-icon { font-size: 2.6rem; filter: drop-shadow(0 0 10px var(--gold)); }
   .spqr-seal-text { font-family: 'Cinzel Decorative', serif; font-size: 0.7rem; color: var(--gold-bright); letter-spacing: 2px; margin-top: 3px; }
 
   .bot-active-target-box {
-    display: flex; flex-direction: column; align-items: center; gap: 4px;
-    position: absolute; top: 50%; left: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 50%; left: 50%;
     transform: translate(-50%, -50%) scale(0.9);
-    visibility: hidden; opacity: 0; transition: opacity 0.25s, transform 0.25s; z-index: 20;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s, transform 0.2s;
+    z-index: 20;
   }
 
-  .bot-active-target-box.visible { visibility: visible; opacity: 1; transform: translate(-50%, -50%) scale(1); }
-
-  .bot-target-label {
-    font-family: 'Cinzel Decorative', serif;
-    font-size: 0.72rem; font-weight: 900; color: #ff4444;
-    text-shadow: 0 0 10px #000, 0 0 15px #ff2222; letter-spacing: 1.5px;
-    background: rgba(15, 3, 5, 0.94); padding: 2px 10px; border-radius: 8px; border: 1.5px solid #ff4444; margin-bottom: 2px;
+  .bot-active-target-box.visible {
+    visibility: visible;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
   }
 
   .bot-active-card {
-    width: 115px; height: 165px; border-radius: 8px; border: 3.5px solid #ff3333;
+    width: 115px;
+    height: 165px;
+    border-radius: 8px;
+    border: 3.5px solid #ff3333;
     box-shadow: 0 0 35px #ff2222, 0 0 60px #000;
   }
 
-  .bot-target-sub { font-size: 0.72rem; font-weight: 800; color: var(--gold-bright); text-shadow: 1px 1px 4px #000; }
-
   /* ZONE 3: STAPEL */
   .table-decks {
-    display: flex; gap: 12px; align-items: center; width: 210px; justify-content: flex-end; flex-shrink: 0;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    width: 210px;
+    justify-content: flex-end;
+    flex-shrink: 0;
   }
 
   .deck-pile {
-    width: 100px; height: 145px; border-radius: 8px; position: relative; box-shadow: 0 6px 18px var(--shadow);
+    width: 100px;
+    height: 145px;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 6px 18px var(--shadow);
   }
 
   .deck-pile.draw {
-    background: url('card_back.jpg') center/cover; border: 2.5px solid var(--gold); cursor: pointer;
+    background: url('card_back.jpg') center/cover;
+    border: 2.5px solid var(--gold);
+    cursor: pointer;
   }
 
   .deck-pile.discard {
-    border: 2.5px solid var(--gold-bright); background: rgba(20, 8, 10, 0.85);
+    border: 2.5px solid var(--gold-bright);
+    background: rgba(20, 8, 10, 0.85);
   }
 
   .deck-pile.discard img {
@@ -456,49 +484,98 @@
   }
 
   #active-color-indicator {
-    display: none; position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
-    padding: 2px 10px; border-radius: 10px; font-size: 0.7rem; font-weight: 900;
-    color: #fff; border: 1.5px solid #fff; z-index: 50; white-space: nowrap;
+    display: none;
+    position: absolute;
+    top: -12px; left: 50%;
+    transform: translateX(-50%);
+    padding: 2px 10px;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    font-weight: 900;
+    color: #fff;
+    border: 1.5px solid #fff;
+    z-index: 50;
+    white-space: nowrap;
   }
 
   .active-color-rot { background: #990000; box-shadow: 0 0 12px #ff2222; }
   .active-color-blau { background: #003388; box-shadow: 0 0 12px #2266ff; }
   .active-color-gelb { background: #886600; box-shadow: 0 0 12px #ffbb00; }
 
-  /* SPIELER-STATION DESKTOP */
+  /* SPIELER-STATION UNTEN */
   .player-hand-wrapper {
-    position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%);
-    display: flex; flex-direction: column; align-items: center; z-index: 12000;
+    position: absolute;
+    bottom: -15px; left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 12000;
   }
 
-  .player-station { display: flex; align-items: flex-end; gap: 16px; }
+  .player-station {
+    display: flex;
+    align-items: flex-end;
+    gap: 16px;
+  }
 
   .player-hero-card {
-    display: flex; flex-direction: column; align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background: radial-gradient(circle, rgba(45, 14, 20, 0.96) 0%, rgba(15, 5, 7, 0.98) 100%);
-    border: 2px solid var(--gold); border-radius: 16px; padding: 8px 12px;
-    box-shadow: 0 6px 20px var(--shadow); margin-bottom: 25px; flex-shrink: 0;
+    border: 2px solid var(--gold);
+    border-radius: 16px;
+    padding: 8px 12px;
+    box-shadow: 0 6px 20px var(--shadow);
+    margin-bottom: 25px;
+    flex-shrink: 0;
   }
 
   .hero-avatar-frame {
-    width: 68px; height: 68px; border-radius: 50%; overflow: hidden;
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    overflow: hidden;
     box-shadow: 0 0 16px rgba(0,0,0,0.9), 0 0 12px var(--gold);
-    background: #110507; display: flex; justify-content: center; align-items: center;
+    background: #110507;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .hero-avatar-frame img {
-    width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 50%;
   }
 
   .hero-name-plate {
-    font-size: 0.85rem; font-weight: 900; color: var(--gold-bright); margin-top: 4px; letter-spacing: 1px;
+    font-size: 0.85rem;
+    font-weight: 900;
+    color: var(--gold-bright);
+    margin-top: 4px;
+    letter-spacing: 1px;
   }
 
+  /* BESTÄTIGUNGSBOX */
   #confirm-dialogue-box {
-    display: none; position: absolute; bottom: 260px; left: 50%; transform: translateX(-50%);
+    display: none;
+    position: absolute;
+    bottom: 260px;
+    left: 50%;
+    transform: translateX(-50%);
     background: radial-gradient(circle, rgba(55, 12, 18, 0.98) 0%, rgba(18, 5, 7, 0.98) 100%);
-    border: 2.5px solid var(--gold-bright); border-radius: 12px; padding: 6px 24px; text-align: center;
-    box-shadow: 0 0 35px var(--gold-bright), 0 0 50px #000; z-index: 500; animation: popUp 0.18s ease-out; white-space: nowrap;
+    border: 2.5px solid var(--gold-bright);
+    border-radius: 12px;
+    padding: 6px 24px;
+    text-align: center;
+    box-shadow: 0 0 35px var(--gold-bright), 0 0 50px #000;
+    z-index: 500;
+    animation: popUp 0.18s ease-out;
+    white-space: nowrap;
   }
 
   @keyframes popUp {
@@ -523,19 +600,34 @@
 
   .player-hand-fan { display: flex; justify-content: center; align-items: flex-end; }
 
-  /* HANDKARTEN DESKTOP */
+  /* HANDKARTEN: 170px x 245px */
   .hand-card {
-    width: 170px; height: 245px; border-radius: 12px; margin-left: -46px; cursor: pointer;
+    width: 170px;
+    height: 245px;
+    border-radius: 12px;
+    margin-left: -46px;
+    cursor: pointer;
     transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.22s;
-    transform-origin: bottom center; box-shadow: -4px 6px 18px var(--shadow); position: relative; opacity: 1 !important;
+    transform-origin: bottom center;
+    box-shadow: -4px 6px 18px var(--shadow);
+    position: relative;
+    opacity: 1 !important;
   }
 
   .hand-card:first-child { margin-left: 0; }
   .hand-card img {
-    width: 100%; height: 100%; border-radius: 12px; border: 2px solid rgba(223, 177, 91, 0.6); display: block; opacity: 1 !important;
+    width: 100%; height: 100%;
+    border-radius: 12px;
+    border: 2px solid rgba(223, 177, 91, 0.6);
+    display: block;
+    opacity: 1 !important;
   }
 
-  .hand-card.playable-glow { transform: translateY(-24px) !important; z-index: 150; }
+  .hand-card.playable-glow {
+    transform: translateY(-24px) !important;
+    z-index: 150;
+  }
+
   .hand-card.playable-glow img {
     border: 3.5px solid #ff3333 !important;
     box-shadow: 0 0 25px #ff2222, 0 0 45px #ffaa00 !important;
@@ -548,28 +640,42 @@
   }
 
   .hand-card.preview-elevated, .hand-card.locked-selected {
-    transform: translateY(-34px) scale(1.04) !important; z-index: 300 !important;
+    transform: translateY(-34px) scale(1.04) !important;
+    z-index: 300 !important;
   }
+
   .hand-card.preview-elevated img, .hand-card.locked-selected img {
-    border: 3.5px solid var(--gold-bright) !important; box-shadow: 0 0 40px var(--gold-bright), 0 0 60px #fff !important;
-  }
-  .hand-card.veto-glow img { border: 3.5px solid #ff2222 !important; box-shadow: 0 0 40px #ff2222 !important; }
-
-  /* MODALS & OVERLAYS */
-  #color-picker-modal, #target-picker-modal, #pause-modal {
-    display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-    background: rgba(0, 0, 0, 0.45); justify-content: center; align-items: center; z-index: 10500;
+    border: 3.5px solid var(--gold-bright) !important;
+    box-shadow: 0 0 40px var(--gold-bright), 0 0 60px #fff !important;
   }
 
-  .color-picker-box, .target-picker-box, .pause-box {
+  .hand-card.veto-glow img {
+    border: 3.5px solid #ff2222 !important;
+    box-shadow: 0 0 40px #ff2222 !important;
+  }
+
+  /* FARBWAHL-MODAL */
+  #color-picker-modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(0, 0, 0, 0.35);
+    justify-content: center;
+    align-items: center;
+    z-index: 10500;
+  }
+
+  .color-picker-box {
     background: radial-gradient(circle, #3a1014 0%, #150305 100%);
-    border: 3px solid var(--gold); border-radius: 14px; padding: 16px 28px;
-    text-align: center; box-shadow: 0 0 50px var(--gold), 0 0 60px #000; margin-bottom: 30px;
+    border: 3px solid var(--gold);
+    border-radius: 14px;
+    padding: 16px 28px;
+    text-align: center;
+    box-shadow: 0 0 50px var(--gold), 0 0 60px #000;
+    margin-bottom: 60px;
   }
 
-  .color-btn-group, .pause-btn-group { display: flex; gap: 12px; margin-top: 10px; }
-  .pause-btn-group { flex-direction: column; }
-  
+  .color-btn-group { display: flex; gap: 12px; margin-top: 10px; }
   .color-btn {
     font-family: 'Cinzel', serif; font-size: 0.88rem; font-weight: 900;
     padding: 9px 16px; border-radius: 6px; border: 2px solid #fff; cursor: pointer;
@@ -578,48 +684,107 @@
   .btn-blau { background: #003388; color: #fff; }
   .btn-gelb { background: #997700; color: #fff; }
 
+  /* WEITERE MODALS */
+  #target-picker-modal, #pause-modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 10500;
+  }
+
+  .target-picker-box, .pause-box {
+    background: radial-gradient(circle, #3a1014 0%, #150305 100%);
+    border: 3px solid var(--gold);
+    border-radius: 12px;
+    padding: 18px 30px;
+    text-align: center;
+    box-shadow: 0 0 45px var(--gold);
+  }
+
+  .pause-btn-group { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
+
   #caesar-flash-banner {
-    display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    display: none;
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
     background: radial-gradient(circle, rgba(100, 15, 20, 0.98) 0%, rgba(20, 5, 8, 0.98) 100%);
-    border: 3px solid var(--gold-bright); border-radius: 14px; padding: 15px 30px;
-    text-align: center; box-shadow: 0 0 70px var(--gold-bright), 0 0 100px #fff; z-index: 100000;
+    border: 3px solid var(--gold-bright);
+    border-radius: 14px;
+    padding: 15px 30px;
+    text-align: center;
+    box-shadow: 0 0 70px var(--gold-bright), 0 0 100px #fff;
+    z-index: 100000;
   }
 
   #notice-toast {
-    position: fixed; bottom: 220px; left: 50%; transform: translateX(-50%);
-    background: rgba(100, 10, 20, 0.96); color: #fff; border: 2px solid var(--gold);
+    position: fixed;
+    bottom: 220px; left: 50%;
+    transform: translateX(-50%);
+    background: rgba(100, 10, 20, 0.96);
+    color: #fff; border: 2px solid var(--gold);
     padding: 6px 18px; border-radius: 6px; font-size: 0.85rem; font-weight: 800;
     box-shadow: 0 0 25px #000; z-index: 1200; display: none; text-align: center;
   }
 
+  /* SIEGER MODAL MIT STRAFPUNKTE-ABRECHNUNG */
   #victory-modal {
-    display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
     background: #000 url('victory_ave_caesar.jpg') no-repeat center center fixed;
-    background-size: cover; flex-direction: column; justify-content: flex-end; align-items: center;
-    padding-bottom: 35px; z-index: 100000;
+    background-size: cover;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 35px;
+    z-index: 100000;
   }
 
   .victory-banner {
-    background: rgba(15, 4, 6, 0.94); border: 3px solid var(--gold-bright);
-    padding: 16px 32px; border-radius: 12px; text-align: center;
+    background: rgba(15, 4, 6, 0.94);
+    border: 3px solid var(--gold-bright);
+    padding: 16px 32px;
+    border-radius: 12px;
+    text-align: center;
     box-shadow: 0 0 50px var(--gold-bright), 0 0 80px #000;
   }
 
   .modal-overlay {
-    display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-    background: rgba(0, 0, 0, 0.88); justify-content: center; align-items: center; z-index: 99999;
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(0, 0, 0, 0.88);
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
   }
 
   .scroll-parchment {
     background: #f4ebd6 radial-gradient(circle, #f9f4e6 0%, #ecd9b5 100%);
-    color: #2b1104; border: 4px solid #8c6023; border-radius: 10px;
-    width: 90%; max-width: 750px; max-height: 85vh; overflow-y: auto; padding: 18px;
-    box-shadow: 0 0 40px rgba(0,0,0,0.9); position: relative;
+    color: #2b1104;
+    border: 4px solid #8c6023;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 750px;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 18px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.9);
+    position: relative;
   }
 
   .scroll-parchment h2 {
-    font-family: 'Cinzel Decorative', serif; font-size: 1.2rem; color: #631018;
-    border-bottom: 2px solid #8c6023; padding-bottom: 4px; margin-bottom: 6px; text-align: center;
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.2rem;
+    color: #631018;
+    border-bottom: 2px solid #8c6023;
+    padding-bottom: 4px;
+    margin-bottom: 6px;
+    text-align: center;
   }
 
   .scroll-parchment table { width: 100%; border-collapse: collapse; margin: 6px 0; font-size: 0.72rem; }
@@ -627,103 +792,9 @@
   .scroll-parchment th { background: #e2cca4; color: #551216; }
 
   .close-scroll {
-    position: absolute; top: 8px; right: 10px; background: #631018; color: #fff;
-    border: 1.5px solid #dfb15b; border-radius: 50%; width: 26px; height: 26px; font-size: 0.8rem; font-weight: 900; cursor: pointer;
-  }
-
-  /* ==========================================================================
-     ULTRA-PRÄZISE SMARTPHONE-QUERFORMAT ANPASSUNG
-     (Aktiviert sich automatisch bei Bildschirmen unter 550px Höhe)
-     ========================================================================== */
-  @media (max-height: 550px) and (orientation: landscape) {
-    /* 1. OBERE LEISTE */
-    .top-bar { height: 28px; padding: 0 10px; }
-    .game-title { font-size: 0.82rem; letter-spacing: 1px; }
-    .win-trophy-badge { font-size: 0.62rem; padding: 1px 6px; }
-    .top-bar-btn { font-size: 0.65rem; padding: 2px 7px; }
-
-    /* 2. BOTS BÜHNE: SCHLANK & FLIEGEND */
-    .bots-stage { top: 30px; gap: 8px; z-index: 10; }
-    .bot-card-group { padding: 2px 6px; border-radius: 6px; border-width: 1.5px; }
-    .bot-profile-info { min-width: 38px; margin-right: 4px; }
-    .avatar-frame { width: 30px; height: 30px; }
-    .bot-profile-info div:nth-child(2) { font-size: 0.65rem !important; margin-top: 1px !important; }
-    .bot-profile-info div:nth-child(3) { font-size: 0.52rem !important; }
-    .bot-card-large { width: 32px; height: 48px; margin-left: -18px; border-radius: 4px; border-width: 1px; }
-    .speech-bubble { top: 78px; font-size: 0.72rem; padding: 2px 10px; }
-
-    /* 3. ARENA MITTE: TISCH & STATUS */
-    .arena-center {
-      top: 48%;
-      gap: 12px;
-      width: auto;
-      max-width: 98vw;
-      transform: translate(-50%, -50%);
-    }
-
-    /* STATUS-BANNER: Sitzt jetzt sauber in der freien Lücke zwischen Bot & Tisch! */
-    .status-announcer {
-      top: -34px;
-      font-size: 0.7rem;
-      padding: 3px 14px;
-      border-radius: 12px;
-      border-width: 1.5px;
-      z-index: 9999 !important;
-    }
-
-    /* WÜRFEL BEREICH */
-    .dice-arena { width: 130px; padding: 4px 6px; border-radius: 8px; border-width: 1.5px; gap: 3px; }
-    .dice-arena div:first-child { font-size: 0.55rem !important; }
-    .dice-row { gap: 5px; }
-    .dice-3d { width: 30px; height: 30px; border-radius: 6px; border-width: 1.5px; padding: 2px; }
-    .pip { width: 5px; height: 5px; }
-    .dice-btn-row { gap: 3px; margin-top: 2px; }
-    .action-btn { font-size: 0.65rem; padding: 3px 6px; border-radius: 4px; }
-    #rolls-info { font-size: 0.55rem; }
-
-    /* DUELL / SPQR SLOT */
-    .center-duell-slot { width: 85px; height: 95px; }
-    .spqr-eagle-icon { font-size: 1.6rem; }
-    .spqr-seal-text { font-size: 0.52rem; }
-    .bot-active-card { width: 66px; height: 94px; border-width: 2px; }
-    .bot-target-label { font-size: 0.55rem; padding: 1px 6px; }
-    .bot-target-sub { font-size: 0.55rem; }
-
-    /* KARTENSTAPEL */
-    .table-decks { width: 130px; gap: 8px; }
-    .deck-pile { width: 62px; height: 90px; border-radius: 6px; border-width: 1.5px; }
-    .deck-pile.draw div { font-size: 0.58rem !important; bottom: 4px !important; }
-    #active-color-indicator { font-size: 0.55rem; padding: 1px 6px; top: -10px; }
-
-    /* 4. SPIELER UNTEN: SCHNUCKLIG & FREI */
-    .player-hand-wrapper { bottom: -6px; z-index: 12000; }
-    .player-station { gap: 8px; }
-    .player-hero-card { margin-bottom: 8px; padding: 3px 6px; border-radius: 8px; border-width: 1.5px; }
-    .hero-avatar-frame { width: 34px; height: 34px; }
-    .hero-name-plate { font-size: 0.62rem; margin-top: 1px; }
-
-    /* HANDKARTEN: Perfekte Handy-Größe (überdecken nichts mehr!) */
-    .hand-card {
-      width: 72px;
-      height: 104px;
-      border-radius: 6px;
-      margin-left: -20px;
-    }
-    .hand-card img { border-radius: 6px; border-width: 1.5px; }
-
-    .hand-card.playable-glow {
-      transform: translateY(-10px) !important;
-    }
-    .hand-card.preview-elevated, .hand-card.locked-selected {
-      transform: translateY(-16px) scale(1.05) !important;
-    }
-
-    /* DIALOGE */
-    #confirm-dialogue-box { bottom: 110px; padding: 4px 12px; border-width: 1.5px; }
-    .confirm-title { font-size: 0.72rem; }
-    #confirm-card-desc { font-size: 0.65rem !important; }
-    .btn-confirm-yes, .btn-confirm-no { font-size: 0.65rem; padding: 3px 10px; }
-    #notice-toast { bottom: 105px; font-size: 0.68rem; padding: 3px 10px; }
+    position: absolute; top: 8px; right: 10px;
+    background: #631018; color: #fff; border: 1.5px solid #dfb15b;
+    border-radius: 50%; width: 26px; height: 26px; font-size: 0.8rem; font-weight: 900; cursor: pointer;
   }
 </style>
 </head>
@@ -749,7 +820,6 @@
   </div>
 </div>
 
-<div class="speech-bubble" id="bot-bubble">„Die Götter lachen über dich!“</div>
 <div id="notice-toast">Hinweis</div>
 
 <!-- TOP BAR -->
@@ -768,8 +838,9 @@
 <!-- BOTS BÜHNE OBEN IM SAND -->
 <div class="bots-stage" id="bots-stage-area"></div>
 
-<!-- ARENA SPIELTISCH -->
+<!-- ARENA SPIELTISCH (ABGESENKT AUF 48%) -->
 <div class="arena-center">
+  <!-- STATUS ANNOUNCER -->
   <div class="status-announcer" id="status-text">DEIN ZUG: WIRF DIE SCHICKSALSKNOCHEN!</div>
 
   <!-- ZONE 1: WÜRFEL BEREICH -->
@@ -792,7 +863,7 @@
     <div id="rolls-info" style="font-size: 0.65rem; color: #d5be9b;">Würfe: -</div>
   </div>
 
-  <!-- ZONE 2: SHOWDOWN-SLOT -->
+  <!-- ZONE 2: ARENA-MITTE (REINE KARTE OHNE TEXT-BANNER!) -->
   <div class="center-duell-slot">
     <div class="spqr-idle-seal" id="spqr-idle-seal">
       <div class="spqr-eagle-icon">🦅</div>
@@ -800,9 +871,7 @@
     </div>
 
     <div class="bot-active-target-box" id="bot-target-box">
-      <div class="bot-target-label" id="bot-target-title">GEGNER-ZIEL</div>
       <img class="bot-active-card" id="bot-target-img" src="card_back.jpg">
-      <div class="bot-target-sub" id="bot-target-sub">-</div>
     </div>
   </div>
 
@@ -822,6 +891,7 @@
 
 <!-- SPIELER-STATION UNTEN -->
 <div class="player-hand-wrapper">
+  <!-- BESTÄTIGUNGSBOX -->
   <div id="confirm-dialogue-box">
     <div class="confirm-title">„Diese Karte, sicher Gladiator?“</div>
     <div id="confirm-card-desc" style="font-size: 0.75rem; color: #f7ebd4;">-</div>
@@ -832,12 +902,15 @@
   </div>
 
   <div class="player-station">
+    <!-- DEIN AVATAR -->
     <div class="player-hero-card">
       <div class="hero-avatar-frame">
         <img id="player-avatar-img" src="avatar_1.jpg" alt="Du">
       </div>
       <div class="hero-name-plate">DU</div>
     </div>
+
+    <!-- DEINE HANDKARTEN -->
     <div class="player-hand-fan" id="player-fan"></div>
   </div>
 </div>
@@ -1134,6 +1207,7 @@ function shuffle(a) {
   return a;
 }
 
+// BOT PROFILES
 const botProfiles = [
   { id: 2, name: 'MAXIMUS', avatar: 'avatar_2.jpg', page: 1, title: 'Der Schlächter', quote: '„Spüre den Sand, Feigling!“' },
   { id: 3, name: 'AURELIUS', avatar: 'avatar_3.jpg', page: 35, title: 'Der Zenturio', quote: '„Meine Legion kennt keine Gnade!“' },
@@ -1302,7 +1376,6 @@ function checkInitialRollOutcome() {
     document.getElementById('btn-roll').disabled = true;
     document.getElementById('btn-roll').classList.remove('pulse');
     document.getElementById('must-draw-btn').style.display = 'block';
-    showBotBubble("„Ha! Du kannst nicht bedienen! Zieh eine Karte!“");
     updateUI();
     return;
   }
@@ -1453,6 +1526,7 @@ function playSelectedCard() {
   passTurnToNext();
 }
 
+// 6 PORCUS SOFORT-EFFEKTE
 function executePorcusAction(card, player) {
   setAnnouncer(`🐗 PORCUS FURIOSUS! ${card.desc}!`);
   activeChosenColor = null;
@@ -1489,7 +1563,6 @@ function executePorcusAction(card, player) {
           if (p !== player && p.hand.length < minCards) { minCards = p.hand.length; target = p; }
         });
         if (deck.length > 0) target.hand.push(deck.pop());
-        showBotBubble(`„Zieh deine Strafe, ${target.name}!“`);
         finishOrPassAfterPorcus(player);
       }
       break;
@@ -1527,7 +1600,6 @@ function executePorcusAction(card, player) {
         player.hand.forEach((c, i) => { if (c.points > maxPts) { maxPts = c.points; bestIdx = i; } });
         const given = player.hand.splice(bestIdx, 1)[0];
         players[0].hand.push(given);
-        showBotBubble(`„Hier, nimm meine Last, Gladiator!“`);
         showNoticeToast(`${player.name} schenkt dir eine ${given.name}!`);
         finishOrPassAfterPorcus(player);
       }
@@ -1627,12 +1699,15 @@ function handleDrawClick() {
   }
 }
 
+// ==========================================
+// BOTS TURN: JEDE AKTION -1,8 SEKUNDEN (FLÜSSIG & DYNAMISCH!)
+// ==========================================
 function startBotTurn() {
   if (isAppPaused) return;
   const bot = players[currentPlayerIdx];
-  setAnnouncer(`${bot.name} tritt an die Schicksalsknochen...`);
-  showBotBubble(bot.profile.quote);
+  setAnnouncer(`${bot.name} ist am Zug...`);
 
+  // Vor dem 1. Wurf: 1600ms (-1,8s)
   setTimeout(() => {
     if (isAppPaused) return;
     playSoundEffect('dice');
@@ -1640,16 +1715,16 @@ function startBotTurn() {
     for (let i = 0; i < 3; i++) dice[i] = Math.floor(Math.random() * 6) + 1;
     renderDice();
 
+    // DRILLING IM 1. WURF
     if (dice[0] === dice[1] && dice[1] === dice[2]) {
       triggerAveCaesarCelebration();
       setAnnouncer(`AVE CAESAR! ${bot.name} hat einen Kaiser-Drilling gewürfelt!`);
-      showBotBubble("„AVE CAESAR! Die Götter krönen mich!“");
 
       setTimeout(() => {
         let bestIdx = 0, maxPts = -1;
         bot.hand.forEach((c, idx) => { if (c.points > maxPts) { maxPts = c.points; bestIdx = idx; } });
         const discarded = bot.hand.splice(bestIdx, 1)[0];
-        displayBotTargetCard(discarded, `${bot.name} LEGT AB (AVE CAESAR!):`);
+        displayBotTargetCard(discarded);
 
         setTimeout(() => {
           discardTop = discarded;
@@ -1659,9 +1734,9 @@ function startBotTurn() {
           canTakeover = false;
           if (checkGameVictory()) return;
           updateUI();
-          setTimeout(passTurnToNext, 2000);
-        }, 3800);
-      }, 2500);
+          setTimeout(passTurnToNext, 1200);
+        }, 2000); // -1,8s
+      }, 1000);
       return;
     }
 
@@ -1669,18 +1744,17 @@ function startBotTurn() {
     if (targetCardIdx === -1) {
       if (deck.length > 0) bot.hand.push(deck.pop());
       setAnnouncer(`${bot.name} kann nicht bedienen und zieht eine Karte.`);
-      showBotBubble("„Ich muss eine Karte ziehen... Noch bist du im Vorteil!“");
       canTakeover = true;
       updateUI();
-      setTimeout(passTurnToNext, 3800);
+      setTimeout(passTurnToNext, 2000); // -1,8s
       return;
     }
 
     const targetCard = bot.hand[targetCardIdx];
 
-    displayBotTargetCard(targetCard, `GEGNER-ZIEL: ${bot.name} WÄHLT`);
-    setAnnouncer(`${bot.name} peilt an: ${targetCard.name}!`);
-    showBotBubble(`„Ich spiele auf: ${targetCard.name}! Macht euch bereit!“`);
+    // DREHE ZIELKARTE UM (2,4s statt 4,2s!)
+    displayBotTargetCard(targetCard);
+    setAnnouncer(`${bot.name} hat gewürfelt.`);
 
     const vetoCardIdx = players[0].hand.findIndex(c => canPlayOnDiscard(c) && checkFormation(dice, c));
     let vetoSeconds = 5;
@@ -1688,7 +1762,7 @@ function startBotTurn() {
     if (vetoCardIdx !== -1) {
       document.getElementById('veto-btn').style.display = 'block';
       document.getElementById('veto-timer').innerText = vetoSeconds;
-      setAnnouncer(`⚠️ ${bot.name} peilt ${targetCard.name} an! VETO MÖGLICH!`);
+      setAnnouncer(`⚠️ VETO MÖGLICH! [${vetoSeconds}s]`);
       highlightVetoCard(vetoCardIdx);
 
       vetoTimerInterval = setInterval(() => {
@@ -1709,10 +1783,10 @@ function startBotTurn() {
     } else {
       setTimeout(() => {
         proceedBotTurnExecution(bot, targetCardIdx);
-      }, 4200);
+      }, 2400); // -1,8s
     }
 
-  }, 3400);
+  }, 1600); // -1,8s
 }
 
 function proceedBotTurnExecution(bot, targetCardIdx) {
@@ -1723,9 +1797,10 @@ function proceedBotTurnExecution(bot, targetCardIdx) {
 
   const card = bot.hand[targetCardIdx];
 
+  // SOFORT GETROFFEN
   if (checkFormation(dice, card)) {
-    setAnnouncer(`Volltreffer! ${bot.name} hat ${card.name} sofort erfüllt!`);
-    displayBotTargetCard(card, `ERFÜLLT: ${bot.name} LEGT AB!`);
+    setAnnouncer(`Volltreffer! ${bot.name} legt ab!`);
+    displayBotTargetCard(card);
     setTimeout(() => {
       bot.hand.splice(targetCardIdx, 1);
       discardTop = card;
@@ -1740,11 +1815,12 @@ function proceedBotTurnExecution(bot, targetCardIdx) {
       canTakeover = false;
       if (checkGameVictory()) return;
       updateUI();
-      setTimeout(passTurnToNext, 2500);
-    }, 4200);
+      setTimeout(passTurnToNext, 1200);
+    }, 2400); // -1,8s
     return;
   }
 
+  // NACHWÜRFELN
   let botRerolls = card.rolls;
   executeBotRerollStep(bot, targetCardIdx, botRerolls);
 }
@@ -1824,9 +1900,10 @@ function executeBotRerollStep(bot, cardIdx, rerollsLeft) {
   const card = bot.hand[cardIdx];
   locked = getSmartBotLocks(dice, card);
   renderDice();
-  displayBotTargetCard(card, `${bot.name} PEILT AN (${rerollsLeft} übrig)`);
-  setAnnouncer(`${bot.name} sperrt Würfel (rot) und bereitet Nachwurf vor...`);
+  displayBotTargetCard(card);
+  setAnnouncer(`${bot.name} sperrt Würfel (rot)...`);
 
+  // 2,0 Sekunden Zeit (-1,8s)
   setTimeout(() => {
     if (isAppPaused) return;
     playSoundEffect('dice');
@@ -1839,7 +1916,7 @@ function executeBotRerollStep(bot, cardIdx, rerollsLeft) {
     if (dice[0] === dice[1] && dice[1] === dice[2]) {
       triggerAveCaesarCelebration();
       setAnnouncer(`AVE CAESAR! ${bot.name} würfelt einen Drilling im Nachwurf!`);
-      displayBotTargetCard(card, `AVE CAESAR DRILLING!`);
+      displayBotTargetCard(card);
       setTimeout(() => {
         bot.hand.splice(cardIdx, 1);
         discardTop = card;
@@ -1849,14 +1926,14 @@ function executeBotRerollStep(bot, cardIdx, rerollsLeft) {
         canTakeover = false;
         if (checkGameVictory()) return;
         updateUI();
-        setTimeout(passTurnToNext, 2000);
-      }, 3800);
+        setTimeout(passTurnToNext, 1200);
+      }, 2000); // -1,8s
       return;
     }
 
     if (checkFormation(dice, card)) {
-      setAnnouncer(`Erfolg! ${bot.name} erfüllt die Formation und legt ${card.name} ab!`);
-      displayBotTargetCard(card, `ERFÜLLT: ${bot.name} LEGT AB!`);
+      setAnnouncer(`Erfolg! ${bot.name} legt ab!`);
+      displayBotTargetCard(card);
       setTimeout(() => {
         bot.hand.splice(cardIdx, 1);
         discardTop = card;
@@ -1866,20 +1943,20 @@ function executeBotRerollStep(bot, cardIdx, rerollsLeft) {
         canTakeover = false;
         if (checkGameVictory()) return;
         updateUI();
-        setTimeout(passTurnToNext, 2000);
-      }, 4200);
+        setTimeout(passTurnToNext, 1200);
+      }, 2400); // -1,8s
     } else if (rerollsLeft > 1) {
-      setTimeout(() => executeBotRerollStep(bot, cardIdx, rerollsLeft - 1), 4000);
+      setTimeout(() => executeBotRerollStep(bot, cardIdx, rerollsLeft - 1), 2200); // -1,8s
     } else {
-      setAnnouncer(`${bot.name} verfehlt die Formation! Die Würfel bleiben für dich liegen.`);
+      setAnnouncer(`${bot.name} verfehlt die Formation!`);
       setTimeout(() => {
         hideBotTargetCard();
         canTakeover = true;
         updateUI();
-        setTimeout(passTurnToNext, 2500);
-      }, 4200);
+        setTimeout(passTurnToNext, 1500);
+      }, 2400); // -1,8s
     }
-  }, 3800);
+  }, 2000); // -1,8s
 }
 
 function handleBotColorChoice(bot, card) {
@@ -1894,19 +1971,14 @@ function handleBotColorChoice(bot, card) {
   else if (counts.gelb > counts.rot && counts.gelb > counts.blau) chosen = 'gelb';
 
   activeChosenColor = chosen;
-  showBotBubble(`„Ich bestimme die nächste Farbe: ${chosen.toUpperCase()}!“`);
 }
 
-function displayBotTargetCard(card, labelText) {
+function displayBotTargetCard(card) {
   const box = document.getElementById('bot-target-box');
   const img = document.getElementById('bot-target-img');
-  const label = document.getElementById('bot-target-title');
-  const sub = document.getElementById('bot-target-sub');
   const seal = document.getElementById('spqr-idle-seal');
   if (box && img && card) {
     img.src = getCardImgPath(card.page);
-    if (label && labelText) label.innerText = labelText;
-    if (sub) sub.innerText = `${card.name} • ${card.points} Pkt.`;
     if (seal) seal.style.display = 'none';
     box.classList.add('visible');
   }
@@ -1919,6 +1991,7 @@ function hideBotTargetCard() {
   if (seal) seal.style.display = 'flex';
 }
 
+// VETO FUNKTION
 function triggerPlayerVeto() {
   if (botTurnTimeout) clearTimeout(botTurnTimeout);
   if (vetoTimerInterval) clearInterval(vetoTimerInterval);
@@ -1939,10 +2012,9 @@ function triggerPlayerVeto() {
 
     if (deck.length > 0) players[0].hand.push(deck.pop());
 
-    setAnnouncer(`🛡️ VETO ABGEWEHRT! ${bot.name} hat selbst ${defenseCard.name}! Du ziehst 1 Strafkarte!`);
-    showBotBubble("„Mein Wurf, meine Arena! Nimm deine Strafe!“");
+    setAnnouncer(`🛡️ VETO ABGEWEHRT! Du ziehst 1 Strafkarte!`);
     updateUI();
-    setTimeout(() => { passTurnToNext(); }, 2500);
+    setTimeout(() => { passTurnToNext(); }, 2000);
 
   } else {
     const card = players[0].hand.splice(playerCardIdx, 1)[0];
@@ -1973,7 +2045,7 @@ function triggerPlayerVeto() {
         const rBtn = document.getElementById('btn-roll');
         rBtn.disabled = false;
         rBtn.classList.add('pulse');
-      }, 1400);
+      }, 1200);
     }
   }
 }
@@ -2111,6 +2183,7 @@ function renderDice() {
 }
 
 function updateUI() {
+  // BOTS BÜHNE: AVATARE + ECHTE KARTEN-FÄCHER
   const stageEl = document.getElementById('bots-stage-area');
   if (stageEl) {
     stageEl.innerHTML = '';
@@ -2133,13 +2206,17 @@ function updateUI() {
         </div>
       `;
       stageEl.appendChild(bDiv);
+
       smartAvatarLoad(bDiv.querySelector(`#bot-avatar-${i}`), b.profile.avatar, b.profile.page);
     }
   }
 
+  // SPIELER HAND
   const fanEl = document.getElementById('player-fan');
   if (fanEl && players[0]) {
     fanEl.innerHTML = '';
+    const total = players[0].hand.length;
+
     players[0].hand.forEach((card, idx) => {
       const isPreview = (previewCardIdx === idx) ? 'preview-elevated' : '';
       const isLocked = (lockedCardIdx === idx) ? 'locked-selected' : '';
@@ -2156,6 +2233,7 @@ function updateUI() {
     });
   }
 
+  // ABLAGESTAPEL
   const discardImg = document.getElementById('discard-img');
   const colorBadge = document.getElementById('active-color-indicator');
   
@@ -2186,21 +2264,12 @@ function setAnnouncer(text) {
   if (el) el.innerText = text;
 }
 
-function showBotBubble(text) {
-  const b = document.getElementById('bot-bubble');
-  if (b) {
-    b.innerText = text;
-    b.style.display = 'block';
-    setTimeout(() => b.style.display = 'none', 3000);
-  }
-}
-
 function showNoticeToast(msg) {
   const t = document.getElementById('notice-toast');
   if (t) {
     t.innerText = msg;
     t.style.display = 'block';
-    setTimeout(() => t.style.display = 'none', 2200);
+    setTimeout(() => t.style.display = 'none', 2000);
   }
 }
 
